@@ -2,9 +2,22 @@ import React from 'react'
 import { Helmet } from 'react-helmet'
 import Footer from '../components/Footer'
 import Navbar from '../components/Navbar'
-import './all.sass'
 import useSiteMetadata from './SiteMetadata'
 import { withPrefix } from 'gatsby'
+
+import styled from 'styled-components'
+
+import GlobalStyle from "../styles/GlobalStyle";
+import media from "../styles/media";
+
+const MainContent = styled.section`
+    margin: 0 auto;
+    max-width: 80%;
+    ${media.tablet`
+        max-width: 90%;
+
+    `}
+`;
 
 const TemplateWrapper = ({ children }) => {
   const { title, description } = useSiteMetadata()
@@ -48,8 +61,12 @@ const TemplateWrapper = ({ children }) => {
           content={`${withPrefix('/')}img/og-image.jpg`}
         />
       </Helmet>
+      <GlobalStyle />
+      
       <Navbar />
-      <div>{children}</div>
+      <MainContent>
+        <main>{children}</main>
+      </MainContent>
       <Footer />
     </div>
   )
