@@ -8,9 +8,8 @@ import Features from '../components/Features'
 import styled from 'styled-components';
 
 const StyledIndexPage = styled.div`
-  width: 100%;
-  background: white;
-
+  margin-top: 80px;
+  background-color: white;
 `;
 
 export const IndexPageTemplate = ({
@@ -23,7 +22,11 @@ export const IndexPageTemplate = ({
   intro,
 }) => (
     <StyledIndexPage>
-      <h1>{mainpitch.title}</h1>
+      <h1>{heading}</h1>
+      <h2>{subheading}</h2>
+
+      <h3>{mainpitch.title}</h3>
+      <p>{mainpitch.description}</p>
     </StyledIndexPage>
     // <div>
     //   <div
@@ -169,13 +172,7 @@ export const pageQuery = graphql`
     markdownRemark(frontmatter: { templateKey: { eq: "index-page" } }) {
       frontmatter {
         title
-        image {
-          childImageSharp {
-            fluid(maxWidth: 2048, quality: 100) {
-              ...GatsbyImageSharpFluid
-            }
-          }
-        }
+        
         heading
         subheading
         mainpitch {
@@ -185,13 +182,6 @@ export const pageQuery = graphql`
         description
         intro {
           blurbs {
-            image {
-              childImageSharp {
-                fluid(maxWidth: 240, quality: 64) {
-                  ...GatsbyImageSharpFluid
-                }
-              }
-            }
             text
           }
           heading

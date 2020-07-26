@@ -2,20 +2,14 @@
 templateKey: index-page
 title: Canadian Undergraduate Conference on Artificial Intelligence
 image: /img/home-jumbotron.jpg
-heading: Canadian Undergraduate Conference on Artificial Intelligence
-subheading: North America's largest undergraduate conference on AI
+heading: The Canadian Undergraduate Conference on Artificial Intelligence
+subheading: Learning how to build a better world, one algorithm at a time.
 mainpitch:
-  title: Why Kaldi
+  title: Dive into the world of artificial intelligence.
   description: >
-    Kaldi is the coffee store for everyone who believes that great coffee
-    shouldn't just taste good, it should do good too. We source all of our beans
-    directly from small scale sustainable farmers and make sure part of the
-    profits are reinvested in their communities.
-description: >-
-  Kaldi is the ultimate spot for coffee lovers who want to learn about their
-  java’s origin and support the farmers that grew it. We take coffee production,
-  roasting and brewing seriously and we’re glad to pass that knowledge to
-  anyone.
+    The first annual Canadian Undergraduate Conference on Artificial Intelligence (CUCAI) took place on March 9th, 2019. Founded by QMIND- Queen’s AI Hub and a strong Queen’s community, the event marked its debut on the national stage with delegations from Queenʼs University, McGill University, University of Toronto, Ryerson University, and University of Manitoba. . . . 
+description: >
+  North America's largest undergraduate conference on AI
 intro:
   blurbs:
     - image: /img/coffee.png
