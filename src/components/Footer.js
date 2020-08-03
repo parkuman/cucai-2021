@@ -1,7 +1,7 @@
-import React from 'react'
-import { Link } from 'gatsby'
+import React from "react";
+import { Link } from "gatsby";
 
-import styled from 'styled-components'
+import styled from "styled-components";
 
 // import logo from '../img/logo.svg'
 // import facebook from '../img/social/facebook.svg'
@@ -17,14 +17,13 @@ const StyledFooter = styled.footer`
   background-color: lightcyan;
 `;
 
-
 const Footer = () => {
   return (
     <StyledFooter>
       <p>footer</p>
     </StyledFooter>
   );
-}
+};
 
 // const Footer = class extends React.Component {
 //   render() {
@@ -131,4 +130,4 @@ const Footer = () => {
 //   }
 // }
 
-export default Footer
+export default Footer;
