@@ -1,63 +1,104 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { graphql } from "gatsby";
+
+import styled from "styled-components";
+
 import Layout from "../components/Layout";
-import Content, { HTMLContent } from "../components/Content";
+import { ourTeam } from "../config";
 
-export const AboutPageTemplate = ({ title, content, contentComponent }) => {
-  const PageContent = contentComponent || Content;
+const StyledAboutPage = styled.div`
+  margin-top: 80px;
+`;
 
+
+const TeamMember = ({ pic, name, position, program }) => {
   return (
-    <section className="section section--gradient">
-      <div className="container">
-        <div className="columns">
-          <div className="column is-10 is-offset-1">
-            <div className="section">
-              <h2 className="title is-size-3 has-text-weight-bold is-bold-light">
-                {title}
-              </h2>
-              <PageContent className="content" content={content} />
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
+    <>
+      <img src={require(`../img/team/${pic}`)} alt={`${name}'s headshot'`} />
+      <p>
+        {name.split(' ')[0]} <b>{name.split(' ')[1]}</b>
+        <br />
+        {position}
+        <br />
+        <i>{program}</i>
+      </p>
+    </>
   );
-};
+}
+
+const OurTeam = ({ data }) => {
+  return (
+    ourTeam.map(team => {
+      return (
+        <>
+          <h2>{team.header}</h2>
+          {
+            team.members.map(member =>
+              <TeamMember
+                pic={member.pic}
+                name={member.name}
+                position={member.position}
+                program={member.program} />
+            )
+          }
+        </>
+      );
+    })
+  );
+}
+
+export const AboutPageTemplate = ({
+  title,
+  slogan,
+  html
+}) => (
+    <StyledAboutPage>
+      <h1>{title}</h1>
+      <h2>{slogan}</h2>
+      <div dangerouslySetInnerHTML={{ __html: html }} />
+      <OurTeam />
+    </StyledAboutPage>
+  );
 
 AboutPageTemplate.propTypes = {
-  title: PropTypes.string.isRequired,
-  content: PropTypes.string,
-  contentComponent: PropTypes.func,
+  title: PropTypes.string,
+  slogan: PropTypes.string,
 };
 
 const AboutPage = ({ data }) => {
-  const { markdownRemark: post } = data;
+  const { frontmatter, html } = data.markdownRemark;
 
   return (
     <Layout>
       <AboutPageTemplate
-        contentComponent={HTMLContent}
-        title={post.frontmatter.title}
-        content={post.html}
+        title={frontmatter.title}
+        slogan={frontmatter.slogan}
+        html={html}
       />
     </Layout>
   );
 };
 
 AboutPage.propTypes = {
-  data: PropTypes.object.isRequired,
+  data: PropTypes.shape({
+    markdownRemark: PropTypes.shape({
+      frontmatter: PropTypes.object,
+    }),
+  }),
 };
 
 export default AboutPage;
 
-export const aboutPageQuery = graphql`
-  query AboutPage($id: String!) {
-    markdownRemark(id: { eq: $id }) {
+export const pageQuery = graphql`
+  query AboutPageTemplate {
+    markdownRemark(frontmatter: { templateKey: { eq: "about-page" } }) {
       html
       frontmatter {
         title
+        slogan
       }
     }
   }
 `;
+

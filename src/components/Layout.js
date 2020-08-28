@@ -11,7 +11,7 @@ import GlobalStyle from "../styles/GlobalStyle";
 import media from "../styles/media";
 
 const MainContent = styled.section`
-  margin: 0 auto;
+  margin: 80px auto;
   max-width: 80%;
   ${media.tablet`
         max-width: 90%;

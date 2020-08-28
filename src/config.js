@@ -17,7 +17,11 @@ module.exports = {
   navLinks: [
     {
       name: "About",
-      url: "#about",
+      url: "/about",
+    },
+    {
+      name: "Events",
+      url: "#events",
     },
     {
       name: "Speakers",
@@ -28,16 +32,88 @@ module.exports = {
       url: "#sponsors",
     },
     {
-      name: "2020",
-      url: "#2020",
-    },
-    {
-      name: "Team",
-      url: "/team/",
+      name: "2020 Preceedings",
+      url: "#2020preceedings",
     },
     {
       name: "Contact",
       url: "#contact",
-    },
+    }
   ],
+  ourTeam: [
+    {
+      header: "Co-Chairs",
+      members: [
+        {
+          name: "Berkely Wilson",
+          position: "Co-Chair",
+          program: "Mechanical Engineering '21",
+          pic: "berkeley-wilson.png"
+        },
+        {
+          name: "Max Bennett",
+          position: "Co-Chair",
+          program: "Applied Mathematics '22",
+          pic: "max-bennett.png"
+        },
+      ]
+    },
+    {
+      header: "Delegates",
+      members: [
+        {
+          name: "Ellie Mehltretter",
+          position: "Delegates Coordinator",
+          program: "Mathematics '21",
+          pic: "ellie-mehltretter.png"
+        },
+        {
+          name: "Jack Perry",
+          position: "Delegates Coordinator",
+          program: "Commerce '22",
+          pic: "jack-perry.png"
+        },
+      ]
+    },
+    {
+      header: "Logistics",
+      members: [
+        {
+          name: "Catherine Wu",
+          position: "Logistics Manager",
+          program: "Biomedical Computation '22",
+          pic: "catherine-wu.png"
+        },
+        {
+          name: "Jack Grebenc",
+          position: "Logistics Coordinator",
+          program: "Mathematics & Computing '21",
+          pic: "jack-grebenc.png"
+        },
+        {
+          name: "Will Stewart",
+          position: "Logistics Coordinator",
+          program: "Commerce '22",
+          pic: "will-stewart.png"
+        }
+      ]
+    },
+    {
+      header: "Marketing",
+      members: [
+        {
+          name: "Parker Rowe",
+          position: "Marketing Coordinator & Web Developer",
+          program: "Computer Engineering & Innovation '22",
+          pic: "parker-rowe.png"
+        },
+        {
+          name: "Katie Lu",
+          position: "Marketing Coordinator & Web Developer",
+          program: "Computing & The Creative Arts '21",
+          pic: "katie-lu.png"
+        }
+      ]
+    },
+  ]
 };

@@ -1,11 +1,10 @@
 import React from "react";
-import { Link, graphql, useStaticQuery } from "gatsby";
-import Img from "gatsby-image";
+import { Link } from "gatsby";
 
 import styled from "styled-components";
 import theme from "../styles/theme";
 
-import { navLinks, socialMedia } from "../config";
+import { navLinks } from "../config";
 import LogoLight from "../img/logo-main-light.png";
 
 const StyledNav = styled.nav`
@@ -20,8 +19,6 @@ const StyledNav = styled.nav`
   justify-content: space-between;
   align-items: center;
 `;
-
-const StyledContent = styled.div``;
 
 const StyledLogo = styled.img`
   height: 50px;

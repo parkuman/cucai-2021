@@ -3,7 +3,9 @@ templateKey: index-page
 title: Canadian Undergraduate Conference on Artificial Intelligence
 image: /img/home-jumbotron.jpg
 heading: The Canadian Undergraduate Conference on Artificial Intelligence
-subheading: Learning how to build a better world, one algorithm at a time.
+slogan: Artificial intelligence, real change.
+location: Toronto, ON
+date: March 6-8, 2021
 mainpitch:
   title: Dive into the world of artificial intelligence.
   description: >
