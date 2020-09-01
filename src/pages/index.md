@@ -6,6 +6,8 @@ heading: The Canadian Undergraduate Conference on Artificial Intelligence
 slogan: Artificial intelligence, real change.
 location: Toronto, ON
 date: March 6-8, 2021
+cta1: sponsor us
+cta2: stay updated
 mainpitch:
   title: Dive into the world of artificial intelligence.
   description: >

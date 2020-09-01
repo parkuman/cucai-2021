@@ -33,6 +33,7 @@ const OurTeam = ({ data }) => {
       return (
         <>
           <h2>{team.header}</h2>
+          <p>{team.email}</p>
           {
             team.members.map(member =>
               <TeamMember

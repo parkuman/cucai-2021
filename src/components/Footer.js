@@ -8,12 +8,8 @@ import styled from "styled-components";
 // import twitter from '../img/social/twitter.svg'
 // import vimeo from '../img/social/vimeo.svg'
 const StyledFooter = styled.footer`
-  position: fixed;
-  bottom: 0;
-  left: 0;
   width: 100%;
   height: 70px;
-  background-color: lightcyan;
 `;
 
 const Footer = () => {

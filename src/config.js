@@ -43,6 +43,7 @@ module.exports = {
   ourTeam: [
     {
       header: "Co-Chairs",
+      email: "chair@cucai.ca",
       members: [
         {
           name: "Berkely Wilson",
@@ -60,6 +61,7 @@ module.exports = {
     },
     {
       header: "Delegates",
+      email: "delegates@cucai.ca",
       members: [
         {
           name: "Ellie Mehltretter",
@@ -77,6 +79,7 @@ module.exports = {
     },
     {
       header: "Logistics",
+      email: "logistics@cucai.ca",
       members: [
         {
           name: "Catherine Wu",
@@ -100,6 +103,7 @@ module.exports = {
     },
     {
       header: "Marketing",
+      email: "marketing@cucai.ca",
       members: [
         {
           name: "Parker Rowe",

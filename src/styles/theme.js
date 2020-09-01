@@ -1,5 +1,8 @@
 const theme = {
-  colors: {},
+  colors: {
+    cucaiBlue: "#1AA9CB",
+    darkBlue: "#003C58",
+  },
 
   fonts: {
     IBMPlexMono: "IBM Plex Mono, monospace",

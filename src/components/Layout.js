@@ -4,6 +4,7 @@ import Footer from "../components/Footer";
 import Navbar from "../components/Navbar";
 import useSiteMetadata from "./SiteMetadata";
 import { withPrefix } from "gatsby";
+import { ParallaxProvider } from "react-scroll-parallax";
 
 import styled from "styled-components";
 
@@ -11,8 +12,7 @@ import GlobalStyle from "../styles/GlobalStyle";
 import media from "../styles/media";
 
 const MainContent = styled.section`
-  margin: 80px auto;
-  max-width: 80%;
+  margin: 0 auto;
   ${media.tablet`
         max-width: 90%;
 
@@ -63,11 +63,13 @@ const TemplateWrapper = ({ children }) => {
       </Helmet>
       <GlobalStyle />
 
-      <Navbar />
-      <MainContent>
-        <main>{children}</main>
-      </MainContent>
-      <Footer />
+      <ParallaxProvider>
+        <Navbar />
+        <MainContent>
+          <main>{children}</main>
+        </MainContent>
+        <Footer />
+      </ParallaxProvider>
     </div>
   );
 };

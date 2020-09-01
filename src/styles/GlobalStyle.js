@@ -16,9 +16,10 @@ html {
 }
 body {
     --bg-color: "white";
-    --text-color-primary: "black";
+    --text-color-primary: ${theme.colors.darkBlue};
     --text-color-secondary: "gray";
     --accent-color: "blue";
+    --cucai-blue: ${theme.colors.cucaiBlue};
 
     display: flex;
     flex-direction: column;
