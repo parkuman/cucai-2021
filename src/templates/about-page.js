@@ -17,9 +17,15 @@ const StyledTeamMember = styled.section`
 max-width: 33%;
 padding: 3em;
 float: left;
-height: 100vh;
 background: rgb(255,255,255);
-background: linear-gradient(0deg, rgba(255,255,255,1) 0%, rgba(26,169,203,1) 100%);
+margin: 3em;
+border-radius: 3em;
+`;
+
+const StyledTeam = styled.section`
+width: 100%;
+margin: 3em;
+display: flex;
 `;
 
 const TeamMember = ({ pic, name, position, program }) => {
@@ -44,8 +50,10 @@ const OurTeam = ({ data }) => {
     ourTeam.map(team => {
       return (
         <>
-          <h2>{team.header}</h2>
+        <div>
+        <h2>{team.header}</h2>
           <p>{team.email}</p>
+          <StyledTeam>
           {
             team.members.map(member =>
               <StyledTeamMember>
@@ -55,9 +63,10 @@ const OurTeam = ({ data }) => {
                 position={member.position}
                 program={member.program} />
               </StyledTeamMember>
-              
             )
           }
+          </StyledTeam>
+          </div>
         </>
       );
     })
