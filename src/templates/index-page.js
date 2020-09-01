@@ -4,6 +4,7 @@ import { graphql } from "gatsby";
 import { Parallax, ParallaxBanner } from "react-scroll-parallax";
 import SkylineLayers from "../img/parallaxSkyline";
 import Clouds from "../img/clouds.png";
+import Diver from "../img/diver.svg"
 
 import Layout from "../components/Layout";
 import theme from "../styles/theme";
@@ -61,6 +62,13 @@ const StyledInfoSection = styled.section`
   
 `;
 
+const StyledBlurbSection = styled.section`
+max-width: 50%;
+height: 100vh;
+background: rgb(255,255,255);
+background: linear-gradient(0deg, rgba(255,255,255,1) 0%, rgba(26,169,203,1) 100%);
+
+`;
 
 const ParallaxSkyline = () => {
   return (
@@ -121,6 +129,32 @@ const InfoSection = () => (
 
 );
 
+const BlurbSection = ({blurbtitle, blurbdesc, blurbimg}) => (
+  <StyledBlurbSection>
+      <div>
+      <h2>{blurbtitle}</h2>
+      <p>{blurbdesc}</p>
+      </div> 
+      <div>
+      <img src={blurbimg}></img>
+      </div>
+  </StyledBlurbSection>
+
+);
+
+//const EventHighlight = ({event, desc}) => (
+  //<h2>{event}</h2>
+  //<p>{desc}</p>
+  
+//);
+
+const HighlightSection = () => (
+  <StyledInfoSection>
+    <h2>Highlights</h2>
+    <h3>Design Team Showcase</h3>
+    <p>The design team showcase was the foundation on which CUCAI was started. This event allows the hard work, dedication and talent of Canadian undergraduate students working on AI-based design projects since September, to be exhibited for industry representatives and other delegates to learn about the work currently being done in the field of AI at the undergraduate level. This event features in-depth presentations for audiences of all levels of experience and backgrounds, as well as engaging and interactive demonstrations for 30+ design teams from across Canada.</p>
+  </StyledInfoSection>
+);
 
 export const IndexPageTemplate = ({
   title,
@@ -137,10 +171,11 @@ export const IndexPageTemplate = ({
     <StyledIndexPage>
       <Hero heading={heading} slogan={slogan} location={location} date={date} cta1={cta1} cta2={cta2} />
       <InfoSection />
-      <div style={{ height: "10000px" }}></div>
-      <h4>{mainpitch.title}</h4>
-      <p>{mainpitch.description}</p>
+      <BlurbSection blurbimg={Diver} blurbdesc={mainpitch.description} blurbtitle={mainpitch.title}/>
+      <HighlightSection />
     </StyledIndexPage>
+    //    <div style={{ height: "10000px" }}></div>
+
     // <div>
     //   <div
     //     className="full-width-image margin-top-0"

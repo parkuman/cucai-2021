@@ -1,10 +1,9 @@
 import React from "react";
 
 import styled from "styled-components";
-
-// import logo from '../img/logo.svg'
-// import facebook from '../img/social/facebook.svg'
-// import instagram from '../img/social/instagram.svg'
+import logo from '../img/logo.svg'
+import facebook from '../img/social/facebook.svg'
+import instagram from '../img/social/instagram.svg'
 // import twitter from '../img/social/twitter.svg'
 // import vimeo from '../img/social/vimeo.svg'
 const StyledFooter = styled.footer`
@@ -15,7 +14,10 @@ const StyledFooter = styled.footer`
 const Footer = () => {
   return (
     <StyledFooter>
-      <p>footer</p>
+      <p>Stay In Touch!</p>
+      <img src={facebook}/>
+      <img src={instagram}></img>
+      <img src={logo}></img>
     </StyledFooter>
   );
 };
