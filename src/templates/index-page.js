@@ -10,6 +10,7 @@ import Layout from "../components/Layout";
 import theme from "../styles/theme";
 
 import Button from '../components/Button';
+import Proceedings from '../files/Proceedings-of-CUCAI-2020.pdf';
 
 import styled from "styled-components";
 
@@ -64,6 +65,8 @@ const StyledInfoSection = styled.section`
 
 const StyledBlurbSection = styled.section`
 max-width: 50%;
+padding: 3em;
+float: left;
 height: 100vh;
 background: rgb(255,255,255);
 background: linear-gradient(0deg, rgba(255,255,255,1) 0%, rgba(26,169,203,1) 100%);
@@ -130,15 +133,16 @@ const InfoSection = () => (
 );
 
 const BlurbSection = ({blurbtitle, blurbdesc, blurbimg}) => (
+  <StyledInfoSection>
   <StyledBlurbSection>
-      <div>
       <h2>{blurbtitle}</h2>
       <p>{blurbdesc}</p>
-      </div> 
-      <div>
-      <img src={blurbimg}></img>
-      </div>
   </StyledBlurbSection>
+  <StyledBlurbSection>
+     <img src={blurbimg}></img>
+  </StyledBlurbSection>
+
+  </StyledInfoSection>
 
 );
 
@@ -152,7 +156,7 @@ const HighlightSection = () => (
   <StyledInfoSection>
     <h2>Highlights</h2>
     <h3>Design Team Showcase</h3>
-    <p>The design team showcase was the foundation on which CUCAI was started. This event allows the hard work, dedication and talent of Canadian undergraduate students working on AI-based design projects since September, to be exhibited for industry representatives and other delegates to learn about the work currently being done in the field of AI at the undergraduate level. This event features in-depth presentations for audiences of all levels of experience and backgrounds, as well as engaging and interactive demonstrations for 30+ design teams from across Canada.</p>
+    <Button borderStyle="solid" borderColour="#174461"><a href={Proceedings}>PROCEEDINGS</a></Button>  
   </StyledInfoSection>
 );
 
