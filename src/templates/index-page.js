@@ -2,13 +2,8 @@ import React from "react";
 import PropTypes from "prop-types";
 import { graphql } from "gatsby";
 import { Parallax, ParallaxBanner } from "react-scroll-parallax";
-import City1 from "../img/parallaxSkyline/1.svg"
-import City2 from "../img/parallaxSkyline/2.svg"
-import City3 from "../img/parallaxSkyline/3.svg"
-import City4 from "../img/parallaxSkyline/4.svg"
-import City5 from "../img/parallaxSkyline/5.svg"
-import City6 from "../img/parallaxSkyline/6.svg"
-import City7 from "../img/parallaxSkyline/7.svg"
+import SkylineLayers from "../img/parallaxSkyline";
+import Clouds from "../img/clouds.png";
 
 import Layout from "../components/Layout";
 import theme from "../styles/theme";
@@ -24,6 +19,7 @@ const StyledHero = styled.section`
   padding-top: 150px;
   background: radial-gradient(189.82% 100% at 50% 0%, rgba(26, 79, 203, 0.0001) 0%, rgba(29, 85, 205, 0.0459233) 0%, rgba(33, 93, 208, 0.0977712) 63.18%, #65DAFE 100%, #65DAFE 100%), linear-gradient(146.77deg, rgba(26, 169, 203, 0.25) -3.05%, rgba(17, 47, 66, 0.25) 90.39%, rgba(17, 47, 66, 0.25) 90.39%);
   max-width: 100vw;
+  height: 100vh;
   overflow: hidden;
 `;
 
@@ -52,38 +48,46 @@ const StyledInfo = styled.h3`
   padding: 10px 0;
 `;
 
-const StyledParallaxImg = styled.img`
-  left: 500px;
-  width: 110vw;
+const StyledParallax = styled(Parallax)`
+  & img {
+    width: 100vw;
+  }
+`;
+
+const StyledInfoSection = styled.section`
+  max-width: 100vw;
+  height: 100vh;
+  
 `;
 
 
-const ParallaxSkyline = () => (
-  <>
-    <Parallax y={[0, 0]}>
-      <StyledParallaxImg src={City7} />
-    </Parallax>
-    <Parallax y={[-110,-120]}>
-      <StyledParallaxImg src={City6} />
-    </Parallax>
-    <Parallax y={[-200, -220]}>
-      <StyledParallaxImg src={City5} />
-    </Parallax>
-    <Parallax y={[-390, -420]}>
-      <StyledParallaxImg src={City4} />
-    </Parallax>
-    <Parallax y={[-390, -420]}>
-      <StyledParallaxImg src={City3} />
-    </Parallax>
-    <Parallax y={[0, 60]}>
-      <StyledParallaxImg src={City2} />
-    </Parallax>
-    <Parallax y={[0, 70]}>
-      <StyledParallaxImg src={City1} />
-    </Parallax>
-       
-  </>
-);
+const ParallaxSkyline = () => {
+  return (
+    <>
+      <StyledParallax y={[-10, 0]}>
+        <img src={SkylineLayers[0]} />
+      </StyledParallax>
+      <StyledParallax y={[-90, -100]}>
+        <img src={SkylineLayers[1]} />
+      </StyledParallax>
+      <StyledParallax y={[-190, -205]}>
+        <img src={SkylineLayers[2]} />
+      </StyledParallax>
+      <StyledParallax y={[-290, -310]}>
+        <img src={SkylineLayers[3]} />
+      </StyledParallax>
+      <StyledParallax y={[-390, -415]}>
+        <img src={SkylineLayers[4]} />
+      </StyledParallax>
+      <StyledParallax y={[-490, -520]}>
+        <img src={SkylineLayers[5]} />
+      </StyledParallax>
+      <StyledParallax y={[-590, -620]}>
+        <img src={SkylineLayers[6]} />
+      </StyledParallax>
+    </>
+  );
+}
 
 const Hero = ({
   heading,
@@ -106,6 +110,16 @@ const Hero = ({
   );
 
 
+const InfoSection = () => (
+  <StyledInfoSection>
+      <StyledParallax y={[-30, -60]}>
+        <img src={Clouds} />
+      </StyledParallax>
+  </StyledInfoSection>
+
+
+);
+
 
 export const IndexPageTemplate = ({
   title,
@@ -121,7 +135,7 @@ export const IndexPageTemplate = ({
 }) => (
     <StyledIndexPage>
       <Hero heading={heading} slogan={slogan} location={location} date={date} cta1={cta1} cta2={cta2} />
-
+      <InfoSection />
       <div style={{ height: "10000px" }}></div>
       <h4>{mainpitch.title}</h4>
       <p>{mainpitch.description}</p>
