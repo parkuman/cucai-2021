@@ -46,7 +46,7 @@ module.exports = {
       email: "chair@cucai.ca",
       members: [
         {
-          name: "Berkely Wilson",
+          name: "Berkeley Wilson",
           position: "Co-Chair",
           program: "Mechanical Engineering '21",
           pic: "berkeley-wilson.png"

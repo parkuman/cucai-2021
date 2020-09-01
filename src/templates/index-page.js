@@ -21,6 +21,7 @@ const StyledHero = styled.section`
   max-width: 100vw;
   height: 100vh;
   overflow: hidden;
+
 `;
 
 const StyledHeroContent = styled.div`
@@ -102,7 +103,7 @@ const Hero = ({
         <StyledHeading>{heading}</StyledHeading>
         <StyledSlogan>{slogan}</StyledSlogan>
         <StyledInfo>{location.toUpperCase()} | {date.toUpperCase()}</StyledInfo>
-        <Button backgroundColour="white">{cta1}</Button>
+        <Button backgroundColour="white"><a href="#spons">{cta1}</a></Button>
         <Button borderStyle="solid" borderColour="#174461">{cta2}</Button>
       </StyledHeroContent>
       <ParallaxSkyline />
