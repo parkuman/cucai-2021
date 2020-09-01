@@ -154,8 +154,9 @@ const BlurbSection = ({blurbtitle, blurbdesc, blurbimg}) => (
 
 const HighlightSection = () => (
   <StyledInfoSection>
-    <h2>Highlights</h2>
+    <h1>Highlights</h1>
     <h3>Design Team Showcase</h3>
+    <div id="2020proceedings"></div>
     <Button borderStyle="solid" borderColour="#174461"><a href={Proceedings}>PROCEEDINGS</a></Button>  
   </StyledInfoSection>
 );
