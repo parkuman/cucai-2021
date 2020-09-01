@@ -11,7 +11,7 @@ import theme from "../styles/theme";
 
 import Button from '../components/Button';
 import Proceedings from '../files/Proceedings-of-CUCAI-2020.pdf';
-
+import showcase from '../img/designteams/Student Showcase QMIND-19.jpg'
 import styled from "styled-components";
 
 const StyledIndexPage = styled.div`
@@ -58,6 +58,7 @@ const StyledParallax = styled(Parallax)`
 `;
 
 const StyledInfoSection = styled.section`
+
   max-width: 100vw;
   height: 100vh;
   
@@ -71,6 +72,10 @@ height: 100vh;
 background: rgb(255,255,255);
 background: linear-gradient(0deg, rgba(255,255,255,1) 0%, rgba(26,169,203,1) 100%);
 
+`;
+
+const StyledImg = styled.section`
+max-width: 100%;
 `;
 
 const ParallaxSkyline = () => {
@@ -139,7 +144,7 @@ const BlurbSection = ({blurbtitle, blurbdesc, blurbimg}) => (
       <p>{blurbdesc}</p>
   </StyledBlurbSection>
   <StyledBlurbSection>
-     <img src={blurbimg}></img>
+     <StyledImg><img src={blurbimg}></img></StyledImg>
   </StyledBlurbSection>
 
   </StyledInfoSection>
@@ -152,13 +157,21 @@ const BlurbSection = ({blurbtitle, blurbdesc, blurbimg}) => (
   
 //);
 
-const HighlightSection = () => (
-  <StyledInfoSection>
-    <h1>Highlights</h1>
-    <h3>Design Team Showcase</h3>
-    <div id="2020proceedings"></div>
+const HighlightSection = ({featuredimage}) => (
+  <div>
+      <h1>2020 Highlights</h1>
+
+  <StyledBlurbSection>
+  <StyledImg><img src={featuredimage}></img></StyledImg>
+  </StyledBlurbSection>
+  <StyledBlurbSection>
+  <div id="2020proceedings">
+    <h2> Design Team Showcase</h2>
     <Button borderStyle="solid" borderColour="#174461"><a href={Proceedings}>PROCEEDINGS</a></Button>  
-  </StyledInfoSection>
+    </div>  
+  </StyledBlurbSection>
+
+  </div>
 );
 
 export const IndexPageTemplate = ({
@@ -177,7 +190,7 @@ export const IndexPageTemplate = ({
       <Hero heading={heading} slogan={slogan} location={location} date={date} cta1={cta1} cta2={cta2} />
       <InfoSection />
       <BlurbSection blurbimg={Diver} blurbdesc={mainpitch.description} blurbtitle={mainpitch.title}/>
-      <HighlightSection />
+      <HighlightSection featuredimage={showcase}/>
     </StyledIndexPage>
     //    <div style={{ height: "10000px" }}></div>
 
