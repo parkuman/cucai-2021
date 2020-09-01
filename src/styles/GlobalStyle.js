@@ -25,7 +25,8 @@ body {
     flex-direction: column;
     margin: 0;
     width: 100%;
-    min-height: 100%;
+    max-width: 100%;
+    overflow-x: hidden;
     font-family: ${theme.fonts.IBMPlexSans};
     background: var(--bg-color);
     color: var(--text-color-primary);

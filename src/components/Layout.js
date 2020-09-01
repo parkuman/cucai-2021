@@ -14,7 +14,7 @@ import media from "../styles/media";
 const MainContent = styled.section`
   margin: 0 auto;
   ${media.tablet`
-        max-width: 90%;
+        /* max-width: 90%; */
 
     `}
 `;
