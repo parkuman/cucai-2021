@@ -32,8 +32,8 @@ module.exports = {
       url: "#sponsors",
     },
     {
-      name: "2020 Preceedings",
-      url: "#2020preceedings",
+      name: "2020 Proceedings",
+      url: "#2020proceedings",
     },
     {
       name: "Contact",
