@@ -13,7 +13,6 @@ mainpitch:
   description: >
      Designed to connect passionate and talented undergraduate students with industry leaders, the Canadian Undergraduate Conference on Artificial Intelligence provides a platform for companies to develop corporate brand recognition with undergraduate AI enthusiasts, facilitate learning about AI, and showcase the diverse opportunities available for students in this field.
 
-     As an event geared towards future leaders in this field, we are thrilled to announce that our theme for this year will be AI For Good: Artificial Intelligence, Real Change! From advancing medical research to protecting the environment and aiding in natural disaster recovery, the ways in which AI can make the world a better place continue to grow. We look forward to presenting an event full of engaging speakers and events that will inspire attendees and forge meaningful connections.
 description: >
   North America's largest undergraduate conference on AI
 

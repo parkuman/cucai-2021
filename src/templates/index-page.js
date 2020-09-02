@@ -5,7 +5,7 @@ import { Parallax, ParallaxBanner } from "react-scroll-parallax";
 import SkylineLayers from "../img/parallaxSkyline";
 import Clouds from "../img/clouds.png";
 import Diver from "../img/diver.svg"
-
+import Hands from "../img/Group 6.svg"
 import Layout from "../components/Layout";
 import theme from "../styles/theme";
 
@@ -69,8 +69,6 @@ max-width: 50%;
 padding: 3em;
 float: left;
 height: 100vh;
-background: rgb(255,255,255);
-background: linear-gradient(0deg, rgba(255,255,255,1) 0%, rgba(26,169,203,1) 100%);
 
 `;
 
@@ -151,6 +149,21 @@ const BlurbSection = ({blurbtitle, blurbdesc, blurbimg}) => (
 
 );
 
+const ThemeSection = ({blurbtitle, blurbdesc, blurbimg}) => (
+  <StyledInfoSection>
+  
+  <StyledBlurbSection>
+     <StyledImg><img src={blurbimg}></img></StyledImg>
+  </StyledBlurbSection>
+  <StyledBlurbSection>
+      <h2>{blurbtitle}</h2>
+      <p>{blurbdesc}</p>
+  </StyledBlurbSection>
+
+  </StyledInfoSection>
+
+);
+
 //const EventHighlight = ({event, desc}) => (
   //<h2>{event}</h2>
   //<p>{desc}</p>
@@ -190,6 +203,8 @@ export const IndexPageTemplate = ({
       <Hero heading={heading} slogan={slogan} location={location} date={date} cta1={cta1} cta2={cta2} />
       <InfoSection />
       <BlurbSection blurbimg={Diver} blurbdesc={mainpitch.description} blurbtitle={mainpitch.title}/>
+      <ThemeSection blurbimg={Hands} blurbdesc="As an event geared towards future leaders in this field, we are thrilled to announce that our theme for this year will be AI For Good: Artificial Intelligence, Real Change! From advancing medical research to protecting the environment and aiding in natural disaster recovery, the ways in which AI can make the world a better place continue to grow. We look forward to presenting an event full of engaging speakers and events that will inspire attendees and forge meaningful connections.
+" blurbtitle="Our 2021 Theme"/>
       <HighlightSection featuredimage={showcase}/>
     </StyledIndexPage>
     //    <div style={{ height: "10000px" }}></div>
