@@ -37,7 +37,6 @@ export const CovidPageTemplate = ({
 }) => (
     <StyledAboutPage>
       <h1>{title}</h1>
-      <h2>{slogan}</h2>
       <div dangerouslySetInnerHTML={{ __html: html }} />
       
     </StyledAboutPage>

@@ -8,7 +8,6 @@ import Diver from "../img/diver.svg"
 import Hands from "../img/Group 6.svg"
 import Layout from "../components/Layout";
 import theme from "../styles/theme";
-
 import Button from '../components/Button';
 import Proceedings from '../files/Proceedings-of-CUCAI-2020.pdf';
 import showcase from '../img/designteams/Student Showcase QMIND-19.jpg'
@@ -118,7 +117,7 @@ const Hero = ({
         <StyledSlogan>{slogan}</StyledSlogan>
         <StyledInfo>{location.toUpperCase()} | {date.toUpperCase()}</StyledInfo>
         <Button backgroundColour="white"><a href="#spons">{cta1}</a></Button>
-        <Button borderStyle="solid" borderColour="#174461">{cta2}</Button>
+        <Button borderStyle="solid" borderColour="#174461"><a href="mailto:chair@cucai.ca">{cta2}</a></Button>
       </StyledHeroContent>
       <ParallaxSkyline />
     </StyledHero>
@@ -164,6 +163,8 @@ const ThemeSection = ({blurbtitle, blurbdesc, blurbimg}) => (
 
 );
 
+
+
 //const EventHighlight = ({event, desc}) => (
   //<h2>{event}</h2>
   //<p>{desc}</p>
@@ -206,6 +207,7 @@ export const IndexPageTemplate = ({
       <ThemeSection blurbimg={Hands} blurbdesc="As an event geared towards future leaders in this field, we are thrilled to announce that our theme for this year will be AI For Good: Artificial Intelligence, Real Change! From advancing medical research to protecting the environment and aiding in natural disaster recovery, the ways in which AI can make the world a better place continue to grow. We look forward to presenting an event full of engaging speakers and events that will inspire attendees and forge meaningful connections.
 " blurbtitle="Our 2021 Theme"/>
       <HighlightSection featuredimage={showcase}/>
+      
     </StyledIndexPage>
     //    <div style={{ height: "10000px" }}></div>
 

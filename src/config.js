@@ -32,6 +32,10 @@ module.exports = {
       url: "#sponsors",
     },
     {
+      name: "Covid Response",
+      url: "/covidresponse",
+    },
+    {
       name: "2020 Proceedings",
       url: "#2020proceedings",
     },

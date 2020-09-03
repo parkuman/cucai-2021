@@ -15,11 +15,11 @@ background: linear-gradient(0deg, rgba(255,255,255,1) 0%, rgba(26,169,203,1) 100
 
 const StyledTeamMember = styled.section`
 max-width: 33%;
-padding: 3em;
+padding: 1em;
 float: left;
 background: rgb(255,255,255);
-margin: 3em;
-border-radius: 3em;
+margin: 2em;
+border-radius: 1em;
 `;
 
 const StyledTeam = styled.section`
