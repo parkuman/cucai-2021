@@ -4,12 +4,13 @@ import { graphql } from "gatsby";
 import { Parallax, ParallaxBanner } from "react-scroll-parallax";
 import SkylineLayers from "../img/parallaxSkyline";
 import Clouds from "../img/clouds.png";
-
+import Diver from "../img/diver.svg"
+import Hands from "../img/Group 6.svg"
 import Layout from "../components/Layout";
 import theme from "../styles/theme";
-
 import Button from '../components/Button';
-
+import Proceedings from '../files/Proceedings-of-CUCAI-2020.pdf';
+import showcase from '../img/designteams/Student Showcase QMIND-19.jpg'
 import styled from "styled-components";
 
 const StyledIndexPage = styled.div`
@@ -21,6 +22,7 @@ const StyledHero = styled.section`
   max-width: 100vw;
   height: 100vh;
   overflow: hidden;
+
 `;
 
 const StyledHeroContent = styled.div`
@@ -55,11 +57,23 @@ const StyledParallax = styled(Parallax)`
 `;
 
 const StyledInfoSection = styled.section`
+
   max-width: 100vw;
   height: 100vh;
   
 `;
 
+const StyledBlurbSection = styled.section`
+max-width: 50%;
+padding: 3em;
+float: left;
+height: 100vh;
+
+`;
+
+const StyledImg = styled.section`
+max-width: 100%;
+`;
 
 const ParallaxSkyline = () => {
   return (
@@ -102,8 +116,8 @@ const Hero = ({
         <StyledHeading>{heading}</StyledHeading>
         <StyledSlogan>{slogan}</StyledSlogan>
         <StyledInfo>{location.toUpperCase()} | {date.toUpperCase()}</StyledInfo>
-        <Button backgroundColour="white">{cta1}</Button>
-        <Button borderStyle="solid" borderColour="#174461">{cta2}</Button>
+        <Button backgroundColour="white"><a href="#spons">{cta1}</a></Button>
+        <Button borderStyle="solid" borderColour="#174461"><a href="mailto:chair@cucai.ca">{cta2}</a></Button>
       </StyledHeroContent>
       <ParallaxSkyline />
     </StyledHero>
@@ -120,6 +134,59 @@ const InfoSection = () => (
 
 );
 
+const BlurbSection = ({blurbtitle, blurbdesc, blurbimg}) => (
+  <StyledInfoSection>
+  <StyledBlurbSection>
+      <h2>{blurbtitle}</h2>
+      <p>{blurbdesc}</p>
+  </StyledBlurbSection>
+  <StyledBlurbSection>
+     <StyledImg><img src={blurbimg}></img></StyledImg>
+  </StyledBlurbSection>
+
+  </StyledInfoSection>
+
+);
+
+const ThemeSection = ({blurbtitle, blurbdesc, blurbimg}) => (
+  <StyledInfoSection>
+  
+  <StyledBlurbSection>
+     <StyledImg><img src={blurbimg}></img></StyledImg>
+  </StyledBlurbSection>
+  <StyledBlurbSection>
+      <h2>{blurbtitle}</h2>
+      <p>{blurbdesc}</p>
+  </StyledBlurbSection>
+
+  </StyledInfoSection>
+
+);
+
+
+
+//const EventHighlight = ({event, desc}) => (
+  //<h2>{event}</h2>
+  //<p>{desc}</p>
+  
+//);
+
+const HighlightSection = ({featuredimage}) => (
+  <div>
+      <h1>2020 Highlights</h1>
+
+  <StyledBlurbSection>
+  <StyledImg><img src={featuredimage}></img></StyledImg>
+  </StyledBlurbSection>
+  <StyledBlurbSection>
+  <div id="2020proceedings">
+    <h2> Design Team Showcase</h2>
+    <Button borderStyle="solid" borderColour="#174461"><a href={Proceedings}>PROCEEDINGS</a></Button>  
+    </div>  
+  </StyledBlurbSection>
+
+  </div>
+);
 
 export const IndexPageTemplate = ({
   title,
@@ -136,10 +203,14 @@ export const IndexPageTemplate = ({
     <StyledIndexPage>
       <Hero heading={heading} slogan={slogan} location={location} date={date} cta1={cta1} cta2={cta2} />
       <InfoSection />
-      <div style={{ height: "10000px" }}></div>
-      <h4>{mainpitch.title}</h4>
-      <p>{mainpitch.description}</p>
+      <BlurbSection blurbimg={Diver} blurbdesc={mainpitch.description} blurbtitle={mainpitch.title}/>
+      <ThemeSection blurbimg={Hands} blurbdesc="As an event geared towards future leaders in this field, we are thrilled to announce that our theme for this year will be AI For Good: Artificial Intelligence, Real Change! From advancing medical research to protecting the environment and aiding in natural disaster recovery, the ways in which AI can make the world a better place continue to grow. We look forward to presenting an event full of engaging speakers and events that will inspire attendees and forge meaningful connections.
+" blurbtitle="Our 2021 Theme"/>
+      <HighlightSection featuredimage={showcase}/>
+      
     </StyledIndexPage>
+    //    <div style={{ height: "10000px" }}></div>
+
     // <div>
     //   <div
     //     className="full-width-image margin-top-0"

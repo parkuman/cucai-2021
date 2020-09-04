@@ -1,10 +1,10 @@
 import React from "react";
+import { Link } from "gatsby";
 
 import styled from "styled-components";
-
-// import logo from '../img/logo.svg'
-// import facebook from '../img/social/facebook.svg'
-// import instagram from '../img/social/instagram.svg'
+import logo from '../img/Logo main.svg'
+import facebook from '../img/social/facebook.svg'
+import instagram from '../img/social/instagram.svg'
 // import twitter from '../img/social/twitter.svg'
 // import vimeo from '../img/social/vimeo.svg'
 const StyledFooter = styled.footer`
@@ -12,10 +12,23 @@ const StyledFooter = styled.footer`
   height: 70px;
 `;
 
+const StyledLogo = styled.img`
+  height: 50px;
+`;
+
 const Footer = () => {
   return (
     <StyledFooter>
-      <p>footer</p>
+      <p>Stay In Touch!</p>
+      <Link to="/">
+        <StyledLogo src={logo} alt="logo" />
+      </Link>
+      <Link to="/">
+        <StyledLogo src={facebook} alt="facebook" />
+      </Link>
+      <Link to="https://instagram.com/cucai2021">
+        <StyledLogo src={instagram} alt="instagram" />
+      </Link>
     </StyledFooter>
   );
 };

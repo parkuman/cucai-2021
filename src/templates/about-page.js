@@ -9,16 +9,34 @@ import { ourTeam } from "../config";
 
 const StyledAboutPage = styled.div`
   margin-top: 80px;
+  background: rgb(255,255,255);
+background: linear-gradient(0deg, rgba(255,255,255,1) 0%, rgba(26,169,203,1) 100%);
 `;
 
+const StyledTeamMember = styled.section`
+max-width: 33%;
+padding: 1em;
+float: left;
+background: rgb(255,255,255);
+margin: 2em;
+border-radius: 1em;
+`;
+
+const StyledTeam = styled.section`
+width: 100%;
+margin: 3em;
+display: flex;
+`;
 
 const TeamMember = ({ pic, name, position, program }) => {
   return (
     <>
       <img src={require(`../img/team/${pic}`)} alt={`${name}'s headshot'`} />
-      <p>
+      
+        <h3>
         {name.split(' ')[0]} <b>{name.split(' ')[1]}</b>
-        <br />
+        </h3>
+        <p>
         {position}
         <br />
         <i>{program}</i>
@@ -32,17 +50,23 @@ const OurTeam = ({ data }) => {
     ourTeam.map(team => {
       return (
         <>
-          <h2>{team.header}</h2>
+        <div>
+        <h2>{team.header}</h2>
           <p>{team.email}</p>
+          <StyledTeam>
           {
             team.members.map(member =>
+              <StyledTeamMember>
               <TeamMember
                 pic={member.pic}
                 name={member.name}
                 position={member.position}
                 program={member.program} />
+              </StyledTeamMember>
             )
           }
+          </StyledTeam>
+          </div>
         </>
       );
     })

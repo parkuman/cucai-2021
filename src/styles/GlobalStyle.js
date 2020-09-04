@@ -31,7 +31,9 @@ body {
     background: var(--bg-color);
     color: var(--text-color-primary);
 } 
-
+img {
+    max-width: 100%;
+}
 a {
     text-decoration: none;
     color: var(--text-color-primary);

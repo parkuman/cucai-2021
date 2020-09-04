@@ -32,6 +32,10 @@ module.exports = {
       url: "#sponsors",
     },
     {
+      name: "Covid Response",
+      url: "/covidresponse",
+    },
+    {
       name: "2020 Proceedings",
       url: "#2020proceedings",
     },
@@ -46,7 +50,7 @@ module.exports = {
       email: "chair@cucai.ca",
       members: [
         {
-          name: "Berkely Wilson",
+          name: "Berkeley Wilson",
           position: "Co-Chair",
           program: "Mechanical Engineering '21",
           pic: "berkeley-wilson.png"

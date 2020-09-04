@@ -11,9 +11,11 @@ cta2: stay updated
 mainpitch:
   title: Dive into the world of artificial intelligence.
   description: >
-    The first annual Canadian Undergraduate Conference on Artificial Intelligence (CUCAI) took place on March 9th, 2019. Founded by QMIND- Queen’s AI Hub and a strong Queen’s community, the event marked its debut on the national stage with delegations from Queenʼs University, McGill University, University of Toronto, Ryerson University, and University of Manitoba. . . . 
+     Designed to connect passionate and talented undergraduate students with industry leaders, the Canadian Undergraduate Conference on Artificial Intelligence provides a platform for companies to develop corporate brand recognition with undergraduate AI enthusiasts, facilitate learning about AI, and showcase the diverse opportunities available for students in this field.
+
 description: >
   North America's largest undergraduate conference on AI
+
 intro:
   blurbs:
     - image: /img/coffee.png

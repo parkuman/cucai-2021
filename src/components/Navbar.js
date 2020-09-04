@@ -6,6 +6,7 @@ import theme from "../styles/theme";
 
 import { navLinks } from "../config";
 import LogoLight from "../img/logo-main-light.png";
+import LogoMain from "../img/Logo main.svg"
 
 const StyledNav = styled.nav`
   position: fixed;
@@ -50,7 +51,7 @@ const Navbar = () => {
   return (
     <StyledNav>
       <Link to="/">
-        <StyledLogo src={LogoLight} alt="logo" />
+        <StyledLogo src={LogoMain} alt="logo" />
       </Link>
       <NavLinks />
     </StyledNav>
