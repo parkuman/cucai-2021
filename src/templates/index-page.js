@@ -3,15 +3,18 @@ import PropTypes from "prop-types";
 import { graphql } from "gatsby";
 import { Parallax, ParallaxBanner } from "react-scroll-parallax";
 import SkylineLayers from "../img/parallaxSkyline";
+import DesignImgs from "../img/designteams";
 import Clouds from "../img/clouds.png";
-import Diver from "../img/diver.svg"
-import Hands from "../img/Group 6.svg"
+import Diver from "../img/diver1.svg"
+import Hands from "../img/hands.png"
 import Layout from "../components/Layout";
 import theme from "../styles/theme";
 import Button from '../components/Button';
 import Proceedings from '../files/Proceedings-of-CUCAI-2020.pdf';
-import showcase from '../img/designteams/Student Showcase QMIND-19.jpg'
+import showcase from '../img/designteams/showcase1.jpg'
 import styled from "styled-components";
+//import { conferenceImages } from "../config";
+//import Cards from "../components/Slideshow"
 
 const StyledIndexPage = styled.div`
 `;
@@ -22,12 +25,27 @@ const StyledHero = styled.section`
   max-width: 100vw;
   height: 100vh;
   overflow: hidden;
+`;
 
+const SectionTitle = styled.h2`
+  font-size: 4rem;
+  font-weight: lighter;
+`;
+
+const SectionSubtitle = styled.h3`
+  font-size: 2rem;
+  font-weight: lighter;
 `;
 
 const StyledHeroContent = styled.div`
   margin: 0 auto;
   max-width: 80%;
+`;
+
+const StyledDarkSection = styled.div`
+  background-color: #1A4FCB;
+  padding: 1em;
+  color: white;
 `;
 
 const StyledHeading = styled.h1`
@@ -64,16 +82,49 @@ const StyledInfoSection = styled.section`
 `;
 
 const StyledBlurbSection = styled.section`
-max-width: 50%;
-padding: 3em;
+display: flex;
 float: left;
 height: 100vh;
-
+width: 50%;
 `;
 
 const StyledImg = styled.section`
 max-width: 100%;
 `;
+
+const StyledScroller = styled.div`
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    height: 50vh;
+    `;
+
+const StyledScrollCard = styled.div`
+    flex: 0 0 auto;
+    border-radius: 1em;
+    width: 70vw;
+    `;
+
+const StyledCard = ({image}) => {
+  return (
+    <StyledScrollCard>
+      <img src={image} style={{objectFit: "cover"}}/>
+    </StyledScrollCard>
+  )
+}
+
+const CardSlide = ({ array }) => {
+    return (
+      <StyledScroller>
+       <StyledCard image={array[0]}/>
+       <StyledCard image={array[1]}/>
+       <StyledCard image={array[3]}/>
+       <StyledCard image={array[4]}/>
+       <StyledCard image={array[5]}/>
+       <StyledCard image={array[6]}/>
+      </StyledScroller>         
+    );
+}
 
 const ParallaxSkyline = () => {
   return (
@@ -173,17 +224,16 @@ const ThemeSection = ({blurbtitle, blurbdesc, blurbimg}) => (
 
 const HighlightSection = ({featuredimage}) => (
   <div>
-      <h1>2020 Highlights</h1>
+           <SectionTitle>2020 <strong>Highlights</strong></SectionTitle>
 
-  <StyledBlurbSection>
-  <StyledImg><img src={featuredimage}></img></StyledImg>
-  </StyledBlurbSection>
-  <StyledBlurbSection>
   <div id="2020proceedings">
-    <h2> Design Team Showcase</h2>
-    <Button borderStyle="solid" borderColour="#174461"><a href={Proceedings}>PROCEEDINGS</a></Button>  
-    </div>  
-  </StyledBlurbSection>
+    <StyledDarkSection>
+      <SectionSubtitle> Design Team Showcase</SectionSubtitle>
+    <p>The design team showcase was the foundation on which CUCAI was started. This event allows the hard work, dedication and talent of Canadian undergraduate students working on AI-based design projects since September, to be exhibited for industry representatives and other delegates to learn about the work currently being done in the field of AI at the undergraduate level. This event features in-depth presentations for audiences of all levels of experience and backgrounds, as well as engaging and interactive demonstrations for 30+ design teams from across Canada.</p>
+    <Button borderStyle="solid" borderColour="#ffffff"><a href={Proceedings} style={{color: "white"}}>PROCEEDINGS</a></Button>  
+    </StyledDarkSection>
+    <CardSlide array={DesignImgs}/>
+  </div>
 
   </div>
 );
@@ -209,105 +259,7 @@ export const IndexPageTemplate = ({
       <HighlightSection featuredimage={showcase}/>
       
     </StyledIndexPage>
-    //    <div style={{ height: "10000px" }}></div>
-
-    // <div>
-    //   <div
-    //     className="full-width-image margin-top-0"
-    //     style={{
-    //       backgroundImage: `url(${
-    //         !!image.childImageSharp ? image.childImageSharp.fluid.src : image
-    //       })`,
-    //       backgroundPosition: `top left`,
-    //       backgroundAttachment: `fixed`,
-    //     }}
-    //   >
-    //     <div
-    //       style={{
-    //         display: 'flex',
-    //         height: '150px',
-    //         lineHeight: '1',
-    //         justifyContent: 'space-around',
-    //         alignItems: 'left',
-    //         flexDirection: 'column',
-    //       }}
-    //     >
-    //       <h1
-    //         className="has-text-weight-bold is-size-3-mobile is-size-2-tablet is-size-1-widescreen"
-    //         style={{
-    //           boxShadow:
-    //             'rgb(255, 68, 0) 0.5rem 0px 0px, rgb(255, 68, 0) -0.5rem 0px 0px',
-    //           backgroundColor: 'rgb(255, 68, 0)',
-    //           color: 'white',
-    //           lineHeight: '1',
-    //           padding: '0.25em',
-    //         }}
-    //       >
-    //         {title}
-    //       </h1>
-    //       <h3
-    //         className="has-text-weight-bold is-size-5-mobile is-size-5-tablet is-size-4-widescreen"
-    //         style={{
-    //           boxShadow:
-    //             'rgb(255, 68, 0) 0.5rem 0px 0px, rgb(255, 68, 0) -0.5rem 0px 0px',
-    //           backgroundColor: 'rgb(255, 68, 0)',
-    //           color: 'white',
-    //           lineHeight: '1',
-    //           padding: '0.25em',
-    //         }}
-    //       >
-    //         {subheading}
-    //       </h3>
-    //     </div>
-    //   </div>
-    //   <section className="section section--gradient">
-    //     <div className="container">
-    //       <div className="section">
-    //         <div className="columns">
-    //           <div className="column is-10 is-offset-1">
-    //             <div className="content">
-    //               <div className="content">
-    //                 <div className="tile">
-    //                   <h1 className="title">{mainpitch.title}</h1>
-    //                 </div>
-    //                 <div className="tile">
-    //                   <h3 className="subtitle">{mainpitch.description}</h3>
-    //                 </div>
-    //               </div>
-    //               <div className="columns">
-    //                 <div className="column is-12">
-    //                   <h3 className="has-text-weight-semibold is-size-2">
-    //                     {heading}
-    //                   </h3>
-    //                   <p>{description}</p>
-    //                 </div>
-    //               </div>
-    //               <Features gridItems={intro.blurbs} />
-    //               <div className="columns">
-    //                 <div className="column is-12 has-text-centered">
-    //                   <Link className="btn" to="/products">
-    //                     See all products
-    //                   </Link>
-    //                 </div>
-    //               </div>
-    //               <div className="column is-12">
-    //                 <h3 className="has-text-weight-semibold is-size-2">
-    //                   Latest stories
-    //                 </h3>
-
-    //                 <div className="column is-12 has-text-centered">
-    //                   <Link className="btn" to="/blog">
-    //                     Read more
-    //                   </Link>
-    //                 </div>
-    //               </div>
-    //             </div>
-    //           </div>
-    //         </div>
-    //       </div>
-    //     </div>
-    //   </section>
-    // </div>
+  
   );
 
 IndexPageTemplate.propTypes = {

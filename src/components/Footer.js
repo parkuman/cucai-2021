@@ -10,10 +10,12 @@ import instagram from '../img/social/instagram.svg'
 const StyledFooter = styled.footer`
   width: 100%;
   height: 70px;
+  display: flex;
 `;
 
 const StyledLogo = styled.img`
   height: 50px;
+  margin: 1me;
 `;
 
 const Footer = () => {

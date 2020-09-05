@@ -44,9 +44,48 @@ module.exports = {
       url: "#contact",
     }
   ],
+  conferenceImages: [
+    {
+      header: "Design Teams",
+      pics: [
+        {
+          pic: "showcase1.jpg",
+          alt: "image of room with design teams"
+        },
+        {
+          pic: "showcase2.jpg",
+          alt: "students presenting their project"
+        },
+        {
+          pic: "showcase3.jpg",
+          alt: "students presenting their project"
+        },
+        {
+          pic: "showcase4.jpg",
+          alt: "students presenting their project"
+        },
+        {
+          pic: "showcase5.jpg",
+          alt: "students presenting their project"
+        },
+        {
+          pic: "showcase6.jpg",
+          alt: "students presenting their project"
+        },
+        {
+          pic: "showcase7.jpg",
+          alt: "students presenting their project"
+        },
+      ]
+    },
+    {
+      header: "Companies"
+    }
+
+  ],
   ourTeam: [
     {
-      header: "Co-Chairs",
+      header: "CoChairs",
       email: "chair@cucai.ca",
       members: [
         {
