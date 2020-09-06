@@ -13,6 +13,10 @@ import Button from '../components/Button';
 import Proceedings from '../files/Proceedings-of-CUCAI-2020.pdf';
 import showcase from '../img/designteams/showcase1.jpg'
 import styled from "styled-components";
+import Tabs from 'react-bootstrap/Tabs'
+import Tab from 'react-bootstrap/Tab'
+import 'bootstrap/dist/css/bootstrap.min.css';
+
 //import { conferenceImages } from "../config";
 //import Cards from "../components/Slideshow"
 
@@ -181,8 +185,6 @@ const InfoSection = () => (
         <img src={Clouds} />
       </StyledParallax>
   </StyledInfoSection>
-
-
 );
 
 const BlurbSection = ({blurbtitle, blurbdesc, blurbimg}) => (
@@ -194,14 +196,11 @@ const BlurbSection = ({blurbtitle, blurbdesc, blurbimg}) => (
   <StyledBlurbSection>
      <StyledImg><img src={blurbimg}></img></StyledImg>
   </StyledBlurbSection>
-
   </StyledInfoSection>
-
 );
 
 const ThemeSection = ({blurbtitle, blurbdesc, blurbimg}) => (
   <StyledInfoSection>
-  
   <StyledBlurbSection>
      <StyledImg><img src={blurbimg}></img></StyledImg>
   </StyledBlurbSection>
@@ -209,23 +208,17 @@ const ThemeSection = ({blurbtitle, blurbdesc, blurbimg}) => (
       <h2>{blurbtitle}</h2>
       <p>{blurbdesc}</p>
   </StyledBlurbSection>
-
   </StyledInfoSection>
 
 );
-
-
-
 //const EventHighlight = ({event, desc}) => (
   //<h2>{event}</h2>
   //<p>{desc}</p>
   
 //);
-
 const HighlightSection = ({featuredimage}) => (
   <div>
            <SectionTitle>2020 <strong>Highlights</strong></SectionTitle>
-
   <div id="2020proceedings">
     <StyledDarkSection>
       <SectionSubtitle> Design Team Showcase</SectionSubtitle>
@@ -234,8 +227,24 @@ const HighlightSection = ({featuredimage}) => (
     </StyledDarkSection>
     <CardSlide array={DesignImgs}/>
   </div>
-
   </div>
+);
+
+const TabbedS = () => (
+<div>
+  <h2>a</h2>
+<Tabs defaultActiveKey="profile" id="uncontrolled-tab-example">
+  <Tab eventKey="home" title="Home">
+    <p>yeet</p>
+  </Tab>
+  <Tab eventKey="profile" title="Profile">
+  <p>yeet</p>
+  </Tab>
+  <Tab eventKey="contact" title="Contact" disabled>
+  <p>yeet</p>
+  </Tab>
+  </Tabs>
+</div>
 );
 
 export const IndexPageTemplate = ({
@@ -256,7 +265,9 @@ export const IndexPageTemplate = ({
       <BlurbSection blurbimg={Diver} blurbdesc={mainpitch.description} blurbtitle={mainpitch.title}/>
       <ThemeSection blurbimg={Hands} blurbdesc="As an event geared towards future leaders in this field, we are thrilled to announce that our theme for this year will be AI For Good: Artificial Intelligence, Real Change! From advancing medical research to protecting the environment and aiding in natural disaster recovery, the ways in which AI can make the world a better place continue to grow. We look forward to presenting an event full of engaging speakers and events that will inspire attendees and forge meaningful connections.
 " blurbtitle="Our 2021 Theme"/>
+<TabbedS></TabbedS>
       <HighlightSection featuredimage={showcase}/>
+     
       
     </StyledIndexPage>
   
