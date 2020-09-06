@@ -105,9 +105,9 @@ export const AboutPageTemplate = ({
   html
 }) => (
     <StyledAboutPage>
-              <h1>{title}</h1>
+              <h1 style={{color:"white"}}>{title}</h1>
       <StyledTextSection>
-      <h2>{slogan}</h2>
+      <h2><em>{slogan}</em></h2>
       <div dangerouslySetInnerHTML={{ __html: html }} />
       </StyledTextSection>
       <OurTeam />

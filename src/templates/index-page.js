@@ -12,7 +12,7 @@ import Layout from "../components/Layout";
 import theme from "../styles/theme";
 import Button from '../components/Button';
 import Proceedings from '../files/Proceedings-of-CUCAI-2020.pdf';
-import showcase from '../img/designteams/showcase1.jpg'
+import showcase from "../img/Showcase_30.jpg"
 import styled from "styled-components";
 import {Tab, Tabs, Row, Col, Nav} from 'react-bootstrap/'
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -237,13 +237,15 @@ const HighlightSection = ({featuredimage}) => (
     <StyledCont>
     <Row>
       <Col>
-      <SectionSubtitle>Industry Showcase</SectionSubtitle>
-      <p>As a compliment to the design team showcase, this event is designed to show undergraduate students what the present and future of artificial intelligence in industry look like. Booths for each of our industry partners will be set up to allow students to learn about the opportunities available to them within industry. Students learn about how technological advancements in artificial intelligence are shaping a wide variety of industries. The industry showcase is often a favourite of both industry reps and delegates due to the phenomenal networking opportunities.
-
-</p>
+      <img src={showcase}></img>
       </Col>
       <Col>
-      <p>Last year...</p>
+      <SectionSubtitle>Industry Showcase</SectionSubtitle>
+
+      <p>
+        As a compliment to the design team showcase, this event is designed to show undergraduate students what the present and future of artificial intelligence in industry look like. Booths for each of our industry partners will be set up to allow students to learn about the opportunities available to them within industry. Students learn about how technological advancements in artificial intelligence are shaping a wide variety of industries. The industry showcase is often a favourite of both industry reps and delegates due to the phenomenal networking opportunities.
+
+</p>
       </Col>
     </Row>
       </StyledCont>
@@ -255,7 +257,7 @@ const InvolvedSection = () => (
 <StyledCont>
   <CardStack/>
   <h2>Get Involved</h2>
-  <Tab.Container id="left-tabs-example" defaultActiveKey="first">
+  <Tab.Container id="left-tabs-example" defaultActiveKey="Industry Partners">
   <Row>
     <Col sm={3}>
       <Nav variant="pills" className="flex-column">
