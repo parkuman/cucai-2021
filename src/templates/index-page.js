@@ -6,21 +6,25 @@ import SkylineLayers from "../img/parallaxSkyline";
 import DesignImgs from "../img/designteams";
 import Clouds from "../img/clouds.png";
 import Diver from "../img/diver1.svg"
-import Hands from "../img/hands.png"
+import Hands from "../img/hands.png";
+import CardStack from "../components/Cards";
 import Layout from "../components/Layout";
 import theme from "../styles/theme";
 import Button from '../components/Button';
 import Proceedings from '../files/Proceedings-of-CUCAI-2020.pdf';
 import showcase from '../img/designteams/showcase1.jpg'
 import styled from "styled-components";
-import Tabs from 'react-bootstrap/Tabs'
-import Tab from 'react-bootstrap/Tab'
+import {Tab, Tabs, Row, Col, Nav} from 'react-bootstrap/'
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 //import { conferenceImages } from "../config";
 //import Cards from "../components/Slideshow"
 
 const StyledIndexPage = styled.div`
+`;
+
+const StyledCont = styled.div`
+padding: 1em;
 `;
 
 const StyledHero = styled.section`
@@ -188,15 +192,19 @@ const InfoSection = () => (
 );
 
 const BlurbSection = ({blurbtitle, blurbdesc, blurbimg}) => (
-  <StyledInfoSection>
-  <StyledBlurbSection>
+
+  <StyledCont>
+    <Row>
+      <Col>
       <h2>{blurbtitle}</h2>
       <p>{blurbdesc}</p>
-  </StyledBlurbSection>
-  <StyledBlurbSection>
-     <StyledImg><img src={blurbimg}></img></StyledImg>
-  </StyledBlurbSection>
-  </StyledInfoSection>
+      <p>As an event geared towards future leaders in this field, we are thrilled to announce that our theme for this year will be AI For Good: Artificial Intelligence, Real Change! From advancing medical research to protecting the environment and aiding in natural disaster recovery, the ways in which AI can make the world a better place continue to grow. We look forward to presenting an event full of engaging speakers and events that will inspire attendees and forge meaningful connections.</p>
+      </Col>
+      <Col>
+      <StyledImg><img src={blurbimg}></img></StyledImg>
+      </Col>
+    </Row>
+      </StyledCont>
 );
 
 const ThemeSection = ({blurbtitle, blurbdesc, blurbimg}) => (
@@ -226,25 +234,68 @@ const HighlightSection = ({featuredimage}) => (
     <Button borderStyle="solid" borderColour="#ffffff"><a href={Proceedings} style={{color: "white"}}>PROCEEDINGS</a></Button>  
     </StyledDarkSection>
     <CardSlide array={DesignImgs}/>
+    <StyledCont>
+    <Row>
+      <Col>
+      <SectionSubtitle>Industry Showcase</SectionSubtitle>
+      <p>As a compliment to the design team showcase, this event is designed to show undergraduate students what the present and future of artificial intelligence in industry look like. Booths for each of our industry partners will be set up to allow students to learn about the opportunities available to them within industry. Students learn about how technological advancements in artificial intelligence are shaping a wide variety of industries. The industry showcase is often a favourite of both industry reps and delegates due to the phenomenal networking opportunities.
+
+</p>
+      </Col>
+      <Col>
+      <p>Last year...</p>
+      </Col>
+    </Row>
+      </StyledCont>
   </div>
   </div>
 );
 
-const TabbedS = () => (
-<div>
-  <h2>a</h2>
-<Tabs defaultActiveKey="profile" id="uncontrolled-tab-example">
-  <Tab eventKey="home" title="Home">
-    <p>yeet</p>
-  </Tab>
-  <Tab eventKey="profile" title="Profile">
-  <p>yeet</p>
-  </Tab>
-  <Tab eventKey="contact" title="Contact" disabled>
-  <p>yeet</p>
-  </Tab>
-  </Tabs>
-</div>
+const InvolvedSection = () => (
+<StyledCont>
+  <CardStack/>
+  <h2>Get Involved</h2>
+  <Tab.Container id="left-tabs-example" defaultActiveKey="first">
+  <Row>
+    <Col sm={3}>
+      <Nav variant="pills" className="flex-column">
+        <Nav.Item>
+          <Nav.Link eventKey="Industry Partners">Industry Partners</Nav.Link>
+        </Nav.Item>
+        <Nav.Item>
+          <Nav.Link eventKey="Speakers">Speakers</Nav.Link>
+        </Nav.Item>
+        <Nav.Item>
+          <Nav.Link eventKey="Student Groups">Student Groups</Nav.Link>
+        </Nav.Item>
+        <Nav.Item>
+          <Nav.Link eventKey="Delegates">Delegates</Nav.Link>
+        </Nav.Item>
+      </Nav>
+    </Col>
+    
+    <Col sm={9}>
+      <Tab.Content>
+        <Tab.Pane eventKey="Industry Partners">
+        <p>We will work closely with our industry partners to create an environment where undergraduate students and professionals can share their ideas and experiences, and explore the world of AI together. As a partner, CUCAI is the perfect place to interact and connect with the top talent in AI and machine learning.
+</p>
+        </Tab.Pane>
+        <Tab.Pane eventKey="Speakers">
+        <p>As a CUCAI speaker, you will have the unique opportunity to speak to and engage with the nation's leading undergraduate AI talent. Conference speakers are encouraged to provide students with relevant insight from their own work and the AI field in an innovative, creative, and personable way. Speaker opportunities include speeches, as well as panelist positions, workshop leaders and inQUbate pitch competition judges.
+</p>
+        </Tab.Pane>
+        <Tab.Pane eventKey="Student Groups">
+        <p>In its inaugural year of implementation, CUCAI has developed a “Tier Collaberation Program” structured to facilitate involvement from undergraduate AI groups across Canada. Incentives include reserved delegate spots, design showcase involvement, participation in the inQUbate pitch competition, the undergraduate AI executive showcase and more. Opportunities for partnership with other Canadian undergraduate AI societies have never been so plentiful, as CUCAI’s national reach expands.
+</p>
+        </Tab.Pane>
+        <Tab.Pane eventKey="Delegates">
+        <p>Stay tuned for delegate applications!</p>
+        </Tab.Pane>
+      </Tab.Content>
+    </Col>
+  </Row>
+</Tab.Container>
+</StyledCont>
 );
 
 export const IndexPageTemplate = ({
@@ -263,11 +314,9 @@ export const IndexPageTemplate = ({
       <Hero heading={heading} slogan={slogan} location={location} date={date} cta1={cta1} cta2={cta2} />
       <InfoSection />
       <BlurbSection blurbimg={Diver} blurbdesc={mainpitch.description} blurbtitle={mainpitch.title}/>
-      <ThemeSection blurbimg={Hands} blurbdesc="As an event geared towards future leaders in this field, we are thrilled to announce that our theme for this year will be AI For Good: Artificial Intelligence, Real Change! From advancing medical research to protecting the environment and aiding in natural disaster recovery, the ways in which AI can make the world a better place continue to grow. We look forward to presenting an event full of engaging speakers and events that will inspire attendees and forge meaningful connections.
-" blurbtitle="Our 2021 Theme"/>
-<TabbedS></TabbedS>
       <HighlightSection featuredimage={showcase}/>
-     
+      <InvolvedSection/>
+
       
     </StyledIndexPage>
   

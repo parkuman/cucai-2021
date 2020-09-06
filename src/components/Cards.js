@@ -2,9 +2,8 @@ import React from "react";
 import styled from "styled-components";
 
 const StyledCard = styled.section`
-
 overflow: hidden;
-  min-width: 50vw;
+  min-width: 25vw;
   height: 60vh;
   position: -webkit-sticky;
   position: sticky;
@@ -17,15 +16,14 @@ overflow: hidden;
   padding: 40px;
   border-radius: 10px;
   margin-bottom: 10vw;
-  margin-right: 20vw;
+  margin-right: 2em;
   `;
 
   const StyledContainer = styled.section`
   position: relative;
   overflow-x: scroll;
-  left: 40px;
   height: 100vh;
-  margin: 0 auto;
+  margin: 2em;
   font-family: IBMPlexSans;
   display: flex;
 }
@@ -33,7 +31,7 @@ overflow: hidden;
 
   const Card = ({pic, name, desc, n}) => {
       return(
-          <StyledCard style = {{left: 20*n}}>
+          <StyledCard>
               <img src={pic}/>
               <h3>{name}</h3>
               <p>{desc}</p>
@@ -44,7 +42,14 @@ overflow: hidden;
   const CardStack = () => {
       return(
           <StyledContainer>
-            <StyledCard pic="" name="" desc="" n="20"/>
+            <Card pic="../img/aihands.png" name="Geoffrey Hinton" desc="" style = {{left: "20px"}}/>
+            <Card pic="../img/designteams/showcase1.jpg" name="Ethics in AI" desc="" style = {{left: "40px"}}/>
+            <Card pic="../img/designteams/showcase1.jpg" name="Women in AI" desc="" style = {{left: "60px"}}/>
+            <Card pic="../img/designteams/showcase1.jpg" name="Chatbots" desc="" style = {{left: "80px"}}/>
+            <Card pic="../img/designteams/showcase1.jpg" name="Natural language processing" desc="" style = {{left: "60px"}}/>
+            <Card pic="../img/designteams/showcase1.jpg" name="a" desc="" style = {{left: "80px"}}/>
+            <Card pic="../img/designteams/showcase1.jpg" name="a" desc="" style = {{left: "100px"}}/>
+            <Card pic="../img/designteams/showcase1.jpg" name="a" desc="" style = {{left: "120px"}}/>
           </StyledContainer>
         
       );
