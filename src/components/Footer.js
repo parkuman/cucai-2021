@@ -10,16 +10,18 @@ import instagram from '../img/social/instagram.svg'
 const StyledFooter = styled.footer`
   width: 100%;
   height: 70px;
+  display: flex;
 `;
 
 const StyledLogo = styled.img`
   height: 50px;
+  margin: 1em;
 `;
 
 const Footer = () => {
   return (
     <StyledFooter>
-      <p>Stay In Touch!</p>
+      <p>We acknowledge the land we are meeting on is the traditional territory of many nations including the Mississaugas of the Credit, the Anishnabeg, the Chippewa, the Haudenosaunee and the Wendat peoples and is now home to many diverse FirstNations, Inuit and Métis peoples. We also acknowledge that the city of Toronto is covered by Treaty 13 with the Mississaugas of the Credit. To acknowledge this traditional territory is to recognize the territory’s significance for the Indigenous peoples who lived, and continue to live, upon it.</p>
       <Link to="/">
         <StyledLogo src={logo} alt="logo" />
       </Link>

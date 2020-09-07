@@ -35,6 +35,7 @@ img {
     max-width: 100%;
 }
 a {
+    font-family: ${theme.fonts.IBMPlexSans};
     text-decoration: none;
     color: var(--text-color-primary);
 }

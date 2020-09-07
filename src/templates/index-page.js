@@ -3,17 +3,28 @@ import PropTypes from "prop-types";
 import { graphql } from "gatsby";
 import { Parallax, ParallaxBanner } from "react-scroll-parallax";
 import SkylineLayers from "../img/parallaxSkyline";
+import DesignImgs from "../img/designteams";
 import Clouds from "../img/clouds.png";
-import Diver from "../img/diver.svg"
-import Hands from "../img/Group 6.svg"
+import Diver from "../img/diver1.svg"
+import Hands from "../img/hands.png";
+import CardStack from "../components/Cards";
 import Layout from "../components/Layout";
 import theme from "../styles/theme";
 import Button from '../components/Button';
 import Proceedings from '../files/Proceedings-of-CUCAI-2020.pdf';
-import showcase from '../img/designteams/Student Showcase QMIND-19.jpg'
+import showcase from "../img/Showcase_30.jpg"
 import styled from "styled-components";
+import {Tab, Tabs, Row, Col, Nav} from 'react-bootstrap/'
+import 'bootstrap/dist/css/bootstrap.min.css';
+
+//import { conferenceImages } from "../config";
+//import Cards from "../components/Slideshow"
 
 const StyledIndexPage = styled.div`
+`;
+
+const StyledCont = styled.div`
+padding: 1em;
 `;
 
 const StyledHero = styled.section`
@@ -22,12 +33,27 @@ const StyledHero = styled.section`
   max-width: 100vw;
   height: 100vh;
   overflow: hidden;
+`;
 
+const SectionTitle = styled.h2`
+  font-size: 4rem;
+  font-weight: lighter;
+`;
+
+const SectionSubtitle = styled.h3`
+  font-size: 2rem;
+  font-weight: lighter;
 `;
 
 const StyledHeroContent = styled.div`
   margin: 0 auto;
   max-width: 80%;
+`;
+
+const StyledDarkSection = styled.div`
+  background-color: #1A4FCB;
+  padding: 1em;
+  color: white;
 `;
 
 const StyledHeading = styled.h1`
@@ -64,16 +90,49 @@ const StyledInfoSection = styled.section`
 `;
 
 const StyledBlurbSection = styled.section`
-max-width: 50%;
-padding: 3em;
+display: flex;
 float: left;
 height: 100vh;
-
+width: 50%;
 `;
 
 const StyledImg = styled.section`
 max-width: 100%;
 `;
+
+const StyledScroller = styled.div`
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    height: 50vh;
+    `;
+
+const StyledScrollCard = styled.div`
+    flex: 0 0 auto;
+    border-radius: 1em;
+    width: 70vw;
+    `;
+
+const StyledCard = ({image}) => {
+  return (
+    <StyledScrollCard>
+      <img src={image} style={{objectFit: "cover"}}/>
+    </StyledScrollCard>
+  )
+}
+
+const CardSlide = ({ array }) => {
+    return (
+      <StyledScroller>
+       <StyledCard image={array[0]}/>
+       <StyledCard image={array[1]}/>
+       <StyledCard image={array[3]}/>
+       <StyledCard image={array[4]}/>
+       <StyledCard image={array[5]}/>
+       <StyledCard image={array[6]}/>
+      </StyledScroller>         
+    );
+}
 
 const ParallaxSkyline = () => {
   return (
@@ -130,27 +189,26 @@ const InfoSection = () => (
         <img src={Clouds} />
       </StyledParallax>
   </StyledInfoSection>
-
-
 );
 
 const BlurbSection = ({blurbtitle, blurbdesc, blurbimg}) => (
-  <StyledInfoSection>
-  <StyledBlurbSection>
+
+  <StyledCont>
+    <Row>
+      <Col>
       <h2>{blurbtitle}</h2>
       <p>{blurbdesc}</p>
-  </StyledBlurbSection>
-  <StyledBlurbSection>
-     <StyledImg><img src={blurbimg}></img></StyledImg>
-  </StyledBlurbSection>
-
-  </StyledInfoSection>
-
+      <p>As an event geared towards future leaders in this field, we are thrilled to announce that our theme for this year will be AI For Good: Artificial Intelligence, Real Change! From advancing medical research to protecting the environment and aiding in natural disaster recovery, the ways in which AI can make the world a better place continue to grow. We look forward to presenting an event full of engaging speakers and events that will inspire attendees and forge meaningful connections.</p>
+      </Col>
+      <Col>
+      <StyledImg><img src={blurbimg}></img></StyledImg>
+      </Col>
+    </Row>
+      </StyledCont>
 );
 
 const ThemeSection = ({blurbtitle, blurbdesc, blurbimg}) => (
   <StyledInfoSection>
-  
   <StyledBlurbSection>
      <StyledImg><img src={blurbimg}></img></StyledImg>
   </StyledBlurbSection>
@@ -158,34 +216,88 @@ const ThemeSection = ({blurbtitle, blurbdesc, blurbimg}) => (
       <h2>{blurbtitle}</h2>
       <p>{blurbdesc}</p>
   </StyledBlurbSection>
-
   </StyledInfoSection>
 
 );
-
-
-
 //const EventHighlight = ({event, desc}) => (
   //<h2>{event}</h2>
   //<p>{desc}</p>
   
 //);
-
 const HighlightSection = ({featuredimage}) => (
   <div>
-      <h1>2020 Highlights</h1>
-
-  <StyledBlurbSection>
-  <StyledImg><img src={featuredimage}></img></StyledImg>
-  </StyledBlurbSection>
-  <StyledBlurbSection>
+           <SectionTitle>2020 <strong>Highlights</strong></SectionTitle>
   <div id="2020proceedings">
-    <h2> Design Team Showcase</h2>
-    <Button borderStyle="solid" borderColour="#174461"><a href={Proceedings}>PROCEEDINGS</a></Button>  
-    </div>  
-  </StyledBlurbSection>
+    <StyledDarkSection>
+      <SectionSubtitle> Design Team Showcase</SectionSubtitle>
+    <p>The design team showcase was the foundation on which CUCAI was started. This event allows the hard work, dedication and talent of Canadian undergraduate students working on AI-based design projects since September, to be exhibited for industry representatives and other delegates to learn about the work currently being done in the field of AI at the undergraduate level. This event features in-depth presentations for audiences of all levels of experience and backgrounds, as well as engaging and interactive demonstrations for 30+ design teams from across Canada.</p>
+    <Button borderStyle="solid" borderColour="#ffffff"><a href={Proceedings} style={{color: "white"}}>PROCEEDINGS</a></Button>  
+    </StyledDarkSection>
+    <CardSlide array={DesignImgs}/>
+    <StyledCont>
+    <Row>
+      <Col>
+      <img src={showcase}></img>
+      </Col>
+      <Col>
+      <SectionSubtitle>Industry Showcase</SectionSubtitle>
 
+      <p>
+        As a compliment to the design team showcase, this event is designed to show undergraduate students what the present and future of artificial intelligence in industry look like. Booths for each of our industry partners will be set up to allow students to learn about the opportunities available to them within industry. Students learn about how technological advancements in artificial intelligence are shaping a wide variety of industries. The industry showcase is often a favourite of both industry reps and delegates due to the phenomenal networking opportunities.
+
+</p>
+      </Col>
+    </Row>
+      </StyledCont>
   </div>
+  </div>
+);
+
+const InvolvedSection = () => (
+<StyledCont>
+  <CardStack/>
+  <h2>Get Involved</h2>
+  <Tab.Container id="left-tabs-example" defaultActiveKey="Industry Partners">
+  <Row>
+    <Col sm={3}>
+      <Nav variant="pills" className="flex-column">
+        <Nav.Item>
+          <Nav.Link eventKey="Industry Partners">Industry Partners</Nav.Link>
+        </Nav.Item>
+        <Nav.Item>
+          <Nav.Link eventKey="Speakers">Speakers</Nav.Link>
+        </Nav.Item>
+        <Nav.Item>
+          <Nav.Link eventKey="Student Groups">Student Groups</Nav.Link>
+        </Nav.Item>
+        <Nav.Item>
+          <Nav.Link eventKey="Delegates">Delegates</Nav.Link>
+        </Nav.Item>
+      </Nav>
+    </Col>
+    
+    <Col sm={9}>
+      <Tab.Content>
+        <Tab.Pane eventKey="Industry Partners">
+        <p>We will work closely with our industry partners to create an environment where undergraduate students and professionals can share their ideas and experiences, and explore the world of AI together. As a partner, CUCAI is the perfect place to interact and connect with the top talent in AI and machine learning.
+</p>
+        </Tab.Pane>
+        <Tab.Pane eventKey="Speakers">
+        <p>As a CUCAI speaker, you will have the unique opportunity to speak to and engage with the nation's leading undergraduate AI talent. Conference speakers are encouraged to provide students with relevant insight from their own work and the AI field in an innovative, creative, and personable way. Speaker opportunities include speeches, as well as panelist positions, workshop leaders and inQUbate pitch competition judges.
+</p>
+        </Tab.Pane>
+        <Tab.Pane eventKey="Student Groups">
+        <p>In its inaugural year of implementation, CUCAI has developed a “Tier Collaberation Program” structured to facilitate involvement from undergraduate AI groups across Canada. Incentives include reserved delegate spots, design showcase involvement, participation in the inQUbate pitch competition, the undergraduate AI executive showcase and more. Opportunities for partnership with other Canadian undergraduate AI societies have never been so plentiful, as CUCAI’s national reach expands.
+</p>
+        </Tab.Pane>
+        <Tab.Pane eventKey="Delegates">
+        <p>Stay tuned for delegate applications!</p>
+        </Tab.Pane>
+      </Tab.Content>
+    </Col>
+  </Row>
+</Tab.Container>
+</StyledCont>
 );
 
 export const IndexPageTemplate = ({
@@ -204,110 +316,12 @@ export const IndexPageTemplate = ({
       <Hero heading={heading} slogan={slogan} location={location} date={date} cta1={cta1} cta2={cta2} />
       <InfoSection />
       <BlurbSection blurbimg={Diver} blurbdesc={mainpitch.description} blurbtitle={mainpitch.title}/>
-      <ThemeSection blurbimg={Hands} blurbdesc="As an event geared towards future leaders in this field, we are thrilled to announce that our theme for this year will be AI For Good: Artificial Intelligence, Real Change! From advancing medical research to protecting the environment and aiding in natural disaster recovery, the ways in which AI can make the world a better place continue to grow. We look forward to presenting an event full of engaging speakers and events that will inspire attendees and forge meaningful connections.
-" blurbtitle="Our 2021 Theme"/>
       <HighlightSection featuredimage={showcase}/>
+      <InvolvedSection/>
+
       
     </StyledIndexPage>
-    //    <div style={{ height: "10000px" }}></div>
-
-    // <div>
-    //   <div
-    //     className="full-width-image margin-top-0"
-    //     style={{
-    //       backgroundImage: `url(${
-    //         !!image.childImageSharp ? image.childImageSharp.fluid.src : image
-    //       })`,
-    //       backgroundPosition: `top left`,
-    //       backgroundAttachment: `fixed`,
-    //     }}
-    //   >
-    //     <div
-    //       style={{
-    //         display: 'flex',
-    //         height: '150px',
-    //         lineHeight: '1',
-    //         justifyContent: 'space-around',
-    //         alignItems: 'left',
-    //         flexDirection: 'column',
-    //       }}
-    //     >
-    //       <h1
-    //         className="has-text-weight-bold is-size-3-mobile is-size-2-tablet is-size-1-widescreen"
-    //         style={{
-    //           boxShadow:
-    //             'rgb(255, 68, 0) 0.5rem 0px 0px, rgb(255, 68, 0) -0.5rem 0px 0px',
-    //           backgroundColor: 'rgb(255, 68, 0)',
-    //           color: 'white',
-    //           lineHeight: '1',
-    //           padding: '0.25em',
-    //         }}
-    //       >
-    //         {title}
-    //       </h1>
-    //       <h3
-    //         className="has-text-weight-bold is-size-5-mobile is-size-5-tablet is-size-4-widescreen"
-    //         style={{
-    //           boxShadow:
-    //             'rgb(255, 68, 0) 0.5rem 0px 0px, rgb(255, 68, 0) -0.5rem 0px 0px',
-    //           backgroundColor: 'rgb(255, 68, 0)',
-    //           color: 'white',
-    //           lineHeight: '1',
-    //           padding: '0.25em',
-    //         }}
-    //       >
-    //         {subheading}
-    //       </h3>
-    //     </div>
-    //   </div>
-    //   <section className="section section--gradient">
-    //     <div className="container">
-    //       <div className="section">
-    //         <div className="columns">
-    //           <div className="column is-10 is-offset-1">
-    //             <div className="content">
-    //               <div className="content">
-    //                 <div className="tile">
-    //                   <h1 className="title">{mainpitch.title}</h1>
-    //                 </div>
-    //                 <div className="tile">
-    //                   <h3 className="subtitle">{mainpitch.description}</h3>
-    //                 </div>
-    //               </div>
-    //               <div className="columns">
-    //                 <div className="column is-12">
-    //                   <h3 className="has-text-weight-semibold is-size-2">
-    //                     {heading}
-    //                   </h3>
-    //                   <p>{description}</p>
-    //                 </div>
-    //               </div>
-    //               <Features gridItems={intro.blurbs} />
-    //               <div className="columns">
-    //                 <div className="column is-12 has-text-centered">
-    //                   <Link className="btn" to="/products">
-    //                     See all products
-    //                   </Link>
-    //                 </div>
-    //               </div>
-    //               <div className="column is-12">
-    //                 <h3 className="has-text-weight-semibold is-size-2">
-    //                   Latest stories
-    //                 </h3>
-
-    //                 <div className="column is-12 has-text-centered">
-    //                   <Link className="btn" to="/blog">
-    //                     Read more
-    //                   </Link>
-    //                 </div>
-    //               </div>
-    //             </div>
-    //           </div>
-    //         </div>
-    //       </div>
-    //     </div>
-    //   </section>
-    // </div>
+  
   );
 
 IndexPageTemplate.propTypes = {
