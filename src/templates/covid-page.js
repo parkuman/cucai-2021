@@ -14,19 +14,14 @@ const StyledAboutPage = styled.div`
 background: linear-gradient(0deg, rgba(255,255,255,1) 0%, rgba(26,169,203,1) 50%);
 `;
 
-const StyledTeamMember = styled.section`
-max-width: 33%;
-padding: 3em;
-float: left;
+const StyledTextSection = styled.section`
 background: rgb(255,255,255);
-margin: 3em;
-border-radius: 3em;
-`;
+border-radius: 10px;
 
-const StyledTeam = styled.section`
-width: 100%;
-margin: 3em;
-display: flex;
+padding: 2em;
+filter: drop-shadow(5px 5px 0px #1a4fcb);
+margin-bottom: 2em;
+
 `;
 
 
@@ -36,8 +31,11 @@ export const CovidPageTemplate = ({
   html
 }) => (
     <StyledAboutPage>
+      <StyledTextSection>
       <h1>{title}</h1>
       <div dangerouslySetInnerHTML={{ __html: html }} />
+      </StyledTextSection>
+      
       
     </StyledAboutPage>
   );

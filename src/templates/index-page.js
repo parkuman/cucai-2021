@@ -2,19 +2,26 @@ import React from "react";
 import PropTypes from "prop-types";
 import { graphql } from "gatsby";
 import { Parallax, ParallaxBanner } from "react-scroll-parallax";
+
+//Photos
 import SkylineLayers from "../img/parallaxSkyline";
 import DesignImgs from "../img/designteams";
 import Clouds from "../img/clouds.png";
 import Diver from "../img/diver1.svg"
-import Hands from "../img/hands.png";
+import Hands from "../img/world.png";
+import showcase from "../img/Showcase_30.jpg";
+import Highlights from "../img/pano.png"
+
 import CardStack from "../components/Cards";
 import Layout from "../components/Layout";
+import Involved from "../components/Involvement";
+
 import theme from "../styles/theme";
 import Button from '../components/Button';
 import Proceedings from '../files/Proceedings-of-CUCAI-2020.pdf';
-import showcase from "../img/Showcase_30.jpg"
 import styled from "styled-components";
 import {Tab, Tabs, Row, Col, Nav} from 'react-bootstrap/'
+
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 //import { conferenceImages } from "../config";
@@ -22,6 +29,40 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 const StyledIndexPage = styled.div`
 `;
+  const Fade = styled.div`
+  .fade-in {
+    animation: fadeIn ease 20s;
+    -webkit-animation: fadeIn ease 20s;
+    -moz-animation: fadeIn ease 20s;
+    -o-animation: fadeIn ease 20s;
+    -ms-animation: fadeIn ease 20s;
+    }
+
+    @keyframes fadeIn {
+    0% {opacity:0;}
+    100% {opacity:1;}
+    }
+    
+    @-moz-keyframes fadeIn {
+    0% {opacity:0;}
+    100% {opacity:1;}
+    }
+    
+    @-webkit-keyframes fadeIn {
+    0% {opacity:0;}
+    100% {opacity:1;}
+    }
+    
+    @-o-keyframes fadeIn {
+    0% {opacity:0;}
+    100% {opacity:1;}
+    }
+    
+    @-ms-keyframes fadeIn {
+    0% {opacity:0;}
+    100% {opacity:1;}
+    }
+    `;
 
 const StyledCont = styled.div`
 padding: 1em;
@@ -172,7 +213,7 @@ const Hero = ({
 }) => (
     <StyledHero>
       <StyledHeroContent>
-        <StyledHeading>{heading}</StyledHeading>
+        <StyledHeading><Fade>{heading}</Fade></StyledHeading>
         <StyledSlogan>{slogan}</StyledSlogan>
         <StyledInfo>{location.toUpperCase()} | {date.toUpperCase()}</StyledInfo>
         <Button backgroundColour="white"><a href="#spons">{cta1}</a></Button>
@@ -207,26 +248,10 @@ const BlurbSection = ({blurbtitle, blurbdesc, blurbimg}) => (
       </StyledCont>
 );
 
-const ThemeSection = ({blurbtitle, blurbdesc, blurbimg}) => (
-  <StyledInfoSection>
-  <StyledBlurbSection>
-     <StyledImg><img src={blurbimg}></img></StyledImg>
-  </StyledBlurbSection>
-  <StyledBlurbSection>
-      <h2>{blurbtitle}</h2>
-      <p>{blurbdesc}</p>
-  </StyledBlurbSection>
-  </StyledInfoSection>
-
-);
-//const EventHighlight = ({event, desc}) => (
-  //<h2>{event}</h2>
-  //<p>{desc}</p>
-  
-//);
 const HighlightSection = ({featuredimage}) => (
   <div>
            <SectionTitle>2020 <strong>Highlights</strong></SectionTitle>
+           <img src={Highlights}/>
   <div id="2020proceedings">
     <StyledDarkSection>
       <SectionSubtitle> Design Team Showcase</SectionSubtitle>
@@ -248,55 +273,44 @@ const HighlightSection = ({featuredimage}) => (
 </p>
       </Col>
     </Row>
-      </StyledCont>
+    <Row>
+    <Col>
+      <SectionSubtitle>Speakers</SectionSubtitle>
+      <p>Speaker presentations from leaders in academia and industry have been a cornerstone of CUCAI since its inaugural year. These components of the conference empower delegates to learn from the ideas, experiences and knowledge of these professionals as they discuss a variety of fascinating AI topics.
+</p>
+     
+      </Col>
+      <Col>
+<p>abc</p>
+      </Col>
+      
+    </Row>
+    <Row>
+    <Col>
+      <SectionSubtitle>Workshops</SectionSubtitle>
+      <p>Workshops are an incredibly engaging facet of CUCAI intended to bring an element of concreteness to the topic of artificial intelligence. These events allow industry partners to showcase their firm’s technology while providing an opportunity for interactive experience with modern AI and data science tools for delegates.
+</p>
+      </Col>
+      <Col>
+      <img src="../img/workshop_k.jpg"></img>
+      </Col>
+      
+    </Row>
+
+    
+     </StyledCont>
   </div>
   </div>
 );
 
 const InvolvedSection = () => (
 <StyledCont>
+<h2>Past Speakers and Workshops</h2>
+
   <CardStack/>
   <h2>Get Involved</h2>
-  <Tab.Container id="left-tabs-example" defaultActiveKey="Industry Partners">
-  <Row>
-    <Col sm={3}>
-      <Nav variant="pills" className="flex-column">
-        <Nav.Item>
-          <Nav.Link eventKey="Industry Partners">Industry Partners</Nav.Link>
-        </Nav.Item>
-        <Nav.Item>
-          <Nav.Link eventKey="Speakers">Speakers</Nav.Link>
-        </Nav.Item>
-        <Nav.Item>
-          <Nav.Link eventKey="Student Groups">Student Groups</Nav.Link>
-        </Nav.Item>
-        <Nav.Item>
-          <Nav.Link eventKey="Delegates">Delegates</Nav.Link>
-        </Nav.Item>
-      </Nav>
-    </Col>
-    
-    <Col sm={9}>
-      <Tab.Content>
-        <Tab.Pane eventKey="Industry Partners">
-        <p>We will work closely with our industry partners to create an environment where undergraduate students and professionals can share their ideas and experiences, and explore the world of AI together. As a partner, CUCAI is the perfect place to interact and connect with the top talent in AI and machine learning.
-</p>
-        </Tab.Pane>
-        <Tab.Pane eventKey="Speakers">
-        <p>As a CUCAI speaker, you will have the unique opportunity to speak to and engage with the nation's leading undergraduate AI talent. Conference speakers are encouraged to provide students with relevant insight from their own work and the AI field in an innovative, creative, and personable way. Speaker opportunities include speeches, as well as panelist positions, workshop leaders and inQUbate pitch competition judges.
-</p>
-        </Tab.Pane>
-        <Tab.Pane eventKey="Student Groups">
-        <p>In its inaugural year of implementation, CUCAI has developed a “Tier Collaberation Program” structured to facilitate involvement from undergraduate AI groups across Canada. Incentives include reserved delegate spots, design showcase involvement, participation in the inQUbate pitch competition, the undergraduate AI executive showcase and more. Opportunities for partnership with other Canadian undergraduate AI societies have never been so plentiful, as CUCAI’s national reach expands.
-</p>
-        </Tab.Pane>
-        <Tab.Pane eventKey="Delegates">
-        <p>Stay tuned for delegate applications!</p>
-        </Tab.Pane>
-      </Tab.Content>
-    </Col>
-  </Row>
-</Tab.Container>
+  <Involved/>
+  
 </StyledCont>
 );
 
