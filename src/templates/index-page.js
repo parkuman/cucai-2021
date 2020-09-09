@@ -11,6 +11,8 @@ import Diver from "../img/diver1.svg"
 import Hands from "../img/world.png";
 import showcase from "../img/Showcase_30.jpg";
 import Highlights from "../img/pano.png"
+import Proc from "../img/proceedings.png"
+import Spons from "../img/spons.png"
 
 import CardStack from "../components/Cards";
 import Layout from "../components/Layout";
@@ -253,11 +255,17 @@ const HighlightSection = ({featuredimage}) => (
            <SectionTitle>2020 <strong>Highlights</strong></SectionTitle>
            <img src={Highlights}/>
   <div id="2020proceedings">
+    <Row>
     <StyledDarkSection>
+      <Col sm={9}>
       <SectionSubtitle> Design Team Showcase</SectionSubtitle>
     <p>The design team showcase was the foundation on which CUCAI was started. This event allows the hard work, dedication and talent of Canadian undergraduate students working on AI-based design projects since September, to be exhibited for industry representatives and other delegates to learn about the work currently being done in the field of AI at the undergraduate level. This event features in-depth presentations for audiences of all levels of experience and backgrounds, as well as engaging and interactive demonstrations for 30+ design teams from across Canada.</p>
     <Button borderStyle="solid" borderColour="#ffffff"><a href={Proceedings} style={{color: "white"}}>PROCEEDINGS</a></Button>  
-    </StyledDarkSection>
+    </Col>
+      <Col sm={3}><img src={Proc} style={{top:"3em"}}></img></Col>
+      </StyledDarkSection>
+       </Row>
+    
     <CardSlide array={DesignImgs}/>
     <StyledCont>
     <Row>
@@ -297,7 +305,17 @@ const HighlightSection = ({featuredimage}) => (
       
     </Row>
 
-    
+    <Row>
+      <Col sm={9}>
+        <h3>Past Sponsors</h3>
+        <img src={Spons}>
+        </img>
+
+      </Col>
+      <Col>
+      <Button borderStyle="solid" borderColour="#ffffff"><a href={Proceedings} style={{color: "white"}}>Sponsorship Package</a></Button>  
+      </Col>
+    </Row>
      </StyledCont>
   </div>
   </div>
@@ -330,7 +348,7 @@ export const IndexPageTemplate = ({
       <Hero heading={heading} slogan={slogan} location={location} date={date} cta1={cta1} cta2={cta2} />
       <InfoSection />
       <BlurbSection blurbimg={Diver} blurbdesc={mainpitch.description} blurbtitle={mainpitch.title}/>
-      <HighlightSection featuredimage={showcase}/>
+      <HighlightSection featuredimage={Highlights}/>
       <InvolvedSection/>
 
       

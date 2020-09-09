@@ -7,6 +7,9 @@ import theme from "../styles/theme";
 import { navLinks } from "../config";
 import LogoLight from "../img/logo-main-light.png";
 import LogoMain from "../img/Logo main.svg"
+import {Row, Col, Nav, Navbar} from 'react-bootstrap/'
+import 'bootstrap/dist/css/bootstrap.min.css';
+
 
 const StyledNav = styled.nav`
   position: fixed;
@@ -18,16 +21,17 @@ const StyledNav = styled.nav`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  z-index: 100000;
+  z-index: 100000;000002
 `;
 
 const StyledLogo = styled.img`
   height: 50px;
 `;
 
-const StyledNavLink = styled(Link)`
+const StyledNavLink = styled(Nav.Link)`
   /* font-family: ${theme.fonts.IBMPlexMono}; */
   padding: 10px;
+  color: #003C58;
 `;
 
 const StyledNavLinks = styled.ul`
@@ -40,23 +44,32 @@ const StyledNavLinks = styled.ul`
 
 const NavLinks = () => {
   return (
-    <StyledNavLinks>
+  <Navbar.Collapse id="basic-navbar-nav">
+    <Nav className="mr-auto">
       {navLinks.map((item) => (
         <StyledNavLink to={item.url}>{item.name.toUpperCase()}</StyledNavLink>
       ))}
-    </StyledNavLinks>
+    </Nav>
+    </Navbar.Collapse>
   );
 };
 
-const Navbar = () => {
+const NavbarStyled = () => {
   return (
-    <StyledNav>
-      <Link to="/">
-        <StyledLogo src={LogoMain} alt="logo" />
-      </Link>
-      <NavLinks />
-    </StyledNav>
+    <Navbar bg="light" sticky="top" expand="lg">
+      <Navbar.Brand href="#home">
+      <img
+        alt="Logo"
+        src={LogoMain}
+        className="d-inline-block align-top"
+      />
+    </Navbar.Brand>
+    <Navbar.Toggle aria-controls="basic-navbar-nav" />
+
+      <NavLinks/>
+      </Navbar>
+
   );
 };
 
-export default Navbar;
+export default NavbarStyled;

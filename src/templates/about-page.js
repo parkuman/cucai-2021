@@ -1,6 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { graphql } from "gatsby";
+import {Row, Col} from 'react-bootstrap/'
 
 import styled from "styled-components";
 
@@ -24,7 +25,7 @@ filter: drop-shadow(5px 5px 0px #1a4fcb);
 margin-bottom: 2em;
 
 `;
-const StyledTeamMember = styled.section`
+const StyledTeamMember = styled(Col)`
 width: 20vw;
 padding: 1em;
 float: left;
@@ -34,18 +35,17 @@ border-radius: 10px;
 filter: drop-shadow(5px 5px 0px #1a4fcb);
 `;
 
-const StyledTeamTitle = styled.section`
+const StyledTeamTitle = styled(Col)`
 margin: 1em 0em 1em 0em;
 width: 10vw;
 padding: 1em;
 float: left;
 border-radius: 10px;
 color: white;
-font-weight: bolder;
 background: linear-gradient(29deg, rgba(26,79,203,1) 38%, rgba(26,169,203,1) 100%);
 `;
 
-const StyledTeam = styled.section`
+const StyledTeam = styled(Row)`
 width: 100%;
 display: flex;
 `;
@@ -76,7 +76,7 @@ const OurTeam = ({ data }) => {
           <StyledTeam>
             <StyledTeamTitle style={{transform: "rotate(180deg)"}}> 
               <div style={{transform: "rotate(90deg)"}}>
-            <h2 style={{fontSize: "3em", marginBottom: "0px"}}>{team.header}</h2>
+            <h2 style={{marginBottom: "0px"}}>{team.header}</h2>
       
           </div>
             </StyledTeamTitle>
