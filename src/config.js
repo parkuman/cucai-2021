@@ -20,24 +20,24 @@ module.exports = {
       url: "/about",
     },
     {
-      name: "Events",
-      url: "#events",
+      name: "Highlights",
+      url: "#highlights",
     },
     {
       name: "Speakers",
       url: "#speakers",
     },
     {
-      name: "Sponsors",
-      url: "#sponsors",
+      name: "Proceedings",
+      url: "#2020proceedings",
     },
     {
-      name: "Covid Response",
+      name: "Covid-19",
       url: "/covidresponse",
     },
     {
-      name: "2020 Proceedings",
-      url: "#2020proceedings",
+      name: "Get Involved",
+      url: "#involvement",
     },
     {
       name: "Contact",
