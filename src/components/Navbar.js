@@ -21,7 +21,7 @@ const StyledNav = styled.nav`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  z-index: 100000;000002
+  z-index: 100000;
 `;
 
 const StyledLogo = styled.img`
@@ -65,10 +65,8 @@ const NavbarStyled = () => {
       />
     </Navbar.Brand>
     <Navbar.Toggle aria-controls="basic-navbar-nav" />
-
       <NavLinks/>
       </Navbar>
-
   );
 };
 
