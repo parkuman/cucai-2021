@@ -6,7 +6,7 @@ import { Parallax, ParallaxBanner } from "react-scroll-parallax";
 //Photos
 import SkylineLayers from "../img/parallaxSkyline";
 import DesignImgs from "../img/designteams";
-import Clouds from "../img/clouds.png";
+import Clouds from "../img/clouds_to_white.png";
 import Diver from "../img/diver1.svg"
 import Hands from "../img/world.png";
 import showcase from "../img/Showcase_30.jpg";
@@ -19,10 +19,12 @@ import Layout from "../components/Layout";
 import Involved from "../components/Involvement";
 
 import theme from "../styles/theme";
+import media from "../styles/media";
+
 import Button from '../components/Button';
 import Proceedings from '../files/Proceedings-of-CUCAI-2020.pdf';
 import styled from "styled-components";
-import {Tab, Tabs, Row, Col, Nav} from 'react-bootstrap/'
+import { Tab, Tabs, Row, Col, Nav } from 'react-bootstrap/'
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 
@@ -31,7 +33,8 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 const StyledIndexPage = styled.div`
 `;
-  const Fade = styled.div`
+
+const Fade = styled.div`
   .fade-in {
     animation: fadeIn ease 20s;
     -webkit-animation: fadeIn ease 20s;
@@ -67,14 +70,17 @@ const StyledIndexPage = styled.div`
     `;
 
 const StyledCont = styled.div`
-padding: 1em;
+  max-width: 80%;
+  margin: 0 auto;
+  padding: 10vh 0;
 `;
 
 const StyledHero = styled.section`
-  padding-top: 150px;
+  padding-top: 10vh;
   background: radial-gradient(189.82% 100% at 50% 0%, rgba(26, 79, 203, 0.0001) 0%, rgba(29, 85, 205, 0.0459233) 0%, rgba(33, 93, 208, 0.0977712) 63.18%, #65DAFE 100%, #65DAFE 100%), linear-gradient(146.77deg, rgba(26, 169, 203, 0.25) -3.05%, rgba(17, 47, 66, 0.25) 90.39%, rgba(17, 47, 66, 0.25) 90.39%);
   max-width: 100vw;
-  height: 100vh;
+  
+  height: 90vh;
   overflow: hidden;
 `;
 
@@ -106,17 +112,45 @@ const StyledHeading = styled.h1`
   font-family: ${theme.fonts.IBMPlexSansLight};
   font-size: 4rem;
   max-width: 70%;
+
+  ${media.phone`
+      font-size: 2rem;
+  `}
 `;
 
 const StyledSlogan = styled.h2`
   font-weight: normal;
   font-size: 2rem;
+
+  ${media.phone`
+      font-size: 1.2rem;
+  `}
 `;
 
 const StyledInfo = styled.h3`
   font-weight: normal;
   font-size: 1.2rem;
   padding: 10px 0;
+
+  ${media.phone`
+      font-size: 1rem;
+  `}
+`;
+
+const StyledParallaxSkyline = styled.div`
+  max-height: 200px;
+  position: relative; 
+  top: -40vh;
+
+  linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.18) 54.46%, #FFFFFF 100%);
+
+  ${media.phone`
+      top: -16vh;
+  `}
+
+  ${media.tablet`
+      top: -20vh;
+  `}
 `;
 
 const StyledParallax = styled(Parallax)`
@@ -126,60 +160,55 @@ const StyledParallax = styled(Parallax)`
 `;
 
 const StyledInfoSection = styled.section`
-
   max-width: 100vw;
-  height: 100vh;
-  
 `;
 
 const StyledBlurbSection = styled.section`
-display: flex;
-float: left;
-height: 100vh;
-width: 50%;
+  max-width: 80%;
+  height: 100vh;
 `;
 
 const StyledImg = styled.section`
-max-width: 100%;
+  max-width: 100%;
 `;
 
 const StyledScroller = styled.div`
-    display: flex;
-    flex-wrap: nowrap;
-    overflow-x: auto;
-    height: 50vh;
-    `;
+  display: flex;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  height: 50vh;
+`;
 
 const StyledScrollCard = styled.div`
-    flex: 0 0 auto;
-    border-radius: 1em;
-    width: 70vw;
-    `;
+  flex: 0 0 auto;
+  border-radius: 1em;
+  width: 70vw;
+`;
 
-const StyledCard = ({image}) => {
+const StyledCard = ({ image }) => {
   return (
     <StyledScrollCard>
-      <img src={image} style={{objectFit: "cover"}}/>
+      <img src={image} style={{ objectFit: "cover" }} />
     </StyledScrollCard>
   )
 }
 
 const CardSlide = ({ array }) => {
-    return (
-      <StyledScroller>
-       <StyledCard image={array[0]}/>
-       <StyledCard image={array[1]}/>
-       <StyledCard image={array[3]}/>
-       <StyledCard image={array[4]}/>
-       <StyledCard image={array[5]}/>
-       <StyledCard image={array[6]}/>
-      </StyledScroller>         
-    );
+  return (
+    <StyledScroller>
+      <StyledCard image={array[0]} />
+      <StyledCard image={array[1]} />
+      <StyledCard image={array[3]} />
+      <StyledCard image={array[4]} />
+      <StyledCard image={array[5]} />
+      <StyledCard image={array[6]} />
+    </StyledScroller>
+  );
 }
 
 const ParallaxSkyline = () => {
   return (
-    <>
+    <StyledParallaxSkyline>
       <StyledParallax y={[-10, 0]}>
         <img src={SkylineLayers[0]} />
       </StyledParallax>
@@ -201,7 +230,13 @@ const ParallaxSkyline = () => {
       <StyledParallax y={[-590, -620]}>
         <img src={SkylineLayers[6]} />
       </StyledParallax>
-    </>
+      <StyledParallax y={[-750, -780]}>
+        <img src={Clouds} />
+      </StyledParallax>
+    </StyledParallaxSkyline>
+
+
+
   );
 }
 
@@ -213,123 +248,120 @@ const Hero = ({
   cta1,
   cta2
 }) => (
-    <StyledHero>
-      <StyledHeroContent>
-        <StyledHeading><Fade>{heading}</Fade></StyledHeading>
-        <StyledSlogan>{slogan}</StyledSlogan>
-        <StyledInfo>{location.toUpperCase()} | {date.toUpperCase()}</StyledInfo>
-        <Button backgroundColour="white"><a href="#spons">{cta1}</a></Button>
-        <Button borderStyle="solid" borderColour="#174461"><a href="mailto:chair@cucai.ca">{cta2}</a></Button>
-      </StyledHeroContent>
-      <ParallaxSkyline />
-    </StyledHero>
-  );
+  <StyledHero>
+    <StyledHeroContent>
+      <StyledHeading><Fade>{heading}</Fade></StyledHeading>
+      <StyledSlogan>{slogan}</StyledSlogan>
+      <StyledInfo>{location.toUpperCase()} | {date.toUpperCase()}</StyledInfo>
+      <Button backgroundColour="white"><a href="#spons">{cta1}</a></Button>
+      <Button borderStyle="solid" borderColour="#174461"><a href="mailto:chair@cucai.ca">{cta2}</a></Button>
+    </StyledHeroContent>
+  </StyledHero>
+);
 
 
 const InfoSection = () => (
   <StyledInfoSection>
-      <StyledParallax y={[-30, -60]}>
-        <img src={Clouds} />
-      </StyledParallax>
+
   </StyledInfoSection>
 );
 
-const BlurbSection = ({blurbtitle, blurbdesc, blurbimg}) => (
+const BlurbSection = ({ blurbtitle, blurbdesc, blurbimg }) => (
 
   <StyledCont>
     <Row>
       <Col>
-      <h2>{blurbtitle}</h2>
-      <p>{blurbdesc}</p>
-      <p>As an event geared towards future leaders in this field, we are thrilled to announce that our theme for this year will be AI For Good: Artificial Intelligence, Real Change! From advancing medical research to protecting the environment and aiding in natural disaster recovery, the ways in which AI can make the world a better place continue to grow. We look forward to presenting an event full of engaging speakers and events that will inspire attendees and forge meaningful connections.</p>
+        <h2>{blurbtitle}</h2>
+        <p>{blurbdesc}</p>
+        <p>As an event geared towards future leaders in this field, we are thrilled to announce that our theme for this year will be AI For Good: Artificial Intelligence, Real Change! From advancing medical research to protecting the environment and aiding in natural disaster recovery, the ways in which AI can make the world a better place continue to grow. We look forward to presenting an event full of engaging speakers and events that will inspire attendees and forge meaningful connections.</p>
       </Col>
       <Col>
-      <StyledImg><img src={blurbimg}></img></StyledImg>
+        <StyledImg><img src={blurbimg}></img></StyledImg>
       </Col>
     </Row>
-      </StyledCont>
+  </StyledCont>
 );
 
-const HighlightSection = ({featuredimage}) => (
+const HighlightSection = ({ featuredimage }) => (
   <div>
-           <SectionTitle>2020 <strong>Highlights</strong></SectionTitle>
-           <img src={Highlights}/>
-  <div id="2020proceedings">
-    <Row>
-    <StyledDarkSection>
-      <Col sm={9}>
-      <SectionSubtitle> Design Team Showcase</SectionSubtitle>
-    <p>The design team showcase was the foundation on which CUCAI was started. This event allows the hard work, dedication and talent of Canadian undergraduate students working on AI-based design projects since September, to be exhibited for industry representatives and other delegates to learn about the work currently being done in the field of AI at the undergraduate level. This event features in-depth presentations for audiences of all levels of experience and backgrounds, as well as engaging and interactive demonstrations for 30+ design teams from across Canada.</p>
-    <Button borderStyle="solid" borderColour="#ffffff"><a href={Proceedings} style={{color: "white"}}>PROCEEDINGS</a></Button>  
-    </Col>
-      <Col sm={3}><img src={Proc} style={{top:"3em"}}></img></Col>
-      </StyledDarkSection>
-       </Row>
-    
-    <CardSlide array={DesignImgs}/>
-    <StyledCont>
-    <Row>
-      <Col>
-      <img src={showcase}></img>
-      </Col>
-      <Col>
-      <SectionSubtitle>Industry Showcase</SectionSubtitle>
+    <SectionTitle>2020 <strong>Highlights</strong></SectionTitle>
+    <img src={Highlights} />
+    <div id="2020proceedings">
+      <Row>
+        <StyledDarkSection>
+          <Col sm={9}>
+            <SectionSubtitle> Design Team Showcase</SectionSubtitle>
+            <p>The design team showcase was the foundation on which CUCAI was started. This event allows the hard work, dedication and talent of Canadian undergraduate students working on AI-based design projects since September, to be exhibited for industry representatives and other delegates to learn about the work currently being done in the field of AI at the undergraduate level. This event features in-depth presentations for audiences of all levels of experience and backgrounds, as well as engaging and interactive demonstrations for 30+ design teams from across Canada.</p>
+            <Button borderStyle="solid" borderColour="#ffffff"><a href={Proceedings} style={{ color: "white" }}>PROCEEDINGS</a></Button>
+          </Col>
+          <Col sm={3}><img src={Proc} style={{ top: "3em" }}></img></Col>
+        </StyledDarkSection>
+      </Row>
 
-      <p>
-        As a compliment to the design team showcase, this event is designed to show undergraduate students what the present and future of artificial intelligence in industry look like. Booths for each of our industry partners will be set up to allow students to learn about the opportunities available to them within industry. Students learn about how technological advancements in artificial intelligence are shaping a wide variety of industries. The industry showcase is often a favourite of both industry reps and delegates due to the phenomenal networking opportunities.
+      <CardSlide array={DesignImgs} />
+      <StyledCont>
+        <Row>
+          <Col>
+            <img src={showcase}></img>
+          </Col>
+          <Col>
+            <SectionSubtitle>Industry Showcase</SectionSubtitle>
+
+            <p>
+              As a compliment to the design team showcase, this event is designed to show undergraduate students what the present and future of artificial intelligence in industry look like. Booths for each of our industry partners will be set up to allow students to learn about the opportunities available to them within industry. Students learn about how technological advancements in artificial intelligence are shaping a wide variety of industries. The industry showcase is often a favourite of both industry reps and delegates due to the phenomenal networking opportunities.
 
 </p>
-      </Col>
-    </Row>
-    <Row>
-    <Col>
-      <SectionSubtitle>Speakers</SectionSubtitle>
-      <p>Speaker presentations from leaders in academia and industry have been a cornerstone of CUCAI since its inaugural year. These components of the conference empower delegates to learn from the ideas, experiences and knowledge of these professionals as they discuss a variety of fascinating AI topics.
+          </Col>
+        </Row>
+        <Row>
+          <Col>
+            <SectionSubtitle>Speakers</SectionSubtitle>
+            <p>Speaker presentations from leaders in academia and industry have been a cornerstone of CUCAI since its inaugural year. These components of the conference empower delegates to learn from the ideas, experiences and knowledge of these professionals as they discuss a variety of fascinating AI topics.
 </p>
-     
-      </Col>
-      <Col>
-<p>abc</p>
-      </Col>
-      
-    </Row>
-    <Row>
-    <Col>
-      <SectionSubtitle>Workshops</SectionSubtitle>
-      <p>Workshops are an incredibly engaging facet of CUCAI intended to bring an element of concreteness to the topic of artificial intelligence. These events allow industry partners to showcase their firm’s technology while providing an opportunity for interactive experience with modern AI and data science tools for delegates.
+
+          </Col>
+          <Col>
+            <p>abc</p>
+          </Col>
+
+        </Row>
+        <Row>
+          <Col>
+            <SectionSubtitle>Workshops</SectionSubtitle>
+            <p>Workshops are an incredibly engaging facet of CUCAI intended to bring an element of concreteness to the topic of artificial intelligence. These events allow industry partners to showcase their firm’s technology while providing an opportunity for interactive experience with modern AI and data science tools for delegates.
 </p>
-      </Col>
-      <Col>
-      <img src="../img/workshop_k.jpg"></img>
-      </Col>
-      
-    </Row>
+          </Col>
+          <Col>
+            <img src="../img/workshop_k.jpg"></img>
+          </Col>
 
-    <Row>
-      <Col sm={9}>
-        <h3>Past Sponsors</h3>
-        <img src={Spons}>
-        </img>
+        </Row>
 
-      </Col>
-      <Col>
-      <Button borderStyle="solid" borderColour="#ffffff"><a href={Proceedings} style={{color: "white"}}>Sponsorship Package</a></Button>  
-      </Col>
-    </Row>
-     </StyledCont>
-  </div>
+        <Row>
+          <Col sm={9}>
+            <h3>Past Sponsors</h3>
+            <img src={Spons}>
+            </img>
+
+          </Col>
+          <Col>
+            <Button borderStyle="solid" borderColour="#ffffff"><a href={Proceedings} style={{ color: "white" }}>Sponsorship Package</a></Button>
+          </Col>
+        </Row>
+      </StyledCont>
+    </div>
   </div>
 );
 
 const InvolvedSection = () => (
-<StyledCont>
-<h2>Past Speakers and Workshops</h2>
+  <StyledCont>
+    <h2>Past Speakers and Workshops</h2>
 
-  <CardStack/>
-  <h2>Get Involved</h2>
-  <Involved/>
-  
-</StyledCont>
+    <CardStack />
+    <h2>Get Involved</h2>
+    <Involved />
+
+  </StyledCont>
 );
 
 export const IndexPageTemplate = ({
@@ -344,17 +376,18 @@ export const IndexPageTemplate = ({
   description,
   intro,
 }) => (
-    <StyledIndexPage>
-      <Hero heading={heading} slogan={slogan} location={location} date={date} cta1={cta1} cta2={cta2} />
-      <InfoSection />
-      <BlurbSection blurbimg={Diver} blurbdesc={mainpitch.description} blurbtitle={mainpitch.title}/>
-      <HighlightSection featuredimage={Highlights}/>
-      <InvolvedSection/>
+  <StyledIndexPage>
+    <Hero heading={heading} slogan={slogan} location={location} date={date} cta1={cta1} cta2={cta2} />
+    <ParallaxSkyline />
+    <InfoSection />
+    <BlurbSection blurbimg={Diver} blurbdesc={mainpitch.description} blurbtitle={mainpitch.title} />
+    <HighlightSection featuredimage={Highlights} />
+    <InvolvedSection />
 
-      
-    </StyledIndexPage>
-  
-  );
+
+  </StyledIndexPage>
+
+);
 
 IndexPageTemplate.propTypes = {
   title: PropTypes.string,

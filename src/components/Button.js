@@ -1,6 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
 
+import media from "../styles/media";
+
 const StyledButton = styled.button`
   
   border-style: ${props => props.borderStyle ? props.borderStyle : "none"} ;
@@ -9,11 +11,15 @@ const StyledButton = styled.button`
   color: ${props => props.textColour ? props.textColour : "#174461"};
   border-color: ${props => props.borderColour ? props.borderColour : "none"};
 
-  padding: 10px 20px;
+  padding: 0.5rem 0.8rem;
   margin-right: 15px;
   border-radius: 7px;
   font-size: 1.2rem;
   cursor: pointer;
+
+  ${media.phone`
+      font-size: 0.8rem;
+  `}
 `;
 
 const Button = ({ children, backgroundColour, textColour, borderColour, borderStyle }) => {
