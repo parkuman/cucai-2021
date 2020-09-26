@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import { graphql } from "gatsby";
 
 import styled from "styled-components";
+import media from "../styles/media";
 
 import Layout from "../components/Layout";
 import { ourTeam } from "../config";
@@ -11,6 +12,10 @@ const StyledAboutPage = styled.div`
   padding: 3em;
   background: rgb(255,255,255);
 background: linear-gradient(0deg, rgba(255,255,255,1) 0%, rgba(26,169,203,1) 50%);
+
+  ${media.phone`
+    padding: 0.5em;
+  `}
 `;
 
 const StyledTextSection = styled.section`
