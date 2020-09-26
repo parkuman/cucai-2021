@@ -193,11 +193,7 @@ const StyledInvolvedSection = styled.section`
   max-width: 80%;
   margin: 0 auto;
   padding: 50px 0 ;
-  height: 50vh;
 
-  ${media.phone`
-    height:80vh;
-  `}
 `;
 
 const StyledCard = ({ image }) => {
