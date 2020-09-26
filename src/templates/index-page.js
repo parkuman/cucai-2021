@@ -164,6 +164,23 @@ const StyledParallax = styled(Parallax)`
 const StyledBlurbSection = styled.section`
   max-width: 80%;
   height: 100vh;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+
+  & div {
+    max-width: 50%;
+  }
+
+  ${media.phone`
+    flex-direction: column-reverse;
+
+    & div {
+      max-width: 100%;
+    }
+  `}
 `;
 
 const StyledImg = styled.section`
@@ -271,18 +288,16 @@ const Hero = ({
 );
 
 const BlurbSection = ({ blurbtitle, blurbdesc, blurbimg }) => (
-  <StyledCont>
-    <Row>
-      <Col>
-        <h2>{blurbtitle}</h2>
-        <p>{blurbdesc}</p>
-        <p>As an event geared towards future leaders in this field, we are thrilled to announce that our theme for this year will be AI For Good: Artificial Intelligence, Real Change! From advancing medical research to protecting the environment and aiding in natural disaster recovery, the ways in which AI can make the world a better place continue to grow. We look forward to presenting an event full of engaging speakers and events that will inspire attendees and forge meaningful connections.</p>
-      </Col>
-      <Col>
-        <StyledImg><img src={blurbimg}></img></StyledImg>
-      </Col>
-    </Row>
-  </StyledCont>
+  <StyledBlurbSection>
+    <div>
+      <h2>{blurbtitle}</h2>
+      <p>{blurbdesc}</p>
+      <p>As an event geared towards future leaders in this field, we are thrilled to announce that our theme for this year will be AI For Good: Artificial Intelligence, Real Change! From advancing medical research to protecting the environment and aiding in natural disaster recovery, the ways in which AI can make the world a better place continue to grow. We look forward to presenting an event full of engaging speakers and events that will inspire attendees and forge meaningful connections.</p>
+    </div>
+
+    <StyledImg><img src={blurbimg}></img></StyledImg>
+
+  </StyledBlurbSection>
 );
 
 const HighlightSection = ({ featuredimage }) => (

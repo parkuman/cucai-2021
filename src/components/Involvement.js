@@ -15,7 +15,7 @@ const Involved = () => {
       <Row>
         <Col sm={3}>
           <Nav variant="pills" className="flex-column" style={{
-            filter: "drop-shadow(6px 6px 0px #1a4fcb)"
+            // filter: "drop-shadow(6px 6px 0px #1a4fcb)"
           }}>
             <Nav.Item>
               <Nav.Link eventKey="Industry Partners">Industry Partners</Nav.Link>
