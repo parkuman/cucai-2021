@@ -28,18 +28,10 @@ const StyledLogo = styled.img`
   height: 50px;
 `;
 
-const StyledNavLink = styled(Nav.Link)`
+const StyledNavLink = styled(Link)`
   /* font-family: ${theme.fonts.IBMPlexMono}; */
   padding: 10px;
   color: #003C58;
-`;
-
-const StyledNavLinks = styled.ul`
-  list-style: none;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-evenly;
-  align-items: center;
 `;
 
 const NavLinks = () => {
@@ -57,7 +49,7 @@ const NavLinks = () => {
 const NavbarStyled = () => {
   return (
     <Navbar bg="light" sticky="top" expand="lg">
-      <Navbar.Brand href="#home">
+      <Navbar.Brand href="/">
       <img
         alt="Logo"
         src={LogoMain}

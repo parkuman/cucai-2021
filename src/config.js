@@ -16,33 +16,29 @@ module.exports = {
   ],
   navLinks: [
     {
-      name: "About",
-      url: "/about",
-    },
-    {
       name: "Highlights",
-      url: "#highlights",
+      url: "/#highlights",
     },
     {
       name: "Speakers",
-      url: "#speakers",
+      url: "/#speakers",
     },
     {
-      name: "Proceedings",
-      url: "#2020proceedings",
+      name: "Get Involved",
+      url: "/#involvement",
+    },
+    {
+      name: "Contact",
+      url: "/#contact",
+    },
+    {
+      name: "About",
+      url: "/about",
     },
     {
       name: "Covid-19",
       url: "/covidresponse",
     },
-    {
-      name: "Get Involved",
-      url: "#involvement",
-    },
-    {
-      name: "Contact",
-      url: "#contact",
-    }
   ],
   conferenceImages: [
     {
