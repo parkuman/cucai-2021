@@ -8,7 +8,6 @@ import Layout from "../components/Layout";
 import { ourTeam } from "../config";
 
 const StyledAboutPage = styled.div`
-  margin-top: 80px;
   padding: 3em;
   background: rgb(255,255,255);
 background: linear-gradient(0deg, rgba(255,255,255,1) 0%, rgba(26,169,203,1) 50%);
