@@ -72,15 +72,17 @@ const Fade = styled.div`
 const StyledCont = styled.div`
   max-width: 80%;
   margin: 0 auto;
-  padding: 10vh 0;
+  padding: 100px 0;
 `;
+
+
 
 const StyledHero = styled.section`
   padding-top: 10vh;
   background: radial-gradient(189.82% 100% at 50% 0%, rgba(26, 79, 203, 0.0001) 0%, rgba(29, 85, 205, 0.0459233) 0%, rgba(33, 93, 208, 0.0977712) 63.18%, #65DAFE 100%, #65DAFE 100%), linear-gradient(146.77deg, rgba(26, 169, 203, 0.25) -3.05%, rgba(17, 47, 66, 0.25) 90.39%, rgba(17, 47, 66, 0.25) 90.39%);
   max-width: 100vw;
   
-  height: 90vh;
+  height: 85vh;
   overflow: hidden;
 `;
 
@@ -159,10 +161,6 @@ const StyledParallax = styled(Parallax)`
   }
 `;
 
-const StyledInfoSection = styled.section`
-  max-width: 100vw;
-`;
-
 const StyledBlurbSection = styled.section`
   max-width: 80%;
   height: 100vh;
@@ -183,6 +181,23 @@ const StyledScrollCard = styled.div`
   flex: 0 0 auto;
   border-radius: 1em;
   width: 70vw;
+`;
+
+const StyledPastSpeakersSection = styled.section`
+  max-width: 80%;
+  margin: 0 auto;
+  padding: 50px 0 ;
+`;
+
+const StyledInvolvedSection = styled.section`
+  max-width: 80%;
+  margin: 0 auto;
+  padding: 50px 0 ;
+  height: 50vh;
+
+  ${media.phone`
+    height:80vh;
+  `}
 `;
 
 const StyledCard = ({ image }) => {
@@ -259,15 +274,7 @@ const Hero = ({
   </StyledHero>
 );
 
-
-const InfoSection = () => (
-  <StyledInfoSection>
-
-  </StyledInfoSection>
-);
-
 const BlurbSection = ({ blurbtitle, blurbdesc, blurbimg }) => (
-
   <StyledCont>
     <Row>
       <Col>
@@ -283,7 +290,7 @@ const BlurbSection = ({ blurbtitle, blurbdesc, blurbimg }) => (
 );
 
 const HighlightSection = ({ featuredimage }) => (
-  <div>
+  <div id="highlights">
     <SectionTitle>2020 <strong>Highlights</strong></SectionTitle>
     <img src={Highlights} />
     <div id="2020proceedings">
@@ -353,15 +360,20 @@ const HighlightSection = ({ featuredimage }) => (
   </div>
 );
 
-const InvolvedSection = () => (
-  <StyledCont>
+const PastSpeakersSection = () => (
+  <StyledPastSpeakersSection>
     <h2>Past Speakers and Workshops</h2>
-
     <CardStack />
+  </StyledPastSpeakersSection>
+)
+
+const InvolvedSection = () => (
+  <StyledInvolvedSection>
+
     <h2>Get Involved</h2>
     <Involved />
 
-  </StyledCont>
+  </StyledInvolvedSection>
 );
 
 export const IndexPageTemplate = ({
@@ -379,12 +391,10 @@ export const IndexPageTemplate = ({
   <StyledIndexPage>
     <Hero heading={heading} slogan={slogan} location={location} date={date} cta1={cta1} cta2={cta2} />
     <ParallaxSkyline />
-    <InfoSection />
     <BlurbSection blurbimg={Diver} blurbdesc={mainpitch.description} blurbtitle={mainpitch.title} />
     <HighlightSection featuredimage={Highlights} />
+    <PastSpeakersSection />
     <InvolvedSection />
-
-
   </StyledIndexPage>
 
 );
