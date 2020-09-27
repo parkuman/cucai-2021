@@ -24,7 +24,7 @@ import media from "../styles/media";
 import Button from '../components/Button';
 import Proceedings from '../files/Proceedings-of-CUCAI-2020.pdf';
 import styled from "styled-components";
-import { Tab, Tabs, Row, Col, Nav } from 'react-bootstrap/'
+import { Tab, Tabs, Row, Col, Nav, Carousel } from 'react-bootstrap/'
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 
@@ -143,8 +143,8 @@ const StyledParallaxSkyline = styled.div`
   max-height: 200px;
   position: relative; 
   top: -40vh;
+  pointer-events: none;
 
-  linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.18) 54.46%, #FFFFFF 100%);
 
   ${media.phone`
       top: -16vh;
@@ -169,6 +169,7 @@ const StyledBlurbSection = styled.section`
   flex-direction: row;
   justify-content: space-around;
   align-items: center;
+  z-index: 10!important;
 
   & div {
     max-width: 50%;
@@ -177,11 +178,21 @@ const StyledBlurbSection = styled.section`
 
   ${media.phone`
     flex-direction: column-reverse;
+    max-width: 95%;
 
     & div {
       max-width: 100%;
       margin-right: 0px;
     }
+  `}
+`;
+
+const StyledDesignTeamShowcase = styled.section`
+  max-width: 80%;
+  margin: 0 auto;
+
+  ${media.phone`
+    max-width: 95%;
   `}
 `;
 
@@ -213,6 +224,10 @@ const StyledInvolvedSection = styled.section`
   margin: 0 auto;
   padding: 50px 0 ;
 
+  ${media.phone`
+    max-width: 95%;
+  `}
+
 `;
 
 const StyledCard = ({ image }) => {
@@ -235,6 +250,8 @@ const CardSlide = ({ array }) => {
     </StyledScroller>
   );
 }
+
+
 
 const ParallaxSkyline = () => {
   return (
@@ -302,75 +319,78 @@ const BlurbSection = ({ blurbtitle, blurbdesc, blurbimg }) => (
   </StyledBlurbSection>
 );
 
+const DesignTeamShowcase = ({ images }) => (
+  <StyledDesignTeamShowcase>
+    <SectionSubtitle> Design Team Showcase</SectionSubtitle>
+    <p>The design team showcase was the foundation on which CUCAI was started. This event allows the hard work, dedication and talent of Canadian undergraduate students working on AI-based design projects since September, to be exhibited for industry representatives and other delegates to learn about the work currently being done in the field of AI at the undergraduate level. This event features in-depth presentations for audiences of all levels of experience and backgrounds, as well as engaging and interactive demonstrations for 30+ design teams from across Canada.</p>
+    <Button><a href={Proceedings}>PROCEEDINGS</a></Button>
+    <img src={Proc}></img>
+    <Carousel>
+      {images.map((image, key) => (
+        <Carousel.Item key={key}>
+          <img src={image} alt="design team showcase image" />
+        </Carousel.Item>
+      ))}
+    </Carousel>
+  </StyledDesignTeamShowcase>
+);
+
 const HighlightSection = ({ featuredimage }) => (
-  <div id="highlights">
-    <SectionTitle>2020 <strong>Highlights</strong></SectionTitle>
+  <>
+    <SectionTitle>Conference Events</SectionTitle>
     <img src={Highlights} />
-    <div id="2020proceedings">
+    <StyledCont>
       <Row>
-        <StyledDarkSection>
-          <Col sm={9}>
-            <SectionSubtitle> Design Team Showcase</SectionSubtitle>
-            <p>The design team showcase was the foundation on which CUCAI was started. This event allows the hard work, dedication and talent of Canadian undergraduate students working on AI-based design projects since September, to be exhibited for industry representatives and other delegates to learn about the work currently being done in the field of AI at the undergraduate level. This event features in-depth presentations for audiences of all levels of experience and backgrounds, as well as engaging and interactive demonstrations for 30+ design teams from across Canada.</p>
-            <Button borderStyle="solid" borderColour="#ffffff"><a href={Proceedings} style={{ color: "white" }}>PROCEEDINGS</a></Button>
-          </Col>
-          <Col sm={3}><img src={Proc} style={{ top: "3em" }}></img></Col>
-        </StyledDarkSection>
+        <Col>
+          <img src={showcase}></img>
+        </Col>
+        <Col>
+          <SectionSubtitle>Industry Showcase</SectionSubtitle>
+
+          <p>
+            As a compliment to the design team showcase, this event is designed to show undergraduate students what the present and future of artificial intelligence in industry look like. Booths for each of our industry partners will be set up to allow students to learn about the opportunities available to them within industry. Students learn about how technological advancements in artificial intelligence are shaping a wide variety of industries. The industry showcase is often a favourite of both industry reps and delegates due to the phenomenal networking opportunities.
+
+</p>
+        </Col>
+      </Row>
+      <Row>
+        <Col>
+          <SectionSubtitle>Speakers</SectionSubtitle>
+          <p>Speaker presentations from leaders in academia and industry have been a cornerstone of CUCAI since its inaugural year. These components of the conference empower delegates to learn from the ideas, experiences and knowledge of these professionals as they discuss a variety of fascinating AI topics.
+</p>
+
+        </Col>
+        <Col>
+          <p>abc</p>
+        </Col>
+
+      </Row>
+      <Row>
+        <Col>
+          <SectionSubtitle>Workshops</SectionSubtitle>
+          <p>Workshops are an incredibly engaging facet of CUCAI intended to bring an element of concreteness to the topic of artificial intelligence. These events allow industry partners to showcase their firm’s technology while providing an opportunity for interactive experience with modern AI and data science tools for delegates.
+</p>
+        </Col>
+        <Col>
+          <img src="../img/workshop_k.jpg"></img>
+        </Col>
+
       </Row>
 
-      <CardSlide array={DesignImgs} />
-      <StyledCont>
-        <Row>
-          <Col>
-            <img src={showcase}></img>
-          </Col>
-          <Col>
-            <SectionSubtitle>Industry Showcase</SectionSubtitle>
+      <Row>
+        <Col sm={9}>
+          <h3>Past Sponsors</h3>
+          <img src={Spons}>
+          </img>
 
-            <p>
-              As a compliment to the design team showcase, this event is designed to show undergraduate students what the present and future of artificial intelligence in industry look like. Booths for each of our industry partners will be set up to allow students to learn about the opportunities available to them within industry. Students learn about how technological advancements in artificial intelligence are shaping a wide variety of industries. The industry showcase is often a favourite of both industry reps and delegates due to the phenomenal networking opportunities.
+        </Col>
+        <Col>
+          <Button borderStyle="solid" borderColour="#ffffff"><a href={Proceedings} style={{ color: "white" }}>Sponsorship Package</a></Button>
+        </Col>
+      </Row>
+    </StyledCont>
 
-</p>
-          </Col>
-        </Row>
-        <Row>
-          <Col>
-            <SectionSubtitle>Speakers</SectionSubtitle>
-            <p>Speaker presentations from leaders in academia and industry have been a cornerstone of CUCAI since its inaugural year. These components of the conference empower delegates to learn from the ideas, experiences and knowledge of these professionals as they discuss a variety of fascinating AI topics.
-</p>
-
-          </Col>
-          <Col>
-            <p>abc</p>
-          </Col>
-
-        </Row>
-        <Row>
-          <Col>
-            <SectionSubtitle>Workshops</SectionSubtitle>
-            <p>Workshops are an incredibly engaging facet of CUCAI intended to bring an element of concreteness to the topic of artificial intelligence. These events allow industry partners to showcase their firm’s technology while providing an opportunity for interactive experience with modern AI and data science tools for delegates.
-</p>
-          </Col>
-          <Col>
-            <img src="../img/workshop_k.jpg"></img>
-          </Col>
-
-        </Row>
-
-        <Row>
-          <Col sm={9}>
-            <h3>Past Sponsors</h3>
-            <img src={Spons}>
-            </img>
-
-          </Col>
-          <Col>
-            <Button borderStyle="solid" borderColour="#ffffff"><a href={Proceedings} style={{ color: "white" }}>Sponsorship Package</a></Button>
-          </Col>
-        </Row>
-      </StyledCont>
-    </div>
-  </div>
+  </>
 );
 
 const PastSpeakersSection = () => (
@@ -405,6 +425,7 @@ export const IndexPageTemplate = ({
     <Hero heading={heading} slogan={slogan} location={location} date={date} cta1={cta1} cta2={cta2} />
     <ParallaxSkyline />
     <BlurbSection blurbimg={Diver} blurbdesc={mainpitch.description} blurbtitle={mainpitch.title} />
+    <DesignTeamShowcase images={DesignImgs} />
     <HighlightSection featuredimage={Highlights} />
     <PastSpeakersSection />
     <InvolvedSection />
@@ -462,9 +483,9 @@ export default IndexPage;
 
 export const pageQuery = graphql`
   query IndexPageTemplate {
-    markdownRemark(frontmatter: { templateKey: { eq: "index-page" } }) {
+      markdownRemark(frontmatter: {templateKey: {eq: "index-page" } }) {
       frontmatter {
-        title
+      title
         heading
         slogan
         location
@@ -472,14 +493,14 @@ export const pageQuery = graphql`
         cta1
         cta2
         mainpitch {
-          title
+      title
           description
         }
         description
         intro {
-          blurbs {
-            text
-          }
+      blurbs {
+      text
+    }
           heading
           description
         }

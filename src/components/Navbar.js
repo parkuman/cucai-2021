@@ -16,7 +16,7 @@ const StyledNav = styled.nav`
   left: 0;
   top: 0;
   width: 100%;
-  height: 70px;
+  height: 50px;
   padding: 0 10%;
   display: flex;
   justify-content: space-between;
@@ -25,7 +25,7 @@ const StyledNav = styled.nav`
 `;
 
 const StyledLogo = styled.img`
-  height: 50px;
+  height: 40px;
 `;
 
 const StyledNavLink = styled(Link)`
@@ -50,7 +50,7 @@ const NavbarStyled = () => {
   return (
     <Navbar bg="light" sticky="top" expand="lg">
       <Navbar.Brand href="/">
-      <img
+      <StyledLogo
         alt="Logo"
         src={LogoMain}
         className="d-inline-block align-top"

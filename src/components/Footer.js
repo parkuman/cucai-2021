@@ -11,20 +11,25 @@ import InstagramIcon from '../img/social/instagram.js'
 
 const StyledFooter = styled.footer`
   width: 100%;
-  max-width: 80%;
+  background-color: #f8f9fa;
+  padding-top: 10px;
+`;
+
+const StyledFooterContent = styled.div`
+  max-width: 90%;
   margin: 0 auto;
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: white;
 `;
 
-const LandAcknowledgement = styled.p`
+const Text = styled.p`
   text-align: center;
+  font-size: 0.8rem;
 `;
 
 const StyledLogo = styled.img`
-  height: 50px;
+  height: 40px;
   margin: 1em;
 `;
 
@@ -56,11 +61,11 @@ const Socials = () => <SocialsList>{
   socialMedia.map(social => {
     let image;
     if (social.name.includes("Facebook")) {
-      image = <FacebookIcon size="35px" />;
+      image = <FacebookIcon size="25px" />;
     } else if (social.name.includes("Instagram")) {
-      image = <InstagramIcon size="35px" />;
+      image = <InstagramIcon size="25px" />;
     } else if (social.name.includes("LinkedIn")) {
-      image = <LinkedInIcon size="35px" />;
+      image = <LinkedInIcon size="25px" />;
     } else {
       image = null;
     }
@@ -77,12 +82,14 @@ const Socials = () => <SocialsList>{
 const Footer = () => {
   return (
     <StyledFooter>
-      <LandAcknowledgement>We acknowledge the land we are meeting on is the traditional territory of many nations including the Mississaugas of the Credit, the Anishnabeg, the Chippewa, the Haudenosaunee and the Wendat peoples and is now home to many diverse FirstNations, Inuit and Métis peoples. We also acknowledge that the city of Toronto is covered by Treaty 13 with the Mississaugas of the Credit. To acknowledge this traditional territory is to recognize the territory’s significance for the Indigenous peoples who lived, and continue to live, upon it.</LandAcknowledgement>
-      <Socials />
-      <Link to="/">
-        <StyledLogo src={logo} alt="logo" />
-      </Link>
-
+      <StyledFooterContent>
+        <Text>We acknowledge the land we are meeting on is the traditional territory of many nations including the Mississaugas of the Credit, the Anishnabeg, the Chippewa, the Haudenosaunee and the Wendat peoples and is now home to many diverse FirstNations, Inuit and Métis peoples. We also acknowledge that the city of Toronto is covered by Treaty 13 with the Mississaugas of the Credit. To acknowledge this traditional territory is to recognize the territory’s significance for the Indigenous peoples who lived, and continue to live, upon it.</Text>
+        <Socials />
+        <Link to="/">
+          <StyledLogo src={logo} alt="logo" />
+        </Link>
+        <Text>Copyright © 2020 CUCUAI Canadian Undergraduate Conference on AI. All Rights Reserved</Text>
+      </StyledFooterContent>
     </StyledFooter>
   );
 };
