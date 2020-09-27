@@ -9,7 +9,8 @@ import DesignImgs from "../img/designteams";
 import Clouds from "../img/clouds_to_white.png";
 import Diver from "../img/diver1.svg"
 import Hands from "../img/world.png";
-import showcase from "../img/Showcase_30.jpg";
+import IndustryShowcaseImg from "../img/Showcase_30.jpg";
+import WorkshopShowcaseImg from "../img/workshop_k.jpg";
 import Highlights from "../img/pano.png"
 import Proc from "../img/proceedings.png"
 import Spons from "../img/spons.png"
@@ -89,11 +90,19 @@ const StyledHero = styled.section`
 const SectionTitle = styled.h2`
   font-size: 4rem;
   font-weight: lighter;
+
+  ${media.phone`
+    font-size: 2.5rem;
+  `}
 `;
 
 const SectionSubtitle = styled.h3`
   font-size: 2rem;
   font-weight: lighter;
+
+  ${media.phone`
+    font-size: 1.5rem;
+  `}
 `;
 
 const StyledHeroContent = styled.div`
@@ -163,7 +172,7 @@ const StyledParallax = styled(Parallax)`
 
 const StyledBlurbSection = styled.section`
   max-width: 80%;
-  height: 100vh;
+  min-height: 100vh;
   margin: 0 auto;
   display: flex;
   flex-direction: row;
@@ -187,12 +196,115 @@ const StyledBlurbSection = styled.section`
   `}
 `;
 
-const StyledDesignTeamShowcase = styled.section`
+const StyledConferenceEvents = styled.section`
+  
+`;
+
+const ConferenceEventsList = styled.div`
   max-width: 80%;
+  display: flex;
   margin: 0 auto;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+
+  & > * {
+    padding: 80px 0;
+  }
 
   ${media.phone`
     max-width: 95%;
+  `}
+`;
+
+const EventTitleAndDesc = styled.div`
+  max-width: 48%;
+  ${media.phone`
+    max-width: 100%;
+    padding: 20px 0;
+  `}
+`;
+
+const EventContent = styled.div`
+  max-width: 48%;
+
+  ${media.phone`
+    max-width: 100%;
+    
+  `}
+`;
+
+const StyledDesignTeamShowcase = styled.section`
+  margin: 0 auto;
+`;
+
+const DesignTeamShowcaseContent = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+
+  ${media.phone`
+    flex-direction: column-reverse;
+  `}
+`;
+
+const DesignTeamProceedings = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center; 
+
+  & img {
+    max-width: 50%;
+  }
+`;
+
+const DesignTeamCarousel = styled(Carousel)`
+  max-width: 50vw;
+  max-height: 50vh;
+  margin: 50px auto 0 auto;
+
+  overflow: hidden;
+  
+  ${media.phone`
+    max-width: 100%;
+  `}
+`;
+
+const StyledIndustryShowcase = styled.section`
+  margin: 0 auto;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+
+  ${media.phone`
+    flex-direction: column;
+  `}
+`;
+
+const StyledSpeakersShowcase = styled.section`
+  margin: 0 auto;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+
+  ${media.phone`
+    flex-direction: column-reverse;
+  `}
+`;
+
+const StyledWorkshopsShowcase = styled.section`
+  margin: 0 auto;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+
+  ${media.phone`
+    flex-direction: column-reverse;
   `}
 `;
 
@@ -230,29 +342,6 @@ const StyledInvolvedSection = styled.section`
 
 `;
 
-const StyledCard = ({ image }) => {
-  return (
-    <StyledScrollCard>
-      <img src={image} style={{ objectFit: "cover" }} />
-    </StyledScrollCard>
-  )
-}
-
-const CardSlide = ({ array }) => {
-  return (
-    <StyledScroller>
-      <StyledCard image={array[0]} />
-      <StyledCard image={array[1]} />
-      <StyledCard image={array[3]} />
-      <StyledCard image={array[4]} />
-      <StyledCard image={array[5]} />
-      <StyledCard image={array[6]} />
-    </StyledScroller>
-  );
-}
-
-
-
 const ParallaxSkyline = () => {
   return (
     <StyledParallaxSkyline>
@@ -281,9 +370,6 @@ const ParallaxSkyline = () => {
         <img src={Clouds} />
       </StyledParallax>
     </StyledParallaxSkyline>
-
-
-
   );
 }
 
@@ -309,7 +395,7 @@ const Hero = ({
 const BlurbSection = ({ blurbtitle, blurbdesc, blurbimg }) => (
   <StyledBlurbSection>
     <div>
-      <h2>{blurbtitle}</h2>
+      <SectionSubtitle>{blurbtitle}</SectionSubtitle>
       <p>{blurbdesc}</p>
       <p>As an event geared towards future leaders in this field, we are thrilled to announce that our theme for this year will be AI For Good: Artificial Intelligence, Real Change! From advancing medical research to protecting the environment and aiding in natural disaster recovery, the ways in which AI can make the world a better place continue to grow. We look forward to presenting an event full of engaging speakers and events that will inspire attendees and forge meaningful connections.</p>
     </div>
@@ -319,63 +405,113 @@ const BlurbSection = ({ blurbtitle, blurbdesc, blurbimg }) => (
   </StyledBlurbSection>
 );
 
+const ConferenceEvents = () => (
+  <StyledConferenceEvents>
+    <SectionTitle>Conference Events</SectionTitle>
+    <img src={Highlights} />
+    <ConferenceEventsList>
+      <DesignTeamShowcase images={DesignImgs} />
+      <IndustryShowcase />
+      <SpeakersShowcase />
+      <WorkshopsShowcase />
+    </ConferenceEventsList>
+  </StyledConferenceEvents>
+);
+
 const DesignTeamShowcase = ({ images }) => (
   <StyledDesignTeamShowcase>
-    <SectionSubtitle> Design Team Showcase</SectionSubtitle>
-    <p>The design team showcase was the foundation on which CUCAI was started. This event allows the hard work, dedication and talent of Canadian undergraduate students working on AI-based design projects since September, to be exhibited for industry representatives and other delegates to learn about the work currently being done in the field of AI at the undergraduate level. This event features in-depth presentations for audiences of all levels of experience and backgrounds, as well as engaging and interactive demonstrations for 30+ design teams from across Canada.</p>
-    <Button><a href={Proceedings}>PROCEEDINGS</a></Button>
-    <img src={Proc}></img>
-    <Carousel>
+    <DesignTeamShowcaseContent>
+      <EventTitleAndDesc>
+          <SectionSubtitle>Design Team Showcase</SectionSubtitle>
+          <p>The design team showcase was the foundation on which CUCAI was started. This event allows the hard work, dedication and talent of Canadian undergraduate students working on AI-based design projects since September, to be exhibited for industry representatives and other delegates to learn about the work currently being done in the field of AI at the undergraduate level. This event features in-depth presentations for audiences of all levels of experience and backgrounds, as well as engaging and interactive demonstrations for 30+ design teams from across Canada.</p>
+        </EventTitleAndDesc>
+      <EventContent>
+      <DesignTeamProceedings>
+        <img src={Proc}></img>
+      <Button borderStyle="solid" borderColour="#174461" ><a href={Proceedings}>2020 PROCEEDINGS PDF</a></Button>
+
+      </DesignTeamProceedings>
+
+        
+      </EventContent>
+    </DesignTeamShowcaseContent>
+
+    <DesignTeamCarousel>
       {images.map((image, key) => (
         <Carousel.Item key={key}>
           <img src={image} alt="design team showcase image" />
         </Carousel.Item>
       ))}
-    </Carousel>
-  </StyledDesignTeamShowcase>
+    </DesignTeamCarousel>
+  </StyledDesignTeamShowcase >
 );
 
-const HighlightSection = ({ featuredimage }) => (
-  <>
-    <SectionTitle>Conference Events</SectionTitle>
-    <img src={Highlights} />
-    <StyledCont>
-      <Row>
-        <Col>
-          <img src={showcase}></img>
-        </Col>
-        <Col>
-          <SectionSubtitle>Industry Showcase</SectionSubtitle>
+const IndustryShowcase = () => (
+  <StyledIndustryShowcase>
+      <EventContent>
+        <img src={IndustryShowcaseImg}></img>
+      </EventContent>
 
-          <p>
-            As a compliment to the design team showcase, this event is designed to show undergraduate students what the present and future of artificial intelligence in industry look like. Booths for each of our industry partners will be set up to allow students to learn about the opportunities available to them within industry. Students learn about how technological advancements in artificial intelligence are shaping a wide variety of industries. The industry showcase is often a favourite of both industry reps and delegates due to the phenomenal networking opportunities.
+      <EventTitleAndDesc>
+      <SectionSubtitle>Industry Showcase</SectionSubtitle>
+
+<p>
+  As a compliment to the design team showcase, this event is designed to show undergraduate students what the present and future of artificial intelligence in industry look like. Booths for each of our industry partners will be set up to allow students to learn about the opportunities available to them within industry. Students learn about how technological advancements in artificial intelligence are shaping a wide variety of industries. The industry showcase is often a favourite of both industry reps and delegates due to the phenomenal networking opportunities.
 
 </p>
-        </Col>
-      </Row>
-      <Row>
-        <Col>
-          <SectionSubtitle>Speakers</SectionSubtitle>
+      </EventTitleAndDesc>
+
+  </StyledIndustryShowcase>
+
+);
+
+const SpeakersShowcase = () => (
+  <StyledSpeakersShowcase>
+     
+
+      <EventTitleAndDesc>
+      <SectionSubtitle>Speakers</SectionSubtitle>
           <p>Speaker presentations from leaders in academia and industry have been a cornerstone of CUCAI since its inaugural year. These components of the conference empower delegates to learn from the ideas, experiences and knowledge of these professionals as they discuss a variety of fascinating AI topics.
 </p>
 
-        </Col>
-        <Col>
-          <p>abc</p>
-        </Col>
+      </EventTitleAndDesc>
 
-      </Row>
-      <Row>
-        <Col>
-          <SectionSubtitle>Workshops</SectionSubtitle>
+      <EventContent>
+        <p>speakerstuff</p>
+      </EventContent>
+
+  </StyledSpeakersShowcase>
+
+);
+
+const WorkshopsShowcase = () => (
+  <StyledWorkshopsShowcase>
+     
+     <EventContent>
+     <img src={WorkshopShowcaseImg}></img>
+      </EventContent>
+      <EventTitleAndDesc>
+      <SectionSubtitle>Workshops</SectionSubtitle>
           <p>Workshops are an incredibly engaging facet of CUCAI intended to bring an element of concreteness to the topic of artificial intelligence. These events allow industry partners to showcase their firm’s technology while providing an opportunity for interactive experience with modern AI and data science tools for delegates.
 </p>
-        </Col>
-        <Col>
-          <img src="../img/workshop_k.jpg"></img>
-        </Col>
 
-      </Row>
+      </EventTitleAndDesc>
+      
+      
+
+  </StyledWorkshopsShowcase>
+
+);
+
+
+
+const HighlightSection = ({ featuredimage }) => (
+  <>
+
+    <StyledCont>
+      
+     
+      
 
       <Row>
         <Col sm={9}>
@@ -425,7 +561,7 @@ export const IndexPageTemplate = ({
     <Hero heading={heading} slogan={slogan} location={location} date={date} cta1={cta1} cta2={cta2} />
     <ParallaxSkyline />
     <BlurbSection blurbimg={Diver} blurbdesc={mainpitch.description} blurbtitle={mainpitch.title} />
-    <DesignTeamShowcase images={DesignImgs} />
+    <ConferenceEvents />
     <HighlightSection featuredimage={Highlights} />
     <PastSpeakersSection />
     <InvolvedSection />

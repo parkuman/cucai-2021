@@ -20,10 +20,15 @@ const StyledButton = styled.button`
   font-size: 1.2rem;
   cursor: pointer;
 
+  & * {
+    color: ${props => props.textColour ? props.textColour : "#174461"};
+
+  }
+
   &:hover {
 
     background: ${props => props.backgroundColourHover ? props.backgroundColourHover : props.backgroundColour};
-    color: ${props => props.textColourHover ? props.textColourHover : "#174461"};
+    color: ${props => props.textColourHover ? props.textColourHover : props.textColour};
     transform: scale(1.1,1.1);
     
     & * {
