@@ -6,7 +6,6 @@ import styled from "styled-components";
 import media from "../styles/media";
 
 import Layout from "../components/Layout";
-import { ourTeam } from "../config";
 
 const StyledAboutPage = styled.div`
   padding: 3em;

@@ -2,7 +2,7 @@ import React from "react";
 
 import styled from "styled-components";
 
-import { Tab, Tabs, Row, Col, Nav } from 'react-bootstrap/';
+import { Tab, Row, Col, Nav } from 'react-bootstrap/';
 
 const StyledDetails = styled.div`
   padding: 15px;

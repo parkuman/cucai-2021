@@ -5,24 +5,9 @@ import styled from "styled-components";
 import theme from "../styles/theme";
 
 import { navLinks } from "../config";
-import LogoLight from "../img/logo-main-light.png";
 import LogoMain from "../img/Logo main.svg"
-import {Row, Col, Nav, Navbar} from 'react-bootstrap/'
+import {Nav, Navbar} from 'react-bootstrap/'
 import 'bootstrap/dist/css/bootstrap.min.css';
-
-
-const StyledNav = styled.nav`
-  position: fixed;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 50px;
-  padding: 0 10%;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  z-index: 100000;
-`;
 
 const StyledLogo = styled.img`
   height: 40px;

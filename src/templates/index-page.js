@@ -1,14 +1,13 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { graphql } from "gatsby";
-import { Parallax, ParallaxBanner } from "react-scroll-parallax";
+import { Parallax } from "react-scroll-parallax";
 
 //Photos
 import SkylineLayers from "../img/parallaxSkyline";
 import DesignImgs from "../img/designteams";
 import Clouds from "../img/clouds_to_white.png";
 import Diver from "../img/diver1.svg";
-import Hands from "../img/world.png";
 import IndustryShowcaseImg from "../img/Showcase_30.jpg";
 import WorkshopShowcaseImg from "../img/workshop_k.jpg";
 import Highlights from "../img/pano.png";
@@ -25,7 +24,7 @@ import media from "../styles/media";
 import Button from "../components/Button";
 import Proceedings from "../files/Proceedings-of-CUCAI-2020.pdf";
 import styled from "styled-components";
-import { Tab, Tabs, Row, Col, Nav, Carousel } from "react-bootstrap/";
+import { Row, Col, Carousel } from "react-bootstrap/";
 
 import "bootstrap/dist/css/bootstrap.min.css";
 
@@ -138,12 +137,6 @@ const SectionSubtitle = styled.h3`
 const StyledHeroContent = styled.div`
   margin: 0 auto;
   max-width: 80%;
-`;
-
-const StyledDarkSection = styled.div`
-  background-color: #1a4fcb;
-  padding: 1em;
-  color: white;
 `;
 
 const StyledHeading = styled.h1`
@@ -339,19 +332,6 @@ const StyledImg = styled.section`
   max-width: 100%;
 `;
 
-const StyledScroller = styled.div`
-  display: flex;
-  flex-wrap: nowrap;
-  overflow-x: auto;
-  height: 50vh;
-`;
-
-const StyledScrollCard = styled.div`
-  flex: 0 0 auto;
-  border-radius: 1em;
-  width: 70vw;
-`;
-
 const StyledPastSpeakersSection = styled.section`
   max-width: 80%;
   margin: 0 auto;
@@ -372,28 +352,28 @@ const ParallaxSkyline = () => {
   return (
     <StyledParallaxSkyline>
       <StyledParallax y={[-10, 0]}>
-        <img src={SkylineLayers[0]} />
+        <img src={SkylineLayers[0]} alt="skyline layer" />
       </StyledParallax>
       <StyledParallax y={[-90, -100]}>
-        <img src={SkylineLayers[1]} />
+        <img src={SkylineLayers[1]} alt="skyline layer" />
       </StyledParallax>
       <StyledParallax y={[-190, -205]}>
-        <img src={SkylineLayers[2]} />
+        <img src={SkylineLayers[2]} alt="skyline layer" />
       </StyledParallax>
       <StyledParallax y={[-290, -310]}>
-        <img src={SkylineLayers[3]} />
+        <img src={SkylineLayers[3]} alt="skyline layer" />
       </StyledParallax>
       <StyledParallax y={[-390, -415]}>
-        <img src={SkylineLayers[4]} />
+        <img src={SkylineLayers[4]} alt="skyline layer" />
       </StyledParallax>
       <StyledParallax y={[-490, -520]}>
-        <img src={SkylineLayers[5]} />
+        <img src={SkylineLayers[5]} alt="skyline layer" />
       </StyledParallax>
       <StyledParallax y={[-590, -620]}>
-        <img src={SkylineLayers[6]} />
+        <img src={SkylineLayers[6]} alt="skyline layer"/>
       </StyledParallax>
       <StyledParallax y={[-750, -780]}>
-        <img src={Clouds} />
+        <img src={Clouds} alt="skyline layer"/>
       </StyledParallax>
     </StyledParallaxSkyline>
   );
@@ -436,7 +416,7 @@ const BlurbSection = ({ blurbtitle, blurbdesc, blurbimg }) => (
     </div>
 
     <StyledImg>
-      <img src={blurbimg}></img>
+      <img src={blurbimg} alt="diver underwater"></img>
     </StyledImg>
   </StyledBlurbSection>
 );
@@ -444,7 +424,7 @@ const BlurbSection = ({ blurbtitle, blurbdesc, blurbimg }) => (
 const ConferenceEvents = () => (
   <StyledConferenceEvents>
     <SectionTitle>Conference Events</SectionTitle>
-    <img src={Highlights} />
+    <img src={Highlights} alt="last years highlights"/>
     <ConferenceEventsList>
       <DesignTeamShowcase images={DesignImgs} />
       <IndustryShowcase />
@@ -473,7 +453,7 @@ const DesignTeamShowcase = ({ images }) => (
       </EventTitleAndDesc>
       <EventContent>
         <DesignTeamProceedings>
-          <img src={Proc}></img>
+          <img src={Proc} alt="conference proceedings"></img>
           <Button borderStyle="solid" borderColour="#174461">
             <a href={Proceedings}>2020 PROCEEDINGS PDF</a>
           </Button>
@@ -484,7 +464,7 @@ const DesignTeamShowcase = ({ images }) => (
     <DesignTeamCarousel>
       {images.map((image, key) => (
         <Carousel.Item key={key}>
-          <img src={image} alt="design team showcase image" />
+          <img src={image} alt="design team showcase" />
         </Carousel.Item>
       ))}
     </DesignTeamCarousel>
@@ -494,7 +474,7 @@ const DesignTeamShowcase = ({ images }) => (
 const IndustryShowcase = () => (
   <StyledIndustryShowcase>
     <EventContent>
-      <img src={IndustryShowcaseImg}></img>
+      <img src={IndustryShowcaseImg} alt="industry showcase"></img>
     </EventContent>
 
     <EventTitleAndDesc>
@@ -537,7 +517,7 @@ const SpeakersShowcase = () => (
 const WorkshopsShowcase = () => (
   <StyledWorkshopsShowcase>
     <EventContent>
-      <img src={WorkshopShowcaseImg}></img>
+      <img src={WorkshopShowcaseImg} alt="workshop showcase"></img>
     </EventContent>
     <EventTitleAndDesc>
       <SectionSubtitle>Workshops</SectionSubtitle>
@@ -558,7 +538,7 @@ const HighlightSection = ({ featuredimage }) => (
       <Row>
         <Col sm={9}>
           <h3>Past Sponsors</h3>
-          <img src={Spons}></img>
+          <img src={Spons} alt="sponsorships"></img>
         </Col>
         <Col>
           <Button borderStyle="solid" borderColour="#ffffff">
