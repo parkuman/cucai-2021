@@ -339,7 +339,7 @@ const StyledPastSpeakersSection = styled.section`
 `;
 
 const StyledInvolvedSection = styled.section`
-  max-width: 80%;
+  max-width: 60%;
   margin: 0 auto;
   padding: 50px 0;
 
@@ -532,7 +532,7 @@ const WorkshopsShowcase = () => (
   </StyledWorkshopsShowcase>
 );
 
-const HighlightSection = ({ featuredimage }) => (
+const SponsorSection = () => (
   <>
     <StyledCont>
       <Row>
@@ -594,7 +594,7 @@ export const IndexPageTemplate = ({
       blurbtitle={mainpitch.title}
     />
     <ConferenceEvents />
-    <HighlightSection featuredimage={Highlights} />
+    <SponsorSection featuredimage={Highlights} />
     <PastSpeakersSection />
     <InvolvedSection />
   </StyledIndexPage>

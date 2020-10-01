@@ -16,8 +16,8 @@ module.exports = {
   ],
   navLinks: [
     {
-      name: "Highlights",
-      url: "/#highlights",
+      name: "Events",
+      url: "/#events",
     },
     {
       name: "Speakers",
