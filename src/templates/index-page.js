@@ -16,9 +16,9 @@ import Highlights from "../img/pano.png";
 import Proc from "../img/proceedings.png";
 import Spons from "../img/spons.jpg";
 
-import FacebookIcon from '../img/social/facebook.js'
-import LinkedInIcon from '../img/social/linkedin.js'
-import InstagramIcon from '../img/social/instagram.js'
+import FacebookIcon from "../img/social/facebook.js";
+import LinkedInIcon from "../img/social/linkedin.js";
+import InstagramIcon from "../img/social/instagram.js";
 
 import CardStack from "../components/Cards";
 import Layout from "../components/Layout";
@@ -26,7 +26,7 @@ import Involved from "../components/Involvement";
 
 import theme from "../styles/theme";
 import media from "../styles/media";
-import { socialMedia } from "../config"
+import { socialMedia } from "../config";
 
 import Button from "../components/Button";
 import Proceedings from "../files/Proceedings-of-CUCAI-2020.pdf";
@@ -48,10 +48,10 @@ const StyledCont = styled.div`
 `;
 
 const IdHrefAnchor = styled.a`
-    display: block;
-    position: relative;
-    top: -100px;
-    visibility: hidden;
+  display: block;
+  position: relative;
+  top: -100px;
+  visibility: hidden;
 `;
 
 const StyledHero = styled.section`
@@ -181,10 +181,10 @@ const StyledBlurbSection = styled.section`
 `;
 
 const StyledCovidBanner = styled.section`
-padding: 100px 0;
-color: white;
+  padding: 100px 0;
+  color: white;
   width: 100vw;
-  background: #1A4FCB;
+  background: #1a4fcb;
 `;
 
 const CovidContent = styled.div`
@@ -201,14 +201,13 @@ const CovidContent = styled.div`
 const StyledConferenceEvents = styled.section`
   & > div {
     position: relative;
-  & h2 {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    color: white;
+    & h2 {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      color: white;
+    }
   }
-  }
-  
 `;
 
 const ConferenceEventsList = styled.div`
@@ -337,7 +336,7 @@ const CityImg = styled.img`
   `}
   ${media.tablet`
     transform: translateY(5vh);
-  `}  
+  `}
 `;
 
 const StyledPastSpeakersSection = styled.section`
@@ -397,10 +396,10 @@ const ParallaxSkyline = () => {
         <img src={SkylineLayers[5]} alt="skyline layer" />
       </StyledParallax>
       <StyledParallax y={[-590, -620]}>
-        <img src={SkylineLayers[6]} alt="skyline layer"/>
+        <img src={SkylineLayers[6]} alt="skyline layer" />
       </StyledParallax>
       <StyledParallax y={[-750, -780]}>
-        <img src={Clouds} alt="skyline layer"/>
+        <img src={Clouds} alt="skyline layer" />
       </StyledParallax>
     </StyledParallaxSkyline>
   );
@@ -409,104 +408,95 @@ const ParallaxSkyline = () => {
 const Hero = ({ heading, slogan, location, date, cta1, cta2 }) => (
   <StyledHero>
     <Fade bottom distance="80px">
-    <StyledHeroContent>
-      <StyledHeading>
-        <Fade>{heading}</Fade>
-      </StyledHeading>
-      <StyledSlogan>{slogan}</StyledSlogan>
-      <StyledInfo>
-        {location.toUpperCase()} | {date.toUpperCase()}
-      </StyledInfo>
-      <Button backgroundColour="white">
-        <a href="#spons">{cta1}</a>
-      </Button>
-      <Button borderStyle="solid" borderColour="#174461">
-        <a href="mailto:chair@cucai.ca">{cta2}</a>
-      </Button>
-    </StyledHeroContent>
+      <StyledHeroContent>
+        <StyledHeading>
+          <Fade>{heading}</Fade>
+        </StyledHeading>
+        <StyledSlogan>{slogan}</StyledSlogan>
+        <StyledInfo>
+          {location.toUpperCase()} | {date.toUpperCase()}
+        </StyledInfo>
+        <Button backgroundColour="white">
+          <a href="#spons">{cta1}</a>
+        </Button>
+        <Button borderStyle="solid" borderColour="#174461">
+          <a href="mailto:chair@cucai.ca">{cta2}</a>
+        </Button>
+      </StyledHeroContent>
     </Fade>
-    
+
     <CityComponent />
   </StyledHero>
 );
 
-const CityComponent = () => (
-  <CityImg src={City}></CityImg>
-)
+const CityComponent = () => <CityImg src={City}></CityImg>;
 
 const BlurbSection = ({ blurbtitle, blurbdesc, blurbimg }) => (
-    <StyledBlurbSection>
-  <Fade bottom distance="80px">
+  <StyledBlurbSection>
+    <Fade bottom distance="80px">
+      <div>
+        <SectionSubtitle>{blurbtitle}</SectionSubtitle>
+        <p>{blurbdesc}</p>
+        <p>
+          As an event geared towards future leaders in this field, we are
+          thrilled to announce that our theme for this year will be AI For Good:
+          Artificial Intelligence, Real Change! From advancing medical research
+          to protecting the environment and aiding in natural disaster recovery,
+          the ways in which AI can make the world a better place continue to
+          grow. We look forward to presenting an event full of engaging speakers
+          and events that will inspire attendees and forge meaningful
+          connections.
+        </p>
+      </div>
 
-    <div>
-      <SectionSubtitle>{blurbtitle}</SectionSubtitle>
-      <p>{blurbdesc}</p>
-      <p>
-        As an event geared towards future leaders in this field, we are thrilled
-        to announce that our theme for this year will be AI For Good: Artificial
-        Intelligence, Real Change! From advancing medical research to protecting
-        the environment and aiding in natural disaster recovery, the ways in
-        which AI can make the world a better place continue to grow. We look
-        forward to presenting an event full of engaging speakers and events that
-        will inspire attendees and forge meaningful connections.
-      </p>
-    </div>
-    
-
-    <StyledImg>
-      <img src={blurbimg} alt="diver underwater"></img>
-    </StyledImg>
+      <StyledImg>
+        <img src={blurbimg} alt="diver underwater"></img>
+      </StyledImg>
     </Fade>
   </StyledBlurbSection>
-  
-  
 );
 
 const CovidBanner = () => (
   <StyledCovidBanner>
-  <Fade bottom distance="80px">
-  <CovidContent>
-    <SectionTitle>COVID-19 Response</SectionTitle>
-    <p>The pandemic has changed the status quo of conferences all around the world. Click the link below to read our new plan for an <strong>online</strong> CUCAI 2021.</p>
-    <Button borderStyle="solid" borderColour="white" textColour="white"><Link to="/covidresponse">See Our Plans</Link></Button>
-    </CovidContent>
-  </Fade>
-    
-    
-    
+    <Fade bottom distance="80px">
+      <CovidContent>
+        <SectionTitle>COVID-19 Response</SectionTitle>
+        <p>
+          The pandemic has changed the status quo of conferences all around the
+          world. Click the link below to read our new plan for an{" "}
+          <strong>online</strong> CUCAI 2021.
+        </p>
+        <Button borderStyle="solid" borderColour="white" textColour="white">
+          <Link to="/covidresponse">See Our Plans</Link>
+        </Button>
+      </CovidContent>
+    </Fade>
   </StyledCovidBanner>
 );
 
 const ConferenceEvents = () => (
-  <StyledConferenceEvents >
-  <Fade bottom distance="80px">
-
-    <IdHrefAnchor id="events" />
-    <div>
-      <img src={Highlights} alt="last years highlights"/>
-    <SectionTitle>Conference Events</SectionTitle>
-    </div>
+  <StyledConferenceEvents>
+    <Fade bottom distance="80px">
+      <IdHrefAnchor id="events" />
+      <div>
+        <img src={Highlights} alt="last years highlights" />
+        <SectionTitle>Conference Events</SectionTitle>
+      </div>
     </Fade>
     <ConferenceEventsList>
-  <Fade bottom distance="80px">
-  <DesignTeamShowcase images={DesignImgs} />
-  </Fade>
-  <Fade bottom distance="80px">
-  <IndustryShowcase />
-
-  </Fade>
-  <Fade bottom distance="80px">
-  <SpeakersShowcase />
-    
-    </Fade>
-    <Fade bottom distance="80px">
-    <WorkshopsShowcase />
-    
-    </Fade>
-      
-      
+      <Fade bottom distance="80px">
+        <DesignTeamShowcase images={DesignImgs} />
+      </Fade>
+      <Fade bottom distance="80px">
+        <IndustryShowcase />
+      </Fade>
+      <Fade bottom distance="80px">
+        <SpeakersShowcase />
+      </Fade>
+      <Fade bottom distance="80px">
+        <WorkshopsShowcase />
+      </Fade>
     </ConferenceEventsList>
-
   </StyledConferenceEvents>
 );
 
@@ -515,43 +505,45 @@ const DesignTeamShowcase = ({ images }) => {
     padding-bottom: 10px;
   `;
 
-  return(
+  return (
     <StyledDesignTeamShowcase>
-    <DesignTeamShowcaseContent>
-      <EventTitleAndDesc>
-        <SectionSubtitle>Design Team Showcase</SectionSubtitle>
-        <p>
-          The design team showcase was the foundation on which CUCAI was
-          started. This event allows the hard work, dedication and talent of
-          Canadian undergraduate students working on AI-based design projects
-          since September, to be exhibited for industry representatives and
-          other delegates to learn about the work currently being done in the
-          field of AI at the undergraduate level. This event features in-depth
-          presentations for audiences of all levels of experience and
-          backgrounds, as well as engaging and interactive demonstrations for
-          30+ design teams from across Canada.
-        </p>
-      </EventTitleAndDesc>
-      <EventContent>
-        <DesignTeamProceedings>
-          <ProceedingsImg src={Proc} alt="conference proceedings"></ProceedingsImg>
-          <Button borderStyle="solid" borderColour="#174461">
-            <a href={Proceedings}>2020 PROCEEDINGS PDF</a>
-          </Button>
-        </DesignTeamProceedings>
-      </EventContent>
-    </DesignTeamShowcaseContent>
+      <DesignTeamShowcaseContent>
+        <EventTitleAndDesc>
+          <SectionSubtitle>Design Team Showcase</SectionSubtitle>
+          <p>
+            The design team showcase was the foundation on which CUCAI was
+            started. This event allows the hard work, dedication and talent of
+            Canadian undergraduate students working on AI-based design projects
+            since September, to be exhibited for industry representatives and
+            other delegates to learn about the work currently being done in the
+            field of AI at the undergraduate level. This event features in-depth
+            presentations for audiences of all levels of experience and
+            backgrounds, as well as engaging and interactive demonstrations for
+            30+ design teams from across Canada.
+          </p>
+        </EventTitleAndDesc>
+        <EventContent>
+          <DesignTeamProceedings>
+            <ProceedingsImg
+              src={Proc}
+              alt="conference proceedings"
+            ></ProceedingsImg>
+            <Button borderStyle="solid" borderColour="#174461">
+              <a href={Proceedings}>2020 PROCEEDINGS PDF</a>
+            </Button>
+          </DesignTeamProceedings>
+        </EventContent>
+      </DesignTeamShowcaseContent>
 
-    <DesignTeamCarousel>
-      {images.map((image, key) => (
-        <Carousel.Item key={key}>
-          <img src={image} alt="design team showcase" />
-        </Carousel.Item>
-      ))}
-    </DesignTeamCarousel>
-  </StyledDesignTeamShowcase>
+      <DesignTeamCarousel>
+        {images.map((image, key) => (
+          <Carousel.Item key={key}>
+            <img src={image} alt="design team showcase" />
+          </Carousel.Item>
+        ))}
+      </DesignTeamCarousel>
+    </StyledDesignTeamShowcase>
   );
-  
 };
 
 const IndustryShowcase = () => (
@@ -618,26 +610,20 @@ const WorkshopsShowcase = () => (
 const SponsorSection = () => (
   <StyledSponsorSection>
     <Fade bottom distance="80px">
-    <IdHrefAnchor id="sponsors"/>
-          <SectionTitle>Sponsors</SectionTitle>
-          <h3>Sponsor Us</h3>
-          <p>There are many advantages to becoming a CUCAI sponsor.</p>
-          <Button borderStyle="solid" >
-            <a href={SponsorshipPackage}>
-              View Our Benefits Package
-            </a>
-          </Button>
-          <br></br>
-          <br></br>
-          <br></br>
+      <IdHrefAnchor id="sponsors" />
+      <SectionTitle>Sponsors</SectionTitle>
+      <h3>Sponsor Us</h3>
+      <p>There are many advantages to becoming a CUCAI sponsor.</p>
+      <Button borderStyle="solid">
+        <a href={SponsorshipPackage}>View Our Benefits Package</a>
+      </Button>
+      <br></br>
+      <br></br>
+      <br></br>
 
-          <h3>Past Sponsors & Partners</h3>
-          <img src={Spons} alt="sponsorships"></img>
+      <h3>Past Sponsors & Partners</h3>
+      <img src={Spons} alt="sponsorships"></img>
     </Fade>
-
-    
-          
-
   </StyledSponsorSection>
 );
 
@@ -651,13 +637,10 @@ const PastSpeakersSection = () => (
 const InvolvedSection = () => (
   <StyledInvolvedSection>
     <Fade bottom distance="80px">
-    <IdHrefAnchor id="involvement" />
-    <SectionTitle>Get Involved</SectionTitle>
-    <Involved />
-
+      <IdHrefAnchor id="involvement" />
+      <SectionTitle>Get Involved</SectionTitle>
+      <Involved />
     </Fade>
-
-    
   </StyledInvolvedSection>
 );
 
@@ -669,12 +652,11 @@ const SocialLink = styled(Link)`
   }
 
   &:hover {
-      & svg {
-          fill: var(--cucai-blue);
-          transform: rotate(10deg) translateY(-3px);
-      }
+    & svg {
+      fill: var(--cucai-blue);
+      transform: rotate(10deg) translateY(-3px);
+    }
   }
-  
 `;
 
 const SocialsList = styled.div`
@@ -684,41 +666,39 @@ const SocialsList = styled.div`
   justify-content: center;
 `;
 
-const Socials = () => <SocialsList>{
-  socialMedia.map(social => {
-    let image;
-    if (social.name.includes("Facebook")) {
-      image = <FacebookIcon size="25px" />;
-    } else if (social.name.includes("Instagram")) {
-      image = <InstagramIcon size="25px" />;
-    } else if (social.name.includes("LinkedIn")) {
-      image = <LinkedInIcon size="25px" />;
-    } else {
-      image = null;
-    }
+const Socials = () => (
+  <SocialsList>
+    {socialMedia.map((social) => {
+      let image;
+      if (social.name.includes("Facebook")) {
+        image = <FacebookIcon size="25px" />;
+      } else if (social.name.includes("Instagram")) {
+        image = <InstagramIcon size="25px" />;
+      } else if (social.name.includes("LinkedIn")) {
+        image = <LinkedInIcon size="25px" />;
+      } else {
+        image = null;
+      }
 
-    return (
-      <SocialLink to={social.url}>
-        {image}
-      </SocialLink>
-    );
-  })}
-</SocialsList>
+      return <SocialLink to={social.url}>{image}</SocialLink>;
+    })}
+  </SocialsList>
+);
 
 const ContactUsSection = () => (
   <StyledContactUsSection>
     <Fade bottom distance="80px">
-    <SectionTitle>Contact Us</SectionTitle>
-    <h3>Email</h3>
-    <Button borderStyle="solid"><a href="mailto:chair@cucai.ca">chair@cucai.ca</a></Button>
-    <br></br>
+      <IdHrefAnchor id="contact" />
+      <SectionTitle>Contact Us</SectionTitle>
+      <h3>Email</h3>
+      <Button borderStyle="solid">
+        <a href="mailto:chair@cucai.ca">chair@cucai.ca</a>
+      </Button>
+      <br></br>
 
-    <h3>Social Media</h3>
-    <Socials />
-
+      <h3>Social Media</h3>
+      <Socials />
     </Fade>
-
-    
   </StyledContactUsSection>
 );
 

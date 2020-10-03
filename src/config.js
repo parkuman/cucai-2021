@@ -20,12 +20,12 @@ module.exports = {
       url: "/#events",
     },
     {
-      name: "Get Involved",
-      url: "/#involvement",
-    },
-    {
       name: "Sponsors",
       url: "/#sponsors",
+    },
+    {
+      name: "Get Involved",
+      url: "/#involvement",
     },
     {
       name: "Contact",
