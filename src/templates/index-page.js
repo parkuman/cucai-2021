@@ -2,6 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import { graphql, Link } from "gatsby";
 import { Parallax } from "react-scroll-parallax";
+import Fade from "react-reveal/Fade";
 
 //Photos
 import SkylineLayers from "../img/parallaxSkyline";
@@ -39,61 +40,6 @@ import "bootstrap/dist/css/bootstrap.min.css";
 //import Cards from "../components/Slideshow"
 
 const StyledIndexPage = styled.div``;
-
-const Fade = styled.div`
-  .fade-in {
-    animation: fadeIn ease 20s;
-    -webkit-animation: fadeIn ease 20s;
-    -moz-animation: fadeIn ease 20s;
-    -o-animation: fadeIn ease 20s;
-    -ms-animation: fadeIn ease 20s;
-  }
-
-  @keyframes fadeIn {
-    0% {
-      opacity: 0;
-    }
-    100% {
-      opacity: 1;
-    }
-  }
-
-  @-moz-keyframes fadeIn {
-    0% {
-      opacity: 0;
-    }
-    100% {
-      opacity: 1;
-    }
-  }
-
-  @-webkit-keyframes fadeIn {
-    0% {
-      opacity: 0;
-    }
-    100% {
-      opacity: 1;
-    }
-  }
-
-  @-o-keyframes fadeIn {
-    0% {
-      opacity: 0;
-    }
-    100% {
-      opacity: 1;
-    }
-  }
-
-  @-ms-keyframes fadeIn {
-    0% {
-      opacity: 0;
-    }
-    100% {
-      opacity: 1;
-    }
-  }
-`;
 
 const StyledCont = styled.div`
   max-width: 80%;
@@ -462,6 +408,7 @@ const ParallaxSkyline = () => {
 
 const Hero = ({ heading, slogan, location, date, cta1, cta2 }) => (
   <StyledHero>
+    <Fade bottom distance="80px">
     <StyledHeroContent>
       <StyledHeading>
         <Fade>{heading}</Fade>
@@ -477,6 +424,8 @@ const Hero = ({ heading, slogan, location, date, cta1, cta2 }) => (
         <a href="mailto:chair@cucai.ca">{cta2}</a>
       </Button>
     </StyledHeroContent>
+    </Fade>
+    
     <CityComponent />
   </StyledHero>
 );
@@ -486,7 +435,9 @@ const CityComponent = () => (
 )
 
 const BlurbSection = ({ blurbtitle, blurbdesc, blurbimg }) => (
-  <StyledBlurbSection>
+    <StyledBlurbSection>
+  <Fade bottom distance="80px">
+
     <div>
       <SectionSubtitle>{blurbtitle}</SectionSubtitle>
       <p>{blurbdesc}</p>
@@ -500,38 +451,62 @@ const BlurbSection = ({ blurbtitle, blurbdesc, blurbimg }) => (
         will inspire attendees and forge meaningful connections.
       </p>
     </div>
+    
 
     <StyledImg>
       <img src={blurbimg} alt="diver underwater"></img>
     </StyledImg>
+    </Fade>
   </StyledBlurbSection>
+  
+  
 );
 
 const CovidBanner = () => (
   <StyledCovidBanner>
-    <CovidContent>
+  <Fade bottom distance="80px">
+  <CovidContent>
     <SectionTitle>COVID-19 Response</SectionTitle>
     <p>The pandemic has changed the status quo of conferences all around the world. Click the link below to read our new plan for an <strong>online</strong> CUCAI 2021.</p>
     <Button borderStyle="solid" borderColour="white" textColour="white"><Link to="/covidresponse">See Our Plans</Link></Button>
     </CovidContent>
+  </Fade>
+    
+    
     
   </StyledCovidBanner>
 );
 
 const ConferenceEvents = () => (
   <StyledConferenceEvents >
+  <Fade bottom distance="80px">
+
     <IdHrefAnchor id="events" />
     <div>
       <img src={Highlights} alt="last years highlights"/>
     <SectionTitle>Conference Events</SectionTitle>
     </div>
-    
+    </Fade>
     <ConferenceEventsList>
-      <DesignTeamShowcase images={DesignImgs} />
-      <IndustryShowcase />
-      <SpeakersShowcase />
-      <WorkshopsShowcase />
+  <Fade bottom distance="80px">
+  <DesignTeamShowcase images={DesignImgs} />
+  </Fade>
+  <Fade bottom distance="80px">
+  <IndustryShowcase />
+
+  </Fade>
+  <Fade bottom distance="80px">
+  <SpeakersShowcase />
+    
+    </Fade>
+    <Fade bottom distance="80px">
+    <WorkshopsShowcase />
+    
+    </Fade>
+      
+      
     </ConferenceEventsList>
+
   </StyledConferenceEvents>
 );
 
@@ -642,6 +617,7 @@ const WorkshopsShowcase = () => (
 
 const SponsorSection = () => (
   <StyledSponsorSection>
+    <Fade bottom distance="80px">
     <IdHrefAnchor id="sponsors"/>
           <SectionTitle>Sponsors</SectionTitle>
           <h3>Sponsor Us</h3>
@@ -657,6 +633,9 @@ const SponsorSection = () => (
 
           <h3>Past Sponsors & Partners</h3>
           <img src={Spons} alt="sponsorships"></img>
+    </Fade>
+
+    
           
 
   </StyledSponsorSection>
@@ -671,9 +650,14 @@ const PastSpeakersSection = () => (
 
 const InvolvedSection = () => (
   <StyledInvolvedSection>
+    <Fade bottom distance="80px">
     <IdHrefAnchor id="involvement" />
     <SectionTitle>Get Involved</SectionTitle>
     <Involved />
+
+    </Fade>
+
+    
   </StyledInvolvedSection>
 );
 
@@ -723,6 +707,7 @@ const Socials = () => <SocialsList>{
 
 const ContactUsSection = () => (
   <StyledContactUsSection>
+    <Fade bottom distance="80px">
     <SectionTitle>Contact Us</SectionTitle>
     <h3>Email</h3>
     <Button borderStyle="solid"><a href="mailto:chair@cucai.ca">chair@cucai.ca</a></Button>
@@ -730,6 +715,10 @@ const ContactUsSection = () => (
 
     <h3>Social Media</h3>
     <Socials />
+
+    </Fade>
+
+    
   </StyledContactUsSection>
 );
 
