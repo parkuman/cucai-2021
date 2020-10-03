@@ -4,7 +4,7 @@ title: Canadian Undergraduate Conference on Artificial Intelligence
 image: /img/home-jumbotron.jpg
 heading: The Canadian Undergraduate Conference on Artificial Intelligence
 slogan: Artificial intelligence, real change.
-location: Toronto, ON
+location: Online
 date: March 6-8, 2021
 cta1: SPONSOR US
 cta2: STAY UPDATED

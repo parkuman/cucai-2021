@@ -1,18 +1,23 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { graphql } from "gatsby";
+import { graphql, Link } from "gatsby";
 import { Parallax } from "react-scroll-parallax";
 
 //Photos
 import SkylineLayers from "../img/parallaxSkyline";
 import DesignImgs from "../img/designteams";
 import Clouds from "../img/clouds_to_white.png";
+import City from "../img/CIDEE.png";
 import Diver from "../img/diver1.svg";
 import IndustryShowcaseImg from "../img/Showcase_30.jpg";
 import WorkshopShowcaseImg from "../img/workshop_k.jpg";
 import Highlights from "../img/pano.png";
 import Proc from "../img/proceedings.png";
-import Spons from "../img/spons.png";
+import Spons from "../img/spons.jpg";
+
+import FacebookIcon from '../img/social/facebook.js'
+import LinkedInIcon from '../img/social/linkedin.js'
+import InstagramIcon from '../img/social/instagram.js'
 
 import CardStack from "../components/Cards";
 import Layout from "../components/Layout";
@@ -20,9 +25,11 @@ import Involved from "../components/Involvement";
 
 import theme from "../styles/theme";
 import media from "../styles/media";
+import { socialMedia } from "../config"
 
 import Button from "../components/Button";
 import Proceedings from "../files/Proceedings-of-CUCAI-2020.pdf";
+import SponsorshipPackage from "../files/CUCAI 2021 Sponsorship Package.pdf";
 import styled from "styled-components";
 import { Row, Col, Carousel } from "react-bootstrap/";
 
@@ -94,8 +101,16 @@ const StyledCont = styled.div`
   padding: 100px 0;
 `;
 
+const IdHrefAnchor = styled.a`
+    display: block;
+    position: relative;
+    top: -100px;
+    visibility: hidden;
+`;
+
 const StyledHero = styled.section`
   padding-top: 10vh;
+  position: relative;
   background: radial-gradient(
       189.82% 100% at 50% 0%,
       rgba(26, 79, 203, 0.0001) 0%,
@@ -112,8 +127,8 @@ const StyledHero = styled.section`
     );
   max-width: 100vw;
 
-  height: 85vh;
-  overflow: hidden;
+  height: 90vh;
+  /* overflow: hidden; */
 `;
 
 const SectionTitle = styled.h2`
@@ -210,6 +225,7 @@ const StyledBlurbSection = styled.section`
   ${media.phone`
     flex-direction: column-reverse;
     max-width: 95%;
+    padding: 10vh 0;
 
     & div {
       max-width: 100%;
@@ -218,7 +234,36 @@ const StyledBlurbSection = styled.section`
   `}
 `;
 
-const StyledConferenceEvents = styled.section``;
+const StyledCovidBanner = styled.section`
+padding: 100px 0;
+color: white;
+  width: 100vw;
+  background: #1A4FCB;
+`;
+
+const CovidContent = styled.div`
+  max-width: 80%;
+  margin: 0 auto;
+  & > h2 {
+    margin-bottom: 20px;
+  }
+  & > p {
+    margin: 20px 0;
+  }
+`;
+
+const StyledConferenceEvents = styled.section`
+  & > div {
+    position: relative;
+  & h2 {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    color: white;
+  }
+  }
+  
+`;
 
 const ConferenceEventsList = styled.div`
   max-width: 80%;
@@ -324,7 +369,7 @@ const StyledWorkshopsShowcase = styled.section`
   align-items: center;
 
   ${media.phone`
-    flex-direction: column-reverse;
+    flex-direction: column;
   `}
 `;
 
@@ -332,10 +377,37 @@ const StyledImg = styled.section`
   max-width: 100%;
 `;
 
+const CityImg = styled.img`
+  width: 100vw;
+  position: absolute;
+  pointer-events: none;
+
+  bottom: 0;
+  left: 0;
+  transform: translateY(15vh);
+
+  ${media.phone`
+    transform: translateY(3vh);
+  `}
+  ${media.tablet`
+    transform: translateY(5vh);
+  `}  
+`;
+
 const StyledPastSpeakersSection = styled.section`
   max-width: 80%;
   margin: 0 auto;
   padding: 50px 0;
+`;
+
+const StyledSponsorSection = styled.section`
+  max-width: 80%;
+  margin: 0 auto;
+  padding: 100px 0;
+
+  & > img {
+    max-height: 50vh;
+  }
 `;
 
 const StyledInvolvedSection = styled.section`
@@ -346,6 +418,15 @@ const StyledInvolvedSection = styled.section`
   ${media.phone`
     max-width: 95%;
   `}
+`;
+
+const StyledContactUsSection = styled.section`
+  margin: 0 auto;
+  display: flex;
+  padding: 100px 0;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 `;
 
 const ParallaxSkyline = () => {
@@ -396,8 +477,13 @@ const Hero = ({ heading, slogan, location, date, cta1, cta2 }) => (
         <a href="mailto:chair@cucai.ca">{cta2}</a>
       </Button>
     </StyledHeroContent>
+    <CityComponent />
   </StyledHero>
 );
+
+const CityComponent = () => (
+  <CityImg src={City}></CityImg>
+)
 
 const BlurbSection = ({ blurbtitle, blurbdesc, blurbimg }) => (
   <StyledBlurbSection>
@@ -421,10 +507,25 @@ const BlurbSection = ({ blurbtitle, blurbdesc, blurbimg }) => (
   </StyledBlurbSection>
 );
 
+const CovidBanner = () => (
+  <StyledCovidBanner>
+    <CovidContent>
+    <SectionTitle>COVID-19 Response</SectionTitle>
+    <p>The pandemic has changed the status quo of conferences all around the world. Click the link below to read our new plan for an <strong>online</strong> CUCAI 2021.</p>
+    <Button borderStyle="solid" borderColour="white" textColour="white"><Link to="/covidresponse">See Our Plans</Link></Button>
+    </CovidContent>
+    
+  </StyledCovidBanner>
+);
+
 const ConferenceEvents = () => (
-  <StyledConferenceEvents>
+  <StyledConferenceEvents >
+    <IdHrefAnchor id="events" />
+    <div>
+      <img src={Highlights} alt="last years highlights"/>
     <SectionTitle>Conference Events</SectionTitle>
-    <img src={Highlights} alt="last years highlights"/>
+    </div>
+    
     <ConferenceEventsList>
       <DesignTeamShowcase images={DesignImgs} />
       <IndustryShowcase />
@@ -434,8 +535,13 @@ const ConferenceEvents = () => (
   </StyledConferenceEvents>
 );
 
-const DesignTeamShowcase = ({ images }) => (
-  <StyledDesignTeamShowcase>
+const DesignTeamShowcase = ({ images }) => {
+  const ProceedingsImg = styled.img`
+    padding-bottom: 10px;
+  `;
+
+  return(
+    <StyledDesignTeamShowcase>
     <DesignTeamShowcaseContent>
       <EventTitleAndDesc>
         <SectionSubtitle>Design Team Showcase</SectionSubtitle>
@@ -453,7 +559,7 @@ const DesignTeamShowcase = ({ images }) => (
       </EventTitleAndDesc>
       <EventContent>
         <DesignTeamProceedings>
-          <img src={Proc} alt="conference proceedings"></img>
+          <ProceedingsImg src={Proc} alt="conference proceedings"></ProceedingsImg>
           <Button borderStyle="solid" borderColour="#174461">
             <a href={Proceedings}>2020 PROCEEDINGS PDF</a>
           </Button>
@@ -469,7 +575,9 @@ const DesignTeamShowcase = ({ images }) => (
       ))}
     </DesignTeamCarousel>
   </StyledDesignTeamShowcase>
-);
+  );
+  
+};
 
 const IndustryShowcase = () => (
   <StyledIndustryShowcase>
@@ -533,23 +641,25 @@ const WorkshopsShowcase = () => (
 );
 
 const SponsorSection = () => (
-  <>
-    <StyledCont>
-      <Row>
-        <Col sm={9}>
-          <h3>Past Sponsors</h3>
-          <img src={Spons} alt="sponsorships"></img>
-        </Col>
-        <Col>
-          <Button borderStyle="solid" borderColour="#ffffff">
-            <a href={Proceedings} style={{ color: "white" }}>
-              Sponsorship Package
+  <StyledSponsorSection>
+    <IdHrefAnchor id="sponsors"/>
+          <SectionTitle>Sponsors</SectionTitle>
+          <h3>Sponsor Us</h3>
+          <p>There are many advantages to becoming a CUCAI sponsor.</p>
+          <Button borderStyle="solid" >
+            <a href={SponsorshipPackage}>
+              View Our Benefits Package
             </a>
           </Button>
-        </Col>
-      </Row>
-    </StyledCont>
-  </>
+          <br></br>
+          <br></br>
+          <br></br>
+
+          <h3>Past Sponsors & Partners</h3>
+          <img src={Spons} alt="sponsorships"></img>
+          
+
+  </StyledSponsorSection>
 );
 
 const PastSpeakersSection = () => (
@@ -561,9 +671,66 @@ const PastSpeakersSection = () => (
 
 const InvolvedSection = () => (
   <StyledInvolvedSection>
-    <h2>Get Involved</h2>
+    <IdHrefAnchor id="involvement" />
+    <SectionTitle>Get Involved</SectionTitle>
     <Involved />
   </StyledInvolvedSection>
+);
+
+const SocialLink = styled(Link)`
+  padding: 5px 10px;
+
+  & svg {
+    transition: ${theme.transition};
+  }
+
+  &:hover {
+      & svg {
+          fill: var(--cucai-blue);
+          transform: rotate(10deg) translateY(-3px);
+      }
+  }
+  
+`;
+
+const SocialsList = styled.div`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+`;
+
+const Socials = () => <SocialsList>{
+  socialMedia.map(social => {
+    let image;
+    if (social.name.includes("Facebook")) {
+      image = <FacebookIcon size="25px" />;
+    } else if (social.name.includes("Instagram")) {
+      image = <InstagramIcon size="25px" />;
+    } else if (social.name.includes("LinkedIn")) {
+      image = <LinkedInIcon size="25px" />;
+    } else {
+      image = null;
+    }
+
+    return (
+      <SocialLink to={social.url}>
+        {image}
+      </SocialLink>
+    );
+  })}
+</SocialsList>
+
+const ContactUsSection = () => (
+  <StyledContactUsSection>
+    <SectionTitle>Contact Us</SectionTitle>
+    <h3>Email</h3>
+    <Button borderStyle="solid"><a href="mailto:chair@cucai.ca">chair@cucai.ca</a></Button>
+    <br></br>
+
+    <h3>Social Media</h3>
+    <Socials />
+  </StyledContactUsSection>
 );
 
 export const IndexPageTemplate = ({
@@ -587,16 +754,18 @@ export const IndexPageTemplate = ({
       cta1={cta1}
       cta2={cta2}
     />
-    <ParallaxSkyline />
+    {/* <ParallaxSkyline /> */}
     <BlurbSection
       blurbimg={Diver}
       blurbdesc={mainpitch.description}
       blurbtitle={mainpitch.title}
     />
+    <CovidBanner />
     <ConferenceEvents />
     <SponsorSection featuredimage={Highlights} />
-    <PastSpeakersSection />
+    {/* <PastSpeakersSection /> */}
     <InvolvedSection />
+    <ContactUsSection />
   </StyledIndexPage>
 );
 
