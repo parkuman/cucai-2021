@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import {Card, CardDeck, Carousel} from 'react-bootstrap'
+import {Card, CardDeck, Carousel, Row} from 'react-bootstrap'
 
 const StyledCardWrapper = styled.div`
 position: relative;
@@ -12,6 +12,8 @@ position: relative;
   display: flex;
 }
   `;
+  
+
   const StyledCard = styled(Card)`
   overflow: hidden;
   min-width: 30vw;
@@ -67,12 +69,37 @@ position: relative;
       </Carousel.Item>
 
       <Carousel.Item>
-      <Card>
-      </Card>
-      <Card>
-      </Card>
-      <Card>
-      </Card>
+      <CardDeck>
+
+<Card>
+<Card.Img variant="top" src="" />
+<Card.Body>
+  <Card.Title>How to Build a Chatbot</Card.Title>
+  <Card.Text>
+  Fernando Hernandez Leiva, Data Analytics Developer at the Centre for Advanced Computing (CAC), discussed the IBM Watson Assistant and its features. CAC uses the Watson Assistant for several applications where a powerful yet easy-to-use virtual assistant is needed. The Watson assistant is able to integrate multiple data sources which creates a dynamic and efficient platform for users. Fernando taught delegates how to set up a Watson Assistant and design a custom chatbot from scratch.
+  </Card.Text>
+</Card.Body>
+</Card>
+
+<Card>
+<Card.Img variant="top" src="" />
+<Card.Body>
+  <Card.Title>Multifaceted Idea Generation</Card.Title>
+  <Card.Text>
+  In a Sunday afternoon workshop, William Gilroy-Briand, a Consulting Analyst at Accenture, challenged 50 delegates to tackle several different issues using a variety of AI techniques, including machine vision and sentiment analysis. These issues were topical for students as they primarily pertained to on-campus problems, such as mental health resources and the enhancement of lectures. After a unique idea generation phase, students narrowed down their potential solutions and presented them to the other groups.</Card.Text>
+</Card.Body>
+</Card>
+
+<Card>
+<Card.Img variant="top" src="" />
+<Card.Body>
+  <Card.Title>Ethics in AI</Card.Title>
+  <Card.Text>
+  Prior to lunch on Sunday, four AI industry experts alongside Jeremy Kulchyk, QMIND’s Director of Research, took the stage to discuss the ethical aspects of artificial intelligence. Rishi Behari, Associate Director of MMAI, Shelley Lineham, Executive Consultant for cShell Consulting Inc., Sheila McIlraith, Computer Science Professor at the University of Toronto, and Behzad Sarmadi, Senior Design Researcher at Element AI, conversed on several topics such as inherent gender and racial bias, and the future of smart cities. The conversations were thought-provoking and controversial, and will certainly be applicable for delegates as they make difficult decisions in their upcoming careers.
+  </Card.Text>
+</Card.Body>
+</Card>
+</CardDeck>
       </Carousel.Item>
 
       </Carousel>

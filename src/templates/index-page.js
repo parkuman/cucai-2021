@@ -664,7 +664,7 @@ const SponsorSection = ({ data }) => (
 const PastSpeakersSection = () => (
   <StyledPastSpeakersSection>
     <h2>Past Speakers and Workshops</h2>
-    <CardStack />
+    <CardStack></CardStack>
   </StyledPastSpeakersSection>
 );
 
@@ -769,7 +769,7 @@ export const IndexPageTemplate = ({
     <CovidBanner />
     <ConferenceEvents data={data} />
     <SponsorSection data={data} featuredimage={Highlights} />
-    {/* <PastSpeakersSection /> */}
+    <PastSpeakersSection/> 
     <InvolvedSection />
     <ContactUsSection />
   </StyledIndexPage>
