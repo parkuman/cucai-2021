@@ -1,5 +1,5 @@
 import React from "react";
-import Buttom from "../components/Button";
+import Button from "../components/Button";
 import styled from "styled-components";
 
 import { Tab, Row, Col, Nav } from 'react-bootstrap/';
