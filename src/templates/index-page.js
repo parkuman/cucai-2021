@@ -1,6 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { graphql, Link } from "gatsby";
+import { graphql, Link, StaticQuery } from "gatsby";
+import Img from "gatsby-image";
 import { Parallax } from "react-scroll-parallax";
 import Fade from "react-reveal/Fade";
 
@@ -163,20 +164,22 @@ const StyledBlurbSection = styled.section`
   align-items: center;
   z-index: 10 !important;
 
-  & div {
-    max-width: 50%;
-    margin-right: 10px;
-  }
-
   ${media.phone`
     flex-direction: column-reverse;
     max-width: 95%;
-    padding: 10vh 0;
+    padding: 150px 0;
 
-    & div {
-      max-width: 100%;
+    
+  `}
+`;
+
+const StyledBlurbContent = styled.div`
+  width: 50%;
+  margin-right: 10px;
+
+  ${media.phone`
+      width: 100%;
       margin-right: 0px;
-    }
   `}
 `;
 
@@ -237,9 +240,11 @@ const EventTitleAndDesc = styled.div`
 
 const EventContent = styled.div`
   max-width: 48%;
+  width: 48%;
 
   ${media.phone`
     max-width: 100%;
+    width: 100%;
     
   `}
 `;
@@ -264,10 +269,15 @@ const DesignTeamProceedings = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  width: 100%;
+`;
 
-  & img {
-    max-width: 50%;
-  }
+const ProceedingsGatsbyImage = styled(Img)`
+  width: 50%;
+
+  ${media.phone`
+    width:100%;
+  `}
 `;
 
 const DesignTeamCarousel = styled(Carousel)`
@@ -318,24 +328,32 @@ const StyledWorkshopsShowcase = styled.section`
   `}
 `;
 
-const StyledImg = styled.section`
+const StyledImg = styled.div`
   max-width: 100%;
 `;
 
-const CityImg = styled.img`
-  width: 100vw;
-  position: absolute;
-  pointer-events: none;
-
-  bottom: 0;
-  left: 0;
-  transform: translateY(15vh);
+const StyledBlurbImg = styled.div`
+  width: 50%;
 
   ${media.phone`
-    transform: translateY(3vh);
+    width: 100%;
+  `}
+`;
+
+const CityImg = styled.div`
+  width: 100vw;
+  position: absolute;
+
+  bottom: -15vh;
+  left: 0;
+
+  ${media.phone`
+    bottom: -5vh;
+
   `}
   ${media.tablet`
-    transform: translateY(5vh);
+    bottom: -10vh;
+
   `}
 `;
 
@@ -405,7 +423,7 @@ const ParallaxSkyline = () => {
   );
 };
 
-const Hero = ({ heading, slogan, location, date, cta1, cta2 }) => (
+const Hero = ({ data, heading, slogan, location, date, cta1, cta2 }) => (
   <StyledHero>
     <Fade bottom distance="80px">
       <StyledHeroContent>
@@ -425,16 +443,20 @@ const Hero = ({ heading, slogan, location, date, cta1, cta2 }) => (
       </StyledHeroContent>
     </Fade>
 
-    <CityComponent />
+    <CityComponent data={data} />
   </StyledHero>
 );
 
-const CityComponent = () => <CityImg src={City}></CityImg>;
+const CityComponent = ({ data }) => (
+  <CityImg>
+    <Img fluid={data.cityImg.childImageSharp.fluid} />
+  </CityImg>
+);
 
-const BlurbSection = ({ blurbtitle, blurbdesc, blurbimg }) => (
-  <StyledBlurbSection>
-    <Fade bottom distance="80px">
-      <div>
+const BlurbSection = ({ data, blurbtitle, blurbdesc, blurbimg }) => (
+  <Fade bottom distance="80px">
+    <StyledBlurbSection>
+      <StyledBlurbContent>
         <SectionSubtitle>{blurbtitle}</SectionSubtitle>
         <p>{blurbdesc}</p>
         <p>
@@ -447,13 +469,13 @@ const BlurbSection = ({ blurbtitle, blurbdesc, blurbimg }) => (
           and events that will inspire attendees and forge meaningful
           connections.
         </p>
-      </div>
+      </StyledBlurbContent>
 
-      <StyledImg>
-        <img src={blurbimg} alt="diver underwater"></img>
-      </StyledImg>
-    </Fade>
-  </StyledBlurbSection>
+      <StyledBlurbImg>
+        <Img fluid={data.blurbImg.childImageSharp.fluid} />
+      </StyledBlurbImg>
+    </StyledBlurbSection>
+  </Fade>
 );
 
 const CovidBanner = () => (
@@ -474,33 +496,36 @@ const CovidBanner = () => (
   </StyledCovidBanner>
 );
 
-const ConferenceEvents = () => (
+const ConferenceEvents = ({ data }) => (
   <StyledConferenceEvents>
-    <Fade bottom distance="80px">
-      <IdHrefAnchor id="events" />
-      <div>
-        <img src={Highlights} alt="last years highlights" />
+    <IdHrefAnchor id="events" />
+    <div>
+      <Img
+        fluid={data.eventsPano.childImageSharp.fluid}
+        alt="last years highlights"
+      />
+      <Fade bottom distance="80px">
         <SectionTitle>Conference Events</SectionTitle>
-      </div>
-    </Fade>
+      </Fade>
+    </div>
     <ConferenceEventsList>
       <Fade bottom distance="80px">
-        <DesignTeamShowcase images={DesignImgs} />
+        <DesignTeamShowcase data={data} images={DesignImgs} />
       </Fade>
       <Fade bottom distance="80px">
-        <IndustryShowcase />
+        <IndustryShowcase data={data} />
       </Fade>
       <Fade bottom distance="80px">
-        <SpeakersShowcase />
+        <SpeakersShowcase data={data} />
       </Fade>
       <Fade bottom distance="80px">
-        <WorkshopsShowcase />
+        <WorkshopsShowcase data={data} />
       </Fade>
     </ConferenceEventsList>
   </StyledConferenceEvents>
 );
 
-const DesignTeamShowcase = ({ images }) => {
+const DesignTeamShowcase = ({ data, images }) => {
   const ProceedingsImg = styled.img`
     padding-bottom: 10px;
   `;
@@ -524,10 +549,10 @@ const DesignTeamShowcase = ({ images }) => {
         </EventTitleAndDesc>
         <EventContent>
           <DesignTeamProceedings>
-            <ProceedingsImg
-              src={Proc}
+            <ProceedingsGatsbyImage
+              fluid={data.proceedingsImg.childImageSharp.fluid}
               alt="conference proceedings"
-            ></ProceedingsImg>
+            />
             <Button borderStyle="solid" borderColour="#174461">
               <a href={Proceedings}>2020 PROCEEDINGS PDF</a>
             </Button>
@@ -546,10 +571,13 @@ const DesignTeamShowcase = ({ images }) => {
   );
 };
 
-const IndustryShowcase = () => (
+const IndustryShowcase = ({ data }) => (
   <StyledIndustryShowcase>
     <EventContent>
-      <img src={IndustryShowcaseImg} alt="industry showcase"></img>
+      <Img
+        fluid={data.industryShowcaseImg.childImageSharp.fluid}
+        alt="industry showcase"
+      />
     </EventContent>
 
     <EventTitleAndDesc>
@@ -570,7 +598,7 @@ const IndustryShowcase = () => (
   </StyledIndustryShowcase>
 );
 
-const SpeakersShowcase = () => (
+const SpeakersShowcase = ({ data }) => (
   <StyledSpeakersShowcase>
     <EventTitleAndDesc>
       <SectionSubtitle>Speakers</SectionSubtitle>
@@ -584,15 +612,21 @@ const SpeakersShowcase = () => (
     </EventTitleAndDesc>
 
     <EventContent>
-      <p>speakerstuff</p>
+      <Img
+        fluid={data.speakerImg.childImageSharp.fluid}
+        alt="speakers showcase"
+      />
     </EventContent>
   </StyledSpeakersShowcase>
 );
 
-const WorkshopsShowcase = () => (
+const WorkshopsShowcase = ({ data }) => (
   <StyledWorkshopsShowcase>
     <EventContent>
-      <img src={WorkshopShowcaseImg} alt="workshop showcase"></img>
+      <Img
+        fluid={data.workshopsShowcaseImg.childImageSharp.fluid}
+        alt="workshop showcase"
+      />
     </EventContent>
     <EventTitleAndDesc>
       <SectionSubtitle>Workshops</SectionSubtitle>
@@ -607,7 +641,7 @@ const WorkshopsShowcase = () => (
   </StyledWorkshopsShowcase>
 );
 
-const SponsorSection = () => (
+const SponsorSection = ({ data }) => (
   <StyledSponsorSection>
     <Fade bottom distance="80px">
       <IdHrefAnchor id="sponsors" />
@@ -622,7 +656,7 @@ const SponsorSection = () => (
       <br></br>
 
       <h3>Past Sponsors & Partners</h3>
-      <img src={Spons} alt="sponsorships"></img>
+      <Img fluid={data.sponsorImg.childImageSharp.fluid} alt="sponsorships" />
     </Fade>
   </StyledSponsorSection>
 );
@@ -703,6 +737,7 @@ const ContactUsSection = () => (
 );
 
 export const IndexPageTemplate = ({
+  data,
   title,
   heading,
   slogan,
@@ -716,6 +751,7 @@ export const IndexPageTemplate = ({
 }) => (
   <StyledIndexPage>
     <Hero
+      data={data}
       heading={heading}
       slogan={slogan}
       location={location}
@@ -725,13 +761,14 @@ export const IndexPageTemplate = ({
     />
     {/* <ParallaxSkyline /> */}
     <BlurbSection
+      data={data}
       blurbimg={Diver}
       blurbdesc={mainpitch.description}
       blurbtitle={mainpitch.title}
     />
     <CovidBanner />
-    <ConferenceEvents />
-    <SponsorSection featuredimage={Highlights} />
+    <ConferenceEvents data={data} />
+    <SponsorSection data={data} featuredimage={Highlights} />
     {/* <PastSpeakersSection /> */}
     <InvolvedSection />
     <ContactUsSection />
@@ -760,6 +797,7 @@ const IndexPage = ({ data }) => {
   return (
     <Layout>
       <IndexPageTemplate
+        data={data}
         title={frontmatter.title}
         // image={frontmatter.image}
         heading={frontmatter.heading}
@@ -788,6 +826,62 @@ export default IndexPage;
 
 export const pageQuery = graphql`
   query IndexPageTemplate {
+    cityImg: file(relativePath: { eq: "CIDEE.png" }) {
+      childImageSharp {
+        fluid(quality: 80, maxWidth: 1500) {
+          ...GatsbyImageSharpFluid
+        }
+      }
+    }
+    blurbImg: file(relativePath: { eq: "diver.png" }) {
+      childImageSharp {
+        fluid(quality: 100) {
+          ...GatsbyImageSharpFluid
+        }
+      }
+    }
+    eventsPano: file(relativePath: { eq: "pano.png" }) {
+      childImageSharp {
+        fluid(quality: 70) {
+          ...GatsbyImageSharpFluid
+        }
+      }
+    }
+    proceedingsImg: file(relativePath: { eq: "proceedings.png" }) {
+      childImageSharp {
+        fluid(quality: 70) {
+          ...GatsbyImageSharpFluid
+        }
+      }
+    }
+    industryShowcaseImg: file(relativePath: { eq: "Showcase_30.jpg" }) {
+      childImageSharp {
+        fluid {
+          ...GatsbyImageSharpFluid
+        }
+      }
+    }
+    speakerImg: file(relativePath: { eq: "speakers.jpeg" }) {
+      childImageSharp {
+        fluid {
+          ...GatsbyImageSharpFluid
+        }
+      }
+    }
+    workshopsShowcaseImg: file(relativePath: { eq: "workshop_k.jpg" }) {
+      childImageSharp {
+        fluid {
+          ...GatsbyImageSharpFluid
+        }
+      }
+    }
+    sponsorImg: file(relativePath: { eq: "spons.jpg" }) {
+      childImageSharp {
+        fluid {
+          ...GatsbyImageSharpFluid
+        }
+      }
+    }
     markdownRemark(frontmatter: { templateKey: { eq: "index-page" } }) {
       frontmatter {
         title
