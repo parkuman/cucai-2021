@@ -64,7 +64,7 @@ const StyledHero = styled.section`
   ${media.phone`
     height: 80vh;
       
-  `}/* overflow: hidden; */
+  `}/* overflow: hiddden; */
 `;
 
 const SectionTitle = styled.h2`
