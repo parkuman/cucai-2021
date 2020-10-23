@@ -31,9 +31,6 @@ import { Carousel } from "react-bootstrap/";
 
 import "bootstrap/dist/css/bootstrap.min.css";
 
-//import { conferenceImages } from "../config";
-//import Cards from "../components/Slideshow"
-
 const StyledIndexPage = styled.div``;
 
 const IdHrefAnchor = styled.a`
@@ -63,7 +60,11 @@ const StyledHero = styled.section`
   max-width: 100vw;
 
   height: 90vh;
-  /* overflow: hidden; */
+
+  ${media.phone`
+    height: 80vh;
+      
+  `}/* overflow: hidden; */
 `;
 
 const SectionTitle = styled.h2`
@@ -98,10 +99,22 @@ const StyledHeading = styled.h1`
   font-weight: normal;
   font-family: ${theme.fonts.IBMPlexSansLight};
   font-size: 4rem;
-  max-width: 70%;
+  max-width: 80%;
+
+  @media screen and (max-height: 800px) {
+    max-width: 100%;
+    font-size: 2rem;
+  }
 
   ${media.phone`
+      max-width: 100%;
+      margin: 20px 0;
       font-size: 2rem;
+  `}
+
+  ${media.tablet`
+      max-width: 90%;
+      margin: 20px 0;
   `}
 `;
 
@@ -636,7 +649,9 @@ const SponsorSection = ({ data }) => (
       <h3>Sponsor Us!</h3>
       <p>There are many advantages to becoming a CUCAI sponsor:</p>
       <Button borderStyle="solid">
-        <a href="CUCAI-2021-Sponsorship-Package.pdf">View Our Benefits Package</a>
+        <a href="CUCAI-2021-Sponsorship-Package.pdf">
+          View Our Benefits Package
+        </a>
       </Button>
       <br></br>
       <br></br>
