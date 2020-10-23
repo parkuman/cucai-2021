@@ -70,7 +70,7 @@ const Involved = () => {
                   workshop leaders and inQUbate pitch competition judges.
                 </p>
                 <Button borderStyle="solid">
-                  <a href="src/files/CUCAI Speakers' Package.pdf">
+                  <a href="CUCAI Speakers' Package.pdf">
                     Speakers Package
                   </a>
                 </Button>
@@ -90,7 +90,7 @@ const Involved = () => {
                   CUCAI’s national reach expands.
                 </p>
                 <Button borderStyle="solid">
-                  <a href="src/files/CUCAI Student Group Partnership Package.pdf">
+                  <a href="CUCAI Student Group Partnership Package.pdf">
                     Student Group Partnership Package
                   </a>
                 </Button>

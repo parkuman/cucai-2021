@@ -26,8 +26,6 @@ import media from "../styles/media";
 import { socialMedia } from "../config";
 
 import Button from "../components/Button";
-import Proceedings from "../files/Proceedings-of-CUCAI-2020.pdf";
-import SponsorshipPackage from "../files/CUCAI 2021 Sponsorship Package.pdf";
 import styled from "styled-components";
 import { Carousel } from "react-bootstrap/";
 
@@ -427,7 +425,7 @@ const Hero = ({ data, heading, slogan, location, date, cta1, cta2 }) => (
           {location.toUpperCase()} | {date.toUpperCase()}
         </StyledInfo>
         <Button backgroundColour="white">
-          <a href="#spons">{cta1}</a>
+          <a href="#sponsors">{cta1}</a>
         </Button>
         <Button borderStyle="solid" borderColour="#174461">
           <a href="mailto:chair@cucai.ca">{cta2}</a>
@@ -543,7 +541,7 @@ const DesignTeamShowcase = ({ data, images }) => {
               alt="conference proceedings"
             />
             <Button borderStyle="solid" borderColour="#174461">
-              <a href={Proceedings}>2020 PROCEEDINGS PDF</a>
+              <a href="Proceedings-of-CUCAI-2020.pdf">2020 PROCEEDINGS PDF</a>
             </Button>
           </DesignTeamProceedings>
         </EventContent>
@@ -635,10 +633,10 @@ const SponsorSection = ({ data }) => (
     <Fade bottom distance="80px">
       <IdHrefAnchor id="sponsors" />
       <SectionTitle>Sponsors</SectionTitle>
-      <h3>Sponsor Us</h3>
-      <p>There are many advantages to becoming a CUCAI sponsor.</p>
+      <h3>Sponsor Us!</h3>
+      <p>There are many advantages to becoming a CUCAI sponsor:</p>
       <Button borderStyle="solid">
-        <a href={SponsorshipPackage}>View Our Benefits Package</a>
+        <a href="CUCAI-2021-Sponsorship-Package.pdf">View Our Benefits Package</a>
       </Button>
       <br></br>
       <br></br>
