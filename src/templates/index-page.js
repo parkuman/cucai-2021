@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { graphql, Link, StaticQuery } from "gatsby";
+import { graphql, Link } from "gatsby";
 import Img from "gatsby-image";
 import { Parallax } from "react-scroll-parallax";
 import Fade from "react-reveal/Fade";
@@ -9,13 +9,8 @@ import Fade from "react-reveal/Fade";
 import SkylineLayers from "../img/parallaxSkyline";
 import DesignImgs from "../img/designteams";
 import Clouds from "../img/clouds_to_white.png";
-import City from "../img/CIDEE.png";
 import Diver from "../img/diver1.svg";
-import IndustryShowcaseImg from "../img/Showcase_30.jpg";
-import WorkshopShowcaseImg from "../img/workshop_k.jpg";
 import Highlights from "../img/pano.png";
-import Proc from "../img/proceedings.png";
-import Spons from "../img/spons.jpg";
 
 import FacebookIcon from "../img/social/facebook.js";
 import LinkedInIcon from "../img/social/linkedin.js";
@@ -24,6 +19,7 @@ import InstagramIcon from "../img/social/instagram.js";
 import CardStack from "../components/Cards";
 import Layout from "../components/Layout";
 import Involved from "../components/Involvement";
+import ScrollToTop from "../components/ScrollToTop";
 
 import theme from "../styles/theme";
 import media from "../styles/media";
@@ -33,7 +29,7 @@ import Button from "../components/Button";
 import Proceedings from "../files/Proceedings-of-CUCAI-2020.pdf";
 import SponsorshipPackage from "../files/CUCAI 2021 Sponsorship Package.pdf";
 import styled from "styled-components";
-import { Row, Col, Carousel } from "react-bootstrap/";
+import { Carousel } from "react-bootstrap/";
 
 import "bootstrap/dist/css/bootstrap.min.css";
 
@@ -41,12 +37,6 @@ import "bootstrap/dist/css/bootstrap.min.css";
 //import Cards from "../components/Slideshow"
 
 const StyledIndexPage = styled.div``;
-
-const StyledCont = styled.div`
-  max-width: 80%;
-  margin: 0 auto;
-  padding: 100px 0;
-`;
 
 const IdHrefAnchor = styled.a`
   display: block;
@@ -99,6 +89,9 @@ const SectionSubtitle = styled.h3`
 const StyledHeroContent = styled.div`
   margin: 0 auto;
   max-width: 80%;
+  & button {
+    margin-right: 15px;
+  }
 `;
 
 const StyledHeading = styled.h1`
@@ -328,10 +321,6 @@ const StyledWorkshopsShowcase = styled.section`
   `}
 `;
 
-const StyledImg = styled.div`
-  max-width: 100%;
-`;
-
 const StyledBlurbImg = styled.div`
   width: 50%;
 
@@ -343,6 +332,7 @@ const StyledBlurbImg = styled.div`
 const CityImg = styled.div`
   width: 100vw;
   position: absolute;
+  pointer-events: none;
 
   bottom: -15vh;
   left: 0;
@@ -430,7 +420,9 @@ const Hero = ({ data, heading, slogan, location, date, cta1, cta2 }) => (
         <StyledHeading>
           <Fade>{heading}</Fade>
         </StyledHeading>
-        <StyledSlogan>{slogan}</StyledSlogan>
+        <StyledSlogan>
+          Artificial intelligence, <strong>real change.</strong>
+        </StyledSlogan>
         <StyledInfo>
           {location.toUpperCase()} | {date.toUpperCase()}
         </StyledInfo>
@@ -526,10 +518,6 @@ const ConferenceEvents = ({ data }) => (
 );
 
 const DesignTeamShowcase = ({ data, images }) => {
-  const ProceedingsImg = styled.img`
-    padding-bottom: 10px;
-  `;
-
   return (
     <StyledDesignTeamShowcase>
       <DesignTeamShowcaseContent>
@@ -537,14 +525,15 @@ const DesignTeamShowcase = ({ data, images }) => {
           <SectionSubtitle>Design Team Showcase</SectionSubtitle>
           <p>
             The design team showcase was the foundation on which CUCAI was
-            started. This event allows the hard work, dedication and talent of
-            Canadian undergraduate students working on AI-based design projects
-            since September, to be exhibited for industry representatives and
-            other delegates to learn about the work currently being done in the
-            field of AI at the undergraduate level. This event features in-depth
-            presentations for audiences of all levels of experience and
-            backgrounds, as well as engaging and interactive demonstrations for
-            30+ design teams from across Canada.
+            started. This event allows the hard work and dedication of Canadian
+            undergraduate students working on AI-based design projects to be
+            exhibited. The “walk-through” showcase allows industry
+            representatives and other delegates to learn about the work
+            currently being done in the field of AI at the undergraduate level.
+            This event features in-depth presentations for audiences of all
+            levels of experience and backgrounds, as well as engaging and
+            interactive demonstrations shifted to an online format for 30+
+            design teams from across Canada.
           </p>
         </EventTitleAndDesc>
         <EventContent>
@@ -586,8 +575,8 @@ const IndustryShowcase = ({ data }) => (
       <p>
         As a compliment to the design team showcase, this event is designed to
         show undergraduate students what the present and future of artificial
-        intelligence in industry look like. Booths for each of our industry
-        partners will be set up to allow students to learn about the
+        intelligence in industry look like. Breakout rooms for each of our
+        industry partners will be set up to allow students to learn about the
         opportunities available to them within industry. Students learn about
         how technological advancements in artificial intelligence are shaping a
         wide variety of industries. The industry showcase is often a favourite
@@ -720,8 +709,8 @@ const Socials = () => (
 );
 
 const ContactUsSection = () => (
-  <StyledContactUsSection>
-    <Fade bottom distance="80px">
+  <Fade bottom distance="80px">
+    <StyledContactUsSection>
       <IdHrefAnchor id="contact" />
       <SectionTitle>Contact Us</SectionTitle>
       <h3>Email</h3>
@@ -732,8 +721,8 @@ const ContactUsSection = () => (
 
       <h3>Social Media</h3>
       <Socials />
-    </Fade>
-  </StyledContactUsSection>
+    </StyledContactUsSection>
+  </Fade>
 );
 
 export const IndexPageTemplate = ({
@@ -750,6 +739,7 @@ export const IndexPageTemplate = ({
   intro,
 }) => (
   <StyledIndexPage>
+    <ScrollToTop />
     <Hero
       data={data}
       heading={heading}
@@ -769,7 +759,7 @@ export const IndexPageTemplate = ({
     <CovidBanner />
     <ConferenceEvents data={data} />
     <SponsorSection data={data} featuredimage={Highlights} />
-    <PastSpeakersSection/> 
+    <PastSpeakersSection />
     <InvolvedSection />
     <ContactUsSection />
   </StyledIndexPage>

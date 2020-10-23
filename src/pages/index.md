@@ -5,7 +5,7 @@ image: /img/home-jumbotron.jpg
 heading: The Canadian Undergraduate Conference on Artificial Intelligence
 slogan: Artificial intelligence, real change.
 location: Online
-date: March 6-8, 2021
+date: February 25-26, 2021
 cta1: SPONSOR US
 cta2: STAY UPDATED
 mainpitch:

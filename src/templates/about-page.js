@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { graphql } from "gatsby";
-import { Row, Col } from 'react-bootstrap/'
+import { Row, Col } from "react-bootstrap/";
 
 import styled from "styled-components";
 import media from "../styles/media";
@@ -10,10 +10,10 @@ import Layout from "../components/Layout";
 import { ourTeam } from "../config";
 
 const StyledAboutPage = styled.div`
-padding: 2em;
+  padding: 2em;
 
-  background: rgb(255,255,255);
-background: linear-gradient(0deg, rgba(255,255,255,1) 0%, rgba(26,169,203,1) 100%);
+  background: rgb(255, 255, 255);
+  /* background: linear-gradient(0deg, rgba(255,255,255,1) 0%, rgba(26,169,203,1) 100%); */
 
   ${media.phone`
     padding: 0.5em;
@@ -21,40 +21,60 @@ background: linear-gradient(0deg, rgba(255,255,255,1) 0%, rgba(26,169,203,1) 100
 `;
 
 const StyledTextSection = styled.section`
-background: rgb(255,255,255);
-border-radius: 10px;
+  background: rgb(255, 255, 255);
+  border-radius: 10px;
 
-padding: 2em;
-filter: drop-shadow(5px 5px 0px #1a4fcb);
-margin-bottom: 2em;
-
+  padding: 2em;
+  -webkit-box-shadow: 10px 10px 34px -9px rgba(0, 0, 0, 0.65);
+  -moz-box-shadow: 10px 10px 34px -9px rgba(0, 0, 0, 0.65);
+  box-shadow: 10px 10px 34px -9px rgba(0, 0, 0, 0.65);
+  margin-bottom: 2em;
 `;
-const StyledTeamMember = styled(Col)`
-padding: 1em;
-float: left;
-background: rgb(255,255,255);
-margin: 1em;
-border-radius: 10px;
-filter: drop-shadow(5px 5px 0px #1a4fcb);
+const StyledTeamMember = styled.div`
+  padding: 1em;
+  float: left;
+  background: rgb(255, 255, 255);
+  margin: 1em;
+  border-radius: 10px;
+  -webkit-box-shadow: 10px 10px 34px -9px rgba(0, 0, 0, 0.65);
+  -moz-box-shadow: 10px 10px 34px -9px rgba(0, 0, 0, 0.65);
+  box-shadow: 10px 10px 34px -9px rgba(0, 0, 0, 0.65);
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  & h3 {
+    margin-top: 10px;
+  }
+
+  & p {
+    margin: 0;
+  }
 `;
 
 const StyledTeamTitle = styled(Col)`
-margin: 1em 0em 0em 0em;
+  margin: 1em 0em 0em 0em;
 
-float: left;
-border-radius: 10px;
-color: var(--dark-blue);
-
+  float: left;
+  border-radius: 10px;
+  color: var(--dark-blue);
 `;
 
 const StyledTeam = styled(Row)`
-width: 100%;
-display: flex;
-flex-direction: row;
+  width: 100%;
+  display: flex;
+  align-items: center;
 
-${media.phone`
+  ${media.phone`
   flex-direction: column;
 `}
+`;
+
+const StyledOurTeam = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 `;
 
 const TeamMember = ({ pic, name, position, program }) => {
@@ -63,57 +83,49 @@ const TeamMember = ({ pic, name, position, program }) => {
       <img src={require(`../img/team/${pic}`)} alt={`${name}'s headshot'`} />
 
       <h3>
-        {name.split(' ')[0]} <b>{name.split(' ')[1]}</b>
+        {name.split(" ")[0]} <b>{name.split(" ")[1]}</b>
       </h3>
+      <p>{position}</p>
       <p>
-        {position}
-        <br />
         <i>{program}</i>
       </p>
     </>
   );
-}
+};
 
 const OurTeam = ({ data }) => {
-  return (
-    ourTeam.map(team => {
-      return (
-        <>
-          <div>
-            <StyledTeamTitle>
-                <h2 style={{ marginBottom: "0px" }}>{team.header}</h2>
-
-            </StyledTeamTitle>
-            <StyledTeam>
-
-              {
-                team.members.map(member =>
-                  <StyledTeamMember>
-                    <TeamMember
-                      pic={member.pic}
-                      name={member.name}
-                      position={member.position}
-                      program={member.program} />
-                  </StyledTeamMember>
-                )
-              }
-            </StyledTeam>
-          </div>
-        </>
-      );
-    })
-  );
-}
+  return ourTeam.map((team) => {
+    return (
+      <StyledOurTeam>
+        <div>
+          <StyledTeamTitle>
+            <h2 style={{ marginBottom: "0px" }}>{team.header}</h2>
+          </StyledTeamTitle>
+          <StyledTeam>
+            {team.members.map((member) => (
+              <StyledTeamMember>
+                <TeamMember
+                  pic={member.pic}
+                  name={member.name}
+                  position={member.position}
+                  program={member.program}
+                />
+              </StyledTeamMember>
+            ))}
+          </StyledTeam>
+        </div>
+      </StyledOurTeam>
+    );
+  });
+};
 //<p>{team.email}</p>
-export const AboutPageTemplate = ({
-  title,
-  slogan,
-  html
-}) => (
+export const AboutPageTemplate = ({ title, slogan, html }) => (
   <StyledAboutPage>
-    <h1 style={{ color: "white" }}>{title}</h1>
+    <h1>{title}</h1>
     <StyledTextSection>
-      <h2><em>{slogan}</em></h2>
+      <h2>
+        <em>{slogan}</em>
+      </h2>
       <div dangerouslySetInnerHTML={{ __html: html }} />
     </StyledTextSection>
     <OurTeam />
@@ -160,4 +172,3 @@ export const pageQuery = graphql`
     }
   }
 `;
-

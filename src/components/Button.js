@@ -5,7 +5,6 @@ import media from "../styles/media";
 import theme from "../styles/theme";
 
 const StyledButton = styled.button`
-  
   border-style: ${props => props.borderStyle ? props.borderStyle : "none"} ;
   border-width: 1px;
   background: ${props => props.backgroundColour ? props.backgroundColour : "none"};
@@ -15,7 +14,6 @@ const StyledButton = styled.button`
   transition: ${theme.transition};
 
   padding: 0.5rem 0.8rem;
-  margin-right: 15px;
   border-radius: 7px;
   font-size: 1.2rem;
   cursor: pointer;
