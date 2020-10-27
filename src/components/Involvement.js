@@ -52,7 +52,7 @@ const Involved = () => {
                   and connect with the top talent in AI and machine learning.
                 </p>
                 <Button borderStyle="solid">
-                  <a href="src/files/CUCAI 2021 Sponsorship Package.pdf">
+                  <a href="CUCAI-2021-Sponsorship-Package.pdf">
                     Sponsors Package
                   </a>
                 </Button>
@@ -70,7 +70,7 @@ const Involved = () => {
                   workshop leaders and inQUbate pitch competition judges.
                 </p>
                 <Button borderStyle="solid">
-                  <a href="CUCAI Speakers' Package.pdf">
+                  <a href="CUCAI 2021 Speaker Package.pdf">
                     Speakers Package
                   </a>
                 </Button>
