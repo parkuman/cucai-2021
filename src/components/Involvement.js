@@ -67,7 +67,7 @@ const Involved = () => {
                   with relevant insight from their own work and the AI field in
                   an innovative, creative, and personable way. Speaker
                   opportunities include speeches, as well as panelist positions,
-                  workshop leaders and inQUbate pitch competition judges.
+                  workshop leaders and incubator pitch competition judges.
                 </p>
                 <Button borderStyle="solid">
                   <a href="CUCAI 2021 Speaker Package.pdf">
@@ -83,7 +83,7 @@ const Involved = () => {
                   “Tier Collaberation Program” structured to facilitate
                   involvement from undergraduate AI groups across Canada.
                   Incentives include reserved delegate spots, design showcase
-                  involvement, participation in the inQUbate pitch competition,
+                  involvement, participation in the incubator pitch competition,
                   the undergraduate AI executive showcase and more.
                   Opportunities for partnership with other Canadian
                   undergraduate AI societies have never been so plentiful, as
