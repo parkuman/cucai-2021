@@ -51,11 +51,10 @@ const Involved = () => {
                   together. As a partner, CUCAI is the perfect place to interact
                   and connect with the top talent in AI and machine learning.
                 </p>
-                <Button borderStyle="solid">
-                  <a href="CUCAI-2021-Sponsorship-Package.pdf">
-                    Sponsors Package
-                  </a>
-                </Button>
+
+                <a href="CUCAI-2021-Sponsorship-Package.pdf">
+                  <Button borderStyle="solid">Sponsors Package</Button>
+                </a>
               </StyledDetails>
             </Tab.Pane>
             <Tab.Pane eventKey="Speakers">
@@ -69,11 +68,10 @@ const Involved = () => {
                   opportunities include speeches, as well as panelist positions,
                   workshop leaders and incubator pitch competition judges.
                 </p>
-                <Button borderStyle="solid">
-                  <a href="CUCAI 2021 Speaker Package.pdf">
-                    Speakers Package
-                  </a>
-                </Button>
+
+                <a href="CUCAI 2021 Speaker Package.pdf">
+                  <Button borderStyle="solid">Speakers Package</Button>
+                </a>
               </StyledDetails>
             </Tab.Pane>
             <Tab.Pane eventKey="Student Groups">
@@ -89,11 +87,12 @@ const Involved = () => {
                   undergraduate AI societies have never been so plentiful, as
                   CUCAI’s national reach expands.
                 </p>
-                <Button borderStyle="solid">
-                  <a href="CUCAI Student Group Partnership Package.pdf">
+
+                <a href="CUCAI Student Group Partnership Package.pdf">
+                  <Button borderStyle="solid">
                     Student Group Partnership Package
-                  </a>
-                </Button>
+                  </Button>
+                </a>
               </StyledDetails>
             </Tab.Pane>
             <Tab.Pane eventKey="Delegates">

@@ -372,6 +372,16 @@ const StyledSponsorSection = styled.section`
   & > img {
     max-height: 50vh;
   }
+
+  & > div {
+    max-width: 60%;
+  }
+
+  ${media.phone`
+    & > div {
+      max-width: 100%;
+    }
+  `}
 `;
 
 const StyledInvolvedSection = styled.section`
@@ -391,6 +401,10 @@ const StyledContactUsSection = styled.section`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+
+  & h3 {
+    font-size: 1rem;
+  }
 `;
 
 const ParallaxSkyline = () => {
@@ -437,12 +451,15 @@ const Hero = ({ data, heading, slogan, location, date, cta1, cta2 }) => (
         <StyledInfo>
           {location.toUpperCase()} | {date.toUpperCase()}
         </StyledInfo>
-        <Button backgroundColour="white">
-          <a href="#sponsors">{cta1}</a>
-        </Button>
-        <Button borderStyle="solid" borderColour="#174461">
-          <a href="mailto:chair@cucai.ca">{cta2}</a>
-        </Button>
+
+        <a href="#sponsors">
+          <Button backgroundColour="white">{cta1}</Button>
+        </a>
+        <a href="mailto:chair@cucai.ca">
+          <Button borderStyle="solid" borderColour="#174461">
+            {cta2}
+          </Button>
+        </a>
       </StyledHeroContent>
     </Fade>
 
@@ -491,9 +508,11 @@ const CovidBanner = () => (
           world. Click the link below to read our new plan for an{" "}
           <strong>online</strong> CUCAI 2021.
         </p>
-        <Button borderStyle="solid" borderColour="white" textColour="white">
-          <Link to="/covidresponse">See Our Plans</Link>
-        </Button>
+        <Link to="/covidresponse">
+          <Button borderStyle="solid" borderColour="white" textColour="white">
+            See Our Plans
+          </Button>
+        </Link>
       </CovidContent>
     </Fade>
   </StyledCovidBanner>
@@ -553,9 +572,12 @@ const DesignTeamShowcase = ({ data, images }) => {
               fluid={data.proceedingsImg.childImageSharp.fluid}
               alt="conference proceedings"
             />
-            <Button borderStyle="solid" borderColour="#174461">
-              <a href="Proceedings-of-CUCAI-2020.pdf">2020 PROCEEDINGS PDF</a>
-            </Button>
+
+            <a href="Proceedings-of-CUCAI-2020.pdf">
+              <Button borderStyle="solid" borderColour="#174461">
+                2020 Proceedings PDF
+              </Button>
+            </a>
           </DesignTeamProceedings>
         </EventContent>
       </DesignTeamShowcaseContent>
@@ -648,17 +670,18 @@ const SponsorSection = ({ data }) => (
       <SectionTitle>Sponsors</SectionTitle>
       <h3>Sponsor Us!</h3>
       <p>There are many advantages to becoming a CUCAI sponsor:</p>
-      <Button borderStyle="solid">
-        <a href="CUCAI-2021-Sponsorship-Package.pdf">
-          View Our Benefits Package
-        </a>
-      </Button>
+      <a href="CUCAI-2021-Sponsorship-Package.pdf">
+        <Button borderStyle="solid">View Our Benefits Package</Button>
+      </a>
+
       <br></br>
       <br></br>
       <br></br>
 
       <h3>Past Sponsors & Partners</h3>
-      <Img fluid={data.sponsorImg.childImageSharp.fluid} alt="sponsorships" />
+      <div>
+        <Img fluid={data.sponsorImg.childImageSharp.fluid} alt="sponsorships" />
+      </div>
     </Fade>
   </StyledSponsorSection>
 );
@@ -727,13 +750,10 @@ const ContactUsSection = () => (
       <IdHrefAnchor id="contact" />
       <SectionTitle>Contact Us</SectionTitle>
       <h3>Email</h3>
-      <Button borderStyle="solid">
-        <a href="mailto:chair@cucai.ca">chair@cucai.ca</a>
-      </Button>
-      <br></br>
 
-      <h3>Social Media</h3>
-      <Socials />
+      <a href="mailto:chair@cucai.ca">
+        <Button borderStyle="solid">chair@cucai.ca</Button>
+      </a>
     </StyledContactUsSection>
   </Fade>
 );
