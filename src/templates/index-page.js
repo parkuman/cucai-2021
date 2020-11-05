@@ -373,7 +373,8 @@ const StyledSponsorSection = styled.section`
     max-height: 50vh;
   }
 
-  & > div {
+  .sponsimg {
+    margin: 0 auto;
     max-width: 60%;
   }
 
@@ -668,10 +669,9 @@ const SponsorSection = ({ data }) => (
     <Fade bottom distance="80px">
       <IdHrefAnchor id="sponsors" />
       <SectionTitle>Sponsors</SectionTitle>
-      <h3>Sponsor Us!</h3>
       <p>There are many advantages to becoming a CUCAI sponsor:</p>
       <a href="CUCAI-2021-Sponsorship-Package.pdf">
-        <Button borderStyle="solid">View Our Benefits Package</Button>
+        <Button borderStyle="solid">View Our Sponsorship Package</Button>
       </a>
 
       <br></br>
@@ -679,7 +679,7 @@ const SponsorSection = ({ data }) => (
       <br></br>
 
       <h3>Past Sponsors & Partners</h3>
-      <div>
+      <div className="sponsimg">
         <Img fluid={data.sponsorImg.childImageSharp.fluid} alt="sponsorships" />
       </div>
     </Fade>
