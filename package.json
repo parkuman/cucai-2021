@@ -1,1 +1,57 @@
-{"name":"cucai","description":"website for Canadian Undergraduate Conference on AI","version":"1.1.3","author":"Parker Rowe & Katie Lu","dependencies":{"bootstrap":"*","bulma":"*","gatsby":"*","gatsby-background-image":"*","gatsby-image":"*","gatsby-plugin-netlify":"*","gatsby-plugin-netlify-cms":"*","gatsby-plugin-purgecss":"*","gatsby-plugin-react-helmet":"*","gatsby-plugin-sharp":"*","gatsby-plugin-styled-components":"*","gatsby-remark-copy-linked-files":"*","gatsby-remark-images":"*","gatsby-remark-relative-images":"*","gatsby-source-filesystem":"*","gatsby-transformer-remark":"*","gatsby-transformer-sharp":"*","imagemin-pngquant":"*","lodash":"*","lodash-webpack-plugin":"*","lottie-web":"*","netlify-cms-app":"*","pngquant-bin":"*","prop-types":"*","react":"*","react-bootstrap":"*","react-dom":"*","react-helmet":"*","react-scroll-parallax":"*","styled-components":"*","uuid":"*"},"keywords":["gatsby"],"license":"MIT","main":"n/a","scripts":{"update:packages":"node wipe-dependencies.js && rm -rf node_modules && npm update --save-dev && npm update --save","clean":"gatsby clean","start":"npm run develop","build":"npm run clean && gatsby build","develop":"npm run clean && gatsby develop","format":"prettier --trailing-comma es5 --no-semi --single-quote --write \"{gatsby-*.js,src/**/*.js}\"","test":"echo \"Error: no test specified\" && exit 1"},"devDependencies":{"prettier":"*","react-reveal":"*"}}
+{
+  "name": "cucai",
+  "description": "website for Canadian Undergraduate Conference on AI",
+  "version": "1.1.3",
+  "author": "Parker Rowe & Katie Lu",
+  "dependencies": {
+    "bootstrap": "*",
+    "bulma": "*",
+    "gatsby": "*",
+    "gatsby-background-image": "*",
+    "gatsby-image": "*",
+    "gatsby-plugin-netlify": "*",
+    "gatsby-plugin-netlify-cms": "*",
+    "gatsby-plugin-purgecss": "*",
+    "gatsby-plugin-react-helmet": "*",
+    "gatsby-plugin-sharp": "*",
+    "gatsby-plugin-styled-components": "*",
+    "gatsby-remark-copy-linked-files": "*",
+    "gatsby-remark-images": "*",
+    "gatsby-remark-relative-images": "^0.2.0",
+    "gatsby-source-filesystem": "*",
+    "gatsby-transformer-remark": "*",
+    "gatsby-transformer-sharp": "*",
+    "imagemin-pngquant": "*",
+    "lodash": "*",
+    "lodash-webpack-plugin": "*",
+    "lottie-web": "*",
+    "netlify-cms-app": "*",
+    "pngquant-bin": "*",
+    "prop-types": "*",
+    "react": "*",
+    "react-bootstrap": "*",
+    "react-dom": "*",
+    "react-helmet": "*",
+    "react-scroll-parallax": "*",
+    "styled-components": "*",
+    "uuid": "*"
+  },
+  "keywords": [
+    "gatsby"
+  ],
+  "license": "MIT",
+  "main": "n/a",
+  "scripts": {
+    "update:packages": "node wipe-dependencies.js && rm -rf node_modules && npm update --save-dev && npm update --save",
+    "clean": "gatsby clean",
+    "start": "npm run develop",
+    "build": "npm run clean && gatsby build",
+    "develop": "npm run clean && gatsby develop",
+    "format": "prettier --trailing-comma es5 --no-semi --single-quote --write \"{gatsby-*.js,src/**/*.js}\"",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "devDependencies": {
+    "prettier": "*",
+    "react-reveal": "*"
+  }
+}
