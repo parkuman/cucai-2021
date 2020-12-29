@@ -2,6 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import { graphql, Link } from "gatsby";
 import Img from "gatsby-image";
+import BackgroundImg from "gatsby-background-image";
 import { Parallax } from "react-scroll-parallax";
 import Fade from "react-reveal/Fade";
 
@@ -40,31 +41,16 @@ const IdHrefAnchor = styled.a`
   visibility: hidden;
 `;
 
-const StyledHero = styled.section`
-  padding-top: 10vh;
-  position: relative;
-  background: radial-gradient(
-      189.82% 100% at 50% 0%,
-      rgba(26, 79, 203, 0.0001) 0%,
-      rgba(29, 85, 205, 0.0459233) 0%,
-      rgba(33, 93, 208, 0.0977712) 63.18%,
-      #65dafe 100%,
-      #65dafe 100%
-    ),
-    linear-gradient(
-      146.77deg,
-      rgba(26, 169, 203, 0.25) -3.05%,
-      rgba(17, 47, 66, 0.25) 90.39%,
-      rgba(17, 47, 66, 0.25) 90.39%
-    );
-  max-width: 100vw;
-
-  height: 90vh;
-
-  ${media.phone`
-    height: 80vh;
-      
-  `}/* overflow: hiddden; */
+const StyledHero = styled(BackgroundImg)`
+  width: 100%;
+  /* min-height: 100vh; */
+  /* You should set a background-size as the default value is "cover"! */
+  background-size: contain;
+  /* So we won't have the default "lightgray" background-color. */
+  background-color: transparent;
+  /* Now again, remember the stacking order of CSS: lowermost comes last! */
+  background-repeat: no-repeat, no-repeat;
+  background-position: 50% 100%, top;
 `;
 
 const SectionTitle = styled.h2`
@@ -87,7 +73,9 @@ const SectionSubtitle = styled.h3`
 
 const StyledHeroContent = styled.div`
   margin: 0 auto;
+  padding-top: 15vh;
   max-width: 80%;
+  height: 100vh;
   & button {
     margin-right: 15px;
   }
@@ -408,65 +396,84 @@ const StyledContactUsSection = styled.section`
   }
 `;
 
-const ParallaxSkyline = () => {
+// const ParallaxSkyline = () => {
+//   return (
+//     <StyledParallaxSkyline>
+//       <StyledParallax y={[-10, 0]}>
+//         <img src={SkylineLayers[0]} alt="skyline layer" />
+//       </StyledParallax>
+//       <StyledParallax y={[-90, -100]}>
+//         <img src={SkylineLayers[1]} alt="skyline layer" />
+//       </StyledParallax>
+//       <StyledParallax y={[-190, -205]}>
+//         <img src={SkylineLayers[2]} alt="skyline layer" />
+//       </StyledParallax>
+//       <StyledParallax y={[-290, -310]}>
+//         <img src={SkylineLayers[3]} alt="skyline layer" />
+//       </StyledParallax>
+//       <StyledParallax y={[-390, -415]}>
+//         <img src={SkylineLayers[4]} alt="skyline layer" />
+//       </StyledParallax>
+//       <StyledParallax y={[-490, -520]}>
+//         <img src={SkylineLayers[5]} alt="skyline layer" />
+//       </StyledParallax>
+//       <StyledParallax y={[-590, -620]}>
+//         <img src={SkylineLayers[6]} alt="skyline layer" />
+//       </StyledParallax>
+//       <StyledParallax y={[-750, -780]}>
+//         <img src={Clouds} alt="skyline layer" />
+//       </StyledParallax>
+//     </StyledParallaxSkyline>
+//   );
+// };
+
+const Hero = ({ data, heading, slogan, location, date, cta1, cta2 }) => {
+  const heroBackgroundImages = [
+    data.cityImg.childImageSharp.fluid,
+    `radial-gradient(
+      189.82% 100% at 50% 0%,
+      rgba(26, 79, 203, 0.0001) 0%,
+      rgba(29, 85, 205, 0.0459233) 0%,
+      rgba(33, 93, 208, 0.0977712) 10.18%,
+      #65dafe 100%,
+      #65dafe 100%
+    ),
+    linear-gradient(
+      146.77deg,
+      rgba(26, 169, 203, 0.25) -3.05%,
+      rgba(17, 47, 66, 0.25) 100.39%,
+      rgba(17, 47, 66, 0.25) 100.39%
+    )`,
+  ];
+
   return (
-    <StyledParallaxSkyline>
-      <StyledParallax y={[-10, 0]}>
-        <img src={SkylineLayers[0]} alt="skyline layer" />
-      </StyledParallax>
-      <StyledParallax y={[-90, -100]}>
-        <img src={SkylineLayers[1]} alt="skyline layer" />
-      </StyledParallax>
-      <StyledParallax y={[-190, -205]}>
-        <img src={SkylineLayers[2]} alt="skyline layer" />
-      </StyledParallax>
-      <StyledParallax y={[-290, -310]}>
-        <img src={SkylineLayers[3]} alt="skyline layer" />
-      </StyledParallax>
-      <StyledParallax y={[-390, -415]}>
-        <img src={SkylineLayers[4]} alt="skyline layer" />
-      </StyledParallax>
-      <StyledParallax y={[-490, -520]}>
-        <img src={SkylineLayers[5]} alt="skyline layer" />
-      </StyledParallax>
-      <StyledParallax y={[-590, -620]}>
-        <img src={SkylineLayers[6]} alt="skyline layer" />
-      </StyledParallax>
-      <StyledParallax y={[-750, -780]}>
-        <img src={Clouds} alt="skyline layer" />
-      </StyledParallax>
-    </StyledParallaxSkyline>
+    <StyledHero fluid={heroBackgroundImages}>
+        <Fade bottom distance="80px">
+          <StyledHeroContent>
+            <StyledHeading>
+              <Fade>{heading}</Fade>
+            </StyledHeading>
+            <StyledSlogan>
+              Artificial intelligence, <strong>real change.</strong>
+            </StyledSlogan>
+            <StyledInfo>
+              {location.toUpperCase()} | {date.toUpperCase()}
+            </StyledInfo>
+
+            <a href="#sponsors">
+              <Button backgroundColour="white">{cta1}</Button>
+            </a>
+            <a href="mailto:chair@cucai.ca">
+              <Button borderStyle="solid" borderColour="#174461">
+                {cta2}
+              </Button>
+            </a>
+          </StyledHeroContent>
+        </Fade>
+      {/* <CityComponent data={data} /> */}
+    </StyledHero>
   );
 };
-
-const Hero = ({ data, heading, slogan, location, date, cta1, cta2 }) => (
-  <StyledHero>
-    <Fade bottom distance="80px">
-      <StyledHeroContent>
-        <StyledHeading>
-          <Fade>{heading}</Fade>
-        </StyledHeading>
-        <StyledSlogan>
-          Artificial intelligence, <strong>real change.</strong>
-        </StyledSlogan>
-        <StyledInfo>
-          {location.toUpperCase()} | {date.toUpperCase()}
-        </StyledInfo>
-
-        <a href="#sponsors">
-          <Button backgroundColour="white">{cta1}</Button>
-        </a>
-        <a href="mailto:chair@cucai.ca">
-          <Button borderStyle="solid" borderColour="#174461">
-            {cta2}
-          </Button>
-        </a>
-      </StyledHeroContent>
-    </Fade>
-
-    <CityComponent data={data} />
-  </StyledHero>
-);
 
 const CityComponent = ({ data }) => (
   <CityImg>
