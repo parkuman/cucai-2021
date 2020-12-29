@@ -2,12 +2,9 @@ import React from "react";
 import { Link } from "gatsby";
 
 import styled from "styled-components";
-import { socialMedia } from "../config";
-import theme from "../styles/theme";
-import logo from '../img/Logo main.svg'
-import FacebookIcon from '../img/social/facebook.js'
-import LinkedInIcon from '../img/social/linkedin.js'
-import InstagramIcon from '../img/social/instagram.js'
+import logo from "../img/Logo Main.svg";
+
+import Socials from "./Socials";
 
 const StyledFooter = styled.footer`
   width: 100%;
@@ -33,62 +30,28 @@ const StyledLogo = styled.img`
   margin: 1em;
 `;
 
-
-const SocialLink = styled(Link)`
-  padding: 5px 10px;
-
-  & svg {
-    transition: ${theme.transition};
-  }
-
-  &:hover {
-      & svg {
-          fill: var(--cucai-blue);
-          transform: rotate(10deg) translateY(-3px);
-      }
-  }
-  
-`;
-
-const SocialsList = styled.div`
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
-`;
-
-const Socials = () => <SocialsList>{
-  socialMedia.map(social => {
-    let image;
-    if (social.name.includes("Facebook")) {
-      image = <FacebookIcon size="25px" />;
-    } else if (social.name.includes("Instagram")) {
-      image = <InstagramIcon size="25px" />;
-    } else if (social.name.includes("LinkedIn")) {
-      image = <LinkedInIcon size="25px" />;
-    } else {
-      image = null;
-    }
-
-    return (
-      <SocialLink to={social.url}>
-        {image}
-      </SocialLink>
-    );
-  })}
-</SocialsList>
-
-
 const Footer = () => {
   return (
     <StyledFooter>
       <StyledFooterContent>
-        <Text>We acknowledge the land we are meeting on is the traditional territory of many nations including the Mississaugas of the Credit, the Anishnabeg, the Chippewa, the Haudenosaunee and the Wendat peoples and is now home to many diverse FirstNations, Inuit and Métis peoples. We also acknowledge that the city of Toronto is covered by Treaty 13 with the Mississaugas of the Credit. To acknowledge this traditional territory is to recognize the territory’s significance for the Indigenous peoples who lived, and continue to live, upon it.</Text>
-        <Socials />
+        <Text>
+          We acknowledge the land we are meeting on is the traditional territory
+          of many nations including the Mississaugas of the Credit, the
+          Anishnabeg, the Chippewa, the Haudenosaunee and the Wendat peoples and
+          is now home to many diverse FirstNations, Inuit and Métis peoples. We
+          also acknowledge that the city of Toronto is covered by Treaty 13 with
+          the Mississaugas of the Credit. To acknowledge this traditional
+          territory is to recognize the territory’s significance for the
+          Indigenous peoples who lived, and continue to live, upon it.
+        </Text>
+        <Socials direction="row" />
         <Link to="/">
           <StyledLogo src={logo} alt="logo" />
         </Link>
-        <Text>Copyright © 2020 CUCUAI Canadian Undergraduate Conference on AI. All Rights Reserved</Text>
+        <Text>
+          Copyright © 2020 CUCAI Canadian Undergraduate Conference on AI. All
+          Rights Reserved
+        </Text>
       </StyledFooterContent>
     </StyledFooter>
   );

@@ -10,13 +10,15 @@ import Layout from "../components/Layout";
 import { ourTeam } from "../config";
 
 const StyledAboutPage = styled.div`
+  margin: 0 auto;
   padding: 2em;
-
+  padding-top: 10vh;
   background: rgb(255, 255, 255);
   /* background: linear-gradient(0deg, rgba(255,255,255,1) 0%, rgba(26,169,203,1) 100%); */
 
   ${media.phone`
     padding: 0.5em;
+    padding-top: 10vh;
   `}
 `;
 
@@ -65,9 +67,10 @@ const StyledTeam = styled(Row)`
   width: 100%;
   display: flex;
   align-items: center;
+  justify-content: center;
 
   ${media.phone`
-  flex-direction: column;
+    flex-direction: column;
 `}
 `;
 
@@ -121,11 +124,7 @@ const OurTeam = ({ data }) => {
 //<p>{team.email}</p>
 export const AboutPageTemplate = ({ title, slogan, html }) => (
   <StyledAboutPage>
-    <h1>{title}</h1>
     <StyledTextSection>
-      <h2>
-        <em>{slogan}</em>
-      </h2>
       <div dangerouslySetInnerHTML={{ __html: html }} />
     </StyledTextSection>
     <OurTeam />

@@ -4,7 +4,7 @@ path: /about
 title: About us
 slogan: Artificial intelligence, real change.
 ---
-## About the Conference
+## The Conference
 We are a 300+ guest conference attracting top talent from across Canada. Due to the circumstances surrounding COVID-19, the event will now take place online on March 7th & 8th, 2021. 
 
 CUCAI 2020 was a huge success, with a breadth of esteemed speakers including Geoffrey Hinton, and sponsors such as TD, RBC, Distributed Compute Labs, KPMG and Accenture. Students attended from McGill, U of T, Waterloo, McMaster, uOttawa, Western and more. Highlights from the conference include the industry showcase, design team showcase, incubator pitch competition, coffee chats with industry and the Women in STEM fireside chat. These events will all be converted to an online format, without impeding the quality of presentation and interaction. 

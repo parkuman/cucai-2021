@@ -2,34 +2,27 @@ import React from "react";
 import PropTypes from "prop-types";
 import { graphql, Link } from "gatsby";
 import Img from "gatsby-image";
-import { Parallax } from "react-scroll-parallax";
+import BackgroundImg from "gatsby-background-image";
 import Fade from "react-reveal/Fade";
+import styled from "styled-components";
+import { Carousel } from "react-bootstrap/";
+import "bootstrap/dist/css/bootstrap.min.css";
 
 //Photos
-import SkylineLayers from "../img/parallaxSkyline";
 import DesignImgs from "../img/designteams";
-import Clouds from "../img/clouds_to_white.png";
 import Diver from "../img/diver1.svg";
 import Highlights from "../img/pano.png";
-
-import FacebookIcon from "../img/social/facebook.js";
-import LinkedInIcon from "../img/social/linkedin.js";
-import InstagramIcon from "../img/social/instagram.js";
 
 import CardStack from "../components/Cards";
 import Layout from "../components/Layout";
 import Involved from "../components/Involvement";
 import ScrollToTop from "../components/ScrollToTop";
+import Button from "../components/Button";
+import Socials from "../components/Socials";
+import Handshake from "../components/Handshake";
 
 import theme from "../styles/theme";
 import media from "../styles/media";
-import { socialMedia } from "../config";
-
-import Button from "../components/Button";
-import styled from "styled-components";
-import { Carousel } from "react-bootstrap/";
-
-import "bootstrap/dist/css/bootstrap.min.css";
 
 const StyledIndexPage = styled.div``;
 
@@ -40,35 +33,20 @@ const IdHrefAnchor = styled.a`
   visibility: hidden;
 `;
 
-const StyledHero = styled.section`
-  padding-top: 10vh;
-  position: relative;
-  background: radial-gradient(
-      189.82% 100% at 50% 0%,
-      rgba(26, 79, 203, 0.0001) 0%,
-      rgba(29, 85, 205, 0.0459233) 0%,
-      rgba(33, 93, 208, 0.0977712) 63.18%,
-      #65dafe 100%,
-      #65dafe 100%
-    ),
-    linear-gradient(
-      146.77deg,
-      rgba(26, 169, 203, 0.25) -3.05%,
-      rgba(17, 47, 66, 0.25) 90.39%,
-      rgba(17, 47, 66, 0.25) 90.39%
-    );
-  max-width: 100vw;
-
-  height: 90vh;
-
-  ${media.phone`
-    height: 80vh;
-      
-  `}/* overflow: hiddden; */
+const StyledHero = styled(BackgroundImg)`
+  width: 100%;
+  /* min-height: 100vh; */
+  /* You should set a background-size as the default value is "cover"! */
+  background-size: contain;
+  /* So we won't have the default "lightgray" background-color. */
+  background-color: transparent;
+  /* Now again, remember the stacking order of CSS: lowermost comes last! */
+  background-repeat: no-repeat, no-repeat;
+  background-position: 50% 100%, top;
 `;
 
 const SectionTitle = styled.h2`
-  font-size: 4rem;
+  font-size: 3rem;
   font-weight: lighter;
 
   ${media.phone`
@@ -86,11 +64,60 @@ const SectionSubtitle = styled.h3`
 `;
 
 const StyledHeroContent = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding-top: 20vh;
   margin: 0 auto;
   max-width: 80%;
+  height: 100vh;
+
+  ${media.tablet`
+    padding-top: 0;
+    align-items: center;
+    flex-direction: column-reverse;
+    justify-content: center;
+  `}
+`;
+
+const HeroText = styled.div`
+  max-width: 70%;
   & button {
-    margin-right: 15px;
+    display: inline-block;
+    margin: 0 15px 15px 0;
   }
+
+  ${media.tablet`
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    max-width: 100%;
+
+    & button {
+      margin-right: 0;
+    }
+  `}
+`;
+
+const MobileSocials = styled.div`
+  display: none;
+
+  ${media.tablet`
+    display: inline-block;
+  `}
+`;
+
+const HeroLogo = styled.div`
+  min-width: 30%;
+  min-height: 10vh;
+
+  ${media.tablet`
+    min-width: 50%;
+
+  `}
 `;
 
 const StyledHeading = styled.h1`
@@ -98,23 +125,18 @@ const StyledHeading = styled.h1`
   padding: 0;
   font-weight: normal;
   font-family: ${theme.fonts.IBMPlexSansLight};
-  font-size: 4rem;
-  max-width: 80%;
-
-  @media screen and (max-height: 800px) {
-    max-width: 100%;
-    font-size: 2rem;
-  }
-
-  ${media.phone`
-      max-width: 100%;
-      margin: 20px 0;
-      font-size: 2rem;
-  `}
+  font-size: 3.5rem;
+  max-width: 90%;
+  margin-bottom: 10px;
 
   ${media.tablet`
-      max-width: 90%;
-      margin: 20px 0;
+    font-size: 2.8rem;
+    max-width: 100%;
+
+  `}
+  ${media.phone`
+    margin: 20px 0;
+    font-size: 2rem;
   `}
 `;
 
@@ -123,57 +145,33 @@ const StyledSlogan = styled.h2`
   font-size: 2rem;
 
   ${media.phone`
-      font-size: 1.2rem;
+      font-size: 1.5rem;
   `}
 `;
 
 const StyledInfo = styled.h3`
   font-weight: normal;
-  font-size: 1.2rem;
+  font-size: 1.5rem;
   padding: 10px 0;
 
   ${media.phone`
-      font-size: 1rem;
+      font-size: 1.1rem;
   `}
-`;
-
-const StyledParallaxSkyline = styled.div`
-  max-height: 200px;
-  position: relative;
-  top: -40vh;
-  pointer-events: none;
-
-  ${media.phone`
-      top: -16vh;
-  `}
-
-  ${media.tablet`
-      top: -20vh;
-  `}
-`;
-
-const StyledParallax = styled(Parallax)`
-  & img {
-    width: 100vw;
-  }
 `;
 
 const StyledBlurbSection = styled.section`
   max-width: 80%;
-  min-height: 100vh;
+  min-height: 70vh;
   margin: 0 auto;
   display: flex;
   flex-direction: row;
   justify-content: space-around;
   align-items: center;
-  z-index: 10 !important;
 
-  ${media.phone`
+  ${media.tablet`
     flex-direction: column-reverse;
-    max-width: 95%;
-    padding: 150px 0;
-
-    
+    justify-content: center;
+    max-width: 100%;
   `}
 `;
 
@@ -181,9 +179,21 @@ const StyledBlurbContent = styled.div`
   width: 50%;
   margin-right: 10px;
 
+  ${media.tablet`
+    width: 80%;
+    margin-right: 0px;
+  `}
+
   ${media.phone`
-      width: 100%;
-      margin-right: 0px;
+    padding: 5vh 0;
+    width: 80%;
+  `}
+`;
+
+const StyledBlurbImg = styled.div`
+  width: 50%;
+  ${media.phone`
+    display: none;
   `}
 `;
 
@@ -280,7 +290,7 @@ const ProceedingsGatsbyImage = styled(Img)`
   width: 50%;
 
   ${media.phone`
-    width:100%;
+    width: 80%;
   `}
 `;
 
@@ -332,56 +342,82 @@ const StyledWorkshopsShowcase = styled.section`
   `}
 `;
 
-const StyledBlurbImg = styled.div`
-  width: 50%;
-
-  ${media.phone`
-    width: 100%;
-  `}
-`;
-
-const CityImg = styled.div`
-  width: 100vw;
-  position: absolute;
-  pointer-events: none;
-
-  bottom: -15vh;
-  left: 0;
-
-  ${media.phone`
-    bottom: -5vh;
-
-  `}
-  ${media.tablet`
-    bottom: -10vh;
-
-  `}
-`;
-
 const StyledPastSpeakersSection = styled.section`
+  margin: 50px 0; 
+  width: 100vw;
+  background: #f8f8f8;
+`;
+
+const PastSpeakersContent = styled.div`
   max-width: 80%;
   margin: 0 auto;
   padding: 50px 0;
 `;
 
 const StyledSponsorSection = styled.section`
-  max-width: 80%;
-  margin: 0 auto;
-  padding: 100px 0;
-
-  & > img {
-    max-height: 50vh;
+  & > h3 {
+    text-align: center;
   }
 
   .sponsimg {
     margin: 0 auto;
-    max-width: 60%;
+    max-width: 50%;
+
+    ${media.phone`
+      max-width: 95%;
+    `}
+  }
+`;
+
+const SponsorBannerWrapper = styled.div`
+  width: 100vw;
+  margin-bottom: 5vh;
+  background: linear-gradient(
+      180deg,
+      rgba(26, 79, 203, 0.5) 0%,
+      rgba(255, 255, 255, 0) 100%
+    ),
+    #1aa9cb;
+`;
+
+const SponsorBanner = styled.div`
+  max-width: 80%;
+  margin: 0 auto;
+  padding: 50px 0;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
+
+  ${media.phone`
+    & a {
+      margin-bottom: 30px;
+    }
+    flex-direction: column;
+    justify-content: space-between;
+    max-width: 90%;
+  `}
+`;
+
+const SponsorBannerContent = styled.div`
+  display: flex;
+  flex-direction: column;
+  color: white;
+  text-decoration: none;
+  font-size: 1.1rem;
+
+  & > h2 {
+    margin-bottom: 20px;
+  }
+
+  & > a {
+    margin-top: 20px;
   }
 
   ${media.phone`
-    & > div {
-      max-width: 100%;
-    }
+    align-items: center;
+    justify-content: center;
+    text-align: center;
   `}
 `;
 
@@ -408,71 +444,57 @@ const StyledContactUsSection = styled.section`
   }
 `;
 
-const ParallaxSkyline = () => {
+const Hero = ({ data, heading, slogan, location, date, cta1, cta2 }) => {
+  const heroBackgroundImages = [
+    data.cityImg.childImageSharp.fluid,
+    `radial-gradient(
+      189.82% 100% at 50% 0%,
+      rgba(26, 79, 203, 0.0001) 0%,
+      rgba(29, 85, 205, 0.0459233) 0%,
+      rgba(33, 93, 208, 0.0977712) 10.18%,
+      #65dafe 100%,
+      #65dafe 100%
+    ),
+    linear-gradient(
+      146.77deg,
+      rgba(26, 169, 203, 0.25) -3.05%,
+      rgba(17, 47, 66, 0.25) 100.39%,
+      rgba(17, 47, 66, 0.25) 100.39%
+    )`,
+  ];
+
   return (
-    <StyledParallaxSkyline>
-      <StyledParallax y={[-10, 0]}>
-        <img src={SkylineLayers[0]} alt="skyline layer" />
-      </StyledParallax>
-      <StyledParallax y={[-90, -100]}>
-        <img src={SkylineLayers[1]} alt="skyline layer" />
-      </StyledParallax>
-      <StyledParallax y={[-190, -205]}>
-        <img src={SkylineLayers[2]} alt="skyline layer" />
-      </StyledParallax>
-      <StyledParallax y={[-290, -310]}>
-        <img src={SkylineLayers[3]} alt="skyline layer" />
-      </StyledParallax>
-      <StyledParallax y={[-390, -415]}>
-        <img src={SkylineLayers[4]} alt="skyline layer" />
-      </StyledParallax>
-      <StyledParallax y={[-490, -520]}>
-        <img src={SkylineLayers[5]} alt="skyline layer" />
-      </StyledParallax>
-      <StyledParallax y={[-590, -620]}>
-        <img src={SkylineLayers[6]} alt="skyline layer" />
-      </StyledParallax>
-      <StyledParallax y={[-750, -780]}>
-        <img src={Clouds} alt="skyline layer" />
-      </StyledParallax>
-    </StyledParallaxSkyline>
+    <StyledHero fluid={heroBackgroundImages}>
+      <StyledHeroContent>
+        <HeroText>
+          <StyledHeading>{heading}</StyledHeading>
+          <StyledSlogan>
+            Artificial intelligence, <strong>real change.</strong>
+          </StyledSlogan>
+          <StyledInfo>
+            March 6 - 7, 2021 |{" "}
+            <Link to="https://hopin.com/">Online Experience</Link>
+          </StyledInfo>
+
+          <a href="#sponsors">
+            <Button backgroundColour="white">Become a Sponsor</Button>
+          </a>
+          <a href="mailto:chair@cucai.ca">
+            <Button borderStyle="solid" borderColour="#174461">
+              Email Us
+            </Button>
+          </a>
+          <MobileSocials>
+            <Socials direction="row" />
+          </MobileSocials>
+        </HeroText>
+        <HeroLogo>
+          <Img fluid={data.logo2021.childImageSharp.fluid} />
+        </HeroLogo>
+      </StyledHeroContent>
+    </StyledHero>
   );
 };
-
-const Hero = ({ data, heading, slogan, location, date, cta1, cta2 }) => (
-  <StyledHero>
-    <Fade bottom distance="80px">
-      <StyledHeroContent>
-        <StyledHeading>
-          <Fade>{heading}</Fade>
-        </StyledHeading>
-        <StyledSlogan>
-          Artificial intelligence, <strong>real change.</strong>
-        </StyledSlogan>
-        <StyledInfo>
-          {location.toUpperCase()} | {date.toUpperCase()}
-        </StyledInfo>
-
-        <a href="#sponsors">
-          <Button backgroundColour="white">{cta1}</Button>
-        </a>
-        <a href="mailto:chair@cucai.ca">
-          <Button borderStyle="solid" borderColour="#174461">
-            {cta2}
-          </Button>
-        </a>
-      </StyledHeroContent>
-    </Fade>
-
-    <CityComponent data={data} />
-  </StyledHero>
-);
-
-const CityComponent = ({ data }) => (
-  <CityImg>
-    <Img fluid={data.cityImg.childImageSharp.fluid} />
-  </CityImg>
-);
 
 const BlurbSection = ({ data, blurbtitle, blurbdesc, blurbimg }) => (
   <Fade bottom distance="80px">
@@ -668,16 +690,30 @@ const SponsorSection = ({ data }) => (
   <StyledSponsorSection>
     <Fade bottom distance="80px">
       <IdHrefAnchor id="sponsors" />
-      <SectionTitle>Sponsors</SectionTitle>
-      <p>There are many advantages to becoming a CUCAI sponsor:</p>
-      <a href="CUCAI-2021-Sponsorship-Package.pdf">
-        <Button borderStyle="solid">View Our Sponsorship Package</Button>
-      </a>
+      <SponsorBannerWrapper>
+        <SponsorBanner>
+          <SponsorBannerContent>
+            <SectionTitle>Become a Sponsor</SectionTitle>
+            <p>
+              We wouldn't be able to host our conference without the help from
+              our incredible sponsors.
+            </p>
+            <p>
+              Interested in sponsoring? Please contact our chairs at{" "}
+              <u>chair@cucai.ca</u>
+            </p>
+            <a href="CUCAI-2021-Sponsorship-Package.pdf">
+              <Button backgroundColour="white" borderStyle="none">
+                View Our Sponsorship Package
+              </Button>
+            </a>
+          </SponsorBannerContent>
+          <Handshake />
+        </SponsorBanner>
+      </SponsorBannerWrapper>
+    </Fade>
 
-      <br></br>
-      <br></br>
-      <br></br>
-
+    <Fade bottom distance="80px">
       <h3>Past Sponsors & Partners</h3>
       <div className="sponsimg">
         <Img fluid={data.sponsorImg.childImageSharp.fluid} alt="sponsorships" />
@@ -688,8 +724,10 @@ const SponsorSection = ({ data }) => (
 
 const PastSpeakersSection = () => (
   <StyledPastSpeakersSection>
-    <h2>Past Speakers and Workshops</h2>
-    <CardStack></CardStack>
+    <PastSpeakersContent>
+      <SectionTitle>Past Speakers and Workshops</SectionTitle>
+      <CardStack></CardStack>
+    </PastSpeakersContent>
   </StyledPastSpeakersSection>
 );
 
@@ -701,47 +739,6 @@ const InvolvedSection = () => (
       <Involved />
     </Fade>
   </StyledInvolvedSection>
-);
-
-const SocialLink = styled(Link)`
-  padding: 5px 10px;
-
-  & svg {
-    transition: ${theme.transition};
-  }
-
-  &:hover {
-    & svg {
-      fill: var(--cucai-blue);
-      transform: rotate(10deg) translateY(-3px);
-    }
-  }
-`;
-
-const SocialsList = styled.div`
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
-`;
-
-const Socials = () => (
-  <SocialsList>
-    {socialMedia.map((social) => {
-      let image;
-      if (social.name.includes("Facebook")) {
-        image = <FacebookIcon size="25px" />;
-      } else if (social.name.includes("Instagram")) {
-        image = <InstagramIcon size="25px" />;
-      } else if (social.name.includes("LinkedIn")) {
-        image = <LinkedInIcon size="25px" />;
-      } else {
-        image = null;
-      }
-
-      return <SocialLink to={social.url}>{image}</SocialLink>;
-    })}
-  </SocialsList>
 );
 
 const ContactUsSection = () => (
@@ -789,7 +786,7 @@ export const IndexPageTemplate = ({
       blurbdesc={mainpitch.description}
       blurbtitle={mainpitch.title}
     />
-    <CovidBanner />
+    {/* <CovidBanner /> */}
     <ConferenceEvents data={data} />
     <SponsorSection data={data} featuredimage={Highlights} />
     <PastSpeakersSection />
@@ -849,6 +846,13 @@ export default IndexPage;
 
 export const pageQuery = graphql`
   query IndexPageTemplate {
+    logo2021: file(relativePath: { eq: "logo2021.png" }) {
+      childImageSharp {
+        fluid(quality: 100, maxWidth: 800) {
+          ...GatsbyImageSharpFluid
+        }
+      }
+    }
     cityImg: file(relativePath: { eq: "CIDEE.png" }) {
       childImageSharp {
         fluid(quality: 80, maxWidth: 1500) {

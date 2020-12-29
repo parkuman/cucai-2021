@@ -13,8 +13,8 @@ const StyledButton = styled.button`
 
   transition: ${theme.transition};
 
-  padding: 0.5rem 0.8rem;
-  border-radius: 7px;
+  padding: 0.7rem 1rem;
+  border-radius: 35px;
   font-size: 1.2rem;
   cursor: pointer;
 
@@ -40,7 +40,7 @@ const StyledButton = styled.button`
 
 const Button = ({ children, backgroundColour, textColour, backgroundColourHover, textColourHover, borderColour, borderStyle }) => {
   return (
-    <StyledButton textColour={textColour} textColourHover={textColourHover} backgroundColourHover={backgroundColourHover} borderStyle={borderStyle} borderColour={borderColour} backgroundColour={backgroundColour} >{typeof children === "string" ? children.toUpperCase() : children}</StyledButton>
+    <StyledButton textColour={textColour} textColourHover={textColourHover} backgroundColourHover={backgroundColourHover} borderStyle={borderStyle} borderColour={borderColour} backgroundColour={backgroundColour} >{typeof children === "string" ? children : children}</StyledButton>
   );
 }
 
