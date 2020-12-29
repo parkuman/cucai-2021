@@ -9,6 +9,7 @@ import { navLinks } from "../config";
 import LogoMain from "../img/Logo main.svg";
 
 import Burger from "./Burger";
+import Socials from "./Socials";
 
 const StyledNav = styled.nav`
   display: flex;
@@ -23,11 +24,11 @@ const StyledNav = styled.nav`
   background: ${({ scrollDirection }) =>
     scrollDirection === "none" ? "none" : "white"};
   height: ${({ scrollDirection }) =>
-    scrollDirection === "none" ? "100px" : "70px"};
+    scrollDirection === "none" ? "100px" : "48px"};
   box-shadow: ${({ scrollDirection }) =>
     scrollDirection === "up" ? `0 10px 30px -10px rgba(0, 0, 0, 0.3)` : "none"};
   transform: translateY(
-    ${({ scrollDirection }) => (scrollDirection === "down" ? "-70px" : "0px")}
+    ${({ scrollDirection }) => (scrollDirection === "down" ? "-48px" : "0px")}
   );
   transition: ${theme.transition};
   font-family: ${theme.fonts.IBMPlexMono};
@@ -53,9 +54,6 @@ const StyledNavItems = styled.ul`
   & li {
     display: inline;
     padding: 0 10px;
-    &:last-of-type {
-      margin-right: 10px;
-    }
     ${media.tablet`
             padding: 30px 0;
         `}
@@ -106,6 +104,18 @@ const StyledLink = styled(Link)`
   }
 `;
 
+const Divider = styled.div`
+  width: 1px;
+  height: 30px;
+  border-radius: 2px;
+  background: ${theme.colors.darkBlue};
+  margin: 0 15px;
+
+  ${media.tablet`
+    display: none;
+  `}
+`;
+
 const NavItems = ({ open, setOpen }) => {
   return (
     <StyledNavItems open={open}>
@@ -116,6 +126,8 @@ const NavItems = ({ open, setOpen }) => {
           </StyledLink>
         </li>
       ))}
+      <Divider />
+      <Socials direction="row"/>
     </StyledNavItems>
   );
 };

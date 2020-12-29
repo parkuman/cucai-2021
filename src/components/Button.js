@@ -13,8 +13,8 @@ const StyledButton = styled.button`
 
   transition: ${theme.transition};
 
-  padding: 0.5rem 0.8rem;
-  border-radius: 7px;
+  padding: 0.7rem 1rem;
+  border-radius: 35px;
   font-size: 1.2rem;
   cursor: pointer;
 
