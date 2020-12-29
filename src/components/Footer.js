@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "gatsby";
 
 import styled from "styled-components";
-import logo from "../img/Logo main.svg";
+import logo from "../img/Logo Main.svg";
 
 import Socials from "./Socials";
 
@@ -44,12 +44,12 @@ const Footer = () => {
           territory is to recognize the territory’s significance for the
           Indigenous peoples who lived, and continue to live, upon it.
         </Text>
-        <Socials direction="row"/>
+        <Socials direction="row" />
         <Link to="/">
           <StyledLogo src={logo} alt="logo" />
         </Link>
         <Text>
-          Copyright © 2020 CUCUAI Canadian Undergraduate Conference on AI. All
+          Copyright © 2020 CUCAI Canadian Undergraduate Conference on AI. All
           Rights Reserved
         </Text>
       </StyledFooterContent>

@@ -43,7 +43,7 @@ const StyledLogo = styled.img`
 
 const StyledNavItems = styled.ul`
   font-family: ${theme.fonts.IBMPlexMono};
-  font-size: 1.1rem;
+  font-size: 1.2rem;
   padding: 0;
   margin: 0;
   display: flex;
@@ -122,7 +122,7 @@ const NavItems = ({ open, setOpen }) => {
       {navLinks.map((item, i) => (
         <li key={i}>
           <StyledLink onClick={() => setOpen(false)} to={item.url}>
-            {item.name.toUpperCase()}
+            {item.name}
           </StyledLink>
         </li>
       ))}

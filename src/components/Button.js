@@ -40,7 +40,7 @@ const StyledButton = styled.button`
 
 const Button = ({ children, backgroundColour, textColour, backgroundColourHover, textColourHover, borderColour, borderStyle }) => {
   return (
-    <StyledButton textColour={textColour} textColourHover={textColourHover} backgroundColourHover={backgroundColourHover} borderStyle={borderStyle} borderColour={borderColour} backgroundColour={backgroundColour} >{typeof children === "string" ? children.toUpperCase() : children}</StyledButton>
+    <StyledButton textColour={textColour} textColourHover={textColourHover} backgroundColourHover={backgroundColourHover} borderStyle={borderStyle} borderColour={borderColour} backgroundColour={backgroundColour} >{typeof children === "string" ? children : children}</StyledButton>
   );
 }
 

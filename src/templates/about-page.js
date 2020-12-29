@@ -18,6 +18,7 @@ const StyledAboutPage = styled.div`
 
   ${media.phone`
     padding: 0.5em;
+    padding-top: 10vh;
   `}
 `;
 
@@ -69,7 +70,7 @@ const StyledTeam = styled(Row)`
   justify-content: center;
 
   ${media.phone`
-  flex-direction: column;
+    flex-direction: column;
 `}
 `;
 

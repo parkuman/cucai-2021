@@ -3,34 +3,25 @@ import PropTypes from "prop-types";
 import { graphql, Link } from "gatsby";
 import Img from "gatsby-image";
 import BackgroundImg from "gatsby-background-image";
-import { Parallax } from "react-scroll-parallax";
 import Fade from "react-reveal/Fade";
+import styled from "styled-components";
+import { Carousel } from "react-bootstrap/";
+import "bootstrap/dist/css/bootstrap.min.css";
 
 //Photos
-import SkylineLayers from "../img/parallaxSkyline";
 import DesignImgs from "../img/designteams";
-import Clouds from "../img/clouds_to_white.png";
 import Diver from "../img/diver1.svg";
 import Highlights from "../img/pano.png";
-
-import FacebookIcon from "../img/social/facebook.js";
-import LinkedInIcon from "../img/social/linkedin.js";
-import InstagramIcon from "../img/social/instagram.js";
 
 import CardStack from "../components/Cards";
 import Layout from "../components/Layout";
 import Involved from "../components/Involvement";
 import ScrollToTop from "../components/ScrollToTop";
+import Button from "../components/Button";
+import Socials from "../components/Socials";
 
 import theme from "../styles/theme";
 import media from "../styles/media";
-import { socialMedia } from "../config";
-
-import Button from "../components/Button";
-import styled from "styled-components";
-import { Carousel } from "react-bootstrap/";
-
-import "bootstrap/dist/css/bootstrap.min.css";
 
 const StyledIndexPage = styled.div``;
 
@@ -72,13 +63,60 @@ const SectionSubtitle = styled.h3`
 `;
 
 const StyledHeroContent = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding-top: 20vh;
   margin: 0 auto;
-  padding-top: 15vh;
   max-width: 80%;
   height: 100vh;
+
+  ${media.tablet`
+    padding-top: 0;
+    align-items: center;
+    flex-direction: column-reverse;
+    justify-content: center;
+  `}
+`;
+
+const HeroText = styled.div`
+  max-width: 70%;
   & button {
-    margin-right: 15px;
+    display: inline-block;
+    margin: 0 15px 15px 0;
   }
+
+  ${media.tablet`
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    max-width: 100%;
+
+    & button {
+      margin-right: 0;
+    }
+  `}
+`;
+
+const MobileSocials = styled.div`
+  display: none;
+
+  ${media.tablet`
+    display: inline-block;
+  `}
+`;
+
+const HeroLogo = styled.div`
+  min-width: 30%;
+  min-height: 10vh;
+
+  ${media.tablet`
+    min-width: 50%;
+
+  `}
 `;
 
 const StyledHeading = styled.h1`
@@ -86,23 +124,18 @@ const StyledHeading = styled.h1`
   padding: 0;
   font-weight: normal;
   font-family: ${theme.fonts.IBMPlexSansLight};
-  font-size: 4rem;
-  max-width: 80%;
-
-  @media screen and (max-height: 800px) {
-    max-width: 100%;
-    font-size: 2rem;
-  }
-
-  ${media.phone`
-      max-width: 100%;
-      margin: 20px 0;
-      font-size: 2rem;
-  `}
+  font-size: 3.5rem;
+  max-width: 90%;
+  margin-bottom: 10px;
 
   ${media.tablet`
-      max-width: 90%;
-      margin: 20px 0;
+    font-size: 2.8rem;
+    max-width: 100%;
+
+  `}
+  ${media.phone`
+    margin: 20px 0;
+    font-size: 2rem;
   `}
 `;
 
@@ -111,57 +144,33 @@ const StyledSlogan = styled.h2`
   font-size: 2rem;
 
   ${media.phone`
-      font-size: 1.2rem;
+      font-size: 1.5rem;
   `}
 `;
 
 const StyledInfo = styled.h3`
   font-weight: normal;
-  font-size: 1.2rem;
+  font-size: 1.5rem;
   padding: 10px 0;
 
   ${media.phone`
-      font-size: 1rem;
+      font-size: 1.1rem;
   `}
-`;
-
-const StyledParallaxSkyline = styled.div`
-  max-height: 200px;
-  position: relative;
-  top: -40vh;
-  pointer-events: none;
-
-  ${media.phone`
-      top: -16vh;
-  `}
-
-  ${media.tablet`
-      top: -20vh;
-  `}
-`;
-
-const StyledParallax = styled(Parallax)`
-  & img {
-    width: 100vw;
-  }
 `;
 
 const StyledBlurbSection = styled.section`
   max-width: 80%;
-  min-height: 100vh;
+  min-height: 70vh;
   margin: 0 auto;
   display: flex;
   flex-direction: row;
   justify-content: space-around;
   align-items: center;
-  z-index: 10 !important;
 
-  ${media.phone`
+  ${media.tablet`
     flex-direction: column-reverse;
-    max-width: 95%;
-    padding: 150px 0;
-
-    
+    justify-content: center;
+    max-width: 100%;
   `}
 `;
 
@@ -169,9 +178,21 @@ const StyledBlurbContent = styled.div`
   width: 50%;
   margin-right: 10px;
 
+  ${media.tablet`
+    width: 80%;
+    margin-right: 0px;
+  `}
+
   ${media.phone`
-      width: 100%;
-      margin-right: 0px;
+    padding: 5vh 0;
+    width: 80%;
+  `}
+`;
+
+const StyledBlurbImg = styled.div`
+  width: 50%;
+  ${media.phone`
+    display: none;
   `}
 `;
 
@@ -268,7 +289,7 @@ const ProceedingsGatsbyImage = styled(Img)`
   width: 50%;
 
   ${media.phone`
-    width:100%;
+    width: 80%;
   `}
 `;
 
@@ -320,31 +341,6 @@ const StyledWorkshopsShowcase = styled.section`
   `}
 `;
 
-const StyledBlurbImg = styled.div`
-  width: 50%;
-
-  ${media.phone`
-    width: 100%;
-  `}
-`;
-
-const CityImg = styled.div`
-  width: 100vw;
-  position: absolute;
-  pointer-events: none;
-
-  bottom: -15vh;
-  left: 0;
-
-  ${media.phone`
-    bottom: -5vh;
-
-  `}
-  ${media.tablet`
-    bottom: -10vh;
-
-  `}
-`;
 
 const StyledPastSpeakersSection = styled.section`
   max-width: 80%;
@@ -396,37 +392,6 @@ const StyledContactUsSection = styled.section`
   }
 `;
 
-// const ParallaxSkyline = () => {
-//   return (
-//     <StyledParallaxSkyline>
-//       <StyledParallax y={[-10, 0]}>
-//         <img src={SkylineLayers[0]} alt="skyline layer" />
-//       </StyledParallax>
-//       <StyledParallax y={[-90, -100]}>
-//         <img src={SkylineLayers[1]} alt="skyline layer" />
-//       </StyledParallax>
-//       <StyledParallax y={[-190, -205]}>
-//         <img src={SkylineLayers[2]} alt="skyline layer" />
-//       </StyledParallax>
-//       <StyledParallax y={[-290, -310]}>
-//         <img src={SkylineLayers[3]} alt="skyline layer" />
-//       </StyledParallax>
-//       <StyledParallax y={[-390, -415]}>
-//         <img src={SkylineLayers[4]} alt="skyline layer" />
-//       </StyledParallax>
-//       <StyledParallax y={[-490, -520]}>
-//         <img src={SkylineLayers[5]} alt="skyline layer" />
-//       </StyledParallax>
-//       <StyledParallax y={[-590, -620]}>
-//         <img src={SkylineLayers[6]} alt="skyline layer" />
-//       </StyledParallax>
-//       <StyledParallax y={[-750, -780]}>
-//         <img src={Clouds} alt="skyline layer" />
-//       </StyledParallax>
-//     </StyledParallaxSkyline>
-//   );
-// };
-
 const Hero = ({ data, heading, slogan, location, date, cta1, cta2 }) => {
   const heroBackgroundImages = [
     data.cityImg.childImageSharp.fluid,
@@ -448,8 +413,9 @@ const Hero = ({ data, heading, slogan, location, date, cta1, cta2 }) => {
 
   return (
     <StyledHero fluid={heroBackgroundImages}>
-        <Fade bottom distance="80px">
-          <StyledHeroContent>
+      <Fade bottom distance="80px">
+        <StyledHeroContent>
+          <HeroText>
             <StyledHeading>
               <Fade>{heading}</Fade>
             </StyledHeading>
@@ -457,29 +423,29 @@ const Hero = ({ data, heading, slogan, location, date, cta1, cta2 }) => {
               Artificial intelligence, <strong>real change.</strong>
             </StyledSlogan>
             <StyledInfo>
-              {location.toUpperCase()} | {date.toUpperCase()}
+              March 6 - 7, 2021  |  <Link to="https://hopin.com/">Online Experience</Link>
             </StyledInfo>
 
             <a href="#sponsors">
-              <Button backgroundColour="white">{cta1}</Button>
+              <Button backgroundColour="white">Become a Sponsor</Button>
             </a>
             <a href="mailto:chair@cucai.ca">
               <Button borderStyle="solid" borderColour="#174461">
-                {cta2}
+                Email Us
               </Button>
             </a>
-          </StyledHeroContent>
-        </Fade>
-      {/* <CityComponent data={data} /> */}
+            <MobileSocials>
+              <Socials direction="row" />
+            </MobileSocials>
+          </HeroText>
+          <HeroLogo>
+            <Img fluid={data.logo2021.childImageSharp.fluid} />
+          </HeroLogo>
+        </StyledHeroContent>
+      </Fade>
     </StyledHero>
   );
 };
-
-const CityComponent = ({ data }) => (
-  <CityImg>
-    <Img fluid={data.cityImg.childImageSharp.fluid} />
-  </CityImg>
-);
 
 const BlurbSection = ({ data, blurbtitle, blurbdesc, blurbimg }) => (
   <Fade bottom distance="80px">
@@ -710,47 +676,6 @@ const InvolvedSection = () => (
   </StyledInvolvedSection>
 );
 
-const SocialLink = styled(Link)`
-  padding: 5px 10px;
-
-  & svg {
-    transition: ${theme.transition};
-  }
-
-  &:hover {
-    & svg {
-      fill: var(--cucai-blue);
-      transform: rotate(10deg) translateY(-3px);
-    }
-  }
-`;
-
-const SocialsList = styled.div`
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
-`;
-
-const Socials = () => (
-  <SocialsList>
-    {socialMedia.map((social) => {
-      let image;
-      if (social.name.includes("Facebook")) {
-        image = <FacebookIcon size="25px" />;
-      } else if (social.name.includes("Instagram")) {
-        image = <InstagramIcon size="25px" />;
-      } else if (social.name.includes("LinkedIn")) {
-        image = <LinkedInIcon size="25px" />;
-      } else {
-        image = null;
-      }
-
-      return <SocialLink to={social.url}>{image}</SocialLink>;
-    })}
-  </SocialsList>
-);
-
 const ContactUsSection = () => (
   <Fade bottom distance="80px">
     <StyledContactUsSection>
@@ -796,7 +721,7 @@ export const IndexPageTemplate = ({
       blurbdesc={mainpitch.description}
       blurbtitle={mainpitch.title}
     />
-    <CovidBanner />
+    {/* <CovidBanner /> */}
     <ConferenceEvents data={data} />
     <SponsorSection data={data} featuredimage={Highlights} />
     <PastSpeakersSection />
@@ -856,6 +781,13 @@ export default IndexPage;
 
 export const pageQuery = graphql`
   query IndexPageTemplate {
+    logo2021: file(relativePath: { eq: "logo2021.png" }) {
+      childImageSharp {
+        fluid(quality: 100, maxWidth: 800) {
+          ...GatsbyImageSharpFluid
+        }
+      }
+    }
     cityImg: file(relativePath: { eq: "CIDEE.png" }) {
       childImageSharp {
         fluid(quality: 80, maxWidth: 1500) {

@@ -35,10 +35,6 @@ module.exports = {
       name: "About",
       url: "/about",
     },
-    {
-      name: "Covid-19",
-      url: "/covidresponse",
-    },
   ],
   conferenceImages: [
     {
