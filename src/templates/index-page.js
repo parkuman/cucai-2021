@@ -19,6 +19,7 @@ import Involved from "../components/Involvement";
 import ScrollToTop from "../components/ScrollToTop";
 import Button from "../components/Button";
 import Socials from "../components/Socials";
+import Handshake from "../components/Handshake";
 
 import theme from "../styles/theme";
 import media from "../styles/media";
@@ -45,7 +46,7 @@ const StyledHero = styled(BackgroundImg)`
 `;
 
 const SectionTitle = styled.h2`
-  font-size: 4rem;
+  font-size: 3rem;
   font-weight: lighter;
 
   ${media.phone`
@@ -341,31 +342,82 @@ const StyledWorkshopsShowcase = styled.section`
   `}
 `;
 
-
 const StyledPastSpeakersSection = styled.section`
+  margin: 50px 0; 
+  width: 100vw;
+  background: #f8f8f8;
+`;
+
+const PastSpeakersContent = styled.div`
   max-width: 80%;
   margin: 0 auto;
   padding: 50px 0;
 `;
 
 const StyledSponsorSection = styled.section`
-  max-width: 80%;
-  margin: 0 auto;
-  padding: 100px 0;
-
-  & > img {
-    max-height: 50vh;
+  & > h3 {
+    text-align: center;
   }
 
   .sponsimg {
     margin: 0 auto;
-    max-width: 60%;
+    max-width: 50%;
+
+    ${media.phone`
+      max-width: 95%;
+    `}
+  }
+`;
+
+const SponsorBannerWrapper = styled.div`
+  width: 100vw;
+  margin-bottom: 5vh;
+  background: linear-gradient(
+      180deg,
+      rgba(26, 79, 203, 0.5) 0%,
+      rgba(255, 255, 255, 0) 100%
+    ),
+    #1aa9cb;
+`;
+
+const SponsorBanner = styled.div`
+  max-width: 80%;
+  margin: 0 auto;
+  padding: 50px 0;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
+
+  ${media.phone`
+    & a {
+      margin-bottom: 30px;
+    }
+    flex-direction: column;
+    justify-content: space-between;
+    max-width: 90%;
+  `}
+`;
+
+const SponsorBannerContent = styled.div`
+  display: flex;
+  flex-direction: column;
+  color: white;
+  text-decoration: none;
+  font-size: 1.1rem;
+
+  & > h2 {
+    margin-bottom: 20px;
+  }
+
+  & > a {
+    margin-top: 20px;
   }
 
   ${media.phone`
-    & > div {
-      max-width: 100%;
-    }
+    align-items: center;
+    justify-content: center;
+    text-align: center;
   `}
 `;
 
@@ -413,36 +465,33 @@ const Hero = ({ data, heading, slogan, location, date, cta1, cta2 }) => {
 
   return (
     <StyledHero fluid={heroBackgroundImages}>
-      <Fade bottom distance="80px">
-        <StyledHeroContent>
-          <HeroText>
-            <StyledHeading>
-              <Fade>{heading}</Fade>
-            </StyledHeading>
-            <StyledSlogan>
-              Artificial intelligence, <strong>real change.</strong>
-            </StyledSlogan>
-            <StyledInfo>
-              March 6 - 7, 2021  |  <Link to="https://hopin.com/">Online Experience</Link>
-            </StyledInfo>
+      <StyledHeroContent>
+        <HeroText>
+          <StyledHeading>{heading}</StyledHeading>
+          <StyledSlogan>
+            Artificial intelligence, <strong>real change.</strong>
+          </StyledSlogan>
+          <StyledInfo>
+            March 6 - 7, 2021 |{" "}
+            <Link to="https://hopin.com/">Online Experience</Link>
+          </StyledInfo>
 
-            <a href="#sponsors">
-              <Button backgroundColour="white">Become a Sponsor</Button>
-            </a>
-            <a href="mailto:chair@cucai.ca">
-              <Button borderStyle="solid" borderColour="#174461">
-                Email Us
-              </Button>
-            </a>
-            <MobileSocials>
-              <Socials direction="row" />
-            </MobileSocials>
-          </HeroText>
-          <HeroLogo>
-            <Img fluid={data.logo2021.childImageSharp.fluid} />
-          </HeroLogo>
-        </StyledHeroContent>
-      </Fade>
+          <a href="#sponsors">
+            <Button backgroundColour="white">Become a Sponsor</Button>
+          </a>
+          <a href="mailto:chair@cucai.ca">
+            <Button borderStyle="solid" borderColour="#174461">
+              Email Us
+            </Button>
+          </a>
+          <MobileSocials>
+            <Socials direction="row" />
+          </MobileSocials>
+        </HeroText>
+        <HeroLogo>
+          <Img fluid={data.logo2021.childImageSharp.fluid} />
+        </HeroLogo>
+      </StyledHeroContent>
     </StyledHero>
   );
 };
@@ -641,16 +690,30 @@ const SponsorSection = ({ data }) => (
   <StyledSponsorSection>
     <Fade bottom distance="80px">
       <IdHrefAnchor id="sponsors" />
-      <SectionTitle>Sponsors</SectionTitle>
-      <p>There are many advantages to becoming a CUCAI sponsor:</p>
-      <a href="CUCAI-2021-Sponsorship-Package.pdf">
-        <Button borderStyle="solid">View Our Sponsorship Package</Button>
-      </a>
+      <SponsorBannerWrapper>
+        <SponsorBanner>
+          <SponsorBannerContent>
+            <SectionTitle>Become a Sponsor</SectionTitle>
+            <p>
+              We wouldn't be able to host our conference without the help from
+              our incredible sponsors.
+            </p>
+            <p>
+              Interested in sponsoring? Please contact our chairs at{" "}
+              <u>chair@cucai.ca</u>
+            </p>
+            <a href="CUCAI-2021-Sponsorship-Package.pdf">
+              <Button backgroundColour="white" borderStyle="none">
+                View Our Sponsorship Package
+              </Button>
+            </a>
+          </SponsorBannerContent>
+          <Handshake />
+        </SponsorBanner>
+      </SponsorBannerWrapper>
+    </Fade>
 
-      <br></br>
-      <br></br>
-      <br></br>
-
+    <Fade bottom distance="80px">
       <h3>Past Sponsors & Partners</h3>
       <div className="sponsimg">
         <Img fluid={data.sponsorImg.childImageSharp.fluid} alt="sponsorships" />
@@ -661,8 +724,10 @@ const SponsorSection = ({ data }) => (
 
 const PastSpeakersSection = () => (
   <StyledPastSpeakersSection>
-    <h2>Past Speakers and Workshops</h2>
-    <CardStack></CardStack>
+    <PastSpeakersContent>
+      <SectionTitle>Past Speakers and Workshops</SectionTitle>
+      <CardStack></CardStack>
+    </PastSpeakersContent>
   </StyledPastSpeakersSection>
 );
 
