@@ -18,14 +18,6 @@ const StyledHandshake = styled.div`
 const Handshake = () => {
   let animationContainer = createRef();
 
-  lottie.loadAnimation({
-    container: animationContainer.current,
-    animationData: animation,
-    renderer: "svg",
-    loop: true,
-    autoplay: true,
-  });
-
   useEffect(() => {
     const anim = lottie.loadAnimation({
       container: animationContainer.current,
