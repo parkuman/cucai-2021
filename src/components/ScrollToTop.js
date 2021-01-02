@@ -1,8 +1,7 @@
 import React, { Component } from "react";
 import styled from "styled-components";
-import theme from "../styles/theme"
 
-import upArrow from "../img/up-arrow.svg"
+import upArrow from "../img/up-arrow.svg";
 
 const Button = styled.img`
   cursor: pointer;
@@ -53,7 +52,9 @@ export default class ScrollToTop extends Component {
 
     return (
       <>
-        { is_visible && <Button src={upArrow} onClick={() => this.scrollToTop()}></Button>}
+        {is_visible && (
+          <Button src={upArrow} onClick={() => this.scrollToTop()}></Button>
+        )}
       </>
     );
   }

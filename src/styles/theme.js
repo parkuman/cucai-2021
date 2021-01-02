@@ -7,7 +7,9 @@ const theme = {
   fonts: {
     IBMPlexMono: "IBMPlexMono, monospace",
     IBMPlexSans: "IBMPlexSans, sans-serif",
-    IBMPlexSansLight: "IBMPlexSans, sans-serif"
+    IBMPlexSansMedium: "IBMPlexSansMedium, sans-serif",
+    IBMPlexSansLight: "IBMPlexSansLight, sans-serif"
+
   },
 
   transition: "all 0.25s",

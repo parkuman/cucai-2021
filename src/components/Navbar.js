@@ -6,7 +6,7 @@ import theme from "../styles/theme";
 import media from "../styles/media";
 
 import { navLinks } from "../config";
-import LogoMain from "../img/Logo main.svg";
+import LogoSmall from "../img/logoSmall.svg";
 
 import Burger from "./Burger";
 import Socials from "./Socials";
@@ -24,25 +24,23 @@ const StyledNav = styled.nav`
   background: ${({ scrollDirection }) =>
     scrollDirection === "none" ? "none" : "white"};
   height: ${({ scrollDirection }) =>
-    scrollDirection === "none" ? "100px" : "48px"};
+    scrollDirection === "none" ? "100px" : "60px"};
   box-shadow: ${({ scrollDirection }) =>
     scrollDirection === "up" ? `0 10px 30px -10px rgba(0, 0, 0, 0.3)` : "none"};
   transform: translateY(
-    ${({ scrollDirection }) => (scrollDirection === "down" ? "-48px" : "0px")}
+    ${({ scrollDirection }) => (scrollDirection === "down" ? "-60px" : "0px")}
   );
   transition: ${theme.transition};
-  font-family: ${theme.fonts.IBMPlexMono};
   ${media.phone`
         padding: 10px;
     `}
 `;
 
 const StyledLogo = styled.img`
-  height: 40px;
+  height: 30px;
 `;
 
 const StyledNavItems = styled.ul`
-  font-family: ${theme.fonts.IBMPlexMono};
   font-size: 1.2rem;
   padding: 0;
   margin: 0;
@@ -85,22 +83,7 @@ const StyledLink = styled(Link)`
   position: relative;
   &:hover {
     text-decoration: none;
-  }
-  &:after {
-    background: ${theme.colors.darkBlue};
-    bottom: 0;
-    left: 0;
-    opacity: 0;
-    height: 3px;
-    position: absolute;
-    content: "";
-    transform: translateY(3px);
-    transition: opacity 0.21s ease, transform 0.21s ease;
-    width: 100%;
-  }
-  &:hover::after {
-    opacity: 1;
-    transform: translateY(0);
+    font-weight: bold;
   }
 `;
 
@@ -188,7 +171,7 @@ const Nav = () => {
   return (
     <StyledNav ref={wrapperRef} scrollDirection={scrollDirection}>
       <Link to="/">
-        <StyledLogo src={LogoMain} alt="cucai logo" />
+        <StyledLogo src={LogoSmall} alt="cucai logo" />
       </Link>
       <Burger open={open} setOpen={setOpen} />
       <NavItems open={open} setOpen={setOpen} />

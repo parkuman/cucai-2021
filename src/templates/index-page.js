@@ -10,7 +10,6 @@ import "bootstrap/dist/css/bootstrap.min.css";
 
 //Photos
 import DesignImgs from "../img/designteams";
-import Diver from "../img/diver1.svg";
 import Highlights from "../img/pano.png";
 
 import CardStack from "../components/Cards";
@@ -29,11 +28,12 @@ const StyledIndexPage = styled.div``;
 const IdHrefAnchor = styled.a`
   display: block;
   position: relative;
-  top: -100px;
+  top: -60px; // height of navbar
   visibility: hidden;
 `;
 
 const StyledHero = styled(BackgroundImg)`
+  min-height: 100vh;
   width: 100%;
   /* min-height: 100vh; */
   /* You should set a background-size as the default value is "cover"! */
@@ -47,7 +47,6 @@ const StyledHero = styled(BackgroundImg)`
 
 const SectionTitle = styled.h2`
   font-size: 3rem;
-  font-weight: lighter;
 
   ${media.phone`
     font-size: 2.5rem;
@@ -55,26 +54,33 @@ const SectionTitle = styled.h2`
 `;
 
 const SectionSubtitle = styled.h3`
+  font-family: ${theme.fonts.IBMPlexSansLight};
+  color: black;
   font-size: 2rem;
-  font-weight: lighter;
 
   ${media.phone`
     font-size: 1.5rem;
   `}
+
+  &.medium {
+    font-family: ${theme.fonts.IBMPlexSansMedium};
+    display: inline;
+  }
 `;
 
 const StyledHeroContent = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  align-items: flex-start;
-  padding-top: 20vh;
+  align-items: center;
   margin: 0 auto;
+  padding-top: 20vh;
+
   max-width: 80%;
-  height: 100vh;
+  /* height: 100vh; */
 
   ${media.tablet`
-    padding-top: 0;
+    padding-top: 120px;
     align-items: center;
     flex-direction: column-reverse;
     justify-content: center;
@@ -116,18 +122,18 @@ const HeroLogo = styled.div`
 
   ${media.tablet`
     min-width: 50%;
-
+    padding-bottom: 20px;
   `}
 `;
 
 const StyledHeading = styled.h1`
   margin: 0;
   padding: 0;
-  font-weight: normal;
-  font-family: ${theme.fonts.IBMPlexSansLight};
-  font-size: 3.5rem;
+  font-family: ${theme.fonts.IBMPlexSansMedium};
+  font-size: 3.2rem;
   max-width: 90%;
   margin-bottom: 10px;
+  color: black;
 
   ${media.tablet`
     font-size: 2.8rem;
@@ -141,8 +147,9 @@ const StyledHeading = styled.h1`
 `;
 
 const StyledSlogan = styled.h2`
-  font-weight: normal;
+  font-family: ${theme.fonts.IBMPlexSansLight};
   font-size: 2rem;
+  padding-top: 20px;
 
   ${media.phone`
       font-size: 1.5rem;
@@ -150,69 +157,69 @@ const StyledSlogan = styled.h2`
 `;
 
 const StyledInfo = styled.h3`
-  font-weight: normal;
+  font-family: ${theme.fonts.IBMPlexSansLight};
   font-size: 1.5rem;
-  padding: 10px 0;
+  padding: 10px 0 20px 0;
 
   ${media.phone`
       font-size: 1.1rem;
   `}
 `;
 
-const StyledBlurbSection = styled.section`
-  max-width: 80%;
-  min-height: 70vh;
-  margin: 0 auto;
+const StyledBlurbDive = styled.div`
+  margin: 25px auto;
   display: flex;
-  flex-direction: row;
-  justify-content: space-around;
+  flex-direction: row-reverse;
+  justify-content: space-between;
   align-items: center;
 
-  ${media.tablet`
+  ${media.phone`
     flex-direction: column-reverse;
-    justify-content: center;
+  `}
+`;
+
+const StyledBlurbTheme = styled.div`
+  margin: 25px auto;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+
+  ${media.phone`
+    flex-direction: column-reverse;
+  `}
+`;
+
+const BlurbTitleAndDesc = styled.div`
+  max-width: 48%;
+  ${media.phone`
+    max-width: 90%;
+    padding: 20px 0;
+  `}
+`;
+
+const BlurbContent = styled.div`
+  max-width: 40%;
+  width: 40%;
+
+  ${media.phone`
+    max-width: 50%;
+    width: 50%;
+    
+  `}
+`;
+
+const StyledBlurbSection = styled.section`
+  max-width: 80%;
+  min-height: 80vh;
+  margin: 0 auto;
+  padding: 50px 0;
+  display: flex;
+  flex-direction: column;
+
+  ${media.tablet`
     max-width: 100%;
   `}
-`;
-
-const StyledBlurbContent = styled.div`
-  width: 50%;
-  margin-right: 10px;
-
-  ${media.tablet`
-    width: 80%;
-    margin-right: 0px;
-  `}
-
-  ${media.phone`
-    padding: 5vh 0;
-    width: 80%;
-  `}
-`;
-
-const StyledBlurbImg = styled.div`
-  width: 50%;
-  ${media.phone`
-    display: none;
-  `}
-`;
-
-const StyledCovidBanner = styled.section`
-  padding: 100px 0;
-  color: white;
-  width: 100vw;
-  background: #1a4fcb;
-`;
-
-const CovidContent = styled.div`
-  max-width: 80%;
-  margin: 0 auto;
-  & > h2 {
-    margin-bottom: 20px;
-  }
-  & > p {
-    margin: 20px 0;
-  }
 `;
 
 const StyledConferenceEvents = styled.section`
@@ -343,7 +350,7 @@ const StyledWorkshopsShowcase = styled.section`
 `;
 
 const StyledPastSpeakersSection = styled.section`
-  margin: 50px 0; 
+  margin: 50px 0;
   width: 100vw;
   background: #f8f8f8;
 `;
@@ -447,20 +454,7 @@ const StyledContactUsSection = styled.section`
 const Hero = ({ data, heading, slogan, location, date, cta1, cta2 }) => {
   const heroBackgroundImages = [
     data.cityImg.childImageSharp.fluid,
-    `radial-gradient(
-      189.82% 100% at 50% 0%,
-      rgba(26, 79, 203, 0.0001) 0%,
-      rgba(29, 85, 205, 0.0459233) 0%,
-      rgba(33, 93, 208, 0.0977712) 10.18%,
-      #65dafe 100%,
-      #65dafe 100%
-    ),
-    linear-gradient(
-      146.77deg,
-      rgba(26, 169, 203, 0.25) -3.05%,
-      rgba(17, 47, 66, 0.25) 100.39%,
-      rgba(17, 47, 66, 0.25) 100.39%
-    )`,
+    `radial-gradient(189.82% 107.19% at 50% 0%, rgba(26, 79, 203, 0.0001) 0%, rgba(29, 85, 205, 0.0459233) 0%, rgba(33, 93, 208, 0.0977712) 63.18%, #65DAFE 100%, #65DAFE 100%), linear-gradient(144.92deg, rgba(26, 169, 203, 0.25) -3.18%, rgba(17, 47, 66, 0.25) 94.21%, rgba(17, 47, 66, 0.25) 94.21%)`,
   ];
 
   return (
@@ -469,19 +463,21 @@ const Hero = ({ data, heading, slogan, location, date, cta1, cta2 }) => {
         <HeroText>
           <StyledHeading>{heading}</StyledHeading>
           <StyledSlogan>
-            Artificial intelligence, <strong>real change.</strong>
+            Artificial intelligence, <i>real change.</i>
           </StyledSlogan>
           <StyledInfo>
             March 6 - 7, 2021 |{" "}
-            <Link to="https://hopin.com/">Online Experience</Link>
+            <Link target="_blank" to="https://hopin.com/">
+              Online Experience
+            </Link>
           </StyledInfo>
 
-          <a href="#sponsors">
-            <Button backgroundColour="white">Become a Sponsor</Button>
-          </a>
           <a href="mailto:chair@cucai.ca">
+            <Button backgroundColour="white">Delegate Applications</Button>
+          </a>
+          <a href="#sponsors">
             <Button borderStyle="solid" borderColour="#174461">
-              Email Us
+              Become a Sponsor
             </Button>
           </a>
           <MobileSocials>
@@ -497,48 +493,48 @@ const Hero = ({ data, heading, slogan, location, date, cta1, cta2 }) => {
 };
 
 const BlurbSection = ({ data, blurbtitle, blurbdesc, blurbimg }) => (
-  <Fade bottom distance="80px">
-    <StyledBlurbSection>
-      <StyledBlurbContent>
-        <SectionSubtitle>{blurbtitle}</SectionSubtitle>
-        <p>{blurbdesc}</p>
-        <p>
-          As an event geared towards future leaders in this field, we are
-          thrilled to announce that our theme for this year will be AI For Good:
-          Artificial Intelligence, Real Change! From advancing medical research
-          to protecting the environment and aiding in natural disaster recovery,
-          the ways in which AI can make the world a better place continue to
-          grow. We look forward to presenting an event full of engaging speakers
-          and events that will inspire attendees and forge meaningful
-          connections.
-        </p>
-      </StyledBlurbContent>
-
-      <StyledBlurbImg>
-        <Img fluid={data.blurbImg.childImageSharp.fluid} />
-      </StyledBlurbImg>
-    </StyledBlurbSection>
-  </Fade>
-);
-
-const CovidBanner = () => (
-  <StyledCovidBanner>
+  <StyledBlurbSection>
     <Fade bottom distance="80px">
-      <CovidContent>
-        <SectionTitle>COVID-19 Response</SectionTitle>
-        <p>
-          The pandemic has changed the status quo of conferences all around the
-          world. Click the link below to read our new plan for an{" "}
-          <strong>online</strong> CUCAI 2021.
-        </p>
-        <Link to="/covidresponse">
-          <Button borderStyle="solid" borderColour="white" textColour="white">
-            See Our Plans
-          </Button>
-        </Link>
-      </CovidContent>
+      <StyledBlurbDive>
+        <BlurbTitleAndDesc>
+          <SectionSubtitle>
+            <SectionSubtitle className="medium">Dive into</SectionSubtitle> the
+            world of artificial intelligence.
+          </SectionSubtitle>
+          <p>
+            Designed to connect passionate and talented undergraduate students
+            with industry trailblazers, the Canadian Undergraduate Conference on
+            Artificial Intelligence (CUCAI) is a national-scale conference aimed
+            to inspire the future leaders of AI.
+          </p>
+        </BlurbTitleAndDesc>
+        <BlurbContent>
+          <Img fluid={data.blurbImg.childImageSharp.fluid} />
+        </BlurbContent>
+      </StyledBlurbDive>
     </Fade>
-  </StyledCovidBanner>
+    <Fade bottom distance="80px">
+      <StyledBlurbTheme>
+        <BlurbTitleAndDesc>
+          <SectionSubtitle>
+            <SectionSubtitle className="medium">Theme Reveal: </SectionSubtitle>
+            AI For Good.
+          </SectionSubtitle>
+          <p>
+            As an event geared towards future leaders in this field, we are
+            thrilled to announce that our theme for this year will be AI For
+            Good: Artificial Intelligence, Real Change! From advancing medical
+            research to protecting the environment and aiding in natural
+            disaster recovery, the ways in which AI can make the world a better
+            place continue to grow.
+          </p>
+        </BlurbTitleAndDesc>
+        <BlurbContent>
+          <Img fluid={data.themeImg.childImageSharp.fluid} />
+        </BlurbContent>
+      </StyledBlurbTheme>
+    </Fade>
+  </StyledBlurbSection>
 );
 
 const ConferenceEvents = ({ data }) => (
@@ -779,14 +775,7 @@ export const IndexPageTemplate = ({
       cta1={cta1}
       cta2={cta2}
     />
-    {/* <ParallaxSkyline /> */}
-    <BlurbSection
-      data={data}
-      blurbimg={Diver}
-      blurbdesc={mainpitch.description}
-      blurbtitle={mainpitch.title}
-    />
-    {/* <CovidBanner /> */}
+    <BlurbSection data={data} />
     <ConferenceEvents data={data} />
     <SponsorSection data={data} featuredimage={Highlights} />
     <PastSpeakersSection />
@@ -861,6 +850,13 @@ export const pageQuery = graphql`
       }
     }
     blurbImg: file(relativePath: { eq: "diver.png" }) {
+      childImageSharp {
+        fluid(quality: 100) {
+          ...GatsbyImageSharpFluid
+        }
+      }
+    }
+    themeImg: file(relativePath: { eq: "aiforgood.png" }) {
       childImageSharp {
         fluid(quality: 100) {
           ...GatsbyImageSharpFluid
