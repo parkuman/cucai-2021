@@ -2,7 +2,9 @@ import { css } from "styled-components";
 
 import IBMPlexMonoRegularTTF from "../fonts/IBM_Plex_Mono/IBMPlexMono-Regular.ttf";
 import IBMPlexSansRegularTTF from "../fonts/IBM_Plex_Sans/IBMPlexSans-Regular.ttf";
+import IBMPlexSansMediumTTF from "../fonts/IBM_Plex_Sans/IBMPlexSans-Medium.ttf";
 import IBMPlexSansLightTTF from "../fonts/IBM_Plex_Sans/IBMPlexSans-Light.ttf";
+
 
 const FontFaces = css`
   @font-face {
@@ -13,9 +15,13 @@ const FontFaces = css`
   }
 
   @font-face {
+    font-family: "IBMPlexSansMedium";
+    src: url(${IBMPlexSansMediumTTF});
+  }
+
+  @font-face {
     font-family: "IBMPlexSansLight";
-    src: url(${IBMPlexSansLightTTF}) format("truetype");
-    font-weight: 300;
+    src: url(${IBMPlexSansLightTTF});
   }
 
   @font-face {

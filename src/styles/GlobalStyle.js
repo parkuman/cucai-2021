@@ -17,7 +17,7 @@ html {
 }
 body {
     --bg-color: "white";
-    --text-color-primary: ${theme.colors.darkBlue};
+    --text-color-primary: black;;
     --text-color-secondary: "gray";
     --accent-color: "blue";
     --cucai-blue: ${theme.colors.cucaiBlue};
@@ -36,7 +36,6 @@ img {
     max-width: 100%;
 }
 a {
-    font-family: ${theme.fonts.IBMPlexSans};
     text-decoration: none;
     color: var(--text-color-primary);
 }

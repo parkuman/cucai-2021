@@ -16,6 +16,10 @@ module.exports = {
   ],
   navLinks: [
     {
+      name: "About",
+      url: "/about",
+    },
+    {
       name: "Events",
       url: "/#events",
     },
@@ -31,10 +35,6 @@ module.exports = {
       name: "Contact",
       url: "/#contact",
     },
-    {
-      name: "About",
-      url: "/about",
-    },
   ],
   conferenceImages: [
     {
@@ -42,38 +42,37 @@ module.exports = {
       pics: [
         {
           pic: "showcase1.jpg",
-          alt: "image of room with design teams"
+          alt: "image of room with design teams",
         },
         {
           pic: "showcase2.jpg",
-          alt: "students presenting their project"
+          alt: "students presenting their project",
         },
         {
           pic: "showcase3.jpg",
-          alt: "students presenting their project"
+          alt: "students presenting their project",
         },
         {
           pic: "showcase4.jpg",
-          alt: "students presenting their project"
+          alt: "students presenting their project",
         },
         {
           pic: "showcase5.jpg",
-          alt: "students presenting their project"
+          alt: "students presenting their project",
         },
         {
           pic: "showcase6.jpg",
-          alt: "students presenting their project"
+          alt: "students presenting their project",
         },
         {
           pic: "showcase7.jpg",
-          alt: "students presenting their project"
+          alt: "students presenting their project",
         },
-      ]
+      ],
     },
     {
-      header: "Companies"
-    }
-
+      header: "Companies",
+    },
   ],
   ourTeam: [
     {
@@ -84,15 +83,15 @@ module.exports = {
           name: "Berkeley Wilson",
           position: "Co-Chair",
           program: "Mechanical Engineering '21",
-          pic: "berkeley-wilson.png"
+          pic: "berkeley-wilson.png",
         },
         {
           name: "Max Bennett",
           position: "Co-Chair",
           program: "Applied Mathematics '22",
-          pic: "max-bennett.png"
+          pic: "max-bennett.png",
         },
-      ]
+      ],
     },
     {
       header: "Delegates",
@@ -102,15 +101,15 @@ module.exports = {
           name: "Ellie Mehltretter",
           position: "Delegates Coordinator",
           program: "Mathematics '21",
-          pic: "ellie-mehltretter.png"
+          pic: "ellie-mehltretter.png",
         },
         {
           name: "Jack Perry",
           position: "Delegates Coordinator",
           program: "Commerce '22",
-          pic: "jack-perry.png"
+          pic: "jack-perry.png",
         },
-      ]
+      ],
     },
     {
       header: "Logistics",
@@ -120,21 +119,21 @@ module.exports = {
           name: "Catherine Wu",
           position: "Logistics Manager",
           program: "Biomedical Computation '22",
-          pic: "catherine-wu.png"
+          pic: "catherine-wu.png",
         },
         {
           name: "Jack Grebenc",
           position: "Logistics Coordinator",
           program: "Mathematics & Computing '21",
-          pic: "jack-grebenc.png"
+          pic: "jack-grebenc.png",
         },
         {
           name: "Will Stewart",
           position: "Logistics Coordinator",
           program: "Commerce '22",
-          pic: "will-stewart.png"
-        }
-      ]
+          pic: "will-stewart.png",
+        },
+      ],
     },
     {
       header: "Marketing",
@@ -144,15 +143,15 @@ module.exports = {
           name: "Parker Rowe",
           position: "Marketing Coordinator & Web Developer",
           program: "Computer Engineering & Innovation '22",
-          pic: "parker-rowe.png"
+          pic: "parker-rowe.png",
         },
         {
           name: "Katie Lu",
           position: "Marketing Coordinator & Web Developer",
           program: "Computing & The Creative Arts '21",
-          pic: "katie-lu.png"
-        }
-      ]
+          pic: "katie-lu.png",
+        },
+      ],
     },
-  ]
+  ],
 };
