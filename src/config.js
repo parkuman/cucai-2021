@@ -31,10 +31,6 @@ module.exports = {
       name: "Get Involved",
       url: "/#involvement",
     },
-    {
-      name: "Contact",
-      url: "/#contact",
-    },
   ],
   conferenceImages: [
     {

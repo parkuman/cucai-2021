@@ -45,6 +45,7 @@ const Footer = () => {
           Indigenous peoples who lived, and continue to live, upon it.
         </Text>
         <Socials direction="row" />
+        <a href="mailto:chair@cucai.ca">chair@cucai.ca</a>
         <Link to="/">
           <StyledLogo src={logo} alt="logo" />
         </Link>

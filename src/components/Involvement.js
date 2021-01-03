@@ -11,7 +11,7 @@ const StyledDetails = styled.div`
 
 const Involved = () => {
   return (
-    <Tab.Container id="left-tabs-example" defaultActiveKey="Industry Partners">
+    <Tab.Container id="left-tabs-example" defaultActiveKey="Delegates">
       <Row>
         <Col sm={3}>
           <Nav
@@ -24,9 +24,7 @@ const Involved = () => {
             }
           >
             <Nav.Item>
-              <Nav.Link eventKey="Industry Partners">
-                Industry Partners
-              </Nav.Link>
+              <Nav.Link eventKey="Delegates">Delegates</Nav.Link>
             </Nav.Item>
             <Nav.Item>
               <Nav.Link eventKey="Speakers">Speakers</Nav.Link>
@@ -34,27 +32,15 @@ const Involved = () => {
             <Nav.Item>
               <Nav.Link eventKey="Student Groups">Student Groups</Nav.Link>
             </Nav.Item>
-            <Nav.Item>
-              <Nav.Link eventKey="Delegates">Delegates</Nav.Link>
-            </Nav.Item>
           </Nav>
         </Col>
 
         <Col sm={9}>
           <Tab.Content>
-            <Tab.Pane eventKey="Industry Partners">
+            <Tab.Pane eventKey="Delegates">
               <StyledDetails>
-                <p>
-                  We will work closely with our industry partners to create an
-                  environment where undergraduate students and professionals can
-                  share their ideas and experiences, and explore the world of AI
-                  together. As a partner, CUCAI is the perfect place to interact
-                  and connect with the top talent in AI and machine learning.
-                </p>
-
-                <a href="CUCAI-2021-Sponsorship-Package.pdf">
-                  <Button borderStyle="solid">Sponsors Package</Button>
-                </a>
+                Tune in to our taster event on January 23rd. Applications will
+                open soon after, so be sure to apply!
               </StyledDetails>
             </Tab.Pane>
             <Tab.Pane eventKey="Speakers">
@@ -93,11 +79,6 @@ const Involved = () => {
                     Student Group Partnership Package
                   </Button>
                 </a>
-              </StyledDetails>
-            </Tab.Pane>
-            <Tab.Pane eventKey="Delegates">
-              <StyledDetails>
-                Stay tuned for delegate applications!
               </StyledDetails>
             </Tab.Pane>
           </Tab.Content>

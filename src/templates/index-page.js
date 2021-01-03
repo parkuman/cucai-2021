@@ -19,6 +19,7 @@ import ScrollToTop from "../components/ScrollToTop";
 import Button from "../components/Button";
 import Socials from "../components/Socials";
 import Handshake from "../components/Handshake";
+import PremierSpeakers from "../components/PremierSpeakers";
 
 import theme from "../styles/theme";
 import media from "../styles/media";
@@ -46,20 +47,27 @@ const StyledHero = styled(BackgroundImg)`
 `;
 
 const SectionTitle = styled.h2`
+  font-family: ${theme.fonts.IBMPlexSansLight};
   font-size: 3rem;
+  
 
   ${media.phone`
     font-size: 2.5rem;
   `}
+
+  &.medium {
+    font-family: ${theme.fonts.IBMPlexSansMedium};
+    display: inline;
+  }
 `;
 
 const SectionSubtitle = styled.h3`
   font-family: ${theme.fonts.IBMPlexSansLight};
   color: black;
-  font-size: 2rem;
+  font-size: 2.5rem;
 
   ${media.phone`
-    font-size: 1.5rem;
+    font-size: 2rem;
   `}
 
   &.medium {
@@ -211,31 +219,70 @@ const BlurbContent = styled.div`
 
 const StyledBlurbSection = styled.section`
   max-width: 80%;
-  min-height: 80vh;
   margin: 0 auto;
   padding: 50px 0;
   display: flex;
   flex-direction: column;
 
   ${media.tablet`
-    max-width: 100%;
+    max-width: 90%;
   `}
 `;
 
-const StyledConferenceEvents = styled.section`
-  & > div {
-    position: relative;
-    & h2 {
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      color: white;
-    }
+const StyledConferenceEvents = styled.section``;
+
+const ConferenceEventsBanner = styled.div`
+  position: relative;
+`;
+
+const ConferenceEventsBannerText = styled.div`
+  font-family: ${theme.fonts.IBMPlexSansLight};
+  text-align: center;
+  color: white;
+  position: absolute;
+  margin: 0 auto;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+
+  align-items: center;
+  justify-content: center;
+
+  & h2 {
+    font-size: 5rem;
   }
+  & p {
+    font-style: italic;
+    font-size: 1.2rem;
+  }
+
+  ${media.tablet`
+  & h2 {
+    font-size: 3rem;
+  }
+  & p {
+    font-style: italic;
+    font-size: 1rem;
+  }
+  `}
+
+  ${media.phone`
+  & h2 {
+    font-size: 2rem;
+  }
+  & p {
+    font-style: italic;
+    font-size: 0.8rem;
+  }
+  `}
 `;
 
 const ConferenceEventsList = styled.div`
-  max-width: 80%;
   display: flex;
   margin: 0 auto;
   flex-direction: column;
@@ -243,7 +290,7 @@ const ConferenceEventsList = styled.div`
   align-items: center;
 
   & > * {
-    padding: 80px 0;
+    padding: 20px 0;
   }
 
   ${media.phone`
@@ -252,7 +299,7 @@ const ConferenceEventsList = styled.div`
 `;
 
 const EventTitleAndDesc = styled.div`
-  max-width: 48%;
+  max-width: 40%;
   ${media.phone`
     max-width: 100%;
     padding: 20px 0;
@@ -260,24 +307,23 @@ const EventTitleAndDesc = styled.div`
 `;
 
 const EventContent = styled.div`
-  max-width: 48%;
-  width: 48%;
+  max-width: 30%;
+  width: 30%;
 
   ${media.phone`
-    max-width: 100%;
-    width: 100%;
+    max-width: 90%;
+    width: 90%;
     
   `}
 `;
 
 const StyledDesignTeamShowcase = styled.section`
   margin: 0 auto;
-`;
-
-const DesignTeamShowcaseContent = styled.div`
+  padding: 40px 0;
   display: flex;
+
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: space-evenly;
   align-items: center;
 
   ${media.phone`
@@ -285,39 +331,26 @@ const DesignTeamShowcaseContent = styled.div`
   `}
 `;
 
-const DesignTeamProceedings = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
-`;
-
-const ProceedingsGatsbyImage = styled(Img)`
-  width: 50%;
-
-  ${media.phone`
-    width: 80%;
-  `}
-`;
-
-const DesignTeamCarousel = styled(Carousel)`
-  max-width: 50vw;
-  max-height: 50vh;
-  margin: 50px auto 0 auto;
-
-  overflow: hidden;
-
-  ${media.phone`
-    max-width: 100%;
-  `}
-`;
-
-const StyledIndustryShowcase = styled.section`
+const StyledNetworkingOpportunities = styled.section`
   margin: 0 auto;
+  padding: 40px 0;
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: space-evenly;
+  align-items: center;
+  background-color: #f4f4f4;
+
+  ${media.phone`
+    flex-direction: column;
+  `}
+`;
+
+const StyledWorkshopsShowcase = styled.section`
+  margin: 0 auto;
+  padding: 40px 0;
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: space-evenly;
   align-items: center;
 
   ${media.phone`
@@ -325,24 +358,14 @@ const StyledIndustryShowcase = styled.section`
   `}
 `;
 
-const StyledSpeakersShowcase = styled.section`
+const StyledAIPitchComp = styled.section`
   margin: 0 auto;
+  padding: 40px 0;
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: space-evenly;
   align-items: center;
-
-  ${media.phone`
-    flex-direction: column-reverse;
-  `}
-`;
-
-const StyledWorkshopsShowcase = styled.section`
-  margin: 0 auto;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
+  background-color: #f4f4f4;
 
   ${media.phone`
     flex-direction: column;
@@ -388,7 +411,6 @@ const SponsorBannerWrapper = styled.div`
 `;
 
 const SponsorBanner = styled.div`
-  max-width: 80%;
   margin: 0 auto;
   padding: 50px 0;
   display: flex;
@@ -429,26 +451,13 @@ const SponsorBannerContent = styled.div`
 `;
 
 const StyledInvolvedSection = styled.section`
-  max-width: 60%;
+  max-width: 80%;
   margin: 0 auto;
-  padding: 50px 0;
+  padding: 100px 0;
 
   ${media.phone`
     max-width: 95%;
   `}
-`;
-
-const StyledContactUsSection = styled.section`
-  margin: 0 auto;
-  display: flex;
-  padding: 100px 0;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-
-  & h3 {
-    font-size: 1rem;
-  }
 `;
 
 const Hero = ({ data, heading, slogan, location, date, cta1, cta2 }) => {
@@ -526,7 +535,8 @@ const BlurbSection = ({ data, blurbtitle, blurbdesc, blurbimg }) => (
             Good: Artificial Intelligence, Real Change! From advancing medical
             research to protecting the environment and aiding in natural
             disaster recovery, the ways in which AI can make the world a better
-            place continue to grow.
+            place continue to grow. All ticket proceedings this year will go
+            toward AI for Good charities.
           </p>
         </BlurbTitleAndDesc>
         <BlurbContent>
@@ -540,125 +550,138 @@ const BlurbSection = ({ data, blurbtitle, blurbdesc, blurbimg }) => (
 const ConferenceEvents = ({ data }) => (
   <StyledConferenceEvents>
     <IdHrefAnchor id="events" />
-    <div>
+    <ConferenceEventsBanner>
       <Img
         fluid={data.eventsPano.childImageSharp.fluid}
-        alt="last years highlights"
+        alt="last year's conference highlights"
       />
-      <Fade bottom distance="80px">
-        <SectionTitle>Conference Events</SectionTitle>
-      </Fade>
-    </div>
+      <ConferenceEventsBannerText>
+        <SectionTitle>
+          Conference <br />
+          <SectionTitle className="medium">Highlights</SectionTitle>
+        </SectionTitle>
+        <p>Reasons to attend the conference this year.</p>
+      </ConferenceEventsBannerText>
+    </ConferenceEventsBanner>
     <ConferenceEventsList>
       <Fade bottom distance="80px">
-        <DesignTeamShowcase data={data} images={DesignImgs} />
+        <PremierSpeakerSection data={data} />
       </Fade>
       <Fade bottom distance="80px">
-        <IndustryShowcase data={data} />
-      </Fade>
-      <Fade bottom distance="80px">
-        <SpeakersShowcase data={data} />
+        <NetworkingOpportunities data={data} />
       </Fade>
       <Fade bottom distance="80px">
         <WorkshopsShowcase data={data} />
+      </Fade>
+      <Fade bottom distance="80px">
+        <AIPitchComp data={data} />
+      </Fade>
+      <Fade bottom distance="80px">
+        <DesignTeamShowcase data={data} />
       </Fade>
     </ConferenceEventsList>
   </StyledConferenceEvents>
 );
 
-const DesignTeamShowcase = ({ data, images }) => {
+const StyledPremierSpeakerSection = styled.section`
+  margin: 0 auto;
+  padding: 40px 0;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
+
+  ${media.phone`
+    flex-direction: column-reverse;
+  `}
+`;
+
+const PremierSpeakerSection = () => {
   return (
-    <StyledDesignTeamShowcase>
-      <DesignTeamShowcaseContent>
+    <>
+      <StyledPremierSpeakerSection>
         <EventTitleAndDesc>
-          <SectionSubtitle>Design Team Showcase</SectionSubtitle>
+          <SectionSubtitle>
+            <SectionSubtitle className="medium">
+              Premier Speaker{" "}
+            </SectionSubtitle>
+            <br />
+            Presentations
+          </SectionSubtitle>
           <p>
-            The design team showcase was the foundation on which CUCAI was
-            started. This event allows the hard work and dedication of Canadian
-            undergraduate students working on AI-based design projects to be
-            exhibited. The “walk-through” showcase allows industry
-            representatives and other delegates to learn about the work
-            currently being done in the field of AI at the undergraduate level.
-            This event features in-depth presentations for audiences of all
-            levels of experience and backgrounds, as well as engaging and
-            interactive demonstrations shifted to an online format for 30+
-            design teams from across Canada.
+            Speaker presentations from leaders in academia and industry have
+            been a cornerstone of CUCAI since its inaugural year. These
+            components of the conference empower delegates to learn from the
+            ideas, experiences and knowledge of these professionals as they
+            discuss a variety of fascinating AI topics.
           </p>
         </EventTitleAndDesc>
         <EventContent>
-          <DesignTeamProceedings>
-            <ProceedingsGatsbyImage
-              fluid={data.proceedingsImg.childImageSharp.fluid}
-              alt="conference proceedings"
-            />
-
-            <a href="Proceedings-of-CUCAI-2020.pdf">
-              <Button borderStyle="solid" borderColour="#174461">
-                2020 Proceedings PDF
-              </Button>
-            </a>
-          </DesignTeamProceedings>
+          <PremierSpeakers />
         </EventContent>
-      </DesignTeamShowcaseContent>
+      </StyledPremierSpeakerSection>
+    </>
+  );
+};
 
-      <DesignTeamCarousel>
-        {images.map((image, key) => (
-          <Carousel.Item key={key}>
-            <img src={image} alt="design team showcase" />
-          </Carousel.Item>
-        ))}
-      </DesignTeamCarousel>
+const DesignTeamShowcase = ({ data }) => {
+  return (
+    <StyledDesignTeamShowcase>
+      <EventTitleAndDesc>
+        <SectionSubtitle>
+          <SectionSubtitle className="medium">Design Team</SectionSubtitle>
+          <br />
+          Showcase
+        </SectionSubtitle>
+        <p>
+          The design team showcase was the foundation on which CUCAI was
+          started. This event features in-depth presentations for audiences of
+          all levels of experience and backgrounds, as well as engaging and
+          interactive demonstrations shifted to an online format for 30+ design
+          teams from across Canada.
+        </p>
+        <a href="Proceedings-of-CUCAI-2020.pdf">
+          <Button borderStyle="solid" borderColour="#174461">
+            Download the 2020 Proceedings
+          </Button>
+        </a>
+      </EventTitleAndDesc>
+      <EventContent>
+        <Img
+          fluid={data.proceedingsImg.childImageSharp.fluid}
+          alt="conference proceedings"
+        />
+      </EventContent>
     </StyledDesignTeamShowcase>
   );
 };
 
-const IndustryShowcase = ({ data }) => (
-  <StyledIndustryShowcase>
+const NetworkingOpportunities = ({ data }) => (
+  <StyledNetworkingOpportunities>
     <EventContent>
       <Img
-        fluid={data.industryShowcaseImg.childImageSharp.fluid}
-        alt="industry showcase"
+        fluid={data.networkingOpportunitiesImg.childImageSharp.fluid}
+        alt="student conversing with industry professional"
       />
     </EventContent>
 
     <EventTitleAndDesc>
-      <SectionSubtitle>Industry Showcase</SectionSubtitle>
+      <SectionSubtitle>
+        <SectionSubtitle className="medium">
+          Exclusive Networking
+        </SectionSubtitle>
+        <br />
+        Opportunities
+      </SectionSubtitle>
 
       <p>
-        As a compliment to the design team showcase, this event is designed to
-        show undergraduate students what the present and future of artificial
-        intelligence in industry look like. Breakout rooms for each of our
-        industry partners will be set up to allow students to learn about the
-        opportunities available to them within industry. Students learn about
-        how technological advancements in artificial intelligence are shaping a
-        wide variety of industries. The industry showcase is often a favourite
-        of both industry reps and delegates due to the phenomenal networking
-        opportunities.
+        Exciting events throughout the conference designed to show undergraduate
+        students the present and future of AI in industry. New to CUCAI 2021, we
+        are hosting a Taster Event on January 23, 2021, to connect students to
+        our exclusive recruitment pipeline prior to the March conference.
       </p>
     </EventTitleAndDesc>
-  </StyledIndustryShowcase>
-);
-
-const SpeakersShowcase = ({ data }) => (
-  <StyledSpeakersShowcase>
-    <EventTitleAndDesc>
-      <SectionSubtitle>Speakers</SectionSubtitle>
-      <p>
-        Speaker presentations from leaders in academia and industry have been a
-        cornerstone of CUCAI since its inaugural year. These components of the
-        conference empower delegates to learn from the ideas, experiences and
-        knowledge of these professionals as they discuss a variety of
-        fascinating AI topics.
-      </p>
-    </EventTitleAndDesc>
-
-    <EventContent>
-      <Img
-        fluid={data.speakerImg.childImageSharp.fluid}
-        alt="speakers showcase"
-      />
-    </EventContent>
-  </StyledSpeakersShowcase>
+  </StyledNetworkingOpportunities>
 );
 
 const WorkshopsShowcase = ({ data }) => (
@@ -670,7 +693,13 @@ const WorkshopsShowcase = ({ data }) => (
       />
     </EventContent>
     <EventTitleAndDesc>
-      <SectionSubtitle>Workshops</SectionSubtitle>
+      <SectionSubtitle>
+        <SectionSubtitle className="medium">
+          Interactive Workshop
+        </SectionSubtitle>
+        <br />
+        Sessions
+      </SectionSubtitle>
       <p>
         Workshops are an incredibly engaging facet of CUCAI intended to bring an
         element of concreteness to the topic of artificial intelligence. These
@@ -682,6 +711,29 @@ const WorkshopsShowcase = ({ data }) => (
   </StyledWorkshopsShowcase>
 );
 
+const AIPitchComp = ({ data }) => (
+  <StyledAIPitchComp>
+    <EventContent>
+      <Img
+        fluid={data.aiPitchCompImg.childImageSharp.fluid}
+        alt="workshop showcase"
+      />
+    </EventContent>
+    <EventTitleAndDesc>
+      <SectionSubtitle>
+        <SectionSubtitle className="medium">AI Pitch</SectionSubtitle>
+        <br />
+        Competition
+      </SectionSubtitle>
+      <p>
+        Come see promising early-stage student startups compete for a $10,000
+        prize pool! All the student ventures competing in the event leverage the
+        power of AI to bring new and exciting business solutions to reality.
+      </p>
+    </EventTitleAndDesc>
+  </StyledAIPitchComp>
+);
+
 const SponsorSection = ({ data }) => (
   <StyledSponsorSection>
     <Fade bottom distance="80px">
@@ -689,7 +741,11 @@ const SponsorSection = ({ data }) => (
       <SponsorBannerWrapper>
         <SponsorBanner>
           <SponsorBannerContent>
-            <SectionTitle>Become a Sponsor</SectionTitle>
+            <SectionTitle
+              className="medium"
+            >
+              Become a Sponsor
+            </SectionTitle>
             <p>
               We wouldn't be able to host our conference without the help from
               our incredible sponsors.
@@ -708,13 +764,6 @@ const SponsorSection = ({ data }) => (
         </SponsorBanner>
       </SponsorBannerWrapper>
     </Fade>
-
-    <Fade bottom distance="80px">
-      <h3>Past Sponsors & Partners</h3>
-      <div className="sponsimg">
-        <Img fluid={data.sponsorImg.childImageSharp.fluid} alt="sponsorships" />
-      </div>
-    </Fade>
   </StyledSponsorSection>
 );
 
@@ -731,24 +780,10 @@ const InvolvedSection = () => (
   <StyledInvolvedSection>
     <Fade bottom distance="80px">
       <IdHrefAnchor id="involvement" />
-      <SectionTitle>Get Involved</SectionTitle>
+      <SectionTitle className="medium">Get Involved</SectionTitle>
       <Involved />
     </Fade>
   </StyledInvolvedSection>
-);
-
-const ContactUsSection = () => (
-  <Fade bottom distance="80px">
-    <StyledContactUsSection>
-      <IdHrefAnchor id="contact" />
-      <SectionTitle>Contact Us</SectionTitle>
-      <h3>Email</h3>
-
-      <a href="mailto:chair@cucai.ca">
-        <Button borderStyle="solid">chair@cucai.ca</Button>
-      </a>
-    </StyledContactUsSection>
-  </Fade>
 );
 
 export const IndexPageTemplate = ({
@@ -778,9 +813,8 @@ export const IndexPageTemplate = ({
     <BlurbSection data={data} />
     <ConferenceEvents data={data} />
     <SponsorSection data={data} featuredimage={Highlights} />
-    <PastSpeakersSection />
+    {/* <PastSpeakersSection /> */}
     <InvolvedSection />
-    <ContactUsSection />
   </StyledIndexPage>
 );
 
@@ -877,7 +911,9 @@ export const pageQuery = graphql`
         }
       }
     }
-    industryShowcaseImg: file(relativePath: { eq: "Showcase_30.jpg" }) {
+    networkingOpportunitiesImg: file(
+      relativePath: { eq: "networkingOpportunitiesImg.png" }
+    ) {
       childImageSharp {
         fluid {
           ...GatsbyImageSharpFluid
@@ -891,7 +927,14 @@ export const pageQuery = graphql`
         }
       }
     }
-    workshopsShowcaseImg: file(relativePath: { eq: "workshop_k.jpg" }) {
+    workshopsShowcaseImg: file(relativePath: { eq: "workshopImg.png" }) {
+      childImageSharp {
+        fluid {
+          ...GatsbyImageSharpFluid
+        }
+      }
+    }
+    aiPitchCompImg: file(relativePath: { eq: "aiPitchCompImg.png" }) {
       childImageSharp {
         fluid {
           ...GatsbyImageSharpFluid
