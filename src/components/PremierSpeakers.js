@@ -94,26 +94,6 @@ const Work = styled.h4`
   font-size: 1.5rem;
 `;
 
-const Arrows = styled.div`
-  display: flex;
-  flex-direction: row;
-  justify-content: space-evenly;
-  align-items: center;
-  text-align: center;
-
-  & span {
-    font-size: 3rem;
-    cursor: pointer;
-    color: ${theme.colors.darkBlue};
-    padding: 5px;
-    transition: ${theme.transition};
-
-    &:hover {
-      transform: scale(1.1, 1.1);
-    }
-  }
-`;
-
 function determineClasses(indexes, speakerIndex) {
   if (indexes.currentIndex === speakerIndex) {
     return "active";

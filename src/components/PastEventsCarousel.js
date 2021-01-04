@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import styled from "styled-components";
 import Slider from "react-slick";
 
+import media from "../styles/media";
+
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
@@ -46,6 +48,11 @@ const StyledCard = styled.div`
   -webkit-box-shadow: 4px 5px 8px -4px rgba(186, 186, 186, 1);
   -moz-box-shadow: 4px 5px 8px -4px rgba(186, 186, 186, 1);
   box-shadow: 4px 5px 8px -4px rgba(186, 186, 186, 1);
+
+  ${media.tablet`
+    margin: 1.5em 0.3em 0 0.3em;
+
+  `}
 `;
 
 const Card = ({ event }) => {
@@ -64,10 +71,7 @@ class PastEventsCarousel extends Component {
       infinite: true,
       slidesToShow: 2,
       slidesToScroll: 1,
-      autoplay: true,
       speed: 500,
-      autoplaySpeed: 4000,
-      pauseOnFocus: true,
       responsive: [
         {
           breakpoint: 800,

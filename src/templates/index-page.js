@@ -5,11 +5,9 @@ import Img from "gatsby-image";
 import BackgroundImg from "gatsby-background-image";
 import Fade from "react-reveal/Fade";
 import styled from "styled-components";
-import { Carousel } from "react-bootstrap/";
-import "bootstrap/dist/css/bootstrap.min.css";
+import Particles from "react-particles-js";
 
-//Photos
-import Highlights from "../img/pano.png";
+import "bootstrap/dist/css/bootstrap.min.css";
 
 import PastEventsCarousel from "../components/PastEventsCarousel";
 import Layout from "../components/Layout";
@@ -19,7 +17,7 @@ import Button from "../components/Button";
 import Socials from "../components/Socials";
 import Handshake from "../components/Handshake";
 import PremierSpeakers from "../components/PremierSpeakers";
-import Particles from 'react-particles-js';
+import Schedule from "../components/schedule";
 
 import theme from "../styles/theme";
 import media from "../styles/media";
@@ -40,7 +38,7 @@ const StyledHero = styled(BackgroundImg)`
   background-color: transparent;
   background-repeat: no-repeat, no-repeat;
   background-position: 50% 100%, top;
-  canvas{
+  canvas {
     z-index: -1;
   }
 `;
@@ -48,10 +46,6 @@ const StyledHero = styled(BackgroundImg)`
 const SectionTitle = styled.h2`
   font-family: ${theme.fonts.IBMPlexSansLight};
   font-size: 3rem;
-<<<<<<< HEAD
-
-=======
->>>>>>> e430c500e8ccd94c07ba3e6f9e4cc0f6890e1218
 
   ${media.phone`
     font-size: 2.5rem;
@@ -89,8 +83,12 @@ const StyledHeroContent = styled.div`
   max-width: 80%;
   /* height: 100vh; */
 
+  @media only screen and (max-height: 700px) {
+    max-width: 95%;
+  }
+
   ${media.tablet`
-    height: 80vh;
+    min-height: 80vh;
     padding-top: 120px;
     align-items: center;
     flex-direction: column-reverse;
@@ -109,6 +107,10 @@ const HeroText = styled.div`
   & button {
     display: inline-block;
     margin: 0 15px 15px 0;
+  }
+
+  @media only screen and (max-height: 700px) {
+    max-width: 95%;
   }
 
   ${media.tablet`
@@ -138,7 +140,9 @@ const MobileSocials = styled.div`
 const HeroLogo = styled.div`
   min-width: 30%;
   min-height: 10vh;
-
+  @media only screen and (max-height: 700px) {
+    min-width: 15%;
+  }
   ${media.tablet`
     min-width: 50%;
     padding-bottom: 15px;
@@ -150,7 +154,6 @@ const StyledHeading = styled.h1`
   padding: 0;
   font-family: ${theme.fonts.IBMPlexSansMedium};
   font-size: 3.2rem;
-  max-width: 90%;
   margin-bottom: 15px;
   color: black;
 
@@ -192,6 +195,9 @@ const HeroButtons = styled.div`
   flex-direction: row;
   align-items: center;
   justify-content: flex-start;
+
+  @media only screen and (max-height: 700px) {
+  }
 
   ${media.tablet`
     justify-content: center;
@@ -496,31 +502,34 @@ const Hero = ({ data, heading, slogan, location, date, cta1, cta2 }) => {
 
   return (
     <StyledHero fluid={heroBackgroundImages}>
-    <Particles
-      params={{
-        particles: {
-          color: "#1aa9cb",
-          line_linked: {
-            color: "#1aa9cb"
-          }
-        },
-        interactivity: {
-          detectson: 'canvas',
-          onhover: {
-            enable: true,
-            mode: 'repulse'
+      <Particles
+        params={{
+          particles: {
+            color: "#1aa9cb",
+            line_linked: {
+              color: "#1aa9cb",
+            },
           },
-          onclick: {
-            enable: true,
-            mode: 'push'
-          }
-        }
-      }}
-      style={{
-        width: '100%',
-        position: 'fixed'
-      }}
-    />
+          interactivity: {
+            detection: "canvas",
+            onhover: {
+              enable: true,
+              mode: "repulse",
+            },
+            onclick: {
+              enable: true,
+              mode: "push",
+            },
+          },
+        }}
+        style={{
+          width: "100%",
+          height: "100vh",
+          position: "absolute",
+          top: 0,
+          left: 0,
+        }}
+      />
       <StyledHeroContent>
         <HeroText>
           <StyledHeading>{heading}</StyledHeading>
@@ -869,9 +878,9 @@ export const IndexPageTemplate = ({
     <BlurbSection data={data} />
     <ConferenceEvents data={data} />
     <PastEventsAndHighlights data={data} />
-
-    <SponsorSection data={data} featuredimage={Highlights} />
+    <SponsorSection data={data} />
     <InvolvedSection />
+    {/* <Schedule /> */}
   </StyledIndexPage>
 );
 
