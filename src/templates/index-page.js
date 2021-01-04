@@ -40,6 +40,9 @@ const StyledHero = styled(BackgroundImg)`
   background-color: transparent;
   background-repeat: no-repeat, no-repeat;
   background-position: 50% 100%, top;
+  canvas{
+    z-index: -1;
+  }
 `;
 
 const SectionTitle = styled.h2`
