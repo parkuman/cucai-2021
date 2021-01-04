@@ -18,6 +18,9 @@ const StyledFooterContent = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  & > * {
+    padding: 3px 0;
+  }
 `;
 
 const Text = styled.p`
@@ -50,7 +53,7 @@ const Footer = () => {
           <StyledLogo src={logo} alt="logo" />
         </Link>
         <Text>
-          Copyright © 2020 CUCAI Canadian Undergraduate Conference on AI. All
+          Copyright © 2021 CUCAI Canadian Undergraduate Conference on AI. All
           Rights Reserved
         </Text>
       </StyledFooterContent>

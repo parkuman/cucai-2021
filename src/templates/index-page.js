@@ -9,10 +9,10 @@ import { Carousel } from "react-bootstrap/";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 //Photos
-import DesignImgs from "../img/designteams";
 import Highlights from "../img/pano.png";
 
 import CardStack from "../components/Cards";
+import PastEventsCarousel from "../components/PastEventsCarousel";
 import Layout from "../components/Layout";
 import Involved from "../components/Involvement";
 import ScrollToTop from "../components/ScrollToTop";
@@ -36,12 +36,8 @@ const IdHrefAnchor = styled.a`
 const StyledHero = styled(BackgroundImg)`
   min-height: 100vh;
   width: 100%;
-  /* min-height: 100vh; */
-  /* You should set a background-size as the default value is "cover"! */
   background-size: contain;
-  /* So we won't have the default "lightgray" background-color. */
   background-color: transparent;
-  /* Now again, remember the stacking order of CSS: lowermost comes last! */
   background-repeat: no-repeat, no-repeat;
   background-position: 50% 100%, top;
 `;
@@ -49,7 +45,6 @@ const StyledHero = styled(BackgroundImg)`
 const SectionTitle = styled.h2`
   font-family: ${theme.fonts.IBMPlexSansLight};
   font-size: 3rem;
-  
 
   ${media.phone`
     font-size: 2.5rem;
@@ -92,6 +87,14 @@ const StyledHeroContent = styled.div`
     align-items: center;
     flex-direction: column-reverse;
     justify-content: center;
+
+  `}
+
+  ${media.phone`
+  padding-top: 100px;
+
+  max-width: 95%;
+
   `}
 `;
 
@@ -111,8 +114,10 @@ const HeroText = styled.div`
     max-width: 100%;
 
     & button {
-      margin-right: 0;
+      margin: 0;
     }
+
+
   `}
 `;
 
@@ -130,7 +135,7 @@ const HeroLogo = styled.div`
 
   ${media.tablet`
     min-width: 50%;
-    padding-bottom: 20px;
+    padding-bottom: 15px;
   `}
 `;
 
@@ -140,7 +145,7 @@ const StyledHeading = styled.h1`
   font-family: ${theme.fonts.IBMPlexSansMedium};
   font-size: 3.2rem;
   max-width: 90%;
-  margin-bottom: 10px;
+  margin-bottom: 15px;
   color: black;
 
   ${media.tablet`
@@ -149,7 +154,7 @@ const StyledHeading = styled.h1`
 
   `}
   ${media.phone`
-    margin: 20px 0;
+    margin: 10px 0;
     font-size: 2rem;
   `}
 `;
@@ -157,7 +162,7 @@ const StyledHeading = styled.h1`
 const StyledSlogan = styled.h2`
   font-family: ${theme.fonts.IBMPlexSansLight};
   font-size: 2rem;
-  padding-top: 20px;
+  padding-top: 5px;
 
   ${media.phone`
       font-size: 1.5rem;
@@ -171,6 +176,19 @@ const StyledInfo = styled.h3`
 
   ${media.phone`
       font-size: 1.1rem;
+  `}
+`;
+
+const HeroButtons = styled.div`
+  display: flex;
+  width: 100%;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  margin-bottom: 5px;
+
+  ${media.tablet`
+    justify-content: space-evenly;
   `}
 `;
 
@@ -372,16 +390,18 @@ const StyledAIPitchComp = styled.section`
   `}
 `;
 
-const StyledPastSpeakersSection = styled.section`
-  margin: 50px 0;
-  width: 100vw;
-  background: #f8f8f8;
+const StyledPastEventsAndHighlights = styled.section`
+  background-color: #f4f4f4;
+  padding: 40px 0;
 `;
 
-const PastSpeakersContent = styled.div`
+const PastEventsAndHighlightsContent = styled.div`
   max-width: 80%;
   margin: 0 auto;
-  padding: 50px 0;
+
+  ${media.phone`
+    max-width: 95%;
+  `}
 `;
 
 const StyledSponsorSection = styled.section`
@@ -401,6 +421,7 @@ const StyledSponsorSection = styled.section`
 
 const SponsorBannerWrapper = styled.div`
   width: 100vw;
+  padding: 0 10px;
   margin-bottom: 5vh;
   background: linear-gradient(
       180deg,
@@ -481,14 +502,17 @@ const Hero = ({ data, heading, slogan, location, date, cta1, cta2 }) => {
             </Link>
           </StyledInfo>
 
-          <a href="mailto:chair@cucai.ca">
-            <Button backgroundColour="white">Delegate Applications</Button>
-          </a>
-          <a href="#sponsors">
-            <Button borderStyle="solid" borderColour="#174461">
-              Become a Sponsor
-            </Button>
-          </a>
+          <HeroButtons>
+            <Link to="/taster">
+              <Button backgroundColour="white">Delegate Applications</Button>
+            </Link>
+            <a href="#sponsors">
+              <Button borderStyle="solid" borderColour="#174461">
+                Become a Sponsor
+              </Button>
+            </a>
+          </HeroButtons>
+
           <MobileSocials>
             <Socials direction="row" />
           </MobileSocials>
@@ -678,7 +702,8 @@ const NetworkingOpportunities = ({ data }) => (
         Exciting events throughout the conference designed to show undergraduate
         students the present and future of AI in industry. New to CUCAI 2021, we
         are hosting a Taster Event on January 23, 2021, to connect students to
-        our exclusive recruitment pipeline prior to the March conference.
+        our exclusive recruitment pipeline prior to the March conference.{" "}
+        <Link to="/taster">Learn more...</Link>
       </p>
     </EventTitleAndDesc>
   </StyledNetworkingOpportunities>
@@ -741,11 +766,7 @@ const SponsorSection = ({ data }) => (
       <SponsorBannerWrapper>
         <SponsorBanner>
           <SponsorBannerContent>
-            <SectionTitle
-              className="medium"
-            >
-              Become a Sponsor
-            </SectionTitle>
+            <SectionTitle className="medium">Become a Sponsor</SectionTitle>
             <p>
               We wouldn't be able to host our conference without the help from
               our incredible sponsors.
@@ -767,13 +788,16 @@ const SponsorSection = ({ data }) => (
   </StyledSponsorSection>
 );
 
-const PastSpeakersSection = () => (
-  <StyledPastSpeakersSection>
-    <PastSpeakersContent>
-      <SectionTitle>Past Speakers and Workshops</SectionTitle>
-      <CardStack></CardStack>
-    </PastSpeakersContent>
-  </StyledPastSpeakersSection>
+const PastEventsAndHighlights = () => (
+  <Fade bottom distance="80px">
+    <StyledPastEventsAndHighlights>
+      <PastEventsAndHighlightsContent>
+        <SectionTitle className="medium">Past Events & Highlights</SectionTitle>
+        <br />
+        <PastEventsCarousel />
+      </PastEventsAndHighlightsContent>
+    </StyledPastEventsAndHighlights>
+  </Fade>
 );
 
 const InvolvedSection = () => (
@@ -812,8 +836,9 @@ export const IndexPageTemplate = ({
     />
     <BlurbSection data={data} />
     <ConferenceEvents data={data} />
+    <PastEventsAndHighlights data={data} />
+
     <SponsorSection data={data} featuredimage={Highlights} />
-    {/* <PastSpeakersSection /> */}
     <InvolvedSection />
   </StyledIndexPage>
 );

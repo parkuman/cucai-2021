@@ -1,13 +1,32 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { graphql } from "gatsby";
-import { Row, Col } from "react-bootstrap/";
+import { graphql, Link } from "gatsby";
 
 import styled from "styled-components";
-import media from "../styles/media";
 
 import Layout from "../components/Layout";
+
 import { ourTeam } from "../config";
+import media from "../styles/media";
+import theme from "../styles/theme";
+
+
+import LinkedInIcon from "../img/social/linkedin.js";
+
+const SocialLink = styled(Link)`
+  padding: 5px 10px;
+
+  & svg {
+    transition: ${theme.transition};
+  }
+
+  &:hover {
+    & svg {
+      fill: var(--cucai-blue);
+      transform: rotate(10deg) translateY(-3px);
+    }
+  }
+`;
 
 const StyledAboutPage = styled.div`
   margin: 0 auto;
@@ -27,15 +46,17 @@ const StyledTextSection = styled.section`
   border-radius: 10px;
 
   padding: 2em;
-  -webkit-box-shadow: 10px 10px 34px -9px rgba(0, 0, 0, 0.65);
+  padding-bottom: 0;
+  /* -webkit-box-shadow: 10px 10px 34px -9px rgba(0, 0, 0, 0.65);
   -moz-box-shadow: 10px 10px 34px -9px rgba(0, 0, 0, 0.65);
-  box-shadow: 10px 10px 34px -9px rgba(0, 0, 0, 0.65);
+  box-shadow: 10px 10px 34px -9px rgba(0, 0, 0, 0.65); */
   margin-bottom: 2em;
 `;
 const StyledTeamMember = styled.div`
+  display: flex;
   padding: 1em;
-  float: left;
   background: rgb(255, 255, 255);
+  height: 450px;
   margin: 1em;
   border-radius: 10px;
   -webkit-box-shadow: 10px 10px 34px -9px rgba(0, 0, 0, 0.65);
@@ -55,32 +76,15 @@ const StyledTeamMember = styled.div`
   }
 `;
 
-const StyledTeamTitle = styled(Col)`
-  margin: 1em 0em 0em 0em;
-
-  float: left;
-  border-radius: 10px;
-  color: var(--dark-blue);
-`;
-
-const StyledTeam = styled(Row)`
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  ${media.phone`
-    flex-direction: column;
-`}
-`;
-
 const StyledOurTeam = styled.div`
   display: flex;
-  flex-direction: column;
+  flex-flow: wrap;
+  flex-direction: row;
   align-items: center;
+  justify-content: center;
 `;
 
-const TeamMember = ({ pic, name, position, program }) => {
+const TeamMember = ({ pic, name, position, program, linkedin }) => {
   return (
     <>
       <img src={require(`../img/team/${pic}`)} alt={`${name}'s headshot'`} />
@@ -92,34 +96,29 @@ const TeamMember = ({ pic, name, position, program }) => {
       <p>
         <i>{program}</i>
       </p>
+      <SocialLink to={linkedin}>
+        <LinkedInIcon size="25px" />
+      </SocialLink>
     </>
   );
 };
 
 const OurTeam = ({ data }) => {
-  return ourTeam.map((team) => {
-    return (
-      <StyledOurTeam>
-        <div>
-          <StyledTeamTitle>
-            <h2 style={{ marginBottom: "0px" }}>{team.header}</h2>
-          </StyledTeamTitle>
-          <StyledTeam>
-            {team.members.map((member) => (
-              <StyledTeamMember>
-                <TeamMember
-                  pic={member.pic}
-                  name={member.name}
-                  position={member.position}
-                  program={member.program}
-                />
-              </StyledTeamMember>
-            ))}
-          </StyledTeam>
-        </div>
-      </StyledOurTeam>
-    );
-  });
+  return (
+    <StyledOurTeam>
+      {ourTeam.map((member) => (
+        <StyledTeamMember>
+          <TeamMember
+            pic={member.pic}
+            name={member.name}
+            position={member.position}
+            program={member.program}
+            linkedin={member.linkedin}
+          />
+        </StyledTeamMember>
+      ))}
+    </StyledOurTeam>
+  );
 };
 //<p>{team.email}</p>
 export const AboutPageTemplate = ({ title, slogan, html }) => (
