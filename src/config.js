@@ -20,6 +20,10 @@ module.exports = {
       url: "/about",
     },
     {
+      name: "Taster",
+      url: "/taster",
+    },
+    {
       name: "Events",
       url: "/#events",
     },
@@ -72,82 +76,68 @@ module.exports = {
   ],
   ourTeam: [
     {
-      header: "CoChairs",
-      email: "chair@cucai.ca",
-      members: [
-        {
-          name: "Berkeley Wilson",
-          position: "Co-Chair",
-          program: "Mechanical Engineering '21",
-          pic: "berkeley-wilson.png",
-        },
-        {
-          name: "Max Bennett",
-          position: "Co-Chair",
-          program: "Applied Mathematics '22",
-          pic: "max-bennett.png",
-        },
-      ],
+      name: "Berkeley Wilson",
+      position: "Co-Chair",
+      program: "Mechanical Engineering '21",
+      pic: "berkeley-wilson.png",
+      linkedin: "https://www.linkedin.com/in/j-berkeley-wilson-queensu/"
     },
     {
-      header: "Delegates",
-      email: "delegates@cucai.ca",
-      members: [
-        {
-          name: "Ellie Mehltretter",
-          position: "Delegates Coordinator",
-          program: "Mathematics '21",
-          pic: "ellie-mehltretter.png",
-        },
-        {
-          name: "Jack Perry",
-          position: "Delegates Coordinator",
-          program: "Commerce '22",
-          pic: "jack-perry.png",
-        },
-      ],
+      name: "Max Bennett",
+      position: "Co-Chair",
+      program: "Applied Mathematics '22",
+      pic: "max-bennett.png",
+      linkedin: "https://www.linkedin.com/in/max-bennett-881951172/"
     },
     {
-      header: "Logistics",
-      email: "logistics@cucai.ca",
-      members: [
-        {
-          name: "Catherine Wu",
-          position: "Logistics Manager",
-          program: "Biomedical Computation '22",
-          pic: "catherine-wu.png",
-        },
-        {
-          name: "Jack Grebenc",
-          position: "Logistics Coordinator",
-          program: "Mathematics & Computing '21",
-          pic: "jack-grebenc.png",
-        },
-        {
-          name: "Will Stewart",
-          position: "Logistics Coordinator",
-          program: "Commerce '22",
-          pic: "will-stewart.png",
-        },
-      ],
+      name: "Ellie Mehltretter",
+      position: "Delegates Coordinator",
+      program: "Mathematics '21",
+      pic: "ellie-mehltretter.png",
+      linkedin: "https://www.linkedin.com/in/gabrielle-mehltretter-069987170/"
     },
     {
-      header: "Marketing",
-      email: "marketing@cucai.ca",
-      members: [
-        {
-          name: "Parker Rowe",
-          position: "Marketing Coordinator & Web Developer",
-          program: "Computer Engineering & Innovation '22",
-          pic: "parker-rowe.png",
-        },
-        {
-          name: "Katie Lu",
-          position: "Marketing Coordinator & Web Developer",
-          program: "Computing & The Creative Arts '21",
-          pic: "katie-lu.png",
-        },
-      ],
+      name: "Jack Perry",
+      position: "Delegates Coordinator",
+      program: "Commerce '22",
+      pic: "jack-perry.png",
+      linkedin: "https://www.linkedin.com/in/jack-p-b40941129/"
+    },
+
+    {
+      name: "Catherine Wu",
+      position: "Logistics Manager",
+      program: "Biomedical Computation '22",
+      pic: "catherine-wu.png",
+      linkedin: "https://www.linkedin.com/in/catherinewu-/"
+    },
+    {
+      name: "Jack Grebenc",
+      position: "Logistics Coordinator",
+      program: "Mathematics & Computing '21",
+      pic: "jack-grebenc.png",
+      linkedin: "https://www.linkedin.com/in/jack-grebenc-45b636174/"
+    },
+    {
+      name: "Will Stewart",
+      position: "Logistics Coordinator",
+      program: "Commerce '22",
+      pic: "will-stewart.png",
+      linkedin: "https://www.linkedin.com/in/willjgstewart/"
+    },
+    {
+      name: "Parker Rowe",
+      position: "Marketing Coordinator & Web Developer",
+      program: "Computer Engineering & Innovation '22",
+      pic: "parker-rowe.png",
+      linkedin: "https://www.linkedin.com/in/parker-a-rowe/"
+    },
+    {
+      name: "Katie Lu",
+      position: "Marketing Coordinator & Web Developer",
+      program: "Computing & The Creative Arts '21",
+      pic: "katie-lu.png",
+      linkedin: "https://www.linkedin.com/in/katie-lu-0244b8170/"
     },
   ],
 };
