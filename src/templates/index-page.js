@@ -48,10 +48,6 @@ const StyledHero = styled(BackgroundImg)`
 const SectionTitle = styled.h2`
   font-family: ${theme.fonts.IBMPlexSansLight};
   font-size: 3rem;
-<<<<<<< HEAD
-
-=======
->>>>>>> e430c500e8ccd94c07ba3e6f9e4cc0f6890e1218
 
   ${media.phone`
     font-size: 2.5rem;
