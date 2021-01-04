@@ -17,7 +17,11 @@ Our community is one where we actively challenge the status quo around what unde
 ## Our Mission
  Designed to connect undergraduate students with industry leaders, the Canadian Undergraduate Conference on Artificial Intelligence provides a platform for companies to develop corporate brand recognition with undergraduate AI talent, facilitate learning about AI, and showcase the diverse opportunities available for students in this field.
 
+
 ## Our History
 The first annual Canadian Undergraduate Conference on Artificial Intelligence (CUCAI) took place on March 9th, 2019. Founded by QMIND - Queen’s AI Hub and a strong Queen’s community, the event marked its debut on the national stage with delegations from Queenʼs University, McGill University, University of Toronto, Ryerson University, and University of Manitoba. 
+
+
+## Our Team
 
 

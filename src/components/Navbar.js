@@ -32,7 +32,7 @@ const StyledNav = styled.nav`
   );
   transition: ${theme.transition};
   ${media.phone`
-        padding: 10px;
+        padding: 30px;
     `}
 `;
 
