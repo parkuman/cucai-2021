@@ -12,7 +12,7 @@ const StyledDetails = styled.div`
 `;
 
 const StyledInvolved = styled.div`
-  height: 200px;
+  min-height: 200px;
   padding-top: 20px;
 `;
 
