@@ -17,7 +17,7 @@ import Button from "../components/Button";
 import Socials from "../components/Socials";
 import Handshake from "../components/Handshake";
 import PremierSpeakers from "../components/PremierSpeakers";
-import Schedule from "../components/schedule";
+import Schedule from "../components/Schedule";
 
 import theme from "../styles/theme";
 import media from "../styles/media";
