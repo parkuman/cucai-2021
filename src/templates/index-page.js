@@ -41,6 +41,9 @@ const StyledHero = styled(BackgroundImg)`
   background-color: transparent;
   background-repeat: no-repeat, no-repeat;
   background-position: 50% 100%, top;
+  canvas{
+    z-index: -1;
+  }
 `;
 
 const SectionTitle = styled.h2`
@@ -516,7 +519,6 @@ const Hero = ({ data, heading, slogan, location, date, cta1, cta2 }) => {
       }}
       style={{
         width: '100%',
-        z-index: '-1',
         position: 'fixed'
       }}
     />
