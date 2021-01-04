@@ -516,6 +516,7 @@ const Hero = ({ data, heading, slogan, location, date, cta1, cta2 }) => {
       }}
       style={{
         width: '100%',
+        z-index: -1,
         position: 'fixed'
       }}
     />
