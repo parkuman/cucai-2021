@@ -11,7 +11,6 @@ import "bootstrap/dist/css/bootstrap.min.css";
 //Photos
 import Highlights from "../img/pano.png";
 
-import CardStack from "../components/Cards";
 import PastEventsCarousel from "../components/PastEventsCarousel";
 import Layout from "../components/Layout";
 import Involved from "../components/Involvement";
@@ -83,6 +82,7 @@ const StyledHeroContent = styled.div`
   /* height: 100vh; */
 
   ${media.tablet`
+    height: 80vh;
     padding-top: 120px;
     align-items: center;
     flex-direction: column-reverse;
@@ -91,10 +91,8 @@ const StyledHeroContent = styled.div`
   `}
 
   ${media.phone`
-  padding-top: 100px;
-
-  max-width: 95%;
-
+    padding-top: 100px;
+    max-width: 95%;
   `}
 `;
 
@@ -150,6 +148,7 @@ const StyledHeading = styled.h1`
 
   ${media.tablet`
     font-size: 2.8rem;
+    margin: 15px 0;
     max-width: 100%;
 
   `}
@@ -185,10 +184,14 @@ const HeroButtons = styled.div`
   flex-direction: row;
   align-items: center;
   justify-content: flex-start;
-  margin-bottom: 5px;
 
   ${media.tablet`
-    justify-content: space-evenly;
+    justify-content: center;
+    margin-bottom: 20px;
+
+    & button {
+      margin: 0 5px;
+    }
   `}
 `;
 
@@ -310,16 +313,12 @@ const ConferenceEventsList = styled.div`
   & > * {
     padding: 20px 0;
   }
-
-  ${media.phone`
-    max-width: 95%;
-  `}
 `;
 
 const EventTitleAndDesc = styled.div`
   max-width: 40%;
   ${media.phone`
-    max-width: 100%;
+    max-width: 95%;
     padding: 20px 0;
   `}
 `;
@@ -439,7 +438,7 @@ const SponsorBanner = styled.div`
   justify-content: space-evenly;
   align-items: center;
 
-  ${media.phone`
+  ${media.tablet`
     & a {
       margin-bottom: 30px;
     }
@@ -464,7 +463,7 @@ const SponsorBannerContent = styled.div`
     margin-top: 20px;
   }
 
-  ${media.phone`
+  ${media.tablet`
     align-items: center;
     justify-content: center;
     text-align: center;
