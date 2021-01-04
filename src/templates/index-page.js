@@ -19,6 +19,7 @@ import Button from "../components/Button";
 import Socials from "../components/Socials";
 import Handshake from "../components/Handshake";
 import PremierSpeakers from "../components/PremierSpeakers";
+import Particles from 'react-particles-js';
 
 import theme from "../styles/theme";
 import media from "../styles/media";
@@ -44,6 +45,10 @@ const StyledHero = styled(BackgroundImg)`
 const SectionTitle = styled.h2`
   font-family: ${theme.fonts.IBMPlexSansLight};
   font-size: 3rem;
+<<<<<<< HEAD
+
+=======
+>>>>>>> e430c500e8ccd94c07ba3e6f9e4cc0f6890e1218
 
   ${media.phone`
     font-size: 2.5rem;
@@ -234,7 +239,7 @@ const BlurbContent = styled.div`
   ${media.phone`
     max-width: 50%;
     width: 50%;
-    
+
   `}
 `;
 
@@ -330,7 +335,7 @@ const EventContent = styled.div`
   ${media.phone`
     max-width: 90%;
     width: 90%;
-    
+
   `}
 `;
 
@@ -483,11 +488,36 @@ const StyledInvolvedSection = styled.section`
 const Hero = ({ data, heading, slogan, location, date, cta1, cta2 }) => {
   const heroBackgroundImages = [
     data.cityImg.childImageSharp.fluid,
-    `radial-gradient(189.82% 107.19% at 50% 0%, rgba(26, 79, 203, 0.0001) 0%, rgba(29, 85, 205, 0.0459233) 0%, rgba(33, 93, 208, 0.0977712) 63.18%, #65DAFE 100%, #65DAFE 100%), linear-gradient(144.92deg, rgba(26, 169, 203, 0.25) -3.18%, rgba(17, 47, 66, 0.25) 94.21%, rgba(17, 47, 66, 0.25) 94.21%)`,
+    `linear-gradient(0deg, rgba(43,196,238,1) 0%, rgba(255,255,255,1) 100%)`,
   ];
 
   return (
     <StyledHero fluid={heroBackgroundImages}>
+    <Particles
+      params={{
+        particles: {
+          color: "#1aa9cb",
+          line_linked: {
+            color: "#1aa9cb"
+          }
+        },
+        interactivity: {
+          detectson: 'canvas',
+          onhover: {
+            enable: true,
+            mode: 'repulse'
+          },
+          onclick: {
+            enable: true,
+            mode: 'push'
+          }
+        }
+      }}
+      style={{
+        width: '100%',
+        position: 'fixed'
+      }}
+    />
       <StyledHeroContent>
         <HeroText>
           <StyledHeading>{heading}</StyledHeading>
