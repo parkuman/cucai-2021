@@ -64,7 +64,7 @@ const Involved = () => {
               <StyledDetails>
                 <p>
                   In its inaugural year of implementation, CUCAI has developed a
-                  “Tier Collaberation Program” structured to facilitate
+                  “Tier Collaboration Program” structured to facilitate
                   involvement from undergraduate AI groups across Canada.
                   Incentives include reserved delegate spots, design showcase
                   involvement, participation in the incubator pitch competition,
