@@ -37,6 +37,9 @@ const StyledHero = styled(BackgroundImg)`
   background-color: transparent;
   background-repeat: no-repeat, no-repeat;
   background-position: 50% 100%, top;
+  canvas {
+    z-index: -1;
+  }
 `;
 
 const SectionTitle = styled.h2`
@@ -79,8 +82,13 @@ const StyledHeroContent = styled.div`
   max-width: 80%;
   /* height: 100vh; */
 
+  @media only screen and (max-height: 700px) {
+    max-width: 95%;
+
+  }
+
   ${media.tablet`
-    height: 80vh;
+    min-height: 80vh;
     padding-top: 120px;
     align-items: center;
     flex-direction: column-reverse;
@@ -99,6 +107,10 @@ const HeroText = styled.div`
   & button {
     display: inline-block;
     margin: 0 15px 15px 0;
+  }
+
+  @media only screen and (max-height: 700px) {
+    max-width: 95%;
   }
 
   ${media.tablet`
@@ -128,7 +140,9 @@ const MobileSocials = styled.div`
 const HeroLogo = styled.div`
   min-width: 30%;
   min-height: 10vh;
-
+  @media only screen and (max-height: 700px) {
+    min-width: 15%;
+  }
   ${media.tablet`
     min-width: 50%;
     padding-bottom: 15px;
@@ -140,7 +154,6 @@ const StyledHeading = styled.h1`
   padding: 0;
   font-family: ${theme.fonts.IBMPlexSansMedium};
   font-size: 3.2rem;
-  max-width: 90%;
   margin-bottom: 15px;
   color: black;
 
@@ -182,6 +195,9 @@ const HeroButtons = styled.div`
   flex-direction: row;
   align-items: center;
   justify-content: flex-start;
+
+  @media only screen and (max-height: 700px) {
+  }
 
   ${media.tablet`
     justify-content: center;
@@ -495,7 +511,7 @@ const Hero = ({ data, heading, slogan, location, date, cta1, cta2 }) => {
             },
           },
           interactivity: {
-            detectson: "canvas",
+            detection: "canvas",
             onhover: {
               enable: true,
               mode: "repulse",
@@ -508,7 +524,10 @@ const Hero = ({ data, heading, slogan, location, date, cta1, cta2 }) => {
         }}
         style={{
           width: "100%",
-          position: "fixed",
+          height: "100vh",
+          position: "absolute",
+          top: 0,
+          left: 0,
         }}
       />
       <StyledHeroContent>
