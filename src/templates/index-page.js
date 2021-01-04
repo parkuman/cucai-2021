@@ -17,6 +17,7 @@ import Button from "../components/Button";
 import Socials from "../components/Socials";
 import Handshake from "../components/Handshake";
 import PremierSpeakers from "../components/PremierSpeakers";
+import Schedule from "../components/schedule";
 
 import theme from "../styles/theme";
 import media from "../styles/media";
@@ -84,7 +85,6 @@ const StyledHeroContent = styled.div`
 
   @media only screen and (max-height: 700px) {
     max-width: 95%;
-
   }
 
   ${media.tablet`
@@ -878,9 +878,9 @@ export const IndexPageTemplate = ({
     <BlurbSection data={data} />
     <ConferenceEvents data={data} />
     <PastEventsAndHighlights data={data} />
-
     <SponsorSection data={data} />
     <InvolvedSection />
+    {/* <Schedule /> */}
   </StyledIndexPage>
 );
 
