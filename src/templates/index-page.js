@@ -353,9 +353,10 @@ const StyledDesignTeamShowcase = styled.section`
   padding: 40px 0;
   display: flex;
 
-  flex-direction: row;
+  flex-direction: row-reverse;
   justify-content: space-evenly;
   align-items: center;
+  background-color: #f4f4f4;
 
   ${media.phone`
     flex-direction: column-reverse;
@@ -403,8 +404,21 @@ const StyledAIPitchComp = styled.section`
   `}
 `;
 
+const StyledComplimentaryMeals = styled.section`
+  margin: 0 auto;
+  padding: 40px 0;
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: space-evenly;
+  align-items: center;
+
+  ${media.phone`
+    flex-direction: column;
+  `}
+`;
+
 const StyledPastEventsAndHighlights = styled.section`
-  background-color: #f4f4f4;
+  /* background-color: #f4f4f4; */
   padding: 40px 0;
 `;
 
@@ -538,15 +552,20 @@ const Hero = ({ data, heading, slogan, location, date, cta1, cta2 }) => {
           </StyledSlogan>
           <StyledInfo>
             March 6 - 7, 2021 |{" "}
-            <Link target="_blank" to="https://hopin.com/">
+            <a target="_blank" href="https://hopin.com/">
               Online Experience
-            </Link>
+            </a>
           </StyledInfo>
 
           <HeroButtons>
-            <Link to="/taster">
-              <Button backgroundColour="white">Delegate Applications</Button>
-            </Link>
+            <a
+              target="_blank"
+              href="https://hopin.com/events/cucai-2021-taster"
+            >
+              <Button backgroundColour="white">
+                Taster Event Registration
+              </Button>
+            </a>
             <a href="#sponsors">
               <Button borderStyle="solid" borderColour="#174461">
                 Become a Sponsor
@@ -642,6 +661,9 @@ const ConferenceEvents = ({ data }) => (
         <AIPitchComp data={data} />
       </Fade>
       <Fade bottom distance="80px">
+        <ComplimentaryMeals data={data} />
+      </Fade>
+      <Fade bottom distance="80px">
         <DesignTeamShowcase data={data} />
       </Fade>
     </ConferenceEventsList>
@@ -706,7 +728,7 @@ const DesignTeamShowcase = ({ data }) => {
           teams from across Canada.
         </p>
         <a href="Proceedings-of-CUCAI-2020.pdf">
-          <Button borderStyle="solid" borderColour="#174461">
+          <Button backgroundColour="white" >
             Download the 2020 Proceedings
           </Button>
         </a>
@@ -742,7 +764,7 @@ const NetworkingOpportunities = ({ data }) => (
       <p>
         Exciting events throughout the conference designed to show undergraduate
         students the present and future of AI in industry. New to CUCAI 2021, we
-        are hosting a Taster Event on January 23, 2021, to connect students to
+        are hosting a Taster Event on January 30th, 2021, to connect students to
         our exclusive recruitment pipeline prior to the March conference.{" "}
         <Link to="/taster">Learn more...</Link>
       </p>
@@ -782,7 +804,7 @@ const AIPitchComp = ({ data }) => (
     <EventContent>
       <Img
         fluid={data.aiPitchCompImg.childImageSharp.fluid}
-        alt="workshop showcase"
+        alt="ai pitch competition"
       />
     </EventContent>
     <EventTitleAndDesc>
@@ -798,6 +820,32 @@ const AIPitchComp = ({ data }) => (
       </p>
     </EventTitleAndDesc>
   </StyledAIPitchComp>
+);
+
+const ComplimentaryMeals = ({ data }) => (
+  <StyledComplimentaryMeals>
+    <EventContent>
+      <Img
+        fluid={data.mealsImg.childImageSharp.fluid}
+        alt="graphic on complimentary meals"
+      />
+    </EventContent>
+    <EventTitleAndDesc>
+      <SectionSubtitle>
+        <SectionSubtitle className="medium">
+          Complimentary Meals
+        </SectionSubtitle>
+        <br />
+        Included
+      </SectionSubtitle>
+      <p>
+        All attendees will receive complimentary meals for both conference days
+        via Uber Eats. Enjoy your own choice of lunch and dinner on us while you
+        experience everything the conference has to offer, from the comfort of
+        your home!
+      </p>
+    </EventTitleAndDesc>
+  </StyledComplimentaryMeals>
 );
 
 const SponsorSection = ({ data }) => (
@@ -1001,6 +1049,13 @@ export const pageQuery = graphql`
       }
     }
     aiPitchCompImg: file(relativePath: { eq: "aiPitchCompImg.png" }) {
+      childImageSharp {
+        fluid {
+          ...GatsbyImageSharpFluid
+        }
+      }
+    }
+    mealsImg: file(relativePath: { eq: "meals.png" }) {
       childImageSharp {
         fluid {
           ...GatsbyImageSharpFluid

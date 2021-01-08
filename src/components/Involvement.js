@@ -48,15 +48,15 @@ const Involved = () => {
               <Tab.Pane eventKey="Delegates">
                 <StyledDetails>
                   <p>
-                    Tune in to our taster event on January 23rd. Applications
+                    Tune in to our taster event on January 30th. Applications
                     will open soon after, so be sure to apply!
                   </p>
 
-                  <Link to="/taster">
+                  <a target="_blank" href="https://hopin.com/events/cucai-2021-taster">
                     <Button borderStyle="solid">
                       Taster Event Information
                     </Button>
-                  </Link>
+                  </a>
                 </StyledDetails>
               </Tab.Pane>
               <Tab.Pane eventKey="Speakers">
