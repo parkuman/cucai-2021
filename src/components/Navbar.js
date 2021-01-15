@@ -18,7 +18,7 @@ const StyledNav = styled.nav`
   position: fixed;
   top: 0;
   left: 0;
-  width: 100%;
+  width: 100vw;
   padding: 10px 120px;
   z-index: 100000000;
   background: ${({ scrollDirection }) =>
@@ -32,7 +32,7 @@ const StyledNav = styled.nav`
   );
   transition: ${theme.transition};
   ${media.phone`
-        padding: 30px;
+        padding: 10px 30px;
     `}
 `;
 
@@ -63,12 +63,11 @@ const StyledNavItems = styled.ul`
         right: 0;
         height: 100vh;
         width: 50vw;
-        padding: 0 10px;
         flex-flow: column nowrap;
         align-items: center;
         justify-content: center;
         background-color: white;
-        box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.3);
+        /* box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.3); */
         transition: ${theme.transition};
         transform: ${({ open }) =>
           open ? "translateX(0)" : "translateX(100%)"};

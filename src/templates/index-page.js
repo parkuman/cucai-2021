@@ -17,6 +17,7 @@ import Button from "../components/Button";
 import Socials from "../components/Socials";
 import Handshake from "../components/Handshake";
 import PremierSpeakers from "../components/PremierSpeakers";
+import Schedule from "../components/Schedule";
 
 import theme from "../styles/theme";
 import media from "../styles/media";
@@ -37,6 +38,9 @@ const StyledHero = styled(BackgroundImg)`
   background-color: transparent;
   background-repeat: no-repeat, no-repeat;
   background-position: 50% 100%, top;
+  canvas {
+    z-index: -1;
+  }
 `;
 
 const SectionTitle = styled.h2`
@@ -79,8 +83,12 @@ const StyledHeroContent = styled.div`
   max-width: 80%;
   /* height: 100vh; */
 
+  @media only screen and (max-height: 700px) {
+    max-width: 95%;
+  }
+
   ${media.tablet`
-    height: 80vh;
+    min-height: 80vh;
     padding-top: 120px;
     align-items: center;
     flex-direction: column-reverse;
@@ -99,6 +107,10 @@ const HeroText = styled.div`
   & button {
     display: inline-block;
     margin: 0 15px 15px 0;
+  }
+
+  @media only screen and (max-height: 700px) {
+    max-width: 95%;
   }
 
   ${media.tablet`
@@ -128,7 +140,9 @@ const MobileSocials = styled.div`
 const HeroLogo = styled.div`
   min-width: 30%;
   min-height: 10vh;
-
+  @media only screen and (max-height: 700px) {
+    min-width: 15%;
+  }
   ${media.tablet`
     min-width: 50%;
     padding-bottom: 15px;
@@ -140,7 +154,6 @@ const StyledHeading = styled.h1`
   padding: 0;
   font-family: ${theme.fonts.IBMPlexSansMedium};
   font-size: 3.2rem;
-  max-width: 90%;
   margin-bottom: 15px;
   color: black;
 
@@ -182,6 +195,9 @@ const HeroButtons = styled.div`
   flex-direction: row;
   align-items: center;
   justify-content: flex-start;
+
+  @media only screen and (max-height: 700px) {
+  }
 
   ${media.tablet`
     justify-content: center;
@@ -337,9 +353,10 @@ const StyledDesignTeamShowcase = styled.section`
   padding: 40px 0;
   display: flex;
 
-  flex-direction: row;
+  flex-direction: row-reverse;
   justify-content: space-evenly;
   align-items: center;
+  background-color: #f4f4f4;
 
   ${media.phone`
     flex-direction: column-reverse;
@@ -387,8 +404,21 @@ const StyledAIPitchComp = styled.section`
   `}
 `;
 
+const StyledComplimentaryMeals = styled.section`
+  margin: 0 auto;
+  padding: 40px 0;
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: space-evenly;
+  align-items: center;
+
+  ${media.phone`
+    flex-direction: column;
+  `}
+`;
+
 const StyledPastEventsAndHighlights = styled.section`
-  background-color: #f4f4f4;
+  /* background-color: #f4f4f4; */
   padding: 40px 0;
 `;
 
@@ -495,7 +525,7 @@ const Hero = ({ data, heading, slogan, location, date, cta1, cta2 }) => {
             },
           },
           interactivity: {
-            detectson: "canvas",
+            detection: "canvas",
             onhover: {
               enable: true,
               mode: "repulse",
@@ -508,7 +538,10 @@ const Hero = ({ data, heading, slogan, location, date, cta1, cta2 }) => {
         }}
         style={{
           width: "100%",
-          position: "fixed",
+          height: "100vh",
+          position: "absolute",
+          top: 0,
+          left: 0,
         }}
       />
       <StyledHeroContent>
@@ -519,15 +552,20 @@ const Hero = ({ data, heading, slogan, location, date, cta1, cta2 }) => {
           </StyledSlogan>
           <StyledInfo>
             March 6 - 7, 2021 |{" "}
-            <Link target="_blank" to="https://hopin.com/">
+            <a target="_blank" href="https://hopin.com/">
               Online Experience
-            </Link>
+            </a>
           </StyledInfo>
 
           <HeroButtons>
-            <Link to="/taster">
-              <Button backgroundColour="white">Delegate Applications</Button>
-            </Link>
+            <a
+              target="_blank"
+              href="https://hopin.com/events/cucai-2021-taster"
+            >
+              <Button backgroundColour="white">
+                Taster Event Registration
+              </Button>
+            </a>
             <a href="#sponsors">
               <Button borderStyle="solid" borderColour="#174461">
                 Become a Sponsor
@@ -623,6 +661,9 @@ const ConferenceEvents = ({ data }) => (
         <AIPitchComp data={data} />
       </Fade>
       <Fade bottom distance="80px">
+        <ComplimentaryMeals data={data} />
+      </Fade>
+      <Fade bottom distance="80px">
         <DesignTeamShowcase data={data} />
       </Fade>
     </ConferenceEventsList>
@@ -687,7 +728,7 @@ const DesignTeamShowcase = ({ data }) => {
           teams from across Canada.
         </p>
         <a href="Proceedings-of-CUCAI-2020.pdf">
-          <Button borderStyle="solid" borderColour="#174461">
+          <Button backgroundColour="white" >
             Download the 2020 Proceedings
           </Button>
         </a>
@@ -723,7 +764,7 @@ const NetworkingOpportunities = ({ data }) => (
       <p>
         Exciting events throughout the conference designed to show undergraduate
         students the present and future of AI in industry. New to CUCAI 2021, we
-        are hosting a Taster Event on January 23, 2021, to connect students to
+        are hosting a Taster Event on January 30th, 2021, to connect students to
         our exclusive recruitment pipeline prior to the March conference.{" "}
         <Link to="/taster">Learn more...</Link>
       </p>
@@ -763,7 +804,7 @@ const AIPitchComp = ({ data }) => (
     <EventContent>
       <Img
         fluid={data.aiPitchCompImg.childImageSharp.fluid}
-        alt="workshop showcase"
+        alt="ai pitch competition"
       />
     </EventContent>
     <EventTitleAndDesc>
@@ -779,6 +820,32 @@ const AIPitchComp = ({ data }) => (
       </p>
     </EventTitleAndDesc>
   </StyledAIPitchComp>
+);
+
+const ComplimentaryMeals = ({ data }) => (
+  <StyledComplimentaryMeals>
+    <EventContent>
+      <Img
+        fluid={data.mealsImg.childImageSharp.fluid}
+        alt="graphic on complimentary meals"
+      />
+    </EventContent>
+    <EventTitleAndDesc>
+      <SectionSubtitle>
+        <SectionSubtitle className="medium">
+          Complimentary Meals
+        </SectionSubtitle>
+        <br />
+        Included
+      </SectionSubtitle>
+      <p>
+        All attendees will receive complimentary meals for both conference days
+        via Uber Eats. Enjoy your own choice of lunch and dinner on us while you
+        experience everything the conference has to offer, from the comfort of
+        your home!
+      </p>
+    </EventTitleAndDesc>
+  </StyledComplimentaryMeals>
 );
 
 const SponsorSection = ({ data }) => (
@@ -859,9 +926,9 @@ export const IndexPageTemplate = ({
     <BlurbSection data={data} />
     <ConferenceEvents data={data} />
     <PastEventsAndHighlights data={data} />
-
     <SponsorSection data={data} />
     <InvolvedSection />
+    {/* <Schedule /> */}
   </StyledIndexPage>
 );
 
@@ -982,6 +1049,13 @@ export const pageQuery = graphql`
       }
     }
     aiPitchCompImg: file(relativePath: { eq: "aiPitchCompImg.png" }) {
+      childImageSharp {
+        fluid {
+          ...GatsbyImageSharpFluid
+        }
+      }
+    }
+    mealsImg: file(relativePath: { eq: "meals.png" }) {
       childImageSharp {
         fluid {
           ...GatsbyImageSharpFluid
