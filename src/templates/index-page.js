@@ -619,7 +619,7 @@ const BlurbSection = ({ data, blurbtitle, blurbdesc, blurbimg }) => (
             Good: Artificial Intelligence, Real Change! From advancing medical
             research to protecting the environment and aiding in natural
             disaster recovery, the ways in which AI can make the world a better
-            place continue to grow. All ticket proceedings this year will go
+            place continue to grow. 50% of ticket revenue this year will go
             toward AI for Good charities.
           </p>
         </BlurbTitleAndDesc>
