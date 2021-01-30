@@ -560,10 +560,10 @@ const Hero = ({ data, heading, slogan, location, date, cta1, cta2 }) => {
           <HeroButtons>
             <a
               target="_blank"
-              href="https://hopin.com/events/cucai-2021-taster"
+              href="https://cucai.paperform.co/"
             >
-              <Button backgroundColour="white">
-                Taster Event Registration
+              <Button backgroundColour="white" customPadding="0.7rem 2em">
+                Apply Now
               </Button>
             </a>
             <a href="#sponsors">
