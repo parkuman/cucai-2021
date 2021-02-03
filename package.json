@@ -6,7 +6,7 @@
   "dependencies": {
     "bootstrap": "*",
     "bulma": "*",
-    "gatsby": "*",
+    "gatsby": "^2.32.0",
     "gatsby-background-image": "*",
     "gatsby-image": "*",
     "gatsby-plugin-netlify": "*",
