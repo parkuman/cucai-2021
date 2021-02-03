@@ -69,14 +69,6 @@ const SpeakerText = styled.div`
   width: 46%;
 `;
 
-const Header = styled.h1`
-  font-size: 1.5rem;
-`;
-
-const Divider = styled.hr`
-  border-top: 3px solid ${theme.colors.cucaiBlue};
-`;
-
 const Name = styled.h2`
   font-size: 1.5rem;
   display: inline-block;
