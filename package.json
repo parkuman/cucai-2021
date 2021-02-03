@@ -27,7 +27,6 @@
     "lodash-webpack-plugin": "*",
     "lottie-web": "*",
     "moment-timezone": "^0.5.32",
-    "netlify-cms-app": "^2.14.18",
     "pngquant-bin": "*",
     "prop-types": "*",
     "react": "*",
@@ -36,7 +35,7 @@
     "react-helmet": "*",
     "react-particles-js": "^3.4.1",
     "react-scroll-parallax": "*",
-    "react-slick": "^0.27.13",
+    "react-slick": "^0.27.14",
     "slick-carousel": "^1.8.1",
     "styled-components": "*",
     "uuid": "*"

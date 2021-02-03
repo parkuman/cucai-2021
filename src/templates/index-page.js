@@ -858,7 +858,7 @@ const ComplimentaryMeals = ({ data }) => (
         Included
       </SectionSubtitle>
       <p>
-        All attendees will receive complimentary meals for both conference days
+        All attendees will receive $40 toward complimentary meals for both conference days
         via Uber Eats. Enjoy your own choice of lunch and dinner on us while you
         experience everything the conference has to offer, from the comfort of
         your home!
