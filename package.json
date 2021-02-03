@@ -27,7 +27,7 @@
     "lodash-webpack-plugin": "*",
     "lottie-web": "*",
     "moment-timezone": "^0.5.32",
-    "netlify-cms-app": "*",
+    "netlify-cms-app": "^2.14.18",
     "pngquant-bin": "*",
     "prop-types": "*",
     "react": "*",
