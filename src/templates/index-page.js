@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { graphql, Link } from "gatsby";
+import { graphql } from "gatsby";
 import Img from "gatsby-image";
 import BackgroundImg from "gatsby-background-image";
 import Fade from "react-reveal/Fade";
@@ -552,7 +552,7 @@ const Hero = ({ data, heading, slogan, location, date, cta1, cta2 }) => {
           </StyledSlogan>
           <StyledInfo>
             March 6 - 7, 2021 |{" "}
-            <a target="_blank" href="https://hopin.com/">
+            <a target="_blank" rel="noreferrer" href="https://hopin.com/">
               Online Experience
             </a>
           </StyledInfo>
@@ -560,10 +560,11 @@ const Hero = ({ data, heading, slogan, location, date, cta1, cta2 }) => {
           <HeroButtons>
             <a
               target="_blank"
-              href="https://hopin.com/events/cucai-2021-taster"
+              rel="noreferrer"
+              href="https://cucai.paperform.co/"
             >
-              <Button backgroundColour="white">
-                Taster Event Registration
+              <Button backgroundColour="white" customPadding="0.7rem 2em">
+                Apply Now
               </Button>
             </a>
             <a href="#sponsors">
@@ -683,11 +684,30 @@ const StyledPremierSpeakerSection = styled.section`
   `}
 `;
 
+const SpeakerTitleAndDesc = styled.div`
+  max-width: 35%;
+  ${media.phone`
+    max-width: 95%;
+    padding: 20px 0;
+  `}
+`;
+
+const SpeakerCarouselWrapper = styled.div`
+  max-width: 35%;
+  width: 38%;
+
+  ${media.phone`
+    max-width: 90%;
+    width: 90%;
+
+  `}
+`;
+
 const PremierSpeakerSection = () => {
   return (
     <>
       <StyledPremierSpeakerSection>
-        <EventTitleAndDesc>
+        <SpeakerTitleAndDesc>
           <SectionSubtitle>
             <SectionSubtitle className="medium">
               Premier Speaker{" "}
@@ -702,10 +722,10 @@ const PremierSpeakerSection = () => {
             ideas, experiences and knowledge of these professionals as they
             discuss a variety of fascinating AI topics.
           </p>
-        </EventTitleAndDesc>
-        <EventContent>
+        </SpeakerTitleAndDesc>
+        <SpeakerCarouselWrapper>
           <PremierSpeakers />
-        </EventContent>
+        </SpeakerCarouselWrapper>
       </StyledPremierSpeakerSection>
     </>
   );
@@ -728,7 +748,7 @@ const DesignTeamShowcase = ({ data }) => {
           teams from across Canada.
         </p>
         <a href="Proceedings-of-CUCAI-2020.pdf">
-          <Button backgroundColour="white" >
+          <Button backgroundColour="white">
             Download the 2020 Proceedings
           </Button>
         </a>
@@ -764,9 +784,8 @@ const NetworkingOpportunities = ({ data }) => (
       <p>
         Exciting events throughout the conference designed to show undergraduate
         students the present and future of AI in industry. New to CUCAI 2021, we
-        are hosting a Taster Event on January 30th, 2021, to connect students to
+        hosted our Taster Event on January 30th, 2021, to connect students to
         our exclusive recruitment pipeline prior to the March conference.{" "}
-        <Link to="/taster">Learn more...</Link>
       </p>
     </EventTitleAndDesc>
   </StyledNetworkingOpportunities>

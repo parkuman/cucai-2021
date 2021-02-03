@@ -48,13 +48,12 @@ const Involved = () => {
               <Tab.Pane eventKey="Delegates">
                 <StyledDetails>
                   <p>
-                    Tune in to our taster event on January 30th. Applications
-                    will open soon after, so be sure to apply!
+                    Delegate applications are now open! Apply now to become a part of CUCAI. Applications close February 25th.
                   </p>
 
-                  <a target="_blank" href="https://hopin.com/events/cucai-2021-taster">
+                  <a target="_blank" href="https://cucai.paperform.co/">
                     <Button borderStyle="solid">
-                      Taster Event Information
+                      Apply Now
                     </Button>
                   </a>
                 </StyledDetails>

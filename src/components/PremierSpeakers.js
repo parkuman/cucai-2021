@@ -6,7 +6,6 @@ import Img from "gatsby-image";
 import theme from "../styles/theme";
 import media from "../styles/media";
 
-
 const StyledSpeakerCarousel = styled.ul`
   list-style: none;
   padding: 0;
@@ -60,8 +59,8 @@ const StyledSpeakerCard = styled.li`
 `;
 
 const SpeakerImg = styled.div`
-  max-width: 46%;
-  width: 46%;
+  max-width: 45%;
+  width: 45%;
 `;
 
 const SpeakerText = styled.div`
@@ -70,28 +69,47 @@ const SpeakerText = styled.div`
   width: 46%;
 `;
 
-const Header = styled.h1`
-  font-size: 1.5rem;
-`;
-
-const Divider = styled.hr`
-  border-top: 3px solid ${theme.colors.cucaiBlue};
-`;
-
 const Name = styled.h2`
   font-size: 1.5rem;
+  display: inline-block;
   &.medium {
     font-family: ${theme.fonts.IBMPlexSansMedium};
   }
 `;
 
 const Title = styled.h3`
-  font-size: 1.5rem;
+  font-size: 1.2rem;
   font-style: italic;
 `;
 
 const Work = styled.h4`
-  font-size: 1.5rem;
+  font-size: 1.2rem;
+`;
+
+const CardSelector = styled.div`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  & > button {
+    background-color: #cccccc;
+    margin: 0;
+    padding: 0;
+    border-style: none;
+    display: inline-block;
+    width: 40px;
+    height: 7px;
+    margin-right: 5px;
+    border-radius: 5px;
+
+    &.active {
+      background-color: #1AA9CB;
+    }
+
+    &:focus {
+      outline: 0;
+    }
+  }
 `;
 
 function determineClasses(indexes, speakerIndex) {
@@ -112,11 +130,10 @@ const SpeakerCard = ({ speaker, state }) => {
         <Img fluid={speaker.image} />
       </SpeakerImg>
       <SpeakerText>
-        <Header>Past Speaker: </Header>
-        <Divider />
+        {/* <Header>Upcoming Speaker: </Header>
+        <Divider /> */}
         <Name>
-          {speaker.first}
-          <Name className="medium"> {speaker.last}</Name>
+          {speaker.first} <Name className="medium"> {speaker.last}</Name>
         </Name>
         <Title>{speaker.title}</Title>
         <Work>{speaker.work}</Work>
@@ -128,21 +145,28 @@ const SpeakerCard = ({ speaker, state }) => {
 const PremierSpeakers = () => {
   const data = useStaticQuery(graphql`
     query SpeakerQuery {
-      geoffH: file(relativePath: { eq: "geoffH.png" }) {
+      shivonZ: file(relativePath: { eq: "shivonZ.png" }) {
         childImageSharp {
           fluid(quality: 100) {
             ...GatsbyImageSharpFluid
           }
         }
       }
-      danD: file(relativePath: { eq: "danD.png" }) {
+      ronB: file(relativePath: { eq: "ronB.png" }) {
         childImageSharp {
           fluid(quality: 100) {
             ...GatsbyImageSharpFluid
           }
         }
       }
-      stuartL: file(relativePath: { eq: "stuartL.png" }) {
+      laurenceM: file(relativePath: { eq: "laurenceM.png" }) {
+        childImageSharp {
+          fluid(quality: 100) {
+            ...GatsbyImageSharpFluid
+          }
+        }
+      }
+      kayFB: file(relativePath: { eq: "kayFB.png" }) {
         childImageSharp {
           fluid(quality: 100) {
             ...GatsbyImageSharpFluid
@@ -153,26 +177,54 @@ const PremierSpeakers = () => {
   `);
 
   const speakers = [
+    // {
+    //   first: "Geoffrey",
+    //   last: "Hinton",
+    //   title: "Godfather of AI",
+    //   work: "UofT, Google, Vector Institute",
+    //   image: data.geoffH.childImageSharp.fluid,
+    // },
+    // {
+    //   first: "Dan",
+    //   last: "Desjardins",
+    //   title: "CEO",
+    //   work: "Distributed Compute Labs",
+    //   image: data.danD.childImageSharp.fluid,
+    // },
+    // {
+    //   first: "Stuart",
+    //   last: "Lombard",
+    //   title: "Founder and CEO",
+    //   work: "Ecobee",
+    //   image: data.stuartL.childImageSharp.fluid,
+    // },
     {
-      first: "Geoffrey",
-      last: "Hinton",
-      title: "Godfather of AI",
-      work: "UofT, Google, Vector Institute",
-      image: data.geoffH.childImageSharp.fluid,
+      first: "Shivon",
+      last: "Zilis",
+      title: "Project Director, Office of the CEO",
+      work: "Neuralink",
+      image: data.shivonZ.childImageSharp.fluid,
     },
     {
-      first: "Dan",
-      last: "Desjardins",
-      title: "CEO",
-      work: "Distributed Compute Labs",
-      image: data.danD.childImageSharp.fluid,
+      first: "Ron",
+      last: "Bodkin",
+      title: "VP of AI Engineering",
+      work: "Vector Institute",
+      image: data.ronB.childImageSharp.fluid,
     },
     {
-      first: "Stuart",
-      last: "Lombard",
-      title: "Founder and CEO",
-      work: "Ecobee",
-      image: data.stuartL.childImageSharp.fluid,
+      first: "Laurence",
+      last: "Moroney",
+      title: "Lead Artificial Intelligence Advocate",
+      work: "Google",
+      image: data.laurenceM.childImageSharp.fluid,
+    },
+    {
+      first: "Kay",
+      last: "Firth-Butterfield",
+      title: "Head of AI & Machine Learning",
+      work: "World Economic Forum",
+      image: data.kayFB.childImageSharp.fluid,
     },
   ];
 
@@ -182,34 +234,50 @@ const PremierSpeakers = () => {
     nextIndex: 1,
   });
 
-  const handleCardTransition = useCallback(() => {
-    // If we've reached the end, start again from the first card,
-    // but carry previous value over
-    if (indexes.currentIndex >= speakers.length - 1) {
-      setIndexes({
-        previousIndex: speakers.length - 1,
-        currentIndex: 0,
-        nextIndex: 1,
-      });
-    } else {
-      setIndexes((prevState) => ({
-        previousIndex: prevState.currentIndex,
-        currentIndex: prevState.currentIndex + 1,
-        nextIndex:
-          prevState.currentIndex + 2 === speakers.length
-            ? 0
-            : prevState.currentIndex + 2,
-      }));
-    }
-  }, [indexes.currentIndex]);
+  const [didUserInteract, setDidUserInteract] = useState(false);
+
+  const handleCardTransition = useCallback(
+    (userIndex) => {
+      if (userIndex !== undefined) {
+        setDidUserInteract(true);
+        setIndexes({
+          previousIndex: userIndex - 1,
+          currentIndex: userIndex,
+          nextIndex: userIndex + 1,
+        });
+      } else {
+        // If we've reached the end, start again from the first card,
+        // but carry previous value over
+        if (indexes.currentIndex >= speakers.length - 1) {
+          setIndexes({
+            previousIndex: speakers.length - 1,
+            currentIndex: 0,
+            nextIndex: 1,
+          });
+        } else {
+          setIndexes((prevState) => ({
+            previousIndex: prevState.currentIndex,
+            currentIndex: prevState.currentIndex + 1,
+            nextIndex:
+              prevState.currentIndex + 2 === speakers.length
+                ? 0
+                : prevState.currentIndex + 2,
+          }));
+        }
+      }
+    },
+    [indexes.currentIndex]
+  );
 
   useEffect(() => {
     const transitionInterval = setInterval(() => {
       handleCardTransition();
     }, 4000);
 
+    if (didUserInteract) clearInterval(transitionInterval);
+
     return () => clearInterval(transitionInterval);
-  }, [handleCardTransition, indexes]);
+  }, [didUserInteract, handleCardTransition, indexes]);
 
   return (
     <SpeakerCarouselContainer>
@@ -222,6 +290,15 @@ const PremierSpeakers = () => {
           />
         ))}
       </StyledSpeakerCarousel>
+      <CardSelector>
+        {speakers.map((speaker, i) => (
+          <button
+            key={i}
+            onClick={() => handleCardTransition(i)}
+            className={determineClasses(indexes, i)}
+          />
+        ))}
+      </CardSelector>
     </SpeakerCarouselContainer>
   );
 };
