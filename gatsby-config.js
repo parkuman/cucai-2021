@@ -60,19 +60,11 @@ module.exports = {
       },
     },
     {
-      resolve: 'gatsby-plugin-netlify-cms',
-      options: {
-        modulePath: `${__dirname}/src/cms/cms.js`,
-      },
-    },
-    {
       resolve: 'gatsby-plugin-purgecss', // purges all unused/unreferenced css rules
       options: {
         develop: true, // Activates purging in npm run develop
         purgeOnly: ['/all.sass'], // applies purging only on the bulma css file
         ignore: [
-          '/node_modules/slick-carousel/slick/slick.css',
-          '/node_modules/slick-carousel/slick/slick-theme.css'
         ],
       },
     }, // must be after other CSS plugins
