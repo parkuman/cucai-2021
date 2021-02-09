@@ -1,5 +1,4 @@
 import React from "react";
-import { Link } from "gatsby";
 import styled from "styled-components";
 
 import Button from "../components/Button";
@@ -51,7 +50,7 @@ const Involved = () => {
                     Delegate applications are now open! Apply now to become a part of CUCAI. Applications close February 25th.
                   </p>
 
-                  <a target="_blank" href="https://cucai.paperform.co/">
+                  <a target="_blank" rel="noreferrer" href="https://cucai.paperform.co/">
                     <Button borderStyle="solid">
                       Apply Now
                     </Button>

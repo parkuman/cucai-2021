@@ -23,9 +23,8 @@ const TemplateWrapper = ({ children }) => {
   const { title, description } = useSiteMetadata();
   return (
     <div>
-      <Helmet>
+      <Helmet title={title} defaultTitle={title} titleTemplate={`${title} | %s`}>
         <html lang="en" />
-        <title>{title}</title>
         <meta name="description" content={description} />
 
         <link
