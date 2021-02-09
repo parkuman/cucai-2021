@@ -1,5 +1,4 @@
 import React from "react";
-import { Link } from "gatsby";
 import styled from "styled-components";
 
 import theme from "../styles/theme";
@@ -9,7 +8,7 @@ import FacebookIcon from "../img/social/facebook.js";
 import LinkedInIcon from "../img/social/linkedin.js";
 import InstagramIcon from "../img/social/instagram.js";
 
-const SocialLink = styled(Link)`
+const SocialLink = styled.a`
   padding: 5px 10px;
 
   & svg {
@@ -46,7 +45,7 @@ const Socials = ({ direction }) => (
         image = null;
       }
 
-      return <SocialLink to={social.url}>{image}</SocialLink>;
+      return <SocialLink target="_blank" rel="noreferrer" href={social.url}>{image}</SocialLink>;
     })}
   </SocialsList>
 );

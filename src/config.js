@@ -20,6 +20,10 @@ module.exports = {
       url: "/about",
     },
     {
+      name: "Speakers",
+      url: "/speakers",
+    },
+    {
       name: "Events",
       url: "/#events",
     },
