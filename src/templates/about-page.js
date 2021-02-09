@@ -1,5 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
+import { Helmet } from "react-helmet";
 import { graphql, Link } from "gatsby";
 
 import styled from "styled-components";
@@ -9,7 +10,6 @@ import Layout from "../components/Layout";
 import { ourTeam } from "../config";
 import media from "../styles/media";
 import theme from "../styles/theme";
-
 
 import LinkedInIcon from "../img/social/linkedin.js";
 
@@ -140,6 +140,7 @@ const AboutPage = ({ data }) => {
 
   return (
     <Layout>
+      <Helmet title="About" />
       <AboutPageTemplate
         title={frontmatter.title}
         slogan={frontmatter.slogan}

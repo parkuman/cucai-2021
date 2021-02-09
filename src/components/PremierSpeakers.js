@@ -103,7 +103,7 @@ const CardSelector = styled.div`
     border-radius: 5px;
 
     &.active {
-      background-color: #1AA9CB;
+      background-color: #1aa9cb;
     }
 
     &:focus {
@@ -166,7 +166,14 @@ const PremierSpeakers = () => {
           }
         }
       }
-      kayFB: file(relativePath: { eq: "kayFB.png" }) {
+      markCa: file(relativePath: { eq: "markCa.png" }) {
+        childImageSharp {
+          fluid(quality: 100) {
+            ...GatsbyImageSharpFluid
+          }
+        }
+      }
+      davidH: file(relativePath: { eq: "davidH.png" }) {
         childImageSharp {
           fluid(quality: 100) {
             ...GatsbyImageSharpFluid
@@ -220,11 +227,18 @@ const PremierSpeakers = () => {
       image: data.laurenceM.childImageSharp.fluid,
     },
     {
-      first: "Kay",
-      last: "Firth-Butterfield",
-      title: "Head of AI & Machine Learning",
+      first: "Mark",
+      last: "Caine",
+      title: "AI & Machine Learning Lead",
       work: "World Economic Forum",
-      image: data.kayFB.childImageSharp.fluid,
+      image: data.markCa.childImageSharp.fluid,
+    },
+    {
+      first: "David",
+      last: "Hayes",
+      title: "CEO & Founder",
+      work: "AVO - Autonomous Vehicle Organization",
+      image: data.davidH.childImageSharp.fluid,
     },
   ];
 
