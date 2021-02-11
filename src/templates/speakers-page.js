@@ -231,6 +231,23 @@ const SpeakersPage = ({ data }) => {
         },
       ],
     },
+    {
+      first: "Inmar",
+      last: "Givoni",
+      title: "Director of Engineering",
+      work: "Uber ATG",
+      image: data.inmarG.childImageSharp.fluid,
+      socials: [
+        {
+          name: "LinkedIn",
+          url: "https://www.linkedin.com/in/inmargivoni/",
+        },
+        {
+          name: "Website",
+          url: "https://www.uber.com/ca/en/",
+        },
+      ],
+    },
   ];
 
   return (
@@ -303,6 +320,13 @@ export const pageQuery = graphql`
       }
     }
     davidH: file(relativePath: { eq: "davidH.png" }) {
+      childImageSharp {
+        fluid(quality: 100) {
+          ...GatsbyImageSharpFluid
+        }
+      }
+    }
+    inmarG: file(relativePath: { eq: "inmarG.png" }) {
       childImageSharp {
         fluid(quality: 100) {
           ...GatsbyImageSharpFluid

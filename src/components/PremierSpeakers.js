@@ -180,6 +180,13 @@ const PremierSpeakers = () => {
           }
         }
       }
+      inmarG: file(relativePath: { eq: "inmarG.png" }) {
+        childImageSharp {
+          fluid(quality: 100) {
+            ...GatsbyImageSharpFluid
+          }
+        }
+      }
     }
   `);
 
@@ -239,6 +246,13 @@ const PremierSpeakers = () => {
       title: "CEO & Founder",
       work: "AVO - Autonomous Vehicle Organization",
       image: data.davidH.childImageSharp.fluid,
+    },
+    {
+      first: "Inmar",
+      last: "Givoni",
+      title: "Director of Engineering",
+      work: "Uber ATG",
+      image: data.inmarG.childImageSharp.fluid,
     },
   ];
 
