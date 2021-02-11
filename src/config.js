@@ -13,6 +13,11 @@ module.exports = {
       url:
         "https://www.linkedin.com/company/canadian-undergraduate-conference-on-artificial-intelligence/",
     },
+    {
+      name: "Youtube",
+      url:
+        "https://www.youtube.com/channel/UC0vDzsk0M511dI5EYQ18yJA/featured",
+    },
   ],
   navLinks: [
     {

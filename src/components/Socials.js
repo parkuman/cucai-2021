@@ -7,6 +7,7 @@ import { socialMedia } from "../config";
 import FacebookIcon from "../img/social/facebook.js";
 import LinkedInIcon from "../img/social/linkedin.js";
 import InstagramIcon from "../img/social/instagram.js";
+import YoutubeIcon from "../img/social/youtube.js";
 import GlobeIcon from "../img/social/globe.js";
 
 const SocialLink = styled.a`
@@ -14,7 +15,7 @@ const SocialLink = styled.a`
 
   & svg {
     transition: ${theme.transition};
-    fill: #444444;
+    fill: #000000;
   }
 
   &:hover {
@@ -45,6 +46,8 @@ const Socials = ({ list, direction, size }) => {
           image = <InstagramIcon size={size} />;
         } else if (social.name.includes("LinkedIn")) {
           image = <LinkedInIcon size={size} />;
+        } else if (social.name.includes("Youtube")) {
+          image = <YoutubeIcon size={size} />;
         } else {
           image = <GlobeIcon size={size} />;
         }
