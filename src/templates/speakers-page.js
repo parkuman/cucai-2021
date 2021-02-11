@@ -159,7 +159,7 @@ const SpeakersPage = ({ data }) => {
         },
         {
           name: "Website",
-          url: "https://neuralink.com/",
+          url: "http://www.shivonzilis.com/about",
         },
       ],
     },
@@ -193,7 +193,7 @@ const SpeakersPage = ({ data }) => {
         },
         {
           name: "Website",
-          url: "http://www.google.com/",
+          url: "http://www.laurencemoroney.com/",
         },
       ],
     },
@@ -244,7 +244,7 @@ const SpeakersPage = ({ data }) => {
         },
         {
           name: "Website",
-          url: "https://www.uber.com/ca/en/",
+          url: "https://www.inmarg.net/",
         },
       ],
     },
