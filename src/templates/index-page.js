@@ -18,7 +18,9 @@ import Button from "../components/Button";
 import Socials from "../components/Socials";
 import Handshake from "../components/Handshake";
 import PremierSpeakers from "../components/PremierSpeakers";
+
 import Schedule from "../components/Schedule";
+import FAQ from "../components/sections/FAQ";
 
 import theme from "../styles/theme";
 import media from "../styles/media";
@@ -450,7 +452,6 @@ const StyledSponsorSection = styled.section`
 const SponsorBannerWrapper = styled.div`
   width: 100vw;
   padding: 0 10px;
-  margin-bottom: 5vh;
   background: linear-gradient(
       180deg,
       rgba(26, 79, 203, 0.5) 0%,
@@ -947,6 +948,7 @@ export const IndexPageTemplate = ({
     <ConferenceEvents data={data} />
     <PastEventsAndHighlights data={data} />
     <SponsorSection data={data} />
+    <FAQ />
     <InvolvedSection />
     {/* <Schedule /> */}
   </StyledIndexPage>
