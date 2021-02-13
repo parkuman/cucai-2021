@@ -94,6 +94,7 @@ const QuestionList = styled.ul`
 
   ${media.tablet`
     width: 100%;
+    margin: 0;
   `}
 `;
 
