@@ -52,11 +52,11 @@ const StyledNavItems = styled.ul`
   & li {
     display: inline;
     padding: 0 10px;
-    ${media.tablet`
+    ${media.desktop`
             padding: 30px 0;
         `}
   }
-  ${media.tablet`
+  ${media.desktop`
         font-size: 1.5rem;
         position: fixed;
         top: 0;
@@ -93,7 +93,7 @@ const Divider = styled.div`
   background: ${theme.colors.darkBlue};
   margin: 0 15px;
 
-  ${media.tablet`
+  ${media.desktop`
     display: none;
   `}
 `;
@@ -109,7 +109,7 @@ const NavItems = ({ open, setOpen }) => {
         </li>
       ))}
       <Divider />
-      <Socials direction="row"/>
+      <Socials size="20px" direction="row"/>
     </StyledNavItems>
   );
 };

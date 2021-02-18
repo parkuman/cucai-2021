@@ -159,7 +159,7 @@ const StyledAccordion = styled.li`
     transition: height 0.25s ease;
 
     &.open {
-      height: 120px;
+      height: 200px;
 
       & p {
         display: block;

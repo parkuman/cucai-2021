@@ -41,7 +41,7 @@ const StyledBurger = styled.div`
                 : " translateY(0) rotate(0)"};
         }
     }
-    ${media.tablet`
+    ${media.desktop`
         display: flex;
     `}
 `;
