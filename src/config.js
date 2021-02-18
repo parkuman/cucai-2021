@@ -24,6 +24,10 @@ module.exports = {
       url: "/about",
     },
     {
+      name: "Schedule",
+      url: "/schedule",
+    },
+    {
       name: "Speakers",
       url: "/speakers",
     },
