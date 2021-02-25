@@ -423,7 +423,8 @@ const SchedulePage = ({ data }) => {
         <Header>
           <h1>Event Schedule</h1>
           <h2>
-            *All times are in EST, all locations are on{" "}
+            *All times are in EST
+            {/* , all locations are on{" "}
             <u>
               <a
                 target="_blank"
@@ -432,7 +433,7 @@ const SchedulePage = ({ data }) => {
               >
                 Hopin
               </a>
-            </u>
+            </u> */}
           </h2>
         </Header>
         <Schedule />
