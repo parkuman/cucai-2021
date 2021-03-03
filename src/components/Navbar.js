@@ -42,7 +42,7 @@ const StyledLogo = styled.img`
 `;
 
 const StyledNavItems = styled.ul`
-  font-size: 1.2rem;
+  font-size: 1.1rem;
   padding: 0;
   margin: 0;
   display: flex;
@@ -54,11 +54,10 @@ const StyledNavItems = styled.ul`
     display: inline;
     padding: 0 10px;
     ${media.desktop`
-            padding: 30px 0;
+            padding: 5px 0;
         `}
   }
   ${media.desktop`
-        font-size: 1.5rem;
         position: fixed;
         top: 0;
         right: 0;
@@ -104,11 +103,7 @@ const StyledDropdown = styled(DropdownButton)`
     background: none;
     border: none;
     color: #000000;
-    font-size: 1.2rem;
-
-    ${media.desktop`
-        font-size: 1.5rem;
-    `}
+    font-size: 1.1rem;
   }
 `;
 
