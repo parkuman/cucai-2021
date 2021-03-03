@@ -104,6 +104,10 @@ const StyledDropdown = styled(DropdownButton)`
     border: none;
     color: #000000;
     font-size: 1.1rem;
+
+    &:hover {
+      font-weight: bold;
+    }
   }
 `;
 
