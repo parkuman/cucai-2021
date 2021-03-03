@@ -1,11 +1,12 @@
 import React, { useState, useEffect, useRef } from "react";
+import { DropdownButton, Dropdown } from "react-bootstrap";
 import { Link } from "gatsby";
 import styled from "styled-components";
 
 import theme from "../styles/theme";
 import media from "../styles/media";
 
-import { navLinks } from "../config";
+import { navLinks, studentGroups } from "../config";
 import LogoSmall from "../img/logoSmall.svg";
 
 import Burger from "./Burger";
@@ -98,6 +99,37 @@ const Divider = styled.div`
   `}
 `;
 
+const StyledDropdown = styled(DropdownButton)`
+  #dropdown-custom {
+    background: none;
+    border: none;
+    color: #000000;
+    font-size: 1.2rem;
+
+    ${media.desktop`
+        font-size: 1.5rem;
+    `}
+  }
+`;
+
+const StudentGroups = () => {
+  return (
+    <StyledDropdown id="dropdown-custom" title="Student Groups">
+      {studentGroups.map((group, i) => (
+        <Dropdown.Item
+          as="a"
+          key={i}
+          target="_blank"
+          rel="noreferrer"
+          href={group.link}
+        >
+          {group.name}
+        </Dropdown.Item>
+      ))}
+    </StyledDropdown>
+  );
+};
+
 const NavItems = ({ open, setOpen }) => {
   return (
     <StyledNavItems open={open}>
@@ -108,8 +140,9 @@ const NavItems = ({ open, setOpen }) => {
           </StyledLink>
         </li>
       ))}
+      <StudentGroups />
       <Divider />
-      <Socials size="20px" direction="row"/>
+      <Socials size="20px" direction="row" />
     </StyledNavItems>
   );
 };

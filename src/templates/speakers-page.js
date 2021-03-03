@@ -4,6 +4,8 @@ import { Helmet } from "react-helmet";
 import { graphql } from "gatsby";
 import Img from "gatsby-image";
 
+import "bootstrap/dist/css/bootstrap.min.css";
+
 import Layout from "../components/Layout";
 import Socials from "../components/Socials";
 

@@ -48,6 +48,32 @@ module.exports = {
       url: "/#involvement",
     },
   ],
+  studentGroups: [
+    {
+      name: "QMIND - Queen's AI Hub",
+      link: "https://qmind.ca/",
+    },
+    {
+      name: "U of T AI",
+      link: "https://www.uoft.ai/",
+    },
+    {
+      name: "Western AI",
+      link: "https://www.westernuai.com/",
+    },
+    {
+      name: "McGill AI Society",
+      link: "https://www.mcgillai.com/",
+    },
+    {
+      name: "Carleton AI Society",
+      link: "https://carletonai.com/",
+    },
+    {
+      name: "P-ai",
+      link: "https://www.p-ai.org/",
+    },
+  ],
   conferenceImages: [
     {
       header: "Design Teams",

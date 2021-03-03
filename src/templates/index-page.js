@@ -794,7 +794,7 @@ const ComplimentaryMeals = ({ data }) => (
 const DesignTeamShowcase = ({ data }) => {
   return (
     <StyledEvent className="grey-bg">
-      <EventWrapper className="reverse">
+      <EventWrapper>
         <EventContent>
           <Img
             fluid={data.proceedingsImg.childImageSharp.fluid}
