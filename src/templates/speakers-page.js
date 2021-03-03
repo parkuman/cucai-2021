@@ -77,7 +77,7 @@ const StyledSpeakerCard = styled.div`
   margin: 10px;
   padding: 20px;
   height: 280px;
-  width: 400px;
+  width: 450px;
 
   display: flex;
   flex-direction: row;
@@ -125,30 +125,15 @@ const Work = styled.h4`
   font-size: 1.2rem;
 `;
 
+const Role = styled.h5`
+  font-size: 0.9rem;
+  font-weight: bold;
+`;
+
 const SpeakersPage = ({ data }) => {
   const speakers = [
-    // {
-    //   first: "Geoffrey",
-    //   last: "Hinton",
-    //   title: "Godfather of AI",
-    //   work: "UofT, Google, Vector Institute",
-    //   image: data.geoffH.childImageSharp.fluid,
-    // },
-    // {
-    //   first: "Dan",
-    //   last: "Desjardins",
-    //   title: "CEO",
-    //   work: "Distributed Compute Labs",
-    //   image: data.danD.childImageSharp.fluid,
-    // },
-    // {
-    //   first: "Stuart",
-    //   last: "Lombard",
-    //   title: "Founder and CEO",
-    //   work: "Ecobee",
-    //   image: data.stuartL.childImageSharp.fluid,
-    // },
     {
+      role: "Speaker",
       first: "Shivon",
       last: "Zilis",
       title: "Project Director, Office of the CEO",
@@ -166,6 +151,7 @@ const SpeakersPage = ({ data }) => {
       ],
     },
     {
+      role: "Speaker, Ethics in AI Panelist",
       first: "Ron",
       last: "Bodkin",
       title: "VP of AI Engineering",
@@ -183,6 +169,7 @@ const SpeakersPage = ({ data }) => {
       ],
     },
     {
+      role: "Speaker",
       first: "Laurence",
       last: "Moroney",
       title: "Lead Artificial Intelligence Advocate",
@@ -200,6 +187,7 @@ const SpeakersPage = ({ data }) => {
       ],
     },
     {
+      role: "Speaker",
       first: "Mark",
       last: "Caine",
       title: "AI & Machine Learning Lead",
@@ -217,6 +205,7 @@ const SpeakersPage = ({ data }) => {
       ],
     },
     {
+      role: "Speaker, Pitch Comp. Judge",
       first: "David",
       last: "Hayes",
       title: "CEO & Founder",
@@ -234,9 +223,10 @@ const SpeakersPage = ({ data }) => {
       ],
     },
     {
+      role: "Speaker",
       first: "Inmar",
       last: "Givoni",
-      title: "Director of Engineering",
+      title: "Former Director of Engineering",
       work: "Uber ATG",
       image: data.inmarG.childImageSharp.fluid,
       socials: [
@@ -250,6 +240,110 @@ const SpeakersPage = ({ data }) => {
         },
       ],
     },
+    {
+      role: "Pitch Comp. Judge",
+      first: "Dan",
+      last: "Desjardins",
+      title: "Founder & CEO",
+      work: "Distributed Compute Labs",
+      image: data.danD.childImageSharp.fluid,
+      socials: [
+        {
+          name: "LinkedIn",
+          url: "https://www.linkedin.com/in/dan-desjardins/",
+        },
+        {
+          name: "Website",
+          url: "https://distributed.computer/",
+        },
+      ],
+    },
+    {
+      role: "Women in AI Panelist",
+      first: "Caroline",
+      last: "Lair",
+      title: "Founder / Co-Founder",
+      work: "The Good AI/Women in AI",
+      image: data.carolineL.childImageSharp.fluid,
+      socials: [
+        {
+          name: "LinkedIn",
+          url: "https://www.linkedin.com/in/carolinelair/",
+        },
+      ],
+    },
+    {
+      role: "Pitch Comp. Judge",
+      first: "Emily",
+      last: "Campbell",
+      title: "Co-Founder & CGO",
+      work: "Backr",
+      image: data.emilyC.childImageSharp.fluid,
+      socials: [
+        {
+          name: "LinkedIn",
+          url: "https://www.linkedin.com/in/emily-campbell-31104910a/",
+        },
+        {
+          name: "Website",
+          url: "https://www.backr.ai/",
+        },
+      ],
+    },
+    {
+      role: "Ethics in AI Panelist",
+      first: "Valerie",
+      last: "Morignat",
+      title: "Founder & CEO",
+      work: "Intelligent Story LLC",
+      image: data.valerieM.childImageSharp.fluid,
+      socials: [
+        {
+          name: "LinkedIn",
+          url: "https://www.linkedin.com/in/valeriemorignat/",
+        },
+        {
+          name: "Website",
+          url: "http://www.valeriemorignat.net/index.html",
+        },
+      ],
+    },
+    {
+      role: "Pitch Comp. Judge",
+      first: "Shingai",
+      last: "Manjengwa",
+      title: "Director of Technical Education",
+      work: "Vector Institute",
+      image: data.shingaiM.childImageSharp.fluid,
+      socials: [
+        {
+          name: "LinkedIn",
+          url: "https://www.linkedin.com/in/shingai-manjengwa-1ba2574/",
+        },
+        {
+          name: "Website",
+          url: "https://vectorinstitute.ai/",
+        },
+      ],
+    },
+    {
+      role: "Women in AI Panelist",
+      first: "Ania",
+      last: "Halliop",
+      title: "Former Senior Engineering Manager",
+      work: "Uber ATG",
+      image: data.aniaH.childImageSharp.fluid,
+      socials: [
+        {
+          name: "LinkedIn",
+          url: "https://www.linkedin.com/in/ania-halliop/",
+        },
+        {
+          name: "Website",
+          url: "https://www.aniahalliop.com/",
+        },
+      ],
+    },
   ];
 
   return (
@@ -257,8 +351,8 @@ const SpeakersPage = ({ data }) => {
       <Helmet title="Speakers" />
       <StyledSpeakersPage>
         <Header>
-          <h1>{data.markdownRemark.frontmatter.title}</h1>
-          <h2>Meet our wonderful speakers and industry guests!</h2>
+          <h1>Our Guests</h1>
+          <h2>Meet our wonderful speakers, panelists and judges!</h2>
         </Header>
         <Speakers>
           {speakers.map((speaker, i) => (
@@ -267,6 +361,7 @@ const SpeakersPage = ({ data }) => {
                 <Img fluid={speaker.image} />
               </SpeakerImg>
               <SpeakerText>
+                <Role>{speaker.role}</Role>
                 <Name>
                   {speaker.first}{" "}
                   <Name className="medium"> {speaker.last}</Name>
@@ -329,6 +424,48 @@ export const pageQuery = graphql`
       }
     }
     inmarG: file(relativePath: { eq: "inmarG.png" }) {
+      childImageSharp {
+        fluid(quality: 100) {
+          ...GatsbyImageSharpFluid
+        }
+      }
+    }
+    danD: file(relativePath: { eq: "danD.png" }) {
+      childImageSharp {
+        fluid(quality: 100) {
+          ...GatsbyImageSharpFluid
+        }
+      }
+    }
+    carolineL: file(relativePath: { eq: "carolineL.png" }) {
+      childImageSharp {
+        fluid(quality: 100) {
+          ...GatsbyImageSharpFluid
+        }
+      }
+    }
+    shingaiM: file(relativePath: { eq: "shingaiM.png" }) {
+      childImageSharp {
+        fluid(quality: 100) {
+          ...GatsbyImageSharpFluid
+        }
+      }
+    }
+    valerieM: file(relativePath: { eq: "valerieM.png" }) {
+      childImageSharp {
+        fluid(quality: 100) {
+          ...GatsbyImageSharpFluid
+        }
+      }
+    }
+    aniaH: file(relativePath: { eq: "aniaH.png" }) {
+      childImageSharp {
+        fluid(quality: 100) {
+          ...GatsbyImageSharpFluid
+        }
+      }
+    }
+    emilyC: file(relativePath: { eq: "emilyC.png" }) {
       childImageSharp {
         fluid(quality: 100) {
           ...GatsbyImageSharpFluid

@@ -18,6 +18,7 @@ import Button from "../components/Button";
 import Socials from "../components/Socials";
 import Handshake from "../components/Handshake";
 import PremierSpeakers from "../components/PremierSpeakers";
+import SponsorTiers from "../components/SponsorTiers";
 
 import FAQ from "../components/sections/FAQ";
 
@@ -851,6 +852,7 @@ const SponsorSection = ({ data }) => (
         </SponsorBanner>
       </SponsorBannerWrapper>
     </Fade>
+    <SponsorTiers />
   </StyledSponsorSection>
 );
 
