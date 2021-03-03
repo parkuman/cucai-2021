@@ -19,7 +19,6 @@ import Socials from "../components/Socials";
 import Handshake from "../components/Handshake";
 import PremierSpeakers from "../components/PremierSpeakers";
 
-import Schedule from "../components/Schedule";
 import FAQ from "../components/sections/FAQ";
 
 import theme from "../styles/theme";
@@ -263,7 +262,7 @@ const StyledBlurbSection = styled.section`
   flex-direction: column;
 
   ${media.tablet`
-    max-width: 90%;
+    max-width: 95%;
   `}
 `;
 
@@ -351,69 +350,29 @@ const EventContent = styled.div`
   `}
 `;
 
-const StyledDesignTeamShowcase = styled.section`
-  margin: 0 auto;
-  padding: 40px 0;
-  display: flex;
+const StyledEvent = styled.section`
+  width: 100vw;
 
-  flex-direction: row-reverse;
-  justify-content: space-evenly;
-  align-items: center;
-  background-color: #f4f4f4;
-
-  ${media.phone`
-    flex-direction: column-reverse;
-  `}
+  &.grey-bg {
+    background-color: #f4f4f4;
+  }
 `;
 
-const StyledNetworkingOpportunities = styled.section`
+const EventWrapper = styled.div`
   margin: 0 auto;
   padding: 40px 0;
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
   align-items: center;
-  background-color: #f4f4f4;
 
-  ${media.phone`
-    flex-direction: column;
-  `}
-`;
+  &.reverse {
+    flex-direction: row-reverse;
 
-const StyledWorkshopsShowcase = styled.section`
-  margin: 0 auto;
-  padding: 40px 0;
-  display: flex;
-  flex-direction: row-reverse;
-  justify-content: space-evenly;
-  align-items: center;
-
-  ${media.phone`
-    flex-direction: column;
-  `}
-`;
-
-const StyledAIPitchComp = styled.section`
-  margin: 0 auto;
-  padding: 40px 0;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-evenly;
-  align-items: center;
-  background-color: #f4f4f4;
-
-  ${media.phone`
-    flex-direction: column;
-  `}
-`;
-
-const StyledComplimentaryMeals = styled.section`
-  margin: 0 auto;
-  padding: 40px 0;
-  display: flex;
-  flex-direction: row-reverse;
-  justify-content: space-evenly;
-  align-items: center;
+    ${media.phone`
+      flex-direction: column;
+    `}
+  }
 
   ${media.phone`
     flex-direction: column;
@@ -563,11 +522,9 @@ const Hero = ({ data, heading, slogan, location, date, cta1, cta2 }) => {
             <a
               target="_blank"
               rel="noreferrer"
-              href="https://cucai.paperform.co/"
+              href="CUCAI-2021-Delegates-Package.pdf"
             >
-              <Button backgroundColour="white" customPadding="0.7rem 2em">
-                Apply Now
-              </Button>
+              <Button backgroundColour="white">Delegates Package</Button>
             </a>
             <a href="#sponsors">
               <Button borderStyle="solid" borderColour="#174461">
@@ -673,19 +630,6 @@ const ConferenceEvents = ({ data }) => (
   </StyledConferenceEvents>
 );
 
-const StyledPremierSpeakerSection = styled.section`
-  margin: 0 auto;
-  padding: 40px 0;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-evenly;
-  align-items: center;
-
-  ${media.phone`
-    flex-direction: column-reverse;
-  `}
-`;
-
 const SpeakerTitleAndDesc = styled.div`
   max-width: 35%;
   ${media.phone`
@@ -707,8 +651,8 @@ const SpeakerCarouselWrapper = styled.div`
 
 const PremierSpeakerSection = () => {
   return (
-    <>
-      <StyledPremierSpeakerSection>
+    <StyledEvent>
+      <EventWrapper>
         <SpeakerTitleAndDesc>
           <SectionSubtitle>
             <SectionSubtitle className="medium">
@@ -728,146 +672,158 @@ const PremierSpeakerSection = () => {
         <SpeakerCarouselWrapper>
           <PremierSpeakers />
         </SpeakerCarouselWrapper>
-      </StyledPremierSpeakerSection>
-    </>
-  );
-};
-
-const DesignTeamShowcase = ({ data }) => {
-  return (
-    <StyledDesignTeamShowcase>
-      <EventTitleAndDesc>
-        <SectionSubtitle>
-          <SectionSubtitle className="medium">Design Team</SectionSubtitle>
-          <br />
-          Showcase
-        </SectionSubtitle>
-        <p>
-          The design team showcase was the foundation on which CUCAI was
-          started. This event features in-depth presentations for audiences of
-          all levels of experience and backgrounds, as well as engaging and
-          interactive demonstrations shifted to an online format for 30+ design
-          teams from across Canada.
-        </p>
-        <a href="Proceedings-of-CUCAI-2020.pdf">
-          <Button backgroundColour="white">
-            Download the 2020 Proceedings
-          </Button>
-        </a>
-      </EventTitleAndDesc>
-      <EventContent>
-        <Img
-          fluid={data.proceedingsImg.childImageSharp.fluid}
-          alt="conference proceedings"
-        />
-      </EventContent>
-    </StyledDesignTeamShowcase>
+      </EventWrapper>
+    </StyledEvent>
   );
 };
 
 const NetworkingOpportunities = ({ data }) => (
-  <StyledNetworkingOpportunities>
-    <EventContent>
-      <Img
-        fluid={data.networkingOpportunitiesImg.childImageSharp.fluid}
-        alt="student conversing with industry professional"
-      />
-    </EventContent>
+  <StyledEvent className="grey-bg">
+    <EventWrapper>
+      <EventContent>
+        <Img
+          fluid={data.networkingOpportunitiesImg.childImageSharp.fluid}
+          alt="student conversing with industry professional"
+        />
+      </EventContent>
 
-    <EventTitleAndDesc>
-      <SectionSubtitle>
-        <SectionSubtitle className="medium">
-          Exclusive Networking
+      <EventTitleAndDesc>
+        <SectionSubtitle>
+          <SectionSubtitle className="medium">
+            Exclusive Networking
+          </SectionSubtitle>
+          <br />
+          Opportunities
         </SectionSubtitle>
-        <br />
-        Opportunities
-      </SectionSubtitle>
 
-      <p>
-        Exciting events throughout the conference designed to show undergraduate
-        students the present and future of AI in industry. New to CUCAI 2021, we
-        hosted our Taster Event on January 30th, 2021, to connect students to
-        our exclusive recruitment pipeline prior to the March conference.{" "}
-      </p>
-    </EventTitleAndDesc>
-  </StyledNetworkingOpportunities>
+        <p>
+          Exciting events throughout the conference designed to show
+          undergraduate students the present and future of AI in industry. New
+          to CUCAI 2021, we hosted our Taster Event on January 30th, 2021, to
+          connect students to our exclusive recruitment pipeline prior to the
+          March conference.{" "}
+        </p>
+      </EventTitleAndDesc>
+    </EventWrapper>
+  </StyledEvent>
 );
 
 const WorkshopsShowcase = ({ data }) => (
-  <StyledWorkshopsShowcase>
-    <EventContent>
-      <Img
-        fluid={data.workshopsShowcaseImg.childImageSharp.fluid}
-        alt="workshop showcase"
-      />
-    </EventContent>
-    <EventTitleAndDesc>
-      <SectionSubtitle>
-        <SectionSubtitle className="medium">
-          Interactive Workshop
+  <StyledEvent>
+    <EventWrapper className="reverse">
+      <EventContent>
+        <Img
+          fluid={data.workshopsShowcaseImg.childImageSharp.fluid}
+          alt="workshop showcase"
+        />
+      </EventContent>
+      <EventTitleAndDesc>
+        <SectionSubtitle>
+          <SectionSubtitle className="medium">
+            Interactive Workshop
+          </SectionSubtitle>
+          <br />
+          Sessions
         </SectionSubtitle>
-        <br />
-        Sessions
-      </SectionSubtitle>
-      <p>
-        Workshops are an incredibly engaging facet of CUCAI intended to bring an
-        element of concreteness to the topic of artificial intelligence. These
-        events allow industry partners to showcase their firm’s technology while
-        providing an opportunity for interactive experience with modern AI and
-        data science tools for delegates.
-      </p>
-    </EventTitleAndDesc>
-  </StyledWorkshopsShowcase>
+        <p>
+          Workshops are an incredibly engaging facet of CUCAI intended to bring
+          an element of concreteness to the topic of artificial intelligence.
+          These events allow industry partners to showcase their firm’s
+          technology while providing an opportunity for interactive experience
+          with modern AI and data science tools for delegates.
+        </p>
+      </EventTitleAndDesc>
+    </EventWrapper>
+  </StyledEvent>
 );
 
 const AIPitchComp = ({ data }) => (
-  <StyledAIPitchComp>
-    <EventContent>
-      <Img
-        fluid={data.aiPitchCompImg.childImageSharp.fluid}
-        alt="ai pitch competition"
-      />
-    </EventContent>
-    <EventTitleAndDesc>
-      <SectionSubtitle>
-        <SectionSubtitle className="medium">AI Pitch</SectionSubtitle>
-        <br />
-        Competition
-      </SectionSubtitle>
-      <p>
-        Come see promising early-stage student startups compete for a $10,000
-        prize pool! All the student ventures competing in the event leverage the
-        power of AI to bring new and exciting business solutions to reality.
-      </p>
-    </EventTitleAndDesc>
-  </StyledAIPitchComp>
+  <StyledEvent className="grey-bg">
+    <EventWrapper>
+      <EventContent>
+        <Img
+          fluid={data.aiPitchCompImg.childImageSharp.fluid}
+          alt="ai pitch competition"
+        />
+      </EventContent>
+      <EventTitleAndDesc>
+        <SectionSubtitle>
+          <SectionSubtitle className="medium">AI Pitch</SectionSubtitle>
+          <br />
+          Competition
+        </SectionSubtitle>
+        <p>
+          Come see promising early-stage student startups compete for a $10,000
+          prize pool! All the student ventures competing in the event leverage
+          the power of AI to bring new and exciting business solutions to
+          reality.
+        </p>
+      </EventTitleAndDesc>
+    </EventWrapper>
+  </StyledEvent>
 );
 
 const ComplimentaryMeals = ({ data }) => (
-  <StyledComplimentaryMeals>
-    <EventContent>
-      <Img
-        fluid={data.mealsImg.childImageSharp.fluid}
-        alt="graphic on complimentary meals"
-      />
-    </EventContent>
-    <EventTitleAndDesc>
-      <SectionSubtitle>
-        <SectionSubtitle className="medium">
-          Complimentary Meals
+  <StyledEvent>
+    <EventWrapper className="reverse">
+      <EventContent>
+        <Img
+          fluid={data.mealsImg.childImageSharp.fluid}
+          alt="graphic on complimentary meals"
+        />
+      </EventContent>
+      <EventTitleAndDesc>
+        <SectionSubtitle>
+          <SectionSubtitle className="medium">
+            Complimentary Meals
+          </SectionSubtitle>
+          <br />
+          Included
         </SectionSubtitle>
-        <br />
-        Included
-      </SectionSubtitle>
-      <p>
-        All attendees will receive $40 toward complimentary meals for both
-        conference days via Uber Eats. Enjoy your own choice of lunch and dinner
-        on us while you experience everything the conference has to offer, from
-        the comfort of your home!
-      </p>
-    </EventTitleAndDesc>
-  </StyledComplimentaryMeals>
+        <p>
+          All attendees will receive $40 toward complimentary meals for both
+          conference days via Uber Eats. Enjoy your own choice of lunch and
+          dinner on us while you experience everything the conference has to
+          offer, from the comfort of your home!
+        </p>
+      </EventTitleAndDesc>
+    </EventWrapper>
+  </StyledEvent>
 );
+
+const DesignTeamShowcase = ({ data }) => {
+  return (
+    <StyledEvent className="grey-bg">
+      <EventWrapper className="reverse">
+        <EventContent>
+          <Img
+            fluid={data.proceedingsImg.childImageSharp.fluid}
+            alt="conference proceedings"
+          />
+        </EventContent>
+        <EventTitleAndDesc>
+          <SectionSubtitle>
+            <SectionSubtitle className="medium">Design Team</SectionSubtitle>
+            <br />
+            Showcase
+          </SectionSubtitle>
+          <p>
+            The design team showcase was the foundation on which CUCAI was
+            started. This event features in-depth presentations for audiences of
+            all levels of experience and backgrounds, as well as engaging and
+            interactive demonstrations shifted to an online format for 30+
+            design teams from across Canada.
+          </p>
+          <a href="Proceedings-of-CUCAI-2020.pdf">
+            <Button backgroundColour="white">
+              Download the 2020 Proceedings
+            </Button>
+          </a>
+        </EventTitleAndDesc>
+      </EventWrapper>
+    </StyledEvent>
+  );
+};
 
 const SponsorSection = ({ data }) => (
   <StyledSponsorSection>
@@ -950,7 +906,6 @@ export const IndexPageTemplate = ({
     <SponsorSection data={data} />
     <FAQ />
     <InvolvedSection />
-    {/* <Schedule /> */}
   </StyledIndexPage>
 );
 

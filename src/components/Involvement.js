@@ -47,12 +47,15 @@ const Involved = () => {
               <Tab.Pane eventKey="Delegates">
                 <StyledDetails>
                   <p>
-                    Delegate applications are now open! Apply now to become a part of CUCAI. Applications close February 25th.
+                    Delegate applications are now closed! Check out our delegates package for more info on the event.
                   </p>
 
-                  <a target="_blank" rel="noreferrer" href="https://cucai.paperform.co/">
+                  <a 
+                    target="_blank"
+                    rel="noreferrer"
+                    href="CUCAI-2021-Delegates-Package.pdf">
                     <Button borderStyle="solid">
-                      Apply Now
+                      Delegates Package
                     </Button>
                   </a>
                 </StyledDetails>
