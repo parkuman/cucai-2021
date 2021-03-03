@@ -5,6 +5,8 @@ import { graphql } from "gatsby";
 import date from "date-and-time";
 import ordinal from "date-and-time/plugin/ordinal";
 
+import "bootstrap/dist/css/bootstrap.min.css";
+
 import Layout from "../components/Layout";
 
 import media from "../styles/media";
