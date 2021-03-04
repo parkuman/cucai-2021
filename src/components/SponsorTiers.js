@@ -4,6 +4,7 @@ import Img from "gatsby-image";
 import styled from "styled-components";
 
 import theme from "../styles/theme";
+import media from "../styles/media";
 
 const StyledSponsorTiers = styled.div`
   display: flex;
@@ -19,6 +20,10 @@ const StyledSponsorTiers = styled.div`
   & > * {
     max-width: 80%;
     margin-bottom: 20px;
+
+    ${media.phone`
+      max-width: 100%;
+    `}
   }
 `;
 
@@ -30,7 +35,11 @@ const TitleSponsors = styled.div`
   align-items: center;
 
   & > a {
-    width: 100vw;
+    width: 60vw;
+
+    ${media.phone`
+      width: 100vw;
+    `}
   }
 `;
 
@@ -42,7 +51,7 @@ const GoldSponsors = styled.div`
   align-items: center;
 
   & > a {
-    width: 400px;
+    width: 200px;
   }
 `;
 
@@ -55,7 +64,7 @@ const SilverSponsors = styled.div`
   align-items: center;
 
   & > a {
-    width: 200px;
+    width: 150px;
   }
 `;
 
@@ -68,10 +77,18 @@ const SponsorLink = styled.a`
   }
 `;
 
-const Header = styled.h1`
-  margin: 30px 0;
+const Header = styled.div`
+  margin: 30px auto;
+  width: 100%;
   font-family: ${theme.fonts.IBMPlexSansMedium};
-  font-size: 2.5rem;
+
+  & h1 {
+    font-size: 2.5rem;
+  }
+
+  & h2 {
+    font-size: 1.2rem;
+  }
 `;
 
 const SponsorTiers = () => {
@@ -225,7 +242,10 @@ const SponsorTiers = () => {
 
   return (
     <StyledSponsorTiers>
-      <Header>Our Sponsors</Header>
+      <Header>
+        <h1>Our Sponsors</h1>
+        <h2>Thank you so much for making CUCAI 2021 possible!</h2>
+      </Header>
       <h6>Title</h6>
       <TitleSponsors>
         {titleSpons.map((sponsor, i) => (
