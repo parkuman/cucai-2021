@@ -113,7 +113,7 @@ const StyledDropdown = styled(DropdownButton)`
 
 const StudentGroups = () => {
   return (
-    <StyledDropdown id="dropdown-custom" title="Student Groups">
+    <StyledDropdown id="dropdown-custom" title="Student Partners">
       {studentGroups.map((group, i) => (
         <Dropdown.Item
           as="a"
