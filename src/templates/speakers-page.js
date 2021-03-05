@@ -2,12 +2,11 @@ import React from "react";
 import styled from "styled-components";
 import { Helmet } from "react-helmet";
 import { graphql } from "gatsby";
-import Img from "gatsby-image";
 
 import "bootstrap/dist/css/bootstrap.min.css";
 
 import Layout from "../components/Layout";
-import Socials from "../components/Socials";
+import PersonCard from "../components/PersonCard";
 
 import media from "../styles/media";
 import theme from "../styles/theme";
@@ -16,7 +15,6 @@ const StyledSpeakersPage = styled.div`
   margin: 0 auto;
   padding-top: 10vh;
   background: #ffffff;
-  /* background: linear-gradient(0deg, rgba(255,255,255,1) 0%, rgba(26,169,203,1) 100%); */
 
   ${media.phone`
     padding-top: 10vh;
@@ -66,68 +64,6 @@ const Speakers = styled.section`
   ${media.phone`
     flex-direction: column;
   `}
-`;
-
-const StyledSpeakerCard = styled.div`
-  background: #f2f2f2;
-  -webkit-box-shadow: 8px 8px 13px -5px rgba(0, 0, 0, 0.24);
-  -moz-box-shadow: 8px 8px 13px -5px rgba(0, 0, 0, 0.24);
-  box-shadow: 8px 8px 13px -5px rgba(0, 0, 0, 0.24);
-  border-radius: 15px;
-  margin: 10px;
-  padding: 20px;
-  height: 280px;
-  width: 450px;
-
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-  transition: ${theme.transition};
-
-  &:hover {
-    transform: translateY(-5px);
-  }
-
-  ${media.phone`
-    margin: 10px 0;
-    width: 95vw;
-    max-width: 400px;
-  `}
-`;
-
-const SpeakerImg = styled.div`
-  max-width: 45%;
-  width: 45%;
-  max-height: 270px;
-`;
-
-const SpeakerText = styled.div`
-  font-family: ${theme.fonts.IBMPlexSansLight};
-  max-width: 46%;
-  width: 46%;
-`;
-
-const Name = styled.h2`
-  font-size: 1.5rem;
-  display: inline-block;
-  &.medium {
-    font-family: ${theme.fonts.IBMPlexSansMedium};
-  }
-`;
-
-const Title = styled.h3`
-  font-size: 1.2rem;
-  font-style: italic;
-`;
-
-const Work = styled.h4`
-  font-size: 1.2rem;
-`;
-
-const Role = styled.h5`
-  font-size: 0.9rem;
-  font-weight: bold;
 `;
 
 const SpeakersPage = ({ data }) => {
@@ -356,21 +292,7 @@ const SpeakersPage = ({ data }) => {
         </Header>
         <Speakers>
           {speakers.map((speaker, i) => (
-            <StyledSpeakerCard key={i}>
-              <SpeakerImg>
-                <Img fluid={speaker.image} />
-              </SpeakerImg>
-              <SpeakerText>
-                <Role>{speaker.role}</Role>
-                <Name>
-                  {speaker.first}{" "}
-                  <Name className="medium"> {speaker.last}</Name>
-                </Name>
-                <Title>{speaker.title}</Title>
-                <Work>{speaker.work}</Work>
-                <Socials size={"15px"} direction="row" list={speaker.socials} />
-              </SpeakerText>
-            </StyledSpeakerCard>
+            <PersonCard key={i} person={speaker} />
           ))}
         </Speakers>
       </StyledSpeakersPage>

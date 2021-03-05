@@ -1,45 +1,26 @@
 import React from "react";
-import PropTypes from "prop-types";
+import styled from "styled-components";
 import { Helmet } from "react-helmet";
-import { graphql, Link } from "gatsby";
+import { graphql } from "gatsby";
 
 import "bootstrap/dist/css/bootstrap.min.css";
 
-import styled from "styled-components";
 
 import Layout from "../components/Layout";
+import PersonCard from "../components/PersonCard";
 
-import { ourTeam } from "../config";
 import media from "../styles/media";
 import theme from "../styles/theme";
 
-import LinkedInIcon from "../img/social/linkedin.js";
-
-const SocialLink = styled(Link)`
-  padding: 5px 10px;
-
-  & svg {
-    transition: ${theme.transition};
-  }
-
-  &:hover {
-    & svg {
-      fill: var(--cucai-blue);
-      transform: rotate(10deg) translateY(-3px);
-    }
-  }
-`;
-
 const StyledAboutPage = styled.div`
   margin: 0 auto;
-  padding: 2em;
+  /* max-width: 80%; */
   padding-top: 10vh;
   background: rgb(255, 255, 255);
-  /* background: linear-gradient(0deg, rgba(255,255,255,1) 0%, rgba(26,169,203,1) 100%); */
 
   ${media.phone`
-    padding: 0.5em;
     padding-top: 10vh;
+    /* max-width: 95%; */
   `}
 `;
 
@@ -49,91 +30,201 @@ const StyledTextSection = styled.section`
 
   padding: 2em;
   padding-bottom: 0;
-  /* -webkit-box-shadow: 10px 10px 34px -9px rgba(0, 0, 0, 0.65);
-  -moz-box-shadow: 10px 10px 34px -9px rgba(0, 0, 0, 0.65);
-  box-shadow: 10px 10px 34px -9px rgba(0, 0, 0, 0.65); */
   margin-bottom: 2em;
 `;
-const StyledTeamMember = styled.div`
-  display: flex;
-  padding: 1em;
-  background: rgb(255, 255, 255);
-  height: 450px;
-  margin: 1em;
-  border-radius: 10px;
-  -webkit-box-shadow: 10px 10px 34px -9px rgba(0, 0, 0, 0.65);
-  -moz-box-shadow: 10px 10px 34px -9px rgba(0, 0, 0, 0.65);
-  box-shadow: 10px 10px 34px -9px rgba(0, 0, 0, 0.65);
 
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-
-  & h3 {
-    margin-top: 10px;
-  }
-
-  & p {
-    margin: 0;
-  }
-`;
-
-const StyledOurTeam = styled.div`
+const StyledOurTeam = styled.section`
+  width: 100vw;
+  margin: 0 auto;
   display: flex;
   flex-flow: wrap;
   flex-direction: row;
   align-items: center;
   justify-content: center;
+  padding-bottom: 40px;
+
+  ${media.phone`
+    flex-direction: column;
+  `}
 `;
 
-const TeamMember = ({ pic, name, position, program, linkedin }) => {
-  return (
-    <>
-      <img src={require(`../img/team/${pic}`)} alt={`${name}'s headshot'`} />
+const Header = styled.section`
+  background-image: url("/img/speaker-bg.svg");
+  background-size: contain;
+  background-color: transparent;
+  background-repeat: no-repeat;
+  background-position: 50% 20%;
+  width: 100vw;
+  margin: 30px 0;
+  height: 250px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-family: ${theme.fonts.IBMPlexSansMedium};
 
-      <h3>
-        {name.split(" ")[0]} <b>{name.split(" ")[1]}</b>
-      </h3>
-      <p>{position}</p>
-      <p>
-        <i>{program}</i>
-      </p>
-      <SocialLink to={linkedin}>
-        <LinkedInIcon size="25px" />
-      </SocialLink>
-    </>
-  );
-};
+  & * {
+    max-width: 90%;
+  }
+
+  & > h1 {
+    font-size: 2.5rem;
+  }
+
+  & > h2 {
+    margin-top: 1rem;
+    font-size: 1rem;
+  }
+`;
 
 const OurTeam = ({ data }) => {
+  const ourTeam = [
+    {
+      first: "Berkeley",
+      last: "Wilson",
+      title: "Co-Chair",
+      work: "Mechanical Engineering '21 @ Queens",
+      image: data.berkeley.childImageSharp.fluid,
+      socials: [
+        {
+          name: "LinkedIn",
+          url: "https://www.linkedin.com/in/j-berkeley-wilson-queensu/",
+        },
+      ],
+    },
+    {
+      first: "Max",
+      last: "Bennett",
+      title: "Co-Chair",
+      work: "Applied Mathematics '22 @ Queens",
+      image: data.max.childImageSharp.fluid,
+      socials: [
+        {
+          name: "LinkedIn",
+          url: "https://www.linkedin.com/in/max-bennett-881951172/",
+        },
+      ],
+    },
+    {
+      first: "Ellie",
+      last: "Mehltretter",
+      title: "Delegates Coordinator",
+      work: "Mathematics '21 @ Queens",
+      image: data.ellie.childImageSharp.fluid,
+      socials: [
+        {
+          name: "LinkedIn",
+          url: "https://www.linkedin.com/in/gabrielle-mehltretter-069987170/",
+        },
+      ],
+    },
+    {
+      first: "Jack",
+      last: "Perry",
+      title: "Delegates Coordinator",
+      work: "Commerce '22 @ Queens",
+      image: data.jackP.childImageSharp.fluid,
+      socials: [
+        {
+          name: "LinkedIn",
+          url: "https://www.linkedin.com/in/jack-p-b40941129/",
+        },
+      ],
+    },
+    {
+      first: "Catherine",
+      last: "Wu",
+      title: "Logistics Manager",
+      work: "Biomedical Computation '22 @ Queens",
+      image: data.catherine.childImageSharp.fluid,
+      socials: [
+        {
+          name: "LinkedIn",
+          url: "https://www.linkedin.com/in/catherinewu-/",
+        },
+      ],
+    },
+    {
+      first: "Jack",
+      last: "Grebenc",
+      title: "Logistics Coordinator",
+      work: "Mathematics & Computing '21 @ Queens",
+      image: data.jackG.childImageSharp.fluid,
+      socials: [
+        {
+          name: "LinkedIn",
+          url: "https://www.linkedin.com/in/jack-grebenc-45b636174/",
+        },
+      ],
+    },
+    {
+      first: "Will",
+      last: "Stewart",
+      title: "Logistics Coordinator",
+      work: "Commerce '22 @ Queens",
+      image: data.will.childImageSharp.fluid,
+      socials: [
+        {
+          name: "LinkedIn",
+          url: "https://www.linkedin.com/in/willjgstewart/",
+        },
+      ],
+    },
+    {
+      first: "Parker",
+      last: "Rowe",
+      title: "Marketing & Web Development",
+      work: "Computer Engineering '22 @ Queens",
+      image: data.parker.childImageSharp.fluid,
+      socials: [
+        {
+          name: "LinkedIn",
+          url: "https://www.linkedin.com/in/parker-a-rowe/",
+        },
+        {
+          name: "Website",
+          url: "https://prowe.ca/",
+        },
+      ],
+    },
+    {
+      first: "Katie",
+      last: "Lu",
+      title: "Marketing & Graphic Design",
+      work: "Computing & The Creative Arts '21 @ Queens",
+      image: data.katie.childImageSharp.fluid,
+      socials: [
+        {
+          name: "LinkedIn",
+          url: "https://www.linkedin.com/in/katie-lu-0244b8170/",
+        },
+      ],
+    },
+  ];
+
   return (
     <StyledOurTeam>
+      <Header>
+        <h1>Our Team</h1>
+        <h2>Meet our hard-working team!</h2>
+      </Header>
       {ourTeam.map((member) => (
-        <StyledTeamMember>
-          <TeamMember
-            pic={member.pic}
-            name={member.name}
-            position={member.position}
-            program={member.program}
-            linkedin={member.linkedin}
-          />
-        </StyledTeamMember>
+        <PersonCard person={member} />
       ))}
     </StyledOurTeam>
   );
 };
 
 const AboutPage = ({ data }) => {
-  const { frontmatter, html } = data.markdownRemark;
-
   return (
     <Layout>
       <Helmet title="About" />
       <StyledAboutPage>
         <StyledTextSection>
-          <div dangerouslySetInnerHTML={{ __html: html }} />
+          <div dangerouslySetInnerHTML={{ __html: data.markdownRemark.html }} />
         </StyledTextSection>
-        <OurTeam />
+        <OurTeam data={data} />
       </StyledAboutPage>
     </Layout>
   );
@@ -148,6 +239,69 @@ export const pageQuery = graphql`
       frontmatter {
         title
         slogan
+      }
+    }
+    berkeley: file(relativePath: { eq: "team/berkeley-wilson.png" }) {
+      childImageSharp {
+        fluid(quality: 100) {
+          ...GatsbyImageSharpFluid
+        }
+      }
+    }
+    max: file(relativePath: { eq: "team/max-bennett.png" }) {
+      childImageSharp {
+        fluid(quality: 100) {
+          ...GatsbyImageSharpFluid
+        }
+      }
+    }
+    jackP: file(relativePath: { eq: "team/jack-perry.png" }) {
+      childImageSharp {
+        fluid(quality: 100) {
+          ...GatsbyImageSharpFluid
+        }
+      }
+    }
+    jackG: file(relativePath: { eq: "team/jack-grebenc.png" }) {
+      childImageSharp {
+        fluid(quality: 100) {
+          ...GatsbyImageSharpFluid
+        }
+      }
+    }
+    catherine: file(relativePath: { eq: "team/catherine-wu.png" }) {
+      childImageSharp {
+        fluid(quality: 100) {
+          ...GatsbyImageSharpFluid
+        }
+      }
+    }
+    ellie: file(relativePath: { eq: "team/ellie-mehltretter.png" }) {
+      childImageSharp {
+        fluid(quality: 100) {
+          ...GatsbyImageSharpFluid
+        }
+      }
+    }
+    katie: file(relativePath: { eq: "team/katie-lu.png" }) {
+      childImageSharp {
+        fluid(quality: 100) {
+          ...GatsbyImageSharpFluid
+        }
+      }
+    }
+    will: file(relativePath: { eq: "team/will-stewart.png" }) {
+      childImageSharp {
+        fluid(quality: 100) {
+          ...GatsbyImageSharpFluid
+        }
+      }
+    }
+    parker: file(relativePath: { eq: "team/parker-rowe.png" }) {
+      childImageSharp {
+        fluid(quality: 100) {
+          ...GatsbyImageSharpFluid
+        }
       }
     }
   }

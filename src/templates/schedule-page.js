@@ -398,8 +398,8 @@ const Schedule = () => {
             </td>
             <td>
               <div>
-                <p class="title">{event.title}</p>
-                <p class="sub-title">{event.subtitle}</p>
+                <p className="title">{event.title}</p>
+                <p className="sub-title">{event.subtitle}</p>
               </div>
             </td>
             <td>{event.location}</td>
