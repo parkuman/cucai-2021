@@ -1,7 +1,7 @@
 import React from "react";
 import { Helmet } from "react-helmet";
 import PropTypes from "prop-types";
-import { graphql } from "gatsby";
+import { graphql, Link } from "gatsby";
 import Img from "gatsby-image";
 import BackgroundImg from "gatsby-background-image";
 import Fade from "react-reveal/Fade";
@@ -669,6 +669,9 @@ const PremierSpeakerSection = () => {
             ideas, experiences and knowledge of these professionals as they
             discuss a variety of fascinating AI topics.
           </p>
+          <Link to="/speakers">
+            <Button borderStyle="solid" borderColour="black">Learn More</Button>
+          </Link>
         </SpeakerTitleAndDesc>
         <SpeakerCarouselWrapper>
           <PremierSpeakers />
