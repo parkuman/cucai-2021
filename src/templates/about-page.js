@@ -122,20 +122,6 @@ const OurTeam = ({ data }) => {
     </StyledOurTeam>
   );
 };
-//<p>{team.email}</p>
-export const AboutPageTemplate = ({ title, slogan, html }) => (
-  <StyledAboutPage>
-    <StyledTextSection>
-      <div dangerouslySetInnerHTML={{ __html: html }} />
-    </StyledTextSection>
-    <OurTeam />
-  </StyledAboutPage>
-);
-
-AboutPageTemplate.propTypes = {
-  title: PropTypes.string,
-  slogan: PropTypes.string,
-};
 
 const AboutPage = ({ data }) => {
   const { frontmatter, html } = data.markdownRemark;
@@ -143,21 +129,14 @@ const AboutPage = ({ data }) => {
   return (
     <Layout>
       <Helmet title="About" />
-      <AboutPageTemplate
-        title={frontmatter.title}
-        slogan={frontmatter.slogan}
-        html={html}
-      />
+      <StyledAboutPage>
+        <StyledTextSection>
+          <div dangerouslySetInnerHTML={{ __html: html }} />
+        </StyledTextSection>
+        <OurTeam />
+      </StyledAboutPage>
     </Layout>
   );
-};
-
-AboutPage.propTypes = {
-  data: PropTypes.shape({
-    markdownRemark: PropTypes.shape({
-      frontmatter: PropTypes.object,
-    }),
-  }),
 };
 
 export default AboutPage;
