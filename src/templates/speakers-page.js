@@ -263,6 +263,20 @@ const SpeakersPage = ({ data }) => {
       ],
     },
     {
+      role: "Ethics in AI Panelist",
+      first: "Rishi",
+      last: "Behari",
+      title: "Lead Instructor",
+      work: "Smith School of Business",
+      image: data.rishiB.childImageSharp.fluid,
+      socials: [
+        {
+          name: "LinkedIn",
+          url: "https://www.linkedin.com/in/rishi-behari-bb278576/",
+        },
+      ],
+    },
+    {
       role: "Women in AI Panelist",
       first: "Ania",
       last: "Halliop",
@@ -388,6 +402,13 @@ export const pageQuery = graphql`
       }
     }
     emilyC: file(relativePath: { eq: "emilyC.png" }) {
+      childImageSharp {
+        fluid(quality: 100) {
+          ...GatsbyImageSharpFluid
+        }
+      }
+    }
+    rishiB: file(relativePath: { eq: "rishiB.png" }) {
       childImageSharp {
         fluid(quality: 100) {
           ...GatsbyImageSharpFluid
