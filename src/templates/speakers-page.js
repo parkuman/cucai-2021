@@ -123,24 +123,6 @@ const SpeakersPage = ({ data }) => {
       ],
     },
     {
-      role: "Speaker",
-      first: "Mark",
-      last: "Caine",
-      title: "AI & Machine Learning Lead",
-      work: "World Economic Forum",
-      image: data.markCa.childImageSharp.fluid,
-      socials: [
-        {
-          name: "LinkedIn",
-          url: "https://www.linkedin.com/in/markeliotcaine/",
-        },
-        {
-          name: "Website",
-          url: "https://www.weforum.org/",
-        },
-      ],
-    },
-    {
       role: "Speaker, Pitch Comp. Judge",
       first: "David",
       last: "Hayes",

@@ -234,13 +234,6 @@ const PremierSpeakers = () => {
       image: data.laurenceM.childImageSharp.fluid,
     },
     {
-      first: "Mark",
-      last: "Caine",
-      title: "AI & Machine Learning Lead",
-      work: "World Economic Forum",
-      image: data.markCa.childImageSharp.fluid,
-    },
-    {
       first: "David",
       last: "Hayes",
       title: "CEO & Founder",
