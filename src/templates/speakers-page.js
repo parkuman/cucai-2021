@@ -276,6 +276,20 @@ const SpeakersPage = ({ data }) => {
         },
       ],
     },
+    {
+      role: "Women in AI Panelist",
+      first: "Shirin",
+      last: "Farrahi",
+      title: "Principal Software Engineer",
+      work: "Cadence Design Systems",
+      image: data.shirinF.childImageSharp.fluid,
+      socials: [
+        {
+          name: "LinkedIn",
+          url: "https://www.linkedin.com/in/shirin-farrahi-92887a1/",
+        },
+      ],
+    },
   ];
 
   return (
@@ -391,6 +405,13 @@ export const pageQuery = graphql`
       }
     }
     rishiB: file(relativePath: { eq: "rishiB.png" }) {
+      childImageSharp {
+        fluid(quality: 100) {
+          ...GatsbyImageSharpFluid
+        }
+      }
+    }
+    shirinF: file(relativePath: { eq: "shirinF.png" }) {
       childImageSharp {
         fluid(quality: 100) {
           ...GatsbyImageSharpFluid
